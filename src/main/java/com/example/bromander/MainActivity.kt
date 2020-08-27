@@ -222,6 +222,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         //Set onClickListeners for mana counters
+        /*
         white1.setOnClickListener(object:DoubleClickListener() {
             override fun onSingleClick(v:View) {
                 if (white1Counter < 0) {
@@ -252,12 +253,14 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+
+         */
         white1.setOnLongClickListener(View.OnLongClickListener(){
             white1Counter = 0
             white1.text = ""
             true
         })
-
+/*
         blue1.setOnClickListener(object:DoubleClickListener() {
             override fun onSingleClick(v:View) {
                 if (blue1Counter < 0) {
@@ -288,12 +291,14 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+
+         */
         blue1.setOnLongClickListener(View.OnLongClickListener(){
             blue1Counter = 0
             blue1.text = ""
             true
         })
-
+/*
         black1.setOnClickListener(object:DoubleClickListener() {
             override fun onSingleClick(v:View) {
                 if (black1Counter < 0) {
@@ -324,12 +329,14 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+
+         */
         black1.setOnLongClickListener(View.OnLongClickListener(){
             black1Counter = 0
             black1.text = ""
             true
         })
-
+/*
         red1.setOnClickListener(object:DoubleClickListener() {
             override fun onSingleClick(v:View) {
                 if (red1Counter < 0) {
@@ -360,12 +367,14 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+
+         */
         red1.setOnLongClickListener(View.OnLongClickListener(){
             red1Counter = 0
             red1.text = ""
             true
         })
-
+/*
         green1.setOnClickListener(object:DoubleClickListener() {
             override fun onSingleClick(v:View) {
                 if (green1Counter < 0) {
@@ -396,12 +405,14 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+
+         */
         green1.setOnLongClickListener(View.OnLongClickListener(){
             green1Counter = 0
             green1.text = ""
             true
         })
-
+/*
         white2.setOnClickListener(object:DoubleClickListener() {
             override fun onSingleClick(v:View) {
                 if (white2Counter < 0) {
@@ -432,12 +443,14 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+
+         */
         white2.setOnLongClickListener(View.OnLongClickListener(){
             white2Counter = 0
             white2.text = ""
             true
         })
-
+/*
         blue2.setOnClickListener(object:DoubleClickListener() {
             override fun onSingleClick(v:View) {
                 if (blue2Counter < 0) {
@@ -468,12 +481,14 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+
+         */
         blue2.setOnLongClickListener(View.OnLongClickListener(){
             blue2Counter = 0
             blue2.text = ""
             true
         })
-
+/*
         black2.setOnClickListener(object:DoubleClickListener() {
             override fun onSingleClick(v:View) {
                 if (black2Counter < 0) {
@@ -504,12 +519,14 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+
+         */
         black2.setOnLongClickListener(View.OnLongClickListener(){
             black2Counter = 0
             black2.text = ""
             true
         })
-
+/*
         red2.setOnClickListener(object:DoubleClickListener() {
             override fun onSingleClick(v:View) {
                 if (red2Counter < 0) {
@@ -540,12 +557,14 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+
+         */
         red2.setOnLongClickListener(View.OnLongClickListener(){
             red2Counter = 0
             red2.text = ""
             true
         })
-
+/*
         green2.setOnClickListener(object:DoubleClickListener() {
             override fun onSingleClick(v:View) {
                 if (green2Counter < 0) {
@@ -576,12 +595,14 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+
+         */
         green2.setOnLongClickListener(View.OnLongClickListener(){
             green2Counter = 0
             green2.text = ""
             true
         })
-
+/*
         white3.setOnClickListener(object:DoubleClickListener() {
             override fun onSingleClick(v:View) {
                 if (white3Counter < 0) {
@@ -612,12 +633,14 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+
+         */
         white3.setOnLongClickListener(View.OnLongClickListener(){
             white3Counter = 0
             white3.text = ""
             true
         })
-
+/*
         blue3.setOnClickListener(object:DoubleClickListener() {
             override fun onSingleClick(v:View) {
                 if (blue3Counter < 0) {
@@ -648,12 +671,14 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+
+         */
         blue3.setOnLongClickListener(View.OnLongClickListener(){
             blue3Counter = 0
             blue3.text = ""
             true
         })
-
+/*
         black3.setOnClickListener(object:DoubleClickListener() {
             override fun onSingleClick(v:View) {
                 if (black3Counter < 0) {
@@ -684,12 +709,14 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+
+         */
         black3.setOnLongClickListener(View.OnLongClickListener(){
             black3Counter = 0
             black3.text = ""
             true
         })
-
+/*
         red3.setOnClickListener(object:DoubleClickListener() {
             override fun onSingleClick(v:View) {
                 if (red3Counter < 0) {
@@ -720,12 +747,14 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+
+         */
         red3.setOnLongClickListener(View.OnLongClickListener(){
             red3Counter = 0
             red3.text = ""
             true
         })
-
+/*
         green3.setOnClickListener(object:DoubleClickListener() {
             override fun onSingleClick(v:View) {
                 if (green3Counter < 0) {
@@ -756,12 +785,14 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+
+         */
         green3.setOnLongClickListener(View.OnLongClickListener(){
             green3Counter = 0
             green3.text = ""
             true
         })
-
+/*
         white4.setOnClickListener(object:DoubleClickListener() {
             override fun onSingleClick(v:View) {
                 if (white4Counter < 0) {
@@ -792,12 +823,14 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+
+         */
         white4.setOnLongClickListener(View.OnLongClickListener(){
             white4Counter = 0
             white4.text = ""
             true
         })
-
+/*
         blue4.setOnClickListener(object:DoubleClickListener() {
             override fun onSingleClick(v:View) {
                 if (blue4Counter < 0) {
@@ -828,12 +861,14 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+
+         */
         blue4.setOnLongClickListener(View.OnLongClickListener(){
             blue4Counter = 0
             blue4.text = ""
             true
         })
-
+/*
         black4.setOnClickListener(object:DoubleClickListener() {
             override fun onSingleClick(v:View) {
                 if (black4Counter < 0) {
@@ -864,12 +899,13 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+         */
         black4.setOnLongClickListener(View.OnLongClickListener(){
             black4Counter = 0
             black4.text = ""
             true
         })
-
+/*
         red4.setOnClickListener(object:DoubleClickListener() {
             override fun onSingleClick(v:View) {
                 if (red4Counter < 0) {
@@ -900,12 +936,13 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+         */
         red4.setOnLongClickListener(View.OnLongClickListener(){
             red4Counter = 0
             red4.text = ""
             true
         })
-
+/*
         green4.setOnClickListener(object:DoubleClickListener() {
             override fun onSingleClick(v:View) {
                 if (green4Counter < 0) {
@@ -936,13 +973,13 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+         */
         green4.setOnLongClickListener(View.OnLongClickListener(){
             green4Counter = 0
             green4.text = ""
             true
         })
 
-        /*
         white1.setOnClickListener {
             if (white1Counter < 0) {
                 white1Counter = 0
@@ -1202,7 +1239,6 @@ class MainActivity : AppCompatActivity() {
                 green4.text = ""
 			}
         }
-         */
 
         //Hide keyboards
         /*
