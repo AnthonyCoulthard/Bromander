@@ -49,26 +49,6 @@
         app:layout_constraintTop_toTopOf="@id/h50Guideline"
         />
 
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="2dp"
-        android:background="#ffffff"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
-    <View
-        android:layout_width="2dp"
-        android:layout_height="fill_parent"
-        android:background="#ffffff"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
     <Button
         android:id="@+id/hiddenMinus1"
         android:layout_width="0dp"
@@ -230,92 +210,121 @@
         />
 
     <Button
-        android:id="@+id/endTurn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/red_circle"
-        android:text="GO"
-        android:textColor="#ffffff"
-        android:textSize="24sp"
-        android:elevation="6dp"
-        android:rotation="90"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/white1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#f9faf4"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toLeftOf="@id/v8Guideline"
+        app:layout_constraintRight_toRightOf="@id/v16Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h10Guideline"
+        app:layout_constraintTop_toTopOf="@id/h0Guideline"
         />
 
     <Button
-        android:id="@+id/white1"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/counter_circle"
+        android:id="@+id/white1down"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#f8e7b9"
         android:textColor="#000000"
-        android:backgroundTint="#f9faf4"
-        android:elevation="6dp"
-        android:rotation="90"
-        app:layout_constraintStart_toStartOf="@id/v0Guideline"
-        app:layout_constraintEnd_toEndOf="@id/v17Guideline"
+        app:layout_constraintLeft_toLeftOf="@id/v0Guideline"
+        app:layout_constraintRight_toRightOf="@id/v8Guideline"
         app:layout_constraintBottom_toBottomOf="@id/h10Guideline"
         app:layout_constraintTop_toTopOf="@id/h0Guideline"
         />
 
     <Button
         android:id="@+id/blue1"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/counter_circle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#b3ceea"
         android:textColor="#000000"
-        android:backgroundTint="#0e68ab"
-        android:elevation="6dp"
-        android:rotation="90"
-        app:layout_constraintStart_toStartOf="@id/v0Guideline"
-        app:layout_constraintEnd_toEndOf="@id/v17Guideline"
+        app:layout_constraintLeft_toLeftOf="@id/v8Guideline"
+        app:layout_constraintRight_toRightOf="@id/v16Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h20Guideline"
+        app:layout_constraintTop_toTopOf="@id/h10Guideline"
+        />
+
+    <Button
+        android:id="@+id/blue1down"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#0e68ab"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toLeftOf="@id/v0Guideline"
+        app:layout_constraintRight_toRightOf="@id/v8Guideline"
         app:layout_constraintBottom_toBottomOf="@id/h20Guideline"
         app:layout_constraintTop_toTopOf="@id/h10Guideline"
         />
 
     <Button
         android:id="@+id/black1"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/counter_circle"
-        android:textColor="#ffffff"
-        android:backgroundTint="#150b00"
-        android:elevation="6dp"
-        android:rotation="90"
-        app:layout_constraintStart_toStartOf="@id/v0Guideline"
-        app:layout_constraintEnd_toEndOf="@id/v17Guideline"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#a69f9d"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toLeftOf="@id/v8Guideline"
+        app:layout_constraintRight_toRightOf="@id/v16Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h30Guideline"
+        app:layout_constraintTop_toTopOf="@id/h20Guideline"
+        />
+
+    <Button
+        android:id="@+id/black1down"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#150b00"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toLeftOf="@id/v0Guideline"
+        app:layout_constraintRight_toRightOf="@id/v8Guideline"
         app:layout_constraintBottom_toBottomOf="@id/h30Guideline"
         app:layout_constraintTop_toTopOf="@id/h20Guideline"
         />
 
     <Button
         android:id="@+id/red1"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/counter_circle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#eb9f82"
         android:textColor="#000000"
-        android:backgroundTint="#d3202a"
-        android:elevation="6dp"
-        android:rotation="90"
-        app:layout_constraintStart_toStartOf="@id/v0Guideline"
-        app:layout_constraintEnd_toEndOf="@id/v17Guideline"
+        app:layout_constraintLeft_toLeftOf="@id/v8Guideline"
+        app:layout_constraintRight_toRightOf="@id/v16Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h40Guideline"
+        app:layout_constraintTop_toTopOf="@id/h30Guideline"
+        />
+
+    <Button
+        android:id="@+id/red1down"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#d3202a"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toLeftOf="@id/v0Guideline"
+        app:layout_constraintRight_toRightOf="@id/v8Guideline"
         app:layout_constraintBottom_toBottomOf="@id/h40Guideline"
         app:layout_constraintTop_toTopOf="@id/h30Guideline"
         />
 
     <Button
         android:id="@+id/green1"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/counter_circle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#c4d3ca"
         android:textColor="#000000"
-        android:backgroundTint="#00733e"
-        android:elevation="6dp"
-        android:rotation="90"
-        app:layout_constraintStart_toStartOf="@id/v0Guideline"
-        app:layout_constraintEnd_toEndOf="@id/v17Guideline"
+        app:layout_constraintLeft_toLeftOf="@id/v8Guideline"
+        app:layout_constraintRight_toRightOf="@id/v16Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h50Guideline"
+        app:layout_constraintTop_toTopOf="@id/h40Guideline"
+        />
+
+    <Button
+        android:id="@+id/green1down"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#00733e"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toLeftOf="@id/v0Guideline"
+        app:layout_constraintRight_toRightOf="@id/v8Guideline"
         app:layout_constraintBottom_toBottomOf="@id/h50Guideline"
         app:layout_constraintTop_toTopOf="@id/h40Guideline"
         />
@@ -545,6 +554,43 @@
         app:layout_constraintTop_toTopOf="@id/h90Guideline"
         />
 
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="#ffffff"
+        android:elevation="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <View
+        android:layout_width="2dp"
+        android:layout_height="fill_parent"
+        android:background="#ffffff"
+        android:elevation="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <Button
+        android:id="@+id/endTurn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/red_circle"
+        android:text="GO"
+        android:textColor="#ffffff"
+        android:textSize="24sp"
+        android:elevation="6dp"
+        android:rotation="90"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <!--
     <ImageView
