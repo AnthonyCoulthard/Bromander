@@ -99,4 +99,8 @@ class RepeatListener(
 
         return false
     }
+
+    fun getLifeHeld(): Boolean{
+        return this.lifeHeld
+    }
 }

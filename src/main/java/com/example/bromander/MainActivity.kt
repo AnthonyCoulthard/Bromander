@@ -1017,76 +1017,220 @@ class MainActivity : AppCompatActivity() {
         
         
         //Set RepeatListeners for life counter increases
-        hiddenMinus1.setOnTouchListener(RepeatListener(500, 200, lifeHeld, View.OnClickListener {
-            if (lifeHeld) {
+        hiddenMinus1.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            if (lifeTotal1 > 0){
+                lifeTotal1--
+            }
+            life1.text = lifeTotal1.toString()
+            /*
+            if (!lifeHeld) {
+                if (lifeTotal1 > 0){
+                    lifeTotal1--
+                }
+                life1.text = lifeTotal1.toString()
+                lifeHeld = true
+            }
+            else {
                 lifeTotal1 -= 5
                 if (lifeTotal1 < 0) {
                     lifeTotal1 = 0
                 }
                 life1.text = lifeTotal1.toString()
+                lifeHeld = true
             }
-            lifeHeld = true
+            if (lifeHeld){
+                lifeHeld = false
+            }
+             */
         }))
-        hiddenPlus1.setOnTouchListener(RepeatListener(500, 200, lifeHeld, View.OnClickListener {
-            if (lifeHeld) {
-                lifeTotal1 += 5
+        hiddenPlus1.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            lifeTotal1++
+            life1.text = lifeTotal1.toString()
+            /*
+            if (!lifeHeld) {
+                if (lifeTotal1 >= 0){
+                    lifeTotal1++
+                }
+                else {
+                    lifeTotal1 = 0
+                }
                 life1.text = lifeTotal1.toString()
+                lifeHeld = true
             }
-            lifeHeld = true
+            else {
+                lifeTotal1 += 5
+                if (lifeTotal1 < 0) {
+                    lifeTotal1 = 0
+                }
+                life1.text = lifeTotal1.toString()
+                lifeHeld = true
+            }
+            if (lifeHeld){
+                lifeHeld = false
+            }
+             */
         }))
 
-        hiddenMinus2.setOnTouchListener(RepeatListener(500, 200, lifeHeld, View.OnClickListener {
-            if (lifeHeld) {
+        hiddenMinus2.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            if (lifeTotal2 > 0){
+                lifeTotal2--
+            }
+            life2.text = lifeTotal2.toString()
+            /*
+            if (!lifeHeld) {
+                if (lifeTotal2 > 0){
+                    lifeTotal2--
+                }
+                life2.text = lifeTotal2.toString()
+                lifeHeld = true
+            }
+            else {
                 lifeTotal2 -= 5
                 if (lifeTotal2 < 0) {
                     lifeTotal2 = 0
                 }
                 life2.text = lifeTotal2.toString()
+                lifeHeld = true
             }
-            lifeHeld = true
+            if (lifeHeld){
+                lifeHeld = false
+            }
+             */
         }))
-        hiddenPlus2.setOnTouchListener(RepeatListener(500, 200, lifeHeld, View.OnClickListener {
-            if (lifeHeld) {
-                lifeTotal2 += 5
+        hiddenPlus2.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            lifeTotal2++
+            life2.text = lifeTotal2.toString()
+            /*
+            if (!lifeHeld) {
+                if (lifeTotal2 >= 0){
+                    lifeTotal2++
+                }
+                else {
+                    lifeTotal2 = 0
+                }
                 life2.text = lifeTotal2.toString()
+                lifeHeld = true
             }
-            lifeHeld = true
+            else {
+                lifeTotal2 += 5
+                if (lifeTotal2 < 0) {
+                    lifeTotal2 = 0
+                }
+                life2.text = lifeTotal2.toString()
+                lifeHeld = true
+            }
+            if (lifeHeld){
+                lifeHeld = false
+            }
+             */
         }))
 
-        hiddenMinus3.setOnTouchListener(RepeatListener(500, 200, lifeHeld, View.OnClickListener {
-            if (lifeHeld) {
+        hiddenMinus3.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            if (lifeTotal3 > 0){
+                lifeTotal3--
+            }
+            life3.text = lifeTotal3.toString()
+            /*
+            if (!lifeHeld) {
+                if (lifeTotal3 > 0){
+                    lifeTotal3--
+                }
+                life3.text = lifeTotal3.toString()
+                lifeHeld = true
+            }
+            else {
                 lifeTotal3 -= 5
                 if (lifeTotal3 < 0) {
                     lifeTotal3 = 0
                 }
                 life3.text = lifeTotal3.toString()
+                lifeHeld = true
             }
-            lifeHeld = true
+            if (lifeHeld){
+                lifeHeld = false
+            }
+             */
         }))
-        hiddenPlus3.setOnTouchListener(RepeatListener(500, 200, lifeHeld, View.OnClickListener {
-            if (lifeHeld) {
-                lifeTotal3 += 5
+        hiddenPlus3.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            lifeTotal3++
+            life3.text = lifeTotal3.toString()
+            /*
+            if (!lifeHeld) {
+                if (lifeTotal3 >= 0){
+                    lifeTotal3++
+                }
+                else {
+                    lifeTotal3 = 0
+                }
                 life3.text = lifeTotal3.toString()
+                lifeHeld = true
             }
-            lifeHeld = true
+            else {
+                lifeTotal3 += 5
+                if (lifeTotal3 < 0) {
+                    lifeTotal3 = 0
+                }
+                life3.text = lifeTotal3.toString()
+                lifeHeld = true
+            }
+            if (lifeHeld){
+                lifeHeld = false
+            }
+             */
         }))
 
-        hiddenMinus4.setOnTouchListener(RepeatListener(500, 200, lifeHeld, View.OnClickListener {
-            if (lifeHeld) {
+        hiddenMinus4.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            if (lifeTotal4 > 0){
+                lifeTotal4--
+            }
+            life4.text = lifeTotal4.toString()
+            /*
+            if (!lifeHeld) {
+                if (lifeTotal4 > 0){
+                    lifeTotal4--
+                }
+                life4.text = lifeTotal4.toString()
+                lifeHeld = true
+            }
+            else {
                 lifeTotal4 -= 5
                 if (lifeTotal4 < 0) {
                     lifeTotal4 = 0
                 }
                 life4.text = lifeTotal4.toString()
+                lifeHeld = true
             }
-            lifeHeld = true
+            if (lifeHeld){
+                lifeHeld = false
+            }
+             */
         }))
-        hiddenPlus4.setOnTouchListener(RepeatListener(500, 200, lifeHeld, View.OnClickListener {
-            if (lifeHeld) {
-                lifeTotal4 += 5
+        hiddenPlus4.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            lifeTotal4++
+            life4.text = lifeTotal4.toString()
+            /*
+            if (!lifeHeld) {
+                if (lifeTotal4 >= 0){
+                    lifeTotal4++
+                }
+                else {
+                    lifeTotal4 = 0
+                }
                 life4.text = lifeTotal4.toString()
+                lifeHeld = true
             }
-            lifeHeld = true
+            else {
+                lifeTotal4 += 5
+                if (lifeTotal4 < 0) {
+                    lifeTotal4 = 0
+                }
+                life4.text = lifeTotal4.toString()
+                lifeHeld = true
+            }
+            if (lifeHeld){
+                lifeHeld = false
+            }
+             */
         }))
         
         
