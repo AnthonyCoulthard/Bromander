@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Bromander</string>
-    <string name="end_turn_string">GO</string>
+    <string name="end_turn_string">SKIP\nIT</string>
     <string name="start_life_string">40</string>
 </resources>

@@ -4,8 +4,11 @@ import android.app.Activity
 import android.app.Fragment
 import android.content.ComponentCallbacks2
 import android.content.Context
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
+import android.os.Handler
 import android.util.Log
 import android.view.GestureDetector
 import android.view.KeyEvent
@@ -13,15 +16,9 @@ import android.view.View
 import android.view.View.INVISIBLE
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import android.view.MotionEvent
-import android.widget.Toast
 import android.view.View.OnLongClickListener
-
-
-
+import android.widget.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -120,6 +117,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var black4Counter: TextView
     lateinit var red4Counter: TextView
     lateinit var green4Counter: TextView
+    lateinit var progressBar: CircleProgressBar
 
     //Additional global variables
     var lifeTotal1: Int = 40
@@ -147,6 +145,31 @@ class MainActivity : AppCompatActivity() {
     var red4CounterInt: Int = 0
     var green4CounterInt: Int = 0
     var lifeHeld: Boolean = false
+    var turnStatus: Int = 0
+    val handler = Handler()
+    var player1TimeRemaining: Int = 10
+    var player2TimeRemaining: Int = 10
+    var player3TimeRemaining: Int = 10
+    var player4TimeRemaining: Int = 10
+    var playerTimer: Int = 10
+    var currentPlayer: Int = 1
+
+    //Variable for turn timer object
+    var timeOutRemoveTimer = object : CountDownTimer(playerTimer*1000L, 10) {
+        override fun onFinish() {
+            progressBar.progress = 1f
+            turnStatus = playerTimer
+            endTurn.setTextColor(Color.parseColor("#ff8c00"))
+        }
+
+        override fun onTick(millisUntilFinished: Long) {
+            endTurn.setTextColor(Color.parseColor("#f440e4"))
+            progressBar.progress = (playerTimer*1000L - millisUntilFinished).toFloat()/(playerTimer*1000L)
+            if((playerTimer*1000L - millisUntilFinished)/1000 > turnStatus){
+                turnStatus++
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -241,6 +264,7 @@ class MainActivity : AppCompatActivity() {
         red4Counter = findViewById(R.id.red4Counter)
         green4Counter = findViewById(R.id.green4Counter)
         endTurn = findViewById(R.id.endTurn)
+        progressBar = findViewById(R.id.progressBar)
 
         //Make life buttons nonexistent
         /*
@@ -254,6 +278,32 @@ class MainActivity : AppCompatActivity() {
         minus4.visibility = INVISIBLE
         */
 
+        //Run turn timer in its own thread
+        timeOutRemoveTimer.start()
+        /*
+        Thread(object:Runnable {
+            override fun run() {
+                while (turnStatus <= playerTimer*100)
+                {
+                    handler.post(object:Runnable {
+                        override fun run() {
+                            progressBar.progress = turnStatus/playerTimer
+                        }
+                    })
+                    try
+                    {
+                        Thread.sleep(10)
+                    }
+                    catch (e:InterruptedException) {
+                        e.printStackTrace()
+                    }
+                    turnStatus++
+                }
+            }
+        }).start()
+         */
+
+        //Set onClickListeners for life buttons
         hiddenPlus1.setOnClickListener {
             lifeTotal1++
             life1.text = lifeTotal1.toString()
@@ -304,14 +354,50 @@ class MainActivity : AppCompatActivity() {
 
         //Set onClickListener for ending the turn
         endTurn.setOnClickListener {
-            lifeTotal1 = 40
-            lifeTotal2 = 40
-            lifeTotal3 = 40
-            lifeTotal4 = 40
-            life1.text = lifeTotal1.toString()
-            life2.text = lifeTotal2.toString()
-            life3.text = lifeTotal3.toString()
-            life4.text = lifeTotal4.toString()
+            timeOutRemoveTimer.cancel()
+
+            if (currentPlayer == 1){
+                player1TimeRemaining += (player1TimeRemaining-turnStatus)/2
+                currentPlayer = 2
+                playerTimer = player2TimeRemaining
+            }
+            else if (currentPlayer == 2){
+                player2TimeRemaining += (player2TimeRemaining-turnStatus)/2
+                currentPlayer = 3
+                playerTimer = player3TimeRemaining
+            }
+            else if (currentPlayer == 3){
+                player3TimeRemaining += (player3TimeRemaining-turnStatus)/2
+                currentPlayer = 4
+                playerTimer = player4TimeRemaining
+            }
+            else {
+                player4TimeRemaining += (player4TimeRemaining-turnStatus)/2
+                currentPlayer = 1
+                playerTimer = player1TimeRemaining
+            }
+
+            if (playerTimer > 300){
+                playerTimer = 300
+            }
+
+            timeOutRemoveTimer = object : CountDownTimer(playerTimer*1000L, 10) {
+                override fun onFinish() {
+                    progressBar.progress = 1f
+                    turnStatus = playerTimer
+                    endTurn.setTextColor(Color.parseColor("#ff8c00"))
+                }
+
+                override fun onTick(millisUntilFinished: Long) {
+                    endTurn.setTextColor(Color.parseColor("#f440e4"))
+                    progressBar.progress = (playerTimer*1000L - millisUntilFinished).toFloat()/(playerTimer*1000L)
+                    if((playerTimer*1000L - millisUntilFinished)/1000 > turnStatus){
+                        turnStatus++
+                    }
+                }
+            }
+
+            timeOutRemoveTimer.start()
         }
 
         //Set onClickListeners for mana counters
