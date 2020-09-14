@@ -1,5 +1,18 @@
 <resources>
     <string name="app_name">Bromander</string>
-    <string name="end_turn_string">SKIP\nIT</string>
+    <string name="end_turn_string">SKIP</string>
     <string name="start_life_string">40</string>
+    <string name="counter_start">0</string>
+    <string name="mana_colours">
+        f9faf4
+        f8e7b9
+        b3ceea
+        0e68ab
+        a69f9d
+        150b00
+        eb9f82
+        d3202a
+        c4d3ca
+
+    </string>
 </resources>

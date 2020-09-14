@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.GestureDetector
 import android.view.KeyEvent
@@ -19,6 +21,7 @@ import android.view.inputmethod.InputMethodManager
 import android.view.MotionEvent
 import android.view.View.OnLongClickListener
 import android.widget.*
+import kotlin.concurrent.thread
 
 
 class MainActivity : AppCompatActivity() {
@@ -45,6 +48,10 @@ class MainActivity : AppCompatActivity() {
     lateinit var minus3: Button
     lateinit var minus4: Button
      */
+    lateinit var player1Background: View
+    lateinit var player2Background: View
+    lateinit var player3Background: View
+    lateinit var player4Background: View
     lateinit var hiddenPlus1: Button
     lateinit var hiddenPlus2: Button
     lateinit var hiddenPlus3: Button
@@ -153,17 +160,32 @@ class MainActivity : AppCompatActivity() {
     var player4TimeRemaining: Int = 10
     var playerTimer: Int = 10
     var currentPlayer: Int = 1
+    val endTurnString: String = "END"
+    val skipTurnString: String = "SKIP"
 
     //Variable for turn timer object
     var timeOutRemoveTimer = object : CountDownTimer(playerTimer*1000L, 10) {
         override fun onFinish() {
             progressBar.progress = 1f
             turnStatus = playerTimer
-            endTurn.setTextColor(Color.parseColor("#ff8c00"))
+            endTurn.setTextColor(Color.parseColor("#ffffff"))
+            endTurn.text = endTurnString
+            if (currentPlayer == 1) {
+                player1Background.setBackgroundColor(Color.parseColor("#f440e4"))
+                endTurn.rotation = 90f
+            } else if (currentPlayer == 2) {
+                player2Background.setBackgroundColor(Color.parseColor("#f440e4"))
+                endTurn.rotation = 270f
+            } else if (currentPlayer == 3) {
+                player3Background.setBackgroundColor(Color.parseColor("#f440e4"))
+                endTurn.rotation = 270f
+            } else {
+                player4Background.setBackgroundColor(Color.parseColor("#f440e4"))
+                endTurn.rotation = 90f
+            }
         }
 
         override fun onTick(millisUntilFinished: Long) {
-            endTurn.setTextColor(Color.parseColor("#f440e4"))
             progressBar.progress = (playerTimer*1000L - millisUntilFinished).toFloat()/(playerTimer*1000L)
             if((playerTimer*1000L - millisUntilFinished)/1000 > turnStatus){
                 turnStatus++
@@ -174,27 +196,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //gestureDetector = GestureDetector(this, GestureListener())
 
         //Initialize variables for XML elements
-        /*
-        player1Text = findViewById(R.id.player1Text)
-        player2Text = findViewById(R.id.player2Text)
-        player3Text = findViewById(R.id.player3Text)
-        player4Text = findViewById(R.id.player4Text)
-        plus1 = findViewById(R.id.plus1)
-        plus2 = findViewById(R.id.plus2)
-        plus3 = findViewById(R.id.plus3)
-        plus4 = findViewById(R.id.plus4)
-        minus1 = findViewById(R.id.minus1)
-        minus2 = findViewById(R.id.minus2)
-        minus3 = findViewById(R.id.minus3)
-        minus4 = findViewById(R.id.minus4)
-        */
         life1 = findViewById(R.id.life1)
         life2 = findViewById(R.id.life2)
         life3 = findViewById(R.id.life3)
         life4 = findViewById(R.id.life4)
+        player1Background = findViewById(R.id.player1Background)
+        player2Background = findViewById(R.id.player2Background)
+        player3Background = findViewById(R.id.player3Background)
+        player4Background = findViewById(R.id.player4Background)
         hiddenPlus1 = findViewById(R.id.hiddenPlus1)
         hiddenPlus2 = findViewById(R.id.hiddenPlus2)
         hiddenPlus3 = findViewById(R.id.hiddenPlus3)
@@ -266,91 +277,55 @@ class MainActivity : AppCompatActivity() {
         endTurn = findViewById(R.id.endTurn)
         progressBar = findViewById(R.id.progressBar)
 
-        //Make life buttons nonexistent
-        /*
-        plus1.visibility = INVISIBLE
-        plus2.visibility = INVISIBLE
-        plus3.visibility = INVISIBLE
-        plus4.visibility = INVISIBLE
-        minus1.visibility = INVISIBLE
-        minus2.visibility = INVISIBLE
-        minus3.visibility = INVISIBLE
-        minus4.visibility = INVISIBLE
-        */
 
         //Run turn timer in its own thread
-        timeOutRemoveTimer.start()
-        /*
-        Thread(object:Runnable {
-            override fun run() {
-                while (turnStatus <= playerTimer*100)
-                {
-                    handler.post(object:Runnable {
-                        override fun run() {
-                            progressBar.progress = turnStatus/playerTimer
-                        }
-                    })
-                    try
-                    {
-                        Thread.sleep(10)
-                    }
-                    catch (e:InterruptedException) {
-                        e.printStackTrace()
-                    }
-                    turnStatus++
-                }
-            }
-        }).start()
-         */
+        thread{
+            timeOutRemoveTimer.start()
+        }
+
 
         //Set onClickListeners for life buttons
         hiddenPlus1.setOnClickListener {
             lifeTotal1++
             life1.text = lifeTotal1.toString()
         }
-
         hiddenPlus2.setOnClickListener {
             lifeTotal2++
             life2.text = lifeTotal2.toString()
         }
-
         hiddenPlus3.setOnClickListener {
             lifeTotal3++
             life3.text = lifeTotal3.toString()
         }
-
         hiddenPlus4.setOnClickListener {
             lifeTotal4++
             life4.text = lifeTotal4.toString()
         }
-
         hiddenMinus1.setOnClickListener {
             if (lifeTotal1 != 0) {
                 lifeTotal1--
                 life1.text = lifeTotal1.toString()
             }
         }
-
         hiddenMinus2.setOnClickListener {
             if (lifeTotal2 != 0) {
                 lifeTotal2--
                 life2.text = lifeTotal2.toString()
             }
         }
-
         hiddenMinus3.setOnClickListener {
             if (lifeTotal3 != 0) {
                 lifeTotal3--
                 life3.text = lifeTotal3.toString()
             }
         }
-
         hiddenMinus4.setOnClickListener {
             if (lifeTotal4 != 0) {
                 lifeTotal4--
                 life4.text = lifeTotal4.toString()
             }
         }
+
 
         //Set onClickListener for ending the turn
         endTurn.setOnClickListener {
@@ -360,36 +335,68 @@ class MainActivity : AppCompatActivity() {
                 player1TimeRemaining += (player1TimeRemaining-turnStatus)/2
                 currentPlayer = 2
                 playerTimer = player2TimeRemaining
+                player1Background.setBackgroundColor(Color.parseColor("#77ff8c00"))
+                player2Background.setBackgroundColor(Color.parseColor("#77f440e4"))
+                endTurn.rotation = 270f
+                progressBar.rotation = 270f
             }
             else if (currentPlayer == 2){
                 player2TimeRemaining += (player2TimeRemaining-turnStatus)/2
                 currentPlayer = 3
                 playerTimer = player3TimeRemaining
+                player2Background.setBackgroundColor(Color.parseColor("#77ff8c00"))
+                player3Background.setBackgroundColor(Color.parseColor("#77f440e4"))
+                endTurn.rotation = 270f
+                progressBar.rotation = 270f
             }
             else if (currentPlayer == 3){
                 player3TimeRemaining += (player3TimeRemaining-turnStatus)/2
                 currentPlayer = 4
                 playerTimer = player4TimeRemaining
+                player3Background.setBackgroundColor(Color.parseColor("#77ff8c00"))
+                player4Background.setBackgroundColor(Color.parseColor("#77f440e4"))
+                endTurn.rotation = 90f
+                progressBar.rotation = 90f
             }
             else {
                 player4TimeRemaining += (player4TimeRemaining-turnStatus)/2
                 currentPlayer = 1
                 playerTimer = player1TimeRemaining
+                player4Background.setBackgroundColor(Color.parseColor("#77ff8c00"))
+                player1Background.setBackgroundColor(Color.parseColor("#77f440e4"))
+                endTurn.rotation = 90f
+                progressBar.rotation = 90f
             }
 
             if (playerTimer > 300){
                 playerTimer = 300
             }
 
+            endTurn.setTextColor(Color.parseColor("#ffffff"))
+            endTurn.text = skipTurnString
+
             timeOutRemoveTimer = object : CountDownTimer(playerTimer*1000L, 10) {
                 override fun onFinish() {
                     progressBar.progress = 1f
                     turnStatus = playerTimer
-                    endTurn.setTextColor(Color.parseColor("#ff8c00"))
+                    endTurn.setTextColor(Color.parseColor("#ffffff"))
+                    endTurn.text = endTurnString
+                    if (currentPlayer == 1) {
+                        player1Background.setBackgroundColor(Color.parseColor("#f440e4"))
+                        endTurn.rotation = 90f
+                    } else if (currentPlayer == 2) {
+                        player2Background.setBackgroundColor(Color.parseColor("#f440e4"))
+                        endTurn.rotation = 270f
+                    } else if (currentPlayer == 3) {
+                        player3Background.setBackgroundColor(Color.parseColor("#f440e4"))
+                        endTurn.rotation = 270f
+                    } else {
+                        player4Background.setBackgroundColor(Color.parseColor("#f440e4"))
+                        endTurn.rotation = 90f
+                    }
                 }
 
                 override fun onTick(millisUntilFinished: Long) {
-                    endTurn.setTextColor(Color.parseColor("#f440e4"))
                     progressBar.progress = (playerTimer*1000L - millisUntilFinished).toFloat()/(playerTimer*1000L)
                     if((playerTimer*1000L - millisUntilFinished)/1000 > turnStatus){
                         turnStatus++
@@ -397,230 +404,13 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            timeOutRemoveTimer.start()
+            thread{
+                timeOutRemoveTimer.start()
+            }
         }
 
+
         //Set onClickListeners for mana counters
-        white1.setOnLongClickListener(View.OnLongClickListener(){
-            white1CounterInt = 0
-            white1Counter.text = ""
-            true
-        })
-        white1down.setOnLongClickListener(View.OnLongClickListener(){
-            white1CounterInt = 0
-            white1Counter.text = ""
-            true
-        })
-
-        blue1.setOnLongClickListener(View.OnLongClickListener(){
-            blue1CounterInt = 0
-            blue1Counter.text = ""
-            true
-        })
-        blue1down.setOnLongClickListener(View.OnLongClickListener(){
-            blue1CounterInt = 0
-            blue1Counter.text = ""
-            true
-        })
-
-        black1.setOnLongClickListener(View.OnLongClickListener(){
-            black1CounterInt = 0
-            black1Counter.text = ""
-            true
-        })
-        black1down.setOnLongClickListener(View.OnLongClickListener(){
-            black1CounterInt = 0
-            black1Counter.text = ""
-            true
-        })
-
-        red1.setOnLongClickListener(View.OnLongClickListener(){
-            red1CounterInt = 0
-            red1Counter.text = ""
-            true
-        })
-        red1down.setOnLongClickListener(View.OnLongClickListener(){
-            red1CounterInt = 0
-            red1Counter.text = ""
-            true
-        })
-
-        green1.setOnLongClickListener(View.OnLongClickListener(){
-            green1CounterInt = 0
-            green1Counter.text = ""
-            true
-        })
-        green1down.setOnLongClickListener(View.OnLongClickListener(){
-            green1CounterInt = 0
-            green1Counter.text = ""
-            true
-        })
-
-        white2.setOnLongClickListener(View.OnLongClickListener(){
-            white2CounterInt = 0
-            white2Counter.text = ""
-            true
-        })
-        white2down.setOnLongClickListener(View.OnLongClickListener(){
-            white2CounterInt = 0
-            white2Counter.text = ""
-            true
-        })
-
-        blue2.setOnLongClickListener(View.OnLongClickListener(){
-            blue2CounterInt = 0
-            blue2Counter.text = ""
-            true
-        })
-        blue2down.setOnLongClickListener(View.OnLongClickListener(){
-            blue2CounterInt = 0
-            blue2Counter.text = ""
-            true
-        })
-
-        black2.setOnLongClickListener(View.OnLongClickListener(){
-            black2CounterInt = 0
-            black2Counter.text = ""
-            true
-        })
-        black2down.setOnLongClickListener(View.OnLongClickListener(){
-            black2CounterInt = 0
-            black2Counter.text = ""
-            true
-        })
-
-        red2.setOnLongClickListener(View.OnLongClickListener(){
-            red2CounterInt = 0
-            red2Counter.text = ""
-            true
-        })
-        red2down.setOnLongClickListener(View.OnLongClickListener(){
-            red2CounterInt = 0
-            red2Counter.text = ""
-            true
-        })
-
-        green2.setOnLongClickListener(View.OnLongClickListener(){
-            green2CounterInt = 0
-            green2Counter.text = ""
-            true
-        })
-        green2down.setOnLongClickListener(View.OnLongClickListener(){
-            green2CounterInt = 0
-            green2Counter.text = ""
-            true
-        })
-
-        white3.setOnLongClickListener(View.OnLongClickListener(){
-            white3CounterInt = 0
-            white3Counter.text = ""
-            true
-        })
-        white3down.setOnLongClickListener(View.OnLongClickListener(){
-            white3CounterInt = 0
-            white3Counter.text = ""
-            true
-        })
-
-        blue3.setOnLongClickListener(View.OnLongClickListener(){
-            blue3CounterInt = 0
-            blue3Counter.text = ""
-            true
-        })
-        blue3down.setOnLongClickListener(View.OnLongClickListener(){
-            blue3CounterInt = 0
-            blue3Counter.text = ""
-            true
-        })
-
-        black3.setOnLongClickListener(View.OnLongClickListener(){
-            black3CounterInt = 0
-            black3Counter.text = ""
-            true
-        })
-        black3down.setOnLongClickListener(View.OnLongClickListener(){
-            black3CounterInt = 0
-            black3Counter.text = ""
-            true
-        })
-
-        red3.setOnLongClickListener(View.OnLongClickListener(){
-            red3CounterInt = 0
-            red3Counter.text = ""
-            true
-        })
-        red3down.setOnLongClickListener(View.OnLongClickListener(){
-            red3CounterInt = 0
-            red3Counter.text = ""
-            true
-        })
-
-        green3.setOnLongClickListener(View.OnLongClickListener(){
-            green3CounterInt = 0
-            green3Counter.text = ""
-            true
-        })
-        green3down.setOnLongClickListener(View.OnLongClickListener(){
-            green3CounterInt = 0
-            green3Counter.text = ""
-            true
-        })
-
-        white4.setOnLongClickListener(View.OnLongClickListener(){
-            white4CounterInt = 0
-            white4Counter.text = ""
-            true
-        })
-        white4down.setOnLongClickListener(View.OnLongClickListener(){
-            white4CounterInt = 0
-            white4Counter.text = ""
-            true
-        })
-
-        blue4.setOnLongClickListener(View.OnLongClickListener(){
-            blue4CounterInt = 0
-            blue4Counter.text = ""
-            true
-        })
-        blue4down.setOnLongClickListener(View.OnLongClickListener(){
-            blue4CounterInt = 0
-            blue4Counter.text = ""
-            true
-        })
-
-        black4.setOnLongClickListener(View.OnLongClickListener(){
-            black4CounterInt = 0
-            black4Counter.text = ""
-            true
-        })
-        black4down.setOnLongClickListener(View.OnLongClickListener(){
-            black4CounterInt = 0
-            black4Counter.text = ""
-            true
-        })
-
-        red4.setOnLongClickListener(View.OnLongClickListener(){
-            red4CounterInt = 0
-            red4Counter.text = ""
-            true
-        })
-        red4down.setOnLongClickListener(View.OnLongClickListener(){
-            red4CounterInt = 0
-            red4Counter.text = ""
-            true
-        })
-
-        green4.setOnLongClickListener(View.OnLongClickListener(){
-            green4CounterInt = 0
-            green4Counter.text = ""
-            true
-        })
-        green4down.setOnLongClickListener(View.OnLongClickListener(){
-            green4CounterInt = 0
-            green4Counter.text = ""
-            true
-        })
-
         white1.setOnClickListener {
             if (white1CounterInt < 0) {
                 white1CounterInt = 0
@@ -1100,7 +890,473 @@ class MainActivity : AppCompatActivity() {
                 green4Counter.text = green4CounterInt.toString()
             }
         }
-        
+
+
+        //Set textChangeListeners for mana counters
+        white1Counter.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable){}
+            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
+                endTurn.setTextColor(Color.parseColor("#f9faf4"))
+                endTurn.rotation = 90f
+                endTurn.text = white1Counter.text.toString()
+            }
+        })
+        white2Counter.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable){}
+            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
+                endTurn.setTextColor(Color.parseColor("#f9faf4"))
+                endTurn.rotation = 270f
+                endTurn.text = white2Counter.text.toString()
+            }
+        })
+        white3Counter.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable){}
+            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
+                endTurn.setTextColor(Color.parseColor("#f9faf4"))
+                endTurn.rotation = 270f
+                endTurn.text = white3Counter.text.toString()
+            }
+        })
+        white4Counter.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable){}
+            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
+                endTurn.setTextColor(Color.parseColor("#f9faf4"))
+                endTurn.rotation = 90f
+                endTurn.text = white4Counter.text.toString()
+            }
+        })
+        blue1Counter.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable){}
+            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
+                endTurn.setTextColor(Color.parseColor("#0e68ab"))
+                endTurn.rotation = 90f
+                endTurn.text = blue1Counter.text.toString()
+            }
+        })
+        blue2Counter.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable){}
+            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
+                endTurn.setTextColor(Color.parseColor("#0e68ab"))
+                endTurn.rotation = 270f
+                endTurn.text = blue2Counter.text.toString()
+            }
+        })
+        blue3Counter.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable){}
+            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
+                endTurn.setTextColor(Color.parseColor("#0e68ab"))
+                endTurn.rotation = 270f
+                endTurn.text = blue3Counter.text.toString()
+            }
+        })
+        blue4Counter.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable){}
+            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
+                endTurn.setTextColor(Color.parseColor("#0e68ab"))
+                endTurn.rotation = 90f
+                endTurn.text = blue4Counter.text.toString()
+            }
+        })
+        black1Counter.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable){}
+            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
+                endTurn.setTextColor(Color.parseColor("#150b00"))
+                endTurn.rotation = 90f
+                endTurn.text = black1Counter.text.toString()
+            }
+        })
+        black2Counter.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable){}
+            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
+                endTurn.setTextColor(Color.parseColor("#150b00"))
+                endTurn.rotation = 270f
+                endTurn.text = black2Counter.text.toString()
+            }
+        })
+        black3Counter.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable){}
+            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
+                endTurn.setTextColor(Color.parseColor("#150b00"))
+                endTurn.rotation = 270f
+                endTurn.text = black3Counter.text.toString()
+            }
+        })
+        black4Counter.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable){}
+            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
+                endTurn.setTextColor(Color.parseColor("#150b00"))
+                endTurn.rotation = 90f
+                endTurn.text = black4Counter.text.toString()
+            }
+        })
+        red1Counter.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable){}
+            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
+                endTurn.setTextColor(Color.parseColor("#d3202a"))
+                endTurn.rotation = 90f
+                endTurn.text = red1Counter.text.toString()
+            }
+        })
+        red2Counter.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable){}
+            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
+                endTurn.setTextColor(Color.parseColor("#d3202a"))
+                endTurn.rotation = 270f
+                endTurn.text = red2Counter.text.toString()
+            }
+        })
+        red3Counter.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable){}
+            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
+                endTurn.setTextColor(Color.parseColor("#d3202a"))
+                endTurn.rotation = 270f
+                endTurn.text = red3Counter.text.toString()
+            }
+        })
+        red4Counter.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable){}
+            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
+                endTurn.setTextColor(Color.parseColor("#d3202a"))
+                endTurn.rotation = 90f
+                endTurn.text = red4Counter.text.toString()
+            }
+        })
+        green1Counter.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable){}
+            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
+                endTurn.setTextColor(Color.parseColor("#00733e"))
+                endTurn.rotation = 90f
+                endTurn.text = green1Counter.text.toString()
+            }
+        })
+        green2Counter.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable){}
+            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
+                endTurn.setTextColor(Color.parseColor("#00733e"))
+                endTurn.rotation = 270f
+                endTurn.text = green2Counter.text.toString()
+            }
+        })
+        green3Counter.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable){}
+            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
+                endTurn.setTextColor(Color.parseColor("#00733e"))
+                endTurn.rotation = 270f
+                endTurn.text = green3Counter.text.toString()
+            }
+        })
+        green4Counter.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable){}
+            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
+                endTurn.setTextColor(Color.parseColor("#00733e"))
+                endTurn.rotation = 90f
+                endTurn.text = green4Counter.text.toString()
+            }
+        })
+
+
+        //Set RepeatListeners for mana counters
+        white1.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            white1CounterInt++
+            white1Counter.text = white1CounterInt.toString()
+        }))
+        white1down.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            white1CounterInt--
+            if (white1CounterInt <= 0){
+                white1CounterInt = 0
+                white1Counter.text = ""
+            }
+            else {
+                white1Counter.text = white1CounterInt.toString()
+            }
+        }))
+        white2.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            white2CounterInt++
+            white2Counter.text = white2CounterInt.toString()
+        }))
+        white2down.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            white2CounterInt--
+            if (white2CounterInt <= 0){
+                white2CounterInt = 0
+                white2Counter.text = ""
+            }
+            else {
+                white2Counter.text = white2CounterInt.toString()
+            }
+        }))
+        white3.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            white3CounterInt++
+            white3Counter.text = white3CounterInt.toString()
+        }))
+        white3down.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            white3CounterInt--
+            if (white3CounterInt <= 0){
+                white3CounterInt = 0
+                white3Counter.text = ""
+            }
+            else {
+                white3Counter.text = white3CounterInt.toString()
+            }
+        }))
+        white4.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            white4CounterInt++
+            white4Counter.text = white4CounterInt.toString()
+        }))
+        white4down.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            white4CounterInt--
+            if (white4CounterInt <= 0){
+                white4CounterInt = 0
+                white4Counter.text = ""
+            }
+            else {
+                white4Counter.text = white4CounterInt.toString()
+            }
+        }))
+        blue1.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            blue1CounterInt++
+            blue1Counter.text = blue1CounterInt.toString()
+        }))
+        blue1down.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            blue1CounterInt--
+            if (blue1CounterInt <= 0){
+                blue1CounterInt = 0
+                blue1Counter.text = ""
+            }
+            else {
+                blue1Counter.text = blue1CounterInt.toString()
+            }
+        }))
+        blue2.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            blue2CounterInt++
+            blue2Counter.text = blue2CounterInt.toString()
+        }))
+        blue2down.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            blue2CounterInt--
+            if (blue2CounterInt <= 0){
+                blue2CounterInt = 0
+                blue2Counter.text = ""
+            }
+            else {
+                blue2Counter.text = blue2CounterInt.toString()
+            }
+        }))
+        blue3.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            blue3CounterInt++
+            blue3Counter.text = blue3CounterInt.toString()
+        }))
+        blue3down.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            blue3CounterInt--
+            if (blue3CounterInt <= 0){
+                blue3CounterInt = 0
+                blue3Counter.text = ""
+            }
+            else {
+                blue3Counter.text = blue3CounterInt.toString()
+            }
+        }))
+        blue4.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            blue4CounterInt++
+            blue4Counter.text = blue4CounterInt.toString()
+        }))
+        blue4down.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            blue4CounterInt--
+            if (blue4CounterInt <= 0){
+                blue4CounterInt = 0
+                blue4Counter.text = ""
+            }
+            else {
+                blue4Counter.text = blue4CounterInt.toString()
+            }
+        }))
+        black1.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            black1CounterInt++
+            black1Counter.text = black1CounterInt.toString()
+        }))
+        black1down.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            black1CounterInt--
+            if (black1CounterInt <= 0){
+                black1CounterInt = 0
+                black1Counter.text = ""
+            }
+            else {
+                black1Counter.text = black1CounterInt.toString()
+            }
+        }))
+        black2.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            black2CounterInt++
+            black2Counter.text = black2CounterInt.toString()
+        }))
+        black2down.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            black2CounterInt--
+            if (black2CounterInt <= 0){
+                black2CounterInt = 0
+                black2Counter.text = ""
+            }
+            else {
+                black2Counter.text = black2CounterInt.toString()
+            }
+        }))
+        black3.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            black3CounterInt++
+            black3Counter.text = black3CounterInt.toString()
+        }))
+        black3down.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            black3CounterInt--
+            if (black3CounterInt <= 0){
+                black3CounterInt = 0
+                black3Counter.text = ""
+            }
+            else {
+                black3Counter.text = black3CounterInt.toString()
+            }
+        }))
+        black4.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            black4CounterInt++
+            black4Counter.text = black4CounterInt.toString()
+        }))
+        black4down.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            black4CounterInt--
+            if (black4CounterInt <= 0){
+                black4CounterInt = 0
+                black4Counter.text = ""
+            }
+            else {
+                black4Counter.text = black4CounterInt.toString()
+            }
+        }))
+        red1.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            red1CounterInt++
+            red1Counter.text = red1CounterInt.toString()
+        }))
+        red1down.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            red1CounterInt--
+            if (red1CounterInt <= 0){
+                red1CounterInt = 0
+                red1Counter.text = ""
+            }
+            else {
+                red1Counter.text = red1CounterInt.toString()
+            }
+        }))
+        red2.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            red2CounterInt++
+            red2Counter.text = red2CounterInt.toString()
+        }))
+        red2down.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            red2CounterInt--
+            if (red2CounterInt <= 0){
+                red2CounterInt = 0
+                red2Counter.text = ""
+            }
+            else {
+                red2Counter.text = red2CounterInt.toString()
+            }
+        }))
+        red3.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            red3CounterInt++
+            red3Counter.text = red3CounterInt.toString()
+        }))
+        red3down.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            red3CounterInt--
+            if (red3CounterInt <= 0){
+                red3CounterInt = 0
+                red3Counter.text = ""
+            }
+            else {
+                red3Counter.text = red3CounterInt.toString()
+            }
+        }))
+        red4.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            red4CounterInt++
+            red4Counter.text = red4CounterInt.toString()
+        }))
+        red4down.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            red4CounterInt--
+            if (red4CounterInt <= 0){
+                red4CounterInt = 0
+                red4Counter.text = ""
+            }
+            else {
+                red4Counter.text = red4CounterInt.toString()
+            }
+        }))
+        green1.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            green1CounterInt++
+            green1Counter.text = green1CounterInt.toString()
+        }))
+        green1down.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            green1CounterInt--
+            if (green1CounterInt <= 0){
+                green1CounterInt = 0
+                green1Counter.text = ""
+            }
+            else {
+                green1Counter.text = green1CounterInt.toString()
+            }
+        }))
+        green2.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            green2CounterInt++
+            green2Counter.text = green2CounterInt.toString()
+        }))
+        green2down.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            green2CounterInt--
+            if (green2CounterInt <= 0){
+                green2CounterInt = 0
+                green2Counter.text = ""
+            }
+            else {
+                green2Counter.text = green2CounterInt.toString()
+            }
+        }))
+        green3.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            green3CounterInt++
+            green3Counter.text = green3CounterInt.toString()
+        }))
+        green3down.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            green3CounterInt--
+            if (green3CounterInt <= 0){
+                green3CounterInt = 0
+                green3Counter.text = ""
+            }
+            else {
+                green3Counter.text = green3CounterInt.toString()
+            }
+        }))
+        green4.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            green4CounterInt++
+            green4Counter.text = green4CounterInt.toString()
+        }))
+        green4down.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            green4CounterInt--
+            if (green4CounterInt <= 0){
+                green4CounterInt = 0
+                green4Counter.text = ""
+            }
+            else {
+                green4Counter.text = green4CounterInt.toString()
+            }
+        }))
+
         
         //Set RepeatListeners for life counter increases
         hiddenMinus1.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
@@ -1108,53 +1364,10 @@ class MainActivity : AppCompatActivity() {
                 lifeTotal1--
             }
             life1.text = lifeTotal1.toString()
-            /*
-            if (!lifeHeld) {
-                if (lifeTotal1 > 0){
-                    lifeTotal1--
-                }
-                life1.text = lifeTotal1.toString()
-                lifeHeld = true
-            }
-            else {
-                lifeTotal1 -= 5
-                if (lifeTotal1 < 0) {
-                    lifeTotal1 = 0
-                }
-                life1.text = lifeTotal1.toString()
-                lifeHeld = true
-            }
-            if (lifeHeld){
-                lifeHeld = false
-            }
-             */
         }))
         hiddenPlus1.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
             lifeTotal1++
             life1.text = lifeTotal1.toString()
-            /*
-            if (!lifeHeld) {
-                if (lifeTotal1 >= 0){
-                    lifeTotal1++
-                }
-                else {
-                    lifeTotal1 = 0
-                }
-                life1.text = lifeTotal1.toString()
-                lifeHeld = true
-            }
-            else {
-                lifeTotal1 += 5
-                if (lifeTotal1 < 0) {
-                    lifeTotal1 = 0
-                }
-                life1.text = lifeTotal1.toString()
-                lifeHeld = true
-            }
-            if (lifeHeld){
-                lifeHeld = false
-            }
-             */
         }))
 
         hiddenMinus2.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
@@ -1162,53 +1375,10 @@ class MainActivity : AppCompatActivity() {
                 lifeTotal2--
             }
             life2.text = lifeTotal2.toString()
-            /*
-            if (!lifeHeld) {
-                if (lifeTotal2 > 0){
-                    lifeTotal2--
-                }
-                life2.text = lifeTotal2.toString()
-                lifeHeld = true
-            }
-            else {
-                lifeTotal2 -= 5
-                if (lifeTotal2 < 0) {
-                    lifeTotal2 = 0
-                }
-                life2.text = lifeTotal2.toString()
-                lifeHeld = true
-            }
-            if (lifeHeld){
-                lifeHeld = false
-            }
-             */
         }))
         hiddenPlus2.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
             lifeTotal2++
             life2.text = lifeTotal2.toString()
-            /*
-            if (!lifeHeld) {
-                if (lifeTotal2 >= 0){
-                    lifeTotal2++
-                }
-                else {
-                    lifeTotal2 = 0
-                }
-                life2.text = lifeTotal2.toString()
-                lifeHeld = true
-            }
-            else {
-                lifeTotal2 += 5
-                if (lifeTotal2 < 0) {
-                    lifeTotal2 = 0
-                }
-                life2.text = lifeTotal2.toString()
-                lifeHeld = true
-            }
-            if (lifeHeld){
-                lifeHeld = false
-            }
-             */
         }))
 
         hiddenMinus3.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
@@ -1216,53 +1386,10 @@ class MainActivity : AppCompatActivity() {
                 lifeTotal3--
             }
             life3.text = lifeTotal3.toString()
-            /*
-            if (!lifeHeld) {
-                if (lifeTotal3 > 0){
-                    lifeTotal3--
-                }
-                life3.text = lifeTotal3.toString()
-                lifeHeld = true
-            }
-            else {
-                lifeTotal3 -= 5
-                if (lifeTotal3 < 0) {
-                    lifeTotal3 = 0
-                }
-                life3.text = lifeTotal3.toString()
-                lifeHeld = true
-            }
-            if (lifeHeld){
-                lifeHeld = false
-            }
-             */
         }))
         hiddenPlus3.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
             lifeTotal3++
             life3.text = lifeTotal3.toString()
-            /*
-            if (!lifeHeld) {
-                if (lifeTotal3 >= 0){
-                    lifeTotal3++
-                }
-                else {
-                    lifeTotal3 = 0
-                }
-                life3.text = lifeTotal3.toString()
-                lifeHeld = true
-            }
-            else {
-                lifeTotal3 += 5
-                if (lifeTotal3 < 0) {
-                    lifeTotal3 = 0
-                }
-                life3.text = lifeTotal3.toString()
-                lifeHeld = true
-            }
-            if (lifeHeld){
-                lifeHeld = false
-            }
-             */
         }))
 
         hiddenMinus4.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
@@ -1270,158 +1397,10 @@ class MainActivity : AppCompatActivity() {
                 lifeTotal4--
             }
             life4.text = lifeTotal4.toString()
-            /*
-            if (!lifeHeld) {
-                if (lifeTotal4 > 0){
-                    lifeTotal4--
-                }
-                life4.text = lifeTotal4.toString()
-                lifeHeld = true
-            }
-            else {
-                lifeTotal4 -= 5
-                if (lifeTotal4 < 0) {
-                    lifeTotal4 = 0
-                }
-                life4.text = lifeTotal4.toString()
-                lifeHeld = true
-            }
-            if (lifeHeld){
-                lifeHeld = false
-            }
-             */
         }))
         hiddenPlus4.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
             lifeTotal4++
             life4.text = lifeTotal4.toString()
-            /*
-            if (!lifeHeld) {
-                if (lifeTotal4 >= 0){
-                    lifeTotal4++
-                }
-                else {
-                    lifeTotal4 = 0
-                }
-                life4.text = lifeTotal4.toString()
-                lifeHeld = true
-            }
-            else {
-                lifeTotal4 += 5
-                if (lifeTotal4 < 0) {
-                    lifeTotal4 = 0
-                }
-                life4.text = lifeTotal4.toString()
-                lifeHeld = true
-            }
-            if (lifeHeld){
-                lifeHeld = false
-            }
-             */
         }))
-        
-        
-        //Hide keyboards
-        /*
-        player1Text.setOnKeyListener(View.OnKeyListener { v: View, keyCode: Int, event: KeyEvent ->
-            if (keyCode == KeyEvent.KEYCODE_ENTER) {
-                player1Text.clearFocus()
-                player1Text.rootView.requestFocus()
-                window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
-                return@OnKeyListener true
-            }
-            if (keyCode == KeyEvent.KEYCODE_BACK) {
-                player1Text.clearFocus()
-                player1Text.rootView.requestFocus()
-                window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
-                return@OnKeyListener true
-            }
-            false})
-
-        player2Text.setOnKeyListener(View.OnKeyListener { v: View, keyCode: Int, event: KeyEvent ->
-            if (keyCode == KeyEvent.KEYCODE_ENTER) {
-                player2Text.clearFocus()
-                player1Text.rootView.requestFocus()
-                window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
-                return@OnKeyListener true
-            }
-            if (keyCode == KeyEvent.KEYCODE_BACK) {
-                player2Text.clearFocus()
-                player1Text.rootView.requestFocus()
-                window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
-                return@OnKeyListener true
-            }
-            false})
-
-        player3Text.setOnKeyListener(View.OnKeyListener { v: View, keyCode: Int, event: KeyEvent ->
-            if (keyCode == KeyEvent.KEYCODE_ENTER) {
-                player3Text.clearFocus()
-                player1Text.rootView.requestFocus()
-                window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
-                return@OnKeyListener true
-            }
-            if (keyCode == KeyEvent.KEYCODE_BACK) {
-                player3Text.clearFocus()
-                player1Text.rootView.requestFocus()
-                window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
-                return@OnKeyListener true
-            }
-            false})
-
-        player4Text.setOnKeyListener(View.OnKeyListener { v: View, keyCode: Int, event: KeyEvent ->
-            if (keyCode == KeyEvent.KEYCODE_ENTER) {
-                player4Text.clearFocus()
-                player1Text.rootView.requestFocus()
-                window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
-                return@OnKeyListener true
-            }
-            if (keyCode == KeyEvent.KEYCODE_BACK) {
-                player4Text.clearFocus()
-                player1Text.rootView.requestFocus()
-                window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
-                return@OnKeyListener true
-            }
-            false})
-         */
-    }
-
-    //Function to pass to gesture detector
-    /*
-    override fun onTouchEvent(e:MotionEvent):Boolean {
-        return gestureDetector.onTouchEvent(e)
-    }
-
-    //Override functions for tap gestures
-    private inner class GestureListener : GestureDetector.SimpleOnGestureListener() {
-
-        override fun onDown(e: MotionEvent): Boolean {
-            return true
-        }
-
-        // event when double tap occurs
-        override fun onDoubleTap(e: MotionEvent): Boolean {
-            val x = e.x
-            val y = e.y
-
-            Log.d("Double Tap", "Tapped at: ($x,$y)")
-
-            doubleTapped = true
-
-            return true
-        }
-    }
-     */
-
-    //Functions to hide the keyboard
-    fun Fragment.hideKeyboard() {
-        //view?.let { activity?.hideKeyboard(it) }
-    }
-
-    fun Activity.hideKeyboard() {
-        //hideKeyboard(currentFocus ?: View(this))
-    }
-
-    fun Context.hideKeyboard(view: View) {
-        //val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-        //inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }
