@@ -64,6 +64,18 @@ class MainActivity : AppCompatActivity() {
     lateinit var life2: TextView
     lateinit var life3: TextView
     lateinit var life4: TextView
+    lateinit var life1Mana: TextView
+    lateinit var life2Mana: TextView
+    lateinit var life3Mana: TextView
+    lateinit var life4Mana: TextView
+    lateinit var manaCounters1: Button
+    lateinit var commanderDamage1: Button
+    lateinit var manaCounters2: Button
+    lateinit var commanderDamage2: Button
+    lateinit var manaCounters3: Button
+    lateinit var commanderDamage3: Button
+    lateinit var manaCounters4: Button
+    lateinit var commanderDamage4: Button
     lateinit var white1: Button
     lateinit var blue1: Button
     lateinit var black1: Button
@@ -162,6 +174,18 @@ class MainActivity : AppCompatActivity() {
     var currentPlayer: Int = 1
     val endTurnString: String = "END"
     val skipTurnString: String = "SKIP"
+    var displayManaCounters1: Boolean = false
+    var displayManaCounters2: Boolean = false
+    var displayManaCounters3: Boolean = false
+    var displayManaCounters4: Boolean = false
+    var displayCommanderDamage1: Boolean = false
+    var displayCommanderDamage2: Boolean = false
+    var displayCommanderDamage3: Boolean = false
+    var displayCommanderDamage4: Boolean = false
+    var displayShiftedLifeTotal1: Boolean = false
+    var displayShiftedLifeTotal2: Boolean = false
+    var displayShiftedLifeTotal3: Boolean = false
+    var displayShiftedLifeTotal4: Boolean = false
 
     //Variable for turn timer object
     var timeOutRemoveTimer = object : CountDownTimer(playerTimer*1000L, 10) {
@@ -198,10 +222,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //Initialize variables for XML elements
-        life1 = findViewById(R.id.life1)
-        life2 = findViewById(R.id.life2)
-        life3 = findViewById(R.id.life3)
-        life4 = findViewById(R.id.life4)
+        
         player1Background = findViewById(R.id.player1Background)
         player2Background = findViewById(R.id.player2Background)
         player3Background = findViewById(R.id.player3Background)
@@ -214,6 +235,22 @@ class MainActivity : AppCompatActivity() {
         hiddenMinus2 = findViewById(R.id.hiddenMinus2)
         hiddenMinus3 = findViewById(R.id.hiddenMinus3)
         hiddenMinus4 = findViewById(R.id.hiddenMinus4)
+        life1 = findViewById(R.id.life1)
+        life2 = findViewById(R.id.life2)
+        life3 = findViewById(R.id.life3)
+        life4 = findViewById(R.id.life4)
+        life1Mana = findViewById(R.id.life1Mana)
+        life2Mana = findViewById(R.id.life2Mana)
+        life3Mana = findViewById(R.id.life3Mana)
+        life4Mana = findViewById(R.id.life4Mana)
+        manaCounters1 = findViewById(R.id.manaCounters1)
+        commanderDamage1 = findViewById(R.id.commanderDamage1)
+        manaCounters2 = findViewById(R.id.manaCounters2)
+        commanderDamage2 = findViewById(R.id.commanderDamage2)
+        manaCounters3 = findViewById(R.id.manaCounters3)
+        commanderDamage3 = findViewById(R.id.commanderDamage3)
+        manaCounters4 = findViewById(R.id.manaCounters4)
+        commanderDamage4 = findViewById(R.id.commanderDamage4)
         white1 = findViewById(R.id.white1)
         blue1 = findViewById(R.id.blue1)
         black1 = findViewById(R.id.black1)
@@ -278,6 +315,14 @@ class MainActivity : AppCompatActivity() {
         progressBar = findViewById(R.id.progressBar)
 
 
+        //No mana counters or commander damage visible on game start
+        hideShiftedLifeTotals()
+        hideManaCounters1()
+        hideManaCounters2()
+        hideManaCounters3()
+        hideManaCounters4()
+
+
         //Run turn timer in its own thread
         thread{
             timeOutRemoveTimer.start()
@@ -288,41 +333,49 @@ class MainActivity : AppCompatActivity() {
         hiddenPlus1.setOnClickListener {
             lifeTotal1++
             life1.text = lifeTotal1.toString()
+            life1Mana.text = lifeTotal1.toString()
         }
         hiddenPlus2.setOnClickListener {
             lifeTotal2++
             life2.text = lifeTotal2.toString()
+            life2Mana.text = lifeTotal2.toString()
         }
         hiddenPlus3.setOnClickListener {
             lifeTotal3++
             life3.text = lifeTotal3.toString()
+            life3Mana.text = lifeTotal3.toString()
         }
         hiddenPlus4.setOnClickListener {
             lifeTotal4++
             life4.text = lifeTotal4.toString()
+            life4Mana.text = lifeTotal4.toString()
         }
         hiddenMinus1.setOnClickListener {
             if (lifeTotal1 != 0) {
                 lifeTotal1--
                 life1.text = lifeTotal1.toString()
+                life1Mana.text = lifeTotal1.toString()
             }
         }
         hiddenMinus2.setOnClickListener {
             if (lifeTotal2 != 0) {
                 lifeTotal2--
                 life2.text = lifeTotal2.toString()
+                life2Mana.text = lifeTotal2.toString()
             }
         }
         hiddenMinus3.setOnClickListener {
             if (lifeTotal3 != 0) {
                 lifeTotal3--
                 life3.text = lifeTotal3.toString()
+                life3Mana.text = lifeTotal3.toString()
             }
         }
         hiddenMinus4.setOnClickListener {
             if (lifeTotal4 != 0) {
                 lifeTotal4--
                 life4.text = lifeTotal4.toString()
+                life4Mana.text = lifeTotal4.toString()
             }
         }
 
@@ -406,6 +459,81 @@ class MainActivity : AppCompatActivity() {
 
             thread{
                 timeOutRemoveTimer.start()
+            }
+        }
+
+
+        //Set onClickListeners to display mana counters
+        manaCounters1.setOnClickListener {
+            if (displayManaCounters1){
+                displayManaCounters1 = false
+                manaCounters1.setBackgroundColor(Color.parseColor("#ffffff"))
+                manaCounters1.setTextColor(Color.parseColor("#000000"))
+                hideManaCounters1()
+                life1.visibility = View.VISIBLE
+                life1Mana.visibility = View.INVISIBLE
+            }
+            else{
+                displayManaCounters1 = true
+                manaCounters1.setBackgroundColor(Color.parseColor("#ff8c00"))
+                manaCounters1.setTextColor(Color.parseColor("#f440e4"))
+                showManaCounters1()
+                life1.visibility = View.INVISIBLE
+                life1Mana.visibility = View.VISIBLE
+            }
+        }
+        manaCounters2.setOnClickListener {
+            if (displayManaCounters2){
+                displayManaCounters2 = false
+                manaCounters2.setBackgroundColor(Color.parseColor("#ffffff"))
+                manaCounters2.setTextColor(Color.parseColor("#000000"))
+                hideManaCounters2()
+                life2.visibility = View.VISIBLE
+                life2Mana.visibility = View.INVISIBLE
+            }
+            else{
+                displayManaCounters2 = true
+                manaCounters2.setBackgroundColor(Color.parseColor("#ff8c00"))
+                manaCounters2.setTextColor(Color.parseColor("#f440e4"))
+                showManaCounters2()
+                life2.visibility = View.INVISIBLE
+                life2Mana.visibility = View.VISIBLE
+            }
+        }
+        manaCounters3.setOnClickListener {
+            if (displayManaCounters3){
+                displayManaCounters3 = false
+                manaCounters3.setBackgroundColor(Color.parseColor("#ffffff"))
+                manaCounters3.setTextColor(Color.parseColor("#000000"))
+                hideManaCounters3()
+                life3.visibility = View.VISIBLE
+                life3Mana.visibility = View.INVISIBLE
+            }
+            else{
+                displayManaCounters3 = true
+                manaCounters3.setBackgroundColor(Color.parseColor("#ff8c00"))
+                manaCounters3.setTextColor(Color.parseColor("#f440e4"))
+                showManaCounters3()
+                life3.visibility = View.INVISIBLE
+                life3Mana.visibility = View.VISIBLE
+            }
+        }
+        manaCounters4.setOnClickListener {
+            if (displayManaCounters4){
+                displayManaCounters4 = false
+                manaCounters4.setBackgroundColor(Color.parseColor("#ffffff"))
+                manaCounters4.setTextColor(Color.parseColor("#000000"))
+                hideManaCounters4()
+                life4.visibility = View.VISIBLE
+                life4Mana.visibility = View.INVISIBLE
+            }
+            else{
+                displayManaCounters4 = true
+                manaCounters4.setBackgroundColor(Color.parseColor("#ff8c00"))
+                manaCounters4.setTextColor(Color.parseColor("#f440e4"))
+                showManaCounters4()
+                life4.visibility = View.INVISIBLE
+                life4Mana.visibility = View.VISIBLE
             }
         }
 
@@ -1364,10 +1492,12 @@ class MainActivity : AppCompatActivity() {
                 lifeTotal1--
             }
             life1.text = lifeTotal1.toString()
+            life1Mana.text = lifeTotal1.toString()
         }))
         hiddenPlus1.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
             lifeTotal1++
             life1.text = lifeTotal1.toString()
+            life1Mana.text = lifeTotal1.toString()
         }))
 
         hiddenMinus2.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
@@ -1375,10 +1505,12 @@ class MainActivity : AppCompatActivity() {
                 lifeTotal2--
             }
             life2.text = lifeTotal2.toString()
+            life2Mana.text = lifeTotal2.toString()
         }))
         hiddenPlus2.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
             lifeTotal2++
             life2.text = lifeTotal2.toString()
+            life2Mana.text = lifeTotal2.toString()
         }))
 
         hiddenMinus3.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
@@ -1386,10 +1518,12 @@ class MainActivity : AppCompatActivity() {
                 lifeTotal3--
             }
             life3.text = lifeTotal3.toString()
+            life3Mana.text = lifeTotal3.toString()
         }))
         hiddenPlus3.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
             lifeTotal3++
             life3.text = lifeTotal3.toString()
+            life3Mana.text = lifeTotal3.toString()
         }))
 
         hiddenMinus4.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
@@ -1397,10 +1531,190 @@ class MainActivity : AppCompatActivity() {
                 lifeTotal4--
             }
             life4.text = lifeTotal4.toString()
+            life4Mana.text = lifeTotal4.toString()
         }))
         hiddenPlus4.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
             lifeTotal4++
             life4.text = lifeTotal4.toString()
+            life4Mana.text = lifeTotal4.toString()
         }))
+    }
+
+    //Functions to hide and show different layout views
+    fun hideLifeTotals(){
+        life1.visibility = View.INVISIBLE
+        life2.visibility = View.INVISIBLE
+        life3.visibility = View.INVISIBLE
+        life4.visibility = View.INVISIBLE
+    }
+    fun hideShiftedLifeTotals(){
+        displayShiftedLifeTotal1 = false
+        displayShiftedLifeTotal2 = false
+        displayShiftedLifeTotal3 = false
+        displayShiftedLifeTotal4 = false
+        life1Mana.visibility = View.INVISIBLE
+        life2Mana.visibility = View.INVISIBLE
+        life3Mana.visibility = View.INVISIBLE
+        life4Mana.visibility = View.INVISIBLE
+    }
+    fun hideManaCounters1() {
+        displayManaCounters1 = false
+        white1.visibility = View.INVISIBLE
+        white1down.visibility = View.INVISIBLE
+        blue1.visibility = View.INVISIBLE
+        blue1down.visibility = View.INVISIBLE
+        black1.visibility = View.INVISIBLE
+        black1down.visibility = View.INVISIBLE
+        red1.visibility = View.INVISIBLE
+        red1down.visibility = View.INVISIBLE
+        green1.visibility = View.INVISIBLE
+        green1down.visibility = View.INVISIBLE
+        white1Counter.visibility = View.INVISIBLE
+        blue1Counter.visibility = View.INVISIBLE
+        black1Counter.visibility = View.INVISIBLE
+        red1Counter.visibility = View.INVISIBLE
+        green1Counter.visibility = View.INVISIBLE
+    }
+    fun hideManaCounters2() {
+        displayManaCounters2 = false
+        white2.visibility = View.INVISIBLE
+        white2down.visibility = View.INVISIBLE
+        blue2.visibility = View.INVISIBLE
+        blue2down.visibility = View.INVISIBLE
+        black2.visibility = View.INVISIBLE
+        black2down.visibility = View.INVISIBLE
+        red2.visibility = View.INVISIBLE
+        red2down.visibility = View.INVISIBLE
+        green2.visibility = View.INVISIBLE
+        green2down.visibility = View.INVISIBLE
+        white2Counter.visibility = View.INVISIBLE
+        blue2Counter.visibility = View.INVISIBLE
+        black2Counter.visibility = View.INVISIBLE
+        red2Counter.visibility = View.INVISIBLE
+        green2Counter.visibility = View.INVISIBLE
+    }
+    fun hideManaCounters3() {
+        displayManaCounters3 = false
+        white3.visibility = View.INVISIBLE
+        white3down.visibility = View.INVISIBLE
+        blue3.visibility = View.INVISIBLE
+        blue3down.visibility = View.INVISIBLE
+        black3.visibility = View.INVISIBLE
+        black3down.visibility = View.INVISIBLE
+        red3.visibility = View.INVISIBLE
+        red3down.visibility = View.INVISIBLE
+        green3.visibility = View.INVISIBLE
+        green3down.visibility = View.INVISIBLE
+        white3Counter.visibility = View.INVISIBLE
+        blue3Counter.visibility = View.INVISIBLE
+        black3Counter.visibility = View.INVISIBLE
+        red3Counter.visibility = View.INVISIBLE
+        green3Counter.visibility = View.INVISIBLE
+    }
+    fun hideManaCounters4() {
+        displayManaCounters4 = false
+        white4.visibility = View.INVISIBLE
+        white4down.visibility = View.INVISIBLE
+        blue4.visibility = View.INVISIBLE
+        blue4down.visibility = View.INVISIBLE
+        black4.visibility = View.INVISIBLE
+        black4down.visibility = View.INVISIBLE
+        red4.visibility = View.INVISIBLE
+        red4down.visibility = View.INVISIBLE
+        green4.visibility = View.INVISIBLE
+        green4down.visibility = View.INVISIBLE
+        white4Counter.visibility = View.INVISIBLE
+        blue4Counter.visibility = View.INVISIBLE
+        black4Counter.visibility = View.INVISIBLE
+        red4Counter.visibility = View.INVISIBLE
+        green4Counter.visibility = View.INVISIBLE
+    }
+    fun showLifeTotals(){
+        life1.visibility = View.VISIBLE
+        life2.visibility = View.VISIBLE
+        life3.visibility = View.VISIBLE
+        life4.visibility = View.VISIBLE
+    }
+    fun showShiftedLifeTotals(){
+        displayShiftedLifeTotal1 = true
+        displayShiftedLifeTotal2 = true
+        displayShiftedLifeTotal3 = true
+        displayShiftedLifeTotal4 = true
+        life1Mana.visibility = View.VISIBLE
+        life2Mana.visibility = View.VISIBLE
+        life3Mana.visibility = View.VISIBLE
+        life4Mana.visibility = View.VISIBLE
+    }
+    fun showManaCounters1() {
+        displayManaCounters1 = true
+        white1.visibility = View.VISIBLE
+        white1down.visibility = View.VISIBLE
+        blue1.visibility = View.VISIBLE
+        blue1down.visibility = View.VISIBLE
+        black1.visibility = View.VISIBLE
+        black1down.visibility = View.VISIBLE
+        red1.visibility = View.VISIBLE
+        red1down.visibility = View.VISIBLE
+        green1.visibility = View.VISIBLE
+        green1down.visibility = View.VISIBLE
+        white1Counter.visibility = View.VISIBLE
+        blue1Counter.visibility = View.VISIBLE
+        black1Counter.visibility = View.VISIBLE
+        red1Counter.visibility = View.VISIBLE
+        green1Counter.visibility = View.VISIBLE
+    }
+    fun showManaCounters2() {
+        displayManaCounters2 = true
+        white2.visibility = View.VISIBLE
+        white2down.visibility = View.VISIBLE
+        blue2.visibility = View.VISIBLE
+        blue2down.visibility = View.VISIBLE
+        black2.visibility = View.VISIBLE
+        black2down.visibility = View.VISIBLE
+        red2.visibility = View.VISIBLE
+        red2down.visibility = View.VISIBLE
+        green2.visibility = View.VISIBLE
+        green2down.visibility = View.VISIBLE
+        white2Counter.visibility = View.VISIBLE
+        blue2Counter.visibility = View.VISIBLE
+        black2Counter.visibility = View.VISIBLE
+        red2Counter.visibility = View.VISIBLE
+        green2Counter.visibility = View.VISIBLE
+    }
+    fun showManaCounters3() {
+        displayManaCounters3 = true
+        white3.visibility = View.VISIBLE
+        white3down.visibility = View.VISIBLE
+        blue3.visibility = View.VISIBLE
+        blue3down.visibility = View.VISIBLE
+        black3.visibility = View.VISIBLE
+        black3down.visibility = View.VISIBLE
+        red3.visibility = View.VISIBLE
+        red3down.visibility = View.VISIBLE
+        green3.visibility = View.VISIBLE
+        green3down.visibility = View.VISIBLE
+        white3Counter.visibility = View.VISIBLE
+        blue3Counter.visibility = View.VISIBLE
+        black3Counter.visibility = View.VISIBLE
+        red3Counter.visibility = View.VISIBLE
+        green3Counter.visibility = View.VISIBLE
+    }
+    fun showManaCounters4() {
+        displayManaCounters4 = true
+        white4.visibility = View.VISIBLE
+        white4down.visibility = View.VISIBLE
+        blue4.visibility = View.VISIBLE
+        blue4down.visibility = View.VISIBLE
+        black4.visibility = View.VISIBLE
+        black4down.visibility = View.VISIBLE
+        red4.visibility = View.VISIBLE
+        red4down.visibility = View.VISIBLE
+        green4.visibility = View.VISIBLE
+        green4down.visibility = View.VISIBLE
+        white4Counter.visibility = View.VISIBLE
+        blue4Counter.visibility = View.VISIBLE
+        black4Counter.visibility = View.VISIBLE
+        red4Counter.visibility = View.VISIBLE
+        green4Counter.visibility = View.VISIBLE
     }
 }

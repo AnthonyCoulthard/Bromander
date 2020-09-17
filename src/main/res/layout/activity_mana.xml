@@ -48,7 +48,7 @@
     <View
         android:id="@+id/player3Background"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#77ff8c00"
         app:layout_constraintStart_toStartOf="@id/v50Guideline"
@@ -60,7 +60,7 @@
     <Button
         android:id="@+id/hiddenMinus1"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/transparent"
         android:elevation="2dp"
@@ -73,7 +73,7 @@
     <Button
         android:id="@+id/hiddenPlus2"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/transparent"
         android:elevation="2dp"
@@ -86,7 +86,7 @@
     <Button
         android:id="@+id/hiddenMinus4"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/transparent"
         android:elevation="2dp"
@@ -99,7 +99,7 @@
     <Button
         android:id="@+id/hiddenPlus3"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/transparent"
         android:elevation="2dp"
@@ -112,7 +112,7 @@
     <Button
         android:id="@+id/hiddenPlus1"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/transparent"
         android:elevation="2dp"
@@ -125,7 +125,7 @@
     <Button
         android:id="@+id/hiddenMinus2"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/transparent"
         android:elevation="2dp"
@@ -138,7 +138,7 @@
     <Button
         android:id="@+id/hiddenPlus4"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/transparent"
         android:elevation="2dp"
@@ -151,7 +151,7 @@
     <Button
         android:id="@+id/hiddenMinus3"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/transparent"
         android:elevation="2dp"
@@ -172,7 +172,7 @@
         android:textSize="80sp"
         android:gravity="center"
         android:rotation="90"
-        app:layout_constraintStart_toStartOf="@id/v0Guideline"
+        app:layout_constraintStart_toStartOf="@id/v20Guideline"
         app:layout_constraintEnd_toEndOf="@id/v50Guideline"
         app:layout_constraintBottom_toBottomOf="@id/h50Guideline"
         app:layout_constraintTop_toTopOf="@id/h0Guideline"
@@ -190,7 +190,7 @@
         android:gravity="center"
         android:rotation="270"
         app:layout_constraintStart_toStartOf="@id/v50Guideline"
-        app:layout_constraintEnd_toEndOf="@id/v100Guideline"
+        app:layout_constraintEnd_toEndOf="@id/v80Guideline"
         app:layout_constraintBottom_toBottomOf="@id/h50Guideline"
         app:layout_constraintTop_toTopOf="@id/h0Guideline"
         />
@@ -206,7 +206,7 @@
         android:textSize="80sp"
         android:gravity="center"
         android:rotation="90"
-        app:layout_constraintStart_toStartOf="@id/v0Guideline"
+        app:layout_constraintStart_toStartOf="@id/v20Guideline"
         app:layout_constraintEnd_toEndOf="@id/v50Guideline"
         app:layout_constraintBottom_toBottomOf="@id/h100Guideline"
         app:layout_constraintTop_toTopOf="@id/h50Guideline"
@@ -224,219 +224,15 @@
         android:gravity="center"
         android:rotation="270"
         app:layout_constraintStart_toStartOf="@id/v50Guideline"
-        app:layout_constraintEnd_toEndOf="@id/v100Guideline"
-        app:layout_constraintBottom_toBottomOf="@id/h100Guideline"
-        app:layout_constraintTop_toTopOf="@id/h50Guideline"
-        />
-
-    <TextView
-        android:id="@+id/life1Mana"
-        android:outlineProvider="none"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:textColor="#ffffff"
-        android:text="@string/start_life_string"
-        android:textSize="80sp"
-        android:gravity="center"
-        android:rotation="90"
-        app:layout_constraintStart_toStartOf="@id/v20Guideline"
-        app:layout_constraintEnd_toEndOf="@id/v50Guideline"
-        app:layout_constraintBottom_toBottomOf="@id/h50Guideline"
-        app:layout_constraintTop_toTopOf="@id/h0Guideline"
-        />
-
-    <TextView
-        android:id="@+id/life2Mana"
-        android:outlineProvider="none"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:textColor="#ffffff"
-        android:text="@string/start_life_string"
-        android:textSize="80sp"
-        android:gravity="center"
-        android:rotation="270"
-        app:layout_constraintStart_toStartOf="@id/v50Guideline"
-        app:layout_constraintEnd_toEndOf="@id/v80Guideline"
-        app:layout_constraintBottom_toBottomOf="@id/h50Guideline"
-        app:layout_constraintTop_toTopOf="@id/h0Guideline"
-        />
-
-    <TextView
-        android:id="@+id/life4Mana"
-        android:outlineProvider="none"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:textColor="#ffffff"
-        android:text="@string/start_life_string"
-        android:textSize="80sp"
-        android:gravity="center"
-        android:rotation="90"
-        app:layout_constraintStart_toStartOf="@id/v20Guideline"
-        app:layout_constraintEnd_toEndOf="@id/v50Guideline"
-        app:layout_constraintBottom_toBottomOf="@id/h100Guideline"
-        app:layout_constraintTop_toTopOf="@id/h50Guideline"
-        />
-
-    <TextView
-        android:id="@+id/life3Mana"
-        android:outlineProvider="none"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:textColor="#ffffff"
-        android:text="@string/start_life_string"
-        android:textSize="80sp"
-        android:gravity="center"
-        android:rotation="270"
-        app:layout_constraintStart_toStartOf="@id/v50Guideline"
         app:layout_constraintEnd_toEndOf="@id/v80Guideline"
         app:layout_constraintBottom_toBottomOf="@id/h100Guideline"
         app:layout_constraintTop_toTopOf="@id/h50Guideline"
-        />
-
-    <Button
-        android:id="@+id/manaCounters1"
-        android:outlineProvider="none"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:text="C"
-        android:textSize="24sp"
-        android:textColor="#000000"
-        android:rotation="90"
-        android:gravity="center"
-        app:layout_constraintStart_toStartOf="@id/v21Guideline"
-        app:layout_constraintEnd_toEndOf="@id/v35Guideline"
-        app:layout_constraintBottom_toBottomOf="@id/h10Guideline"
-        app:layout_constraintTop_toTopOf="@id/h0Guideline"
-        />
-
-    <Button
-        android:id="@+id/commanderDamage1"
-        android:outlineProvider="none"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:text="D"
-        android:textSize="24sp"
-        android:textColor="#000000"
-        android:rotation="90"
-        android:gravity="center"
-        app:layout_constraintStart_toStartOf="@id/v35Guideline"
-        app:layout_constraintEnd_toEndOf="@id/v49Guideline"
-        app:layout_constraintBottom_toBottomOf="@id/h10Guideline"
-        app:layout_constraintTop_toTopOf="@id/h0Guideline"
-        />
-
-    <Button
-        android:id="@+id/manaCounters2"
-        android:outlineProvider="none"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:text="C"
-        android:textSize="24sp"
-        android:textColor="#000000"
-        android:rotation="270"
-        android:gravity="center"
-        app:layout_constraintStart_toStartOf="@id/v65Guideline"
-        app:layout_constraintEnd_toEndOf="@id/v79Guideline"
-        app:layout_constraintBottom_toBottomOf="@id/h10Guideline"
-        app:layout_constraintTop_toTopOf="@id/h0Guideline"
-        />
-
-    <Button
-        android:id="@+id/commanderDamage2"
-        android:outlineProvider="none"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:text="D"
-        android:textSize="24sp"
-        android:textColor="#000000"
-        android:rotation="270"
-        android:gravity="center"
-        app:layout_constraintStart_toStartOf="@id/v51Guideline"
-        app:layout_constraintEnd_toEndOf="@id/v65Guideline"
-        app:layout_constraintBottom_toBottomOf="@id/h10Guideline"
-        app:layout_constraintTop_toTopOf="@id/h0Guideline"
-        />
-
-    <Button
-        android:id="@+id/manaCounters3"
-        android:outlineProvider="none"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:text="C"
-        android:textSize="24sp"
-        android:textColor="#000000"
-        android:rotation="270"
-        android:gravity="center"
-        app:layout_constraintStart_toStartOf="@id/v65Guideline"
-        app:layout_constraintEnd_toEndOf="@id/v79Guideline"
-        app:layout_constraintBottom_toBottomOf="@id/h100Guideline"
-        app:layout_constraintTop_toTopOf="@id/h90Guideline"
-        />
-
-    <Button
-        android:id="@+id/commanderDamage3"
-        android:outlineProvider="none"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:text="D"
-        android:textSize="24sp"
-        android:textColor="#000000"
-        android:rotation="270"
-        android:gravity="center"
-        app:layout_constraintStart_toStartOf="@id/v51Guideline"
-        app:layout_constraintEnd_toEndOf="@id/v65Guideline"
-        app:layout_constraintBottom_toBottomOf="@id/h100Guideline"
-        app:layout_constraintTop_toTopOf="@id/h90Guideline"
-        />
-
-    <Button
-        android:id="@+id/manaCounters4"
-        android:outlineProvider="none"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:text="C"
-        android:textSize="24sp"
-        android:textColor="#000000"
-        android:rotation="90"
-        android:gravity="center"
-        app:layout_constraintStart_toStartOf="@id/v21Guideline"
-        app:layout_constraintEnd_toEndOf="@id/v35Guideline"
-        app:layout_constraintBottom_toBottomOf="@id/h100Guideline"
-        app:layout_constraintTop_toTopOf="@id/h90Guideline"
-        />
-
-    <Button
-        android:id="@+id/commanderDamage4"
-        android:outlineProvider="none"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:text="D"
-        android:textSize="24sp"
-        android:textColor="#000000"
-        android:rotation="90"
-        android:gravity="center"
-        app:layout_constraintStart_toStartOf="@id/v35Guideline"
-        app:layout_constraintEnd_toEndOf="@id/v49Guideline"
-        app:layout_constraintBottom_toBottomOf="@id/h100Guideline"
-        app:layout_constraintTop_toTopOf="@id/h90Guideline"
         />
 
     <Button
         android:id="@+id/white1"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:rotation="180"
@@ -450,7 +246,7 @@
     <Button
         android:id="@+id/white1down"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:backgroundTint="#f9faf4"
@@ -463,7 +259,7 @@
     <Button
         android:id="@+id/blue1"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:rotation="180"
@@ -477,7 +273,7 @@
     <Button
         android:id="@+id/blue1down"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:backgroundTint="#0e68ab"
@@ -490,7 +286,7 @@
     <Button
         android:id="@+id/black1"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:rotation="180"
@@ -504,7 +300,7 @@
     <Button
         android:id="@+id/black1down"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:backgroundTint="#150b00"
@@ -517,7 +313,7 @@
     <Button
         android:id="@+id/red1"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:rotation="180"
@@ -531,7 +327,7 @@
     <Button
         android:id="@+id/red1down"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:backgroundTint="#d3202a"
@@ -544,7 +340,7 @@
     <Button
         android:id="@+id/green1"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:rotation="180"
@@ -558,7 +354,7 @@
     <Button
         android:id="@+id/green1down"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:backgroundTint="#00733e"
@@ -571,7 +367,7 @@
     <Button
         android:id="@+id/white2"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:backgroundTint="#f9faf4"
@@ -584,7 +380,7 @@
     <Button
         android:id="@+id/white2down"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:rotation="180"
@@ -598,7 +394,7 @@
     <Button
         android:id="@+id/blue2"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:backgroundTint="#0e68ab"
@@ -611,7 +407,7 @@
     <Button
         android:id="@+id/blue2down"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:rotation="180"
@@ -625,7 +421,7 @@
     <Button
         android:id="@+id/black2"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:backgroundTint="#150b00"
@@ -638,7 +434,7 @@
     <Button
         android:id="@+id/black2down"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:rotation="180"
@@ -652,7 +448,7 @@
     <Button
         android:id="@+id/red2"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:backgroundTint="#d3202a"
@@ -665,7 +461,7 @@
     <Button
         android:id="@+id/red2down"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:rotation="180"
@@ -679,7 +475,7 @@
     <Button
         android:id="@+id/green2"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:backgroundTint="#00733e"
@@ -692,7 +488,7 @@
     <Button
         android:id="@+id/green2down"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:rotation="180"
@@ -706,7 +502,7 @@
     <Button
         android:id="@+id/white4"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:rotation="180"
@@ -720,7 +516,7 @@
     <Button
         android:id="@+id/white4down"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:backgroundTint="#f9faf4"
@@ -733,7 +529,7 @@
     <Button
         android:id="@+id/blue4"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:rotation="180"
@@ -747,7 +543,7 @@
     <Button
         android:id="@+id/blue4down"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:backgroundTint="#0e68ab"
@@ -760,7 +556,7 @@
     <Button
         android:id="@+id/black4"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:rotation="180"
@@ -774,7 +570,7 @@
     <Button
         android:id="@+id/black4down"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:backgroundTint="#150b00"
@@ -787,7 +583,7 @@
     <Button
         android:id="@+id/red4"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:rotation="180"
@@ -801,7 +597,7 @@
     <Button
         android:id="@+id/red4down"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:backgroundTint="#d3202a"
@@ -814,7 +610,7 @@
     <Button
         android:id="@+id/green4"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:rotation="180"
@@ -828,7 +624,7 @@
     <Button
         android:id="@+id/green4down"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:backgroundTint="#00733e"
@@ -841,7 +637,7 @@
     <Button
         android:id="@+id/white3"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:backgroundTint="#f9faf4"
@@ -854,7 +650,7 @@
     <Button
         android:id="@+id/white3down"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:rotation="180"
@@ -868,7 +664,7 @@
     <Button
         android:id="@+id/blue3"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:backgroundTint="#0e68ab"
@@ -881,7 +677,7 @@
     <Button
         android:id="@+id/blue3down"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:rotation="180"
@@ -895,7 +691,7 @@
     <Button
         android:id="@+id/black3"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:backgroundTint="#150b00"
@@ -908,7 +704,7 @@
     <Button
         android:id="@+id/black3down"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:rotation="180"
@@ -922,7 +718,7 @@
     <Button
         android:id="@+id/red3"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:backgroundTint="#d3202a"
@@ -935,7 +731,7 @@
     <Button
         android:id="@+id/red3down"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:rotation="180"
@@ -949,7 +745,7 @@
     <Button
         android:id="@+id/green3"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:backgroundTint="#00733e"
@@ -962,7 +758,7 @@
     <Button
         android:id="@+id/green3down"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ic_arrow_head_2"
         android:rotation="180"
@@ -976,7 +772,7 @@
     <TextView
         android:id="@+id/white1Counter"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/transparent"
         android:textColor="#f9faf4"
@@ -993,7 +789,7 @@
     <TextView
         android:id="@+id/blue1Counter"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/transparent"
         android:textColor="#0e68ab"
@@ -1010,7 +806,7 @@
     <TextView
         android:id="@+id/black1Counter"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/transparent"
         android:textColor="#150b00"
@@ -1027,7 +823,7 @@
     <TextView
         android:id="@+id/red1Counter"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/transparent"
         android:textColor="#d3202a"
@@ -1044,7 +840,7 @@
     <TextView
         android:id="@+id/green1Counter"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/transparent"
         android:textColor="#00733e"
@@ -1061,10 +857,10 @@
     <TextView
         android:id="@+id/white2Counter"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/transparent"
-		android:textColor="#f9faf4"
+        android:textColor="#f9faf4"
         android:textSize="32sp"
         android:gravity="center"
         android:rotation="270"
@@ -1078,7 +874,7 @@
     <TextView
         android:id="@+id/blue2Counter"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/transparent"
         android:textColor="#0e68ab"
@@ -1095,10 +891,10 @@
     <TextView
         android:id="@+id/black2Counter"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/transparent"
-		android:textColor="#150b00"
+        android:textColor="#150b00"
         android:textSize="32sp"
         android:gravity="center"
         android:rotation="270"
@@ -1112,7 +908,7 @@
     <TextView
         android:id="@+id/red2Counter"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/transparent"
         android:textColor="#d3202a"
@@ -1129,10 +925,10 @@
     <TextView
         android:id="@+id/green2Counter"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/transparent"
-		android:textColor="#00733e"
+        android:textColor="#00733e"
         android:textSize="32sp"
         android:gravity="center"
         android:rotation="270"
@@ -1146,10 +942,10 @@
     <TextView
         android:id="@+id/white4Counter"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/transparent"
-		android:textColor="#f9faf4"
+        android:textColor="#f9faf4"
         android:textSize="32sp"
         android:gravity="center"
         android:rotation="90"
@@ -1163,10 +959,10 @@
     <TextView
         android:id="@+id/blue4Counter"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/transparent"
-		android:textColor="#0e68ab"
+        android:textColor="#0e68ab"
         android:textSize="32sp"
         android:gravity="center"
         android:rotation="90"
@@ -1180,10 +976,10 @@
     <TextView
         android:id="@+id/black4Counter"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/transparent"
-		android:textColor="#150b00"
+        android:textColor="#150b00"
         android:textSize="32sp"
         android:gravity="center"
         android:rotation="90"
@@ -1197,10 +993,10 @@
     <TextView
         android:id="@+id/red4Counter"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/transparent"
-		android:textColor="#d3202a"
+        android:textColor="#d3202a"
         android:textSize="32sp"
         android:gravity="center"
         android:rotation="90"
@@ -1214,10 +1010,10 @@
     <TextView
         android:id="@+id/green4Counter"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/transparent"
-		android:textColor="#00733e"
+        android:textColor="#00733e"
         android:textSize="32sp"
         android:gravity="center"
         android:rotation="90"
@@ -1231,10 +1027,10 @@
     <TextView
         android:id="@+id/white3Counter"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/transparent"
-		android:textColor="#f9faf4"
+        android:textColor="#f9faf4"
         android:textSize="32sp"
         android:gravity="center"
         android:rotation="270"
@@ -1248,10 +1044,10 @@
     <TextView
         android:id="@+id/blue3Counter"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/transparent"
-		android:textColor="#0e68ab"
+        android:textColor="#0e68ab"
         android:textSize="32sp"
         android:gravity="center"
         android:rotation="270"
@@ -1265,10 +1061,10 @@
     <TextView
         android:id="@+id/black3Counter"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/transparent"
-		android:textColor="#150b00"
+        android:textColor="#150b00"
         android:textSize="32sp"
         android:gravity="center"
         android:rotation="270"
@@ -1282,10 +1078,10 @@
     <TextView
         android:id="@+id/red3Counter"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/transparent"
-		android:textColor="#d3202a"
+        android:textColor="#d3202a"
         android:textSize="32sp"
         android:gravity="center"
         android:rotation="270"
@@ -1299,10 +1095,10 @@
     <TextView
         android:id="@+id/green3Counter"
         android:outlineProvider="none"
-		android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/transparent"
-		android:textColor="#00733e"
+        android:textColor="#00733e"
         android:textSize="32sp"
         android:gravity="center"
         android:rotation="270"
@@ -1316,7 +1112,7 @@
     <View
         android:id="@+id/horizontal_line"
         android:outlineProvider="none"
-		android:layout_width="fill_parent"
+        android:layout_width="fill_parent"
         android:layout_height="2dp"
         android:background="#ffffff"
         android:elevation="2dp"
@@ -1329,7 +1125,7 @@
     <View
         android:id="@+id/vertical_line"
         android:outlineProvider="none"
-		android:layout_width="2dp"
+        android:layout_width="2dp"
         android:layout_height="fill_parent"
         android:background="#ffffff"
         android:elevation="2dp"
@@ -1342,7 +1138,7 @@
     <Button
         android:id="@+id/endTurn"
         android:outlineProvider="none"
-		android:layout_width="80dp"
+        android:layout_width="80dp"
         android:layout_height="80dp"
         android:background="@drawable/red_circle"
         android:text="@string/end_turn_string"
@@ -1359,7 +1155,7 @@
     <com.example.bromander.CircleProgressBar
         android:id="@+id/progressBar"
         android:outlineProvider="none"
-		android:layout_width="90dp"
+        android:layout_width="90dp"
         android:layout_height="90dp"
         android:elevation="8dp"
         android:rotation="90"
@@ -1374,7 +1170,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v0Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0"
@@ -1383,7 +1179,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v1Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.01"
@@ -1392,7 +1188,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v2Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.02"
@@ -1401,7 +1197,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v3Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.03"
@@ -1410,7 +1206,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v4Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.04"
@@ -1419,7 +1215,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v5Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.05"
@@ -1428,7 +1224,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v6Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.06"
@@ -1437,7 +1233,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v7Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.07"
@@ -1446,7 +1242,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v8Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.08"
@@ -1455,7 +1251,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v9Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.09"
@@ -1464,7 +1260,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v10Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.1"
@@ -1473,7 +1269,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v11Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.11"
@@ -1482,7 +1278,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v12Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.12"
@@ -1491,7 +1287,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v13Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.13"
@@ -1500,7 +1296,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v14Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.14"
@@ -1509,7 +1305,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v15Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.15"
@@ -1518,7 +1314,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v16Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.16"
@@ -1527,7 +1323,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v17Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.17"
@@ -1536,7 +1332,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v18Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.18"
@@ -1545,7 +1341,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v19Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.19"
@@ -1554,7 +1350,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v20Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.2"
@@ -1563,7 +1359,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v21Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.21"
@@ -1572,7 +1368,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v22Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.22"
@@ -1581,7 +1377,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v23Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.23"
@@ -1590,7 +1386,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v24Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.24"
@@ -1599,7 +1395,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v25Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.25"
@@ -1608,7 +1404,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v26Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.26"
@@ -1617,7 +1413,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v27Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.27"
@@ -1626,7 +1422,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v28Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.28"
@@ -1635,7 +1431,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v29Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.29"
@@ -1644,7 +1440,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v30Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.3"
@@ -1653,7 +1449,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v31Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.31"
@@ -1662,7 +1458,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v32Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.32"
@@ -1671,7 +1467,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v33Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.33"
@@ -1680,7 +1476,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v34Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.34"
@@ -1689,7 +1485,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v35Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.35"
@@ -1698,7 +1494,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v36Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.36"
@@ -1707,7 +1503,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v37Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.37"
@@ -1716,7 +1512,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v38Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.38"
@@ -1725,7 +1521,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v39Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.39"
@@ -1734,7 +1530,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v40Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.4"
@@ -1743,7 +1539,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v41Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.41"
@@ -1752,7 +1548,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v42Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.42"
@@ -1761,7 +1557,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v43Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.43"
@@ -1770,7 +1566,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v44Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.44"
@@ -1779,7 +1575,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v45Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.45"
@@ -1788,7 +1584,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v46Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.46"
@@ -1797,7 +1593,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v47Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.47"
@@ -1806,7 +1602,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v48Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.48"
@@ -1815,7 +1611,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v49Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.49"
@@ -1824,7 +1620,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v50Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.5"
@@ -1833,7 +1629,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v51Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.51"
@@ -1842,7 +1638,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v52Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.52"
@@ -1851,7 +1647,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v53Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.53"
@@ -1860,7 +1656,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v54Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.54"
@@ -1869,7 +1665,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v55Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.55"
@@ -1878,7 +1674,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v56Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.56"
@@ -1887,7 +1683,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v57Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.57"
@@ -1896,7 +1692,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v58Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.58"
@@ -1905,7 +1701,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v59Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.59"
@@ -1914,7 +1710,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v60Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.6"
@@ -1923,7 +1719,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v61Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.61"
@@ -1932,7 +1728,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v62Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.62"
@@ -1941,7 +1737,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v63Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.63"
@@ -1950,7 +1746,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v64Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.64"
@@ -1959,7 +1755,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v65Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.65"
@@ -1968,7 +1764,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v66Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.66"
@@ -1977,7 +1773,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v67Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.67"
@@ -1986,7 +1782,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v68Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.68"
@@ -1995,7 +1791,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v69Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.69"
@@ -2004,7 +1800,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v70Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.7"
@@ -2013,7 +1809,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v71Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.71"
@@ -2022,7 +1818,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v72Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.72"
@@ -2031,7 +1827,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v73Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.73"
@@ -2040,7 +1836,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v74Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.74"
@@ -2049,7 +1845,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v75Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.75"
@@ -2058,7 +1854,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v76Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.76"
@@ -2067,7 +1863,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v77Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.77"
@@ -2076,7 +1872,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v78Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.78"
@@ -2085,7 +1881,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v79Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.79"
@@ -2094,7 +1890,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v80Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.8"
@@ -2103,7 +1899,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v81Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.81"
@@ -2112,7 +1908,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v82Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.82"
@@ -2121,7 +1917,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v83Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.83"
@@ -2130,7 +1926,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v84Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.84"
@@ -2139,7 +1935,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v85Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.85"
@@ -2148,7 +1944,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v86Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.86"
@@ -2157,7 +1953,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v87Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.87"
@@ -2166,7 +1962,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v88Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.88"
@@ -2175,7 +1971,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v89Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.89"
@@ -2184,7 +1980,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v90Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.9"
@@ -2193,7 +1989,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v91Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.91"
@@ -2202,7 +1998,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v92Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.92"
@@ -2211,7 +2007,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v93Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.93"
@@ -2220,7 +2016,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v94Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.94"
@@ -2229,7 +2025,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v95Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.95"
@@ -2238,7 +2034,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v96Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.96"
@@ -2247,7 +2043,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v97Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.97"
@@ -2256,7 +2052,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v98Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.98"
@@ -2265,7 +2061,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v99Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.99"
@@ -2274,7 +2070,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v100Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="1"
@@ -2285,7 +2081,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h0Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0"
@@ -2294,7 +2090,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h1Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.01"
@@ -2303,7 +2099,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h2Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.02"
@@ -2312,7 +2108,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h3Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.03"
@@ -2321,7 +2117,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h4Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.04"
@@ -2330,7 +2126,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h5Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.05"
@@ -2339,7 +2135,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h6Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.06"
@@ -2348,7 +2144,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h7Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.07"
@@ -2357,7 +2153,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h8Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.08"
@@ -2366,7 +2162,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h9Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.09"
@@ -2375,7 +2171,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h10Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.1"
@@ -2384,7 +2180,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h11Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.11"
@@ -2393,7 +2189,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h12Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.12"
@@ -2402,7 +2198,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h13Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.13"
@@ -2411,7 +2207,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h14Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.14"
@@ -2420,7 +2216,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h15Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.15"
@@ -2429,7 +2225,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h16Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.16"
@@ -2438,7 +2234,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h17Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.17"
@@ -2447,7 +2243,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h18Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.18"
@@ -2456,7 +2252,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h19Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.19"
@@ -2465,7 +2261,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h20Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.2"
@@ -2474,7 +2270,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h21Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.21"
@@ -2483,7 +2279,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h22Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.22"
@@ -2493,7 +2289,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h23Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="171dp"
@@ -2501,7 +2297,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h24Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.24"
@@ -2510,7 +2306,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h25Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.25"
@@ -2519,7 +2315,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h26Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.26"
@@ -2528,7 +2324,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h27Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.27"
@@ -2537,7 +2333,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h28Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.28"
@@ -2546,7 +2342,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h29Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.29"
@@ -2555,7 +2351,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h30Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.3"
@@ -2564,7 +2360,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h31Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.31"
@@ -2573,7 +2369,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h32Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.32"
@@ -2582,7 +2378,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h33Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.33"
@@ -2591,7 +2387,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h34Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.34"
@@ -2600,7 +2396,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h35Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.35"
@@ -2609,7 +2405,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h36Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.36"
@@ -2618,7 +2414,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h37Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.37"
@@ -2627,7 +2423,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h38Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.38"
@@ -2636,7 +2432,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h39Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.39"
@@ -2645,7 +2441,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h40Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.4"
@@ -2654,7 +2450,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h41Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.41"
@@ -2663,7 +2459,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h42Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.42"
@@ -2672,7 +2468,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h43Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.43"
@@ -2681,7 +2477,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h44Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.44"
@@ -2690,7 +2486,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h45Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.45"
@@ -2699,7 +2495,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h46Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.46"
@@ -2708,7 +2504,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h47Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.47"
@@ -2717,7 +2513,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h48Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.48"
@@ -2726,7 +2522,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h49Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.49"
@@ -2735,7 +2531,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h50Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.5"
@@ -2744,7 +2540,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h51Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.51"
@@ -2753,7 +2549,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h52Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.52"
@@ -2762,7 +2558,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h53Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.53"
@@ -2771,7 +2567,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h54Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.54"
@@ -2780,7 +2576,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h55Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.55"
@@ -2789,7 +2585,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h56Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.56"
@@ -2798,7 +2594,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h57Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.57"
@@ -2807,7 +2603,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h58Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.58"
@@ -2816,7 +2612,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h59Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.59"
@@ -2825,7 +2621,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h60Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.6"
@@ -2834,7 +2630,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h61Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.61"
@@ -2844,7 +2640,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h62Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="458dp"
@@ -2852,7 +2648,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h63Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.63"
@@ -2861,7 +2657,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h64Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.64"
@@ -2870,7 +2666,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h65Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.65"
@@ -2879,7 +2675,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h66Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.66"
@@ -2888,7 +2684,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h67Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.67"
@@ -2897,7 +2693,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h68Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.68"
@@ -2906,7 +2702,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h69Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.69"
@@ -2915,7 +2711,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h70Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.7"
@@ -2924,7 +2720,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h71Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.71"
@@ -2933,7 +2729,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h72Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.72"
@@ -2942,7 +2738,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h73Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.73"
@@ -2951,7 +2747,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h74Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.74"
@@ -2960,7 +2756,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h75Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.75"
@@ -2969,7 +2765,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h76Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.76"
@@ -2978,7 +2774,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h77Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.77"
@@ -2987,7 +2783,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h78Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.78"
@@ -2996,7 +2792,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h79Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.79"
@@ -3005,7 +2801,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h80Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.8"
@@ -3014,7 +2810,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h81Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.81"
@@ -3023,7 +2819,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h82Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.82"
@@ -3032,7 +2828,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h83Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.83"
@@ -3041,7 +2837,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h84Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.84"
@@ -3050,7 +2846,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h85Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.85"
@@ -3059,7 +2855,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h86Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.86"
@@ -3068,7 +2864,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h87Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.87"
@@ -3077,7 +2873,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h88Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.88"
@@ -3086,7 +2882,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h89Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.89"
@@ -3095,7 +2891,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h90Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.9"
@@ -3104,7 +2900,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h91Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.91"
@@ -3113,7 +2909,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h92Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.92"
@@ -3122,7 +2918,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h93Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.93"
@@ -3131,7 +2927,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h94Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.94"
@@ -3140,7 +2936,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h95Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.95"
@@ -3149,7 +2945,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h96Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.96"
@@ -3158,7 +2954,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h97Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.97"
@@ -3167,7 +2963,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h98Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.98"
@@ -3176,7 +2972,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h99Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.99"
@@ -3185,7 +2981,7 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h100Guideline"
         android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="1"
