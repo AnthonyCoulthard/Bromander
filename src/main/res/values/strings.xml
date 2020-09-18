@@ -15,4 +15,8 @@
         c4d3ca
 
     </string>
+    <string name="Player1">Player 1</string>
+    <string name="Player2">Player 2</string>
+    <string name="Player3">Player 3</string>
+    <string name="Player4">Player 4</string>
 </resources>

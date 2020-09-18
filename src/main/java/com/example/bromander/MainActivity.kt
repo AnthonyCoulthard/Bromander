@@ -137,6 +137,10 @@ class MainActivity : AppCompatActivity() {
     lateinit var red4Counter: TextView
     lateinit var green4Counter: TextView
     lateinit var progressBar: CircleProgressBar
+    lateinit var playerName1: EditText
+    lateinit var playerName2: EditText
+    lateinit var playerName3: EditText
+    lateinit var playerName4: EditText
 
     //Additional global variables
     var lifeTotal1: Int = 40
@@ -313,6 +317,10 @@ class MainActivity : AppCompatActivity() {
         green4Counter = findViewById(R.id.green4Counter)
         endTurn = findViewById(R.id.endTurn)
         progressBar = findViewById(R.id.progressBar)
+        playerName1 = findViewById(R.id.playerName1)
+        playerName2 = findViewById(R.id.playerName2)
+        playerName3 = findViewById(R.id.playerName3)
+        playerName4 = findViewById(R.id.playerName4)
 
 
         //No mana counters or commander damage visible on game start
