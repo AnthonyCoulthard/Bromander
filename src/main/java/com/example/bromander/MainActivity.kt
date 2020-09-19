@@ -217,12 +217,13 @@ class MainActivity : AppCompatActivity() {
     var player4Counter3Int: Int = 0
     var lifeHeld: Boolean = false
     var turnStatus: Int = 0
+    var additionalTime: Int = 0
     val handler = Handler()
-    var player1TimeRemaining: Int = 10
-    var player2TimeRemaining: Int = 10
-    var player3TimeRemaining: Int = 10
-    var player4TimeRemaining: Int = 10
-    var playerTimer: Int = 10
+    var player1TimeRemaining: Int = 300
+    var player2TimeRemaining: Int = 300
+    var player3TimeRemaining: Int = 300
+    var player4TimeRemaining: Int = 300
+    var playerTimer: Int = 300
     var currentPlayer: Int = 1
     val endTurnString: String = "END"
     val skipTurnString: String = "SKIP"
@@ -246,6 +247,7 @@ class MainActivity : AppCompatActivity() {
             turnStatus = playerTimer
             endTurn.setTextColor(Color.parseColor("#ffffff"))
             endTurn.text = endTurnString
+            endTurn.setBackgroundResource(R.drawable.ic_skip_icon_orange)
             if (currentPlayer == 1) {
                 player1Background.setBackgroundColor(Color.parseColor("#f440e4"))
                 endTurn.rotation = 90f
@@ -262,9 +264,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onTick(millisUntilFinished: Long) {
+            endTurn.setBackgroundResource(R.drawable.ic_skip_icon)
             progressBar.progress = (playerTimer*1000L - millisUntilFinished).toFloat()/(playerTimer*1000L)
             if((playerTimer*1000L - millisUntilFinished)/1000 > turnStatus){
                 turnStatus++
+                Log.i("turnStatus = ", turnStatus.toString())
             }
         }
     }
@@ -477,50 +481,96 @@ class MainActivity : AppCompatActivity() {
 
 
         //Set onClickListener for ending the turn
+        //Algorithm:
+        //5 minute reference
+        //10 minute maximum
+        //3 minute minimum
+        //additionalTime = (5-timeSpent)/4
+        //if (additionalTime < -60s){
+        //   additionalTime = -60s
+        //}
         endTurn.setOnClickListener {
             timeOutRemoveTimer.cancel()
 
             if (currentPlayer == 1){
-                player1TimeRemaining += (player1TimeRemaining-turnStatus)/2
+                additionalTime = (300-turnStatus)/4
+                if (additionalTime < -60){
+                    additionalTime = -60
+                }
+                player1TimeRemaining += additionalTime
+                if (player1TimeRemaining > 600){
+                    player1TimeRemaining = 600
+                }
+                else if (player1TimeRemaining < 180){
+                    player1TimeRemaining = 180
+                }
                 currentPlayer = 2
                 playerTimer = player2TimeRemaining
                 player1Background.setBackgroundColor(Color.parseColor("#77ff8c00"))
                 player2Background.setBackgroundColor(Color.parseColor("#77f440e4"))
-                endTurn.rotation = 270f
+                endTurn.rotation = 90f
                 progressBar.rotation = 270f
             }
             else if (currentPlayer == 2){
-                player2TimeRemaining += (player2TimeRemaining-turnStatus)/2
+                additionalTime = (300-turnStatus)/4
+                if (additionalTime < -60){
+                    additionalTime = -60
+                }
+                player2TimeRemaining += additionalTime
+                if (player2TimeRemaining > 600){
+                    player2TimeRemaining = 600
+                }
+                else if (player2TimeRemaining < 180){
+                    player2TimeRemaining = 180
+                }
                 currentPlayer = 3
                 playerTimer = player3TimeRemaining
                 player2Background.setBackgroundColor(Color.parseColor("#77ff8c00"))
                 player3Background.setBackgroundColor(Color.parseColor("#77f440e4"))
-                endTurn.rotation = 270f
+                endTurn.rotation = 180f
                 progressBar.rotation = 270f
             }
             else if (currentPlayer == 3){
-                player3TimeRemaining += (player3TimeRemaining-turnStatus)/2
+                additionalTime = (300-turnStatus)/4
+                if (additionalTime < -60){
+                    additionalTime = -60
+                }
+                player3TimeRemaining += additionalTime
+                if (player3TimeRemaining > 600){
+                    player3TimeRemaining = 600
+                }
+                else if (player3TimeRemaining < 180){
+                    player3TimeRemaining = 180
+                }
                 currentPlayer = 4
                 playerTimer = player4TimeRemaining
                 player3Background.setBackgroundColor(Color.parseColor("#77ff8c00"))
                 player4Background.setBackgroundColor(Color.parseColor("#77f440e4"))
-                endTurn.rotation = 90f
+                endTurn.rotation = 270f
                 progressBar.rotation = 90f
             }
-            else {
-                player4TimeRemaining += (player4TimeRemaining-turnStatus)/2
+            else if (currentPlayer == 4){
+                additionalTime = (300-turnStatus)/4
+                if (additionalTime < -60){
+                    additionalTime = -60
+                }
+                player4TimeRemaining += additionalTime
+                if (player4TimeRemaining > 600){
+                    player4TimeRemaining = 600
+                }
+                else if (player4TimeRemaining < 180){
+                    player4TimeRemaining = 180
+                }
                 currentPlayer = 1
                 playerTimer = player1TimeRemaining
                 player4Background.setBackgroundColor(Color.parseColor("#77ff8c00"))
                 player1Background.setBackgroundColor(Color.parseColor("#77f440e4"))
-                endTurn.rotation = 90f
+                endTurn.rotation = 0f
                 progressBar.rotation = 90f
             }
 
-            if (playerTimer > 300){
-                playerTimer = 300
-            }
-
+            additionalTime = 0
+            turnStatus = 0
             endTurn.setTextColor(Color.parseColor("#ffffff"))
             endTurn.text = skipTurnString
 
@@ -530,6 +580,7 @@ class MainActivity : AppCompatActivity() {
                     turnStatus = playerTimer
                     endTurn.setTextColor(Color.parseColor("#ffffff"))
                     endTurn.text = endTurnString
+                    endTurn.setBackgroundResource(R.drawable.ic_skip_icon_orange)
                     if (currentPlayer == 1) {
                         player1Background.setBackgroundColor(Color.parseColor("#f440e4"))
                         endTurn.rotation = 90f
@@ -546,9 +597,11 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 override fun onTick(millisUntilFinished: Long) {
+                    endTurn.setBackgroundResource(R.drawable.ic_skip_icon)
                     progressBar.progress = (playerTimer*1000L - millisUntilFinished).toFloat()/(playerTimer*1000L)
                     if((playerTimer*1000L - millisUntilFinished)/1000 > turnStatus){
                         turnStatus++
+                        Log.i("turnStatus = ", turnStatus.toString())
                     }
                 }
             }

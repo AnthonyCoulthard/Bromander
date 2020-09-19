@@ -13,8 +13,8 @@ import android.view.View
 class CircleProgressBar @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
-    private val backgroundWidth = 10f
-    private val progressWidth = 10f
+    private val backgroundWidth = 20f
+    private val progressWidth = 20f
 
     private val backgroundPaint = Paint().apply {
         color = Color.parseColor("#ffffff")
