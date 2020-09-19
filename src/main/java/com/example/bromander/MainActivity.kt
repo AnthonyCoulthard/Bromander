@@ -136,6 +136,42 @@ class MainActivity : AppCompatActivity() {
     lateinit var black4Counter: TextView
     lateinit var red4Counter: TextView
     lateinit var green4Counter: TextView
+    lateinit var player1up2: Button
+    lateinit var player1down2: Button
+    lateinit var player1Counter2: TextView
+    lateinit var player1up3: Button
+    lateinit var player1down3: Button
+    lateinit var player1Counter3: TextView
+    lateinit var player1up4: Button
+    lateinit var player1down4: Button
+    lateinit var player1Counter4: TextView
+    lateinit var player2up3: Button
+    lateinit var player2down3: Button
+    lateinit var player2Counter3: TextView
+    lateinit var player2up4: Button
+    lateinit var player2down4: Button
+    lateinit var player2Counter4: TextView
+    lateinit var player2up1: Button
+    lateinit var player2down1: Button
+    lateinit var player2Counter1: TextView
+    lateinit var player3up4: Button
+    lateinit var player3down4: Button
+    lateinit var player3Counter4: TextView
+    lateinit var player3up1: Button
+    lateinit var player3down1: Button
+    lateinit var player3Counter1: TextView
+    lateinit var player3up2: Button
+    lateinit var player3down2: Button
+    lateinit var player3Counter2: TextView
+    lateinit var player4up1: Button
+    lateinit var player4down1: Button
+    lateinit var player4Counter1: TextView
+    lateinit var player4up2: Button
+    lateinit var player4down2: Button
+    lateinit var player4Counter2: TextView
+    lateinit var player4up3: Button
+    lateinit var player4down3: Button
+    lateinit var player4Counter3: TextView
     lateinit var progressBar: CircleProgressBar
     lateinit var playerName1: EditText
     lateinit var playerName2: EditText
@@ -167,6 +203,18 @@ class MainActivity : AppCompatActivity() {
     var black4CounterInt: Int = 0
     var red4CounterInt: Int = 0
     var green4CounterInt: Int = 0
+    var player1Counter2Int: Int = 0
+    var player1Counter3Int: Int = 0
+    var player1Counter4Int: Int = 0
+    var player2Counter3Int: Int = 0
+    var player2Counter4Int: Int = 0
+    var player2Counter1Int: Int = 0
+    var player3Counter4Int: Int = 0
+    var player3Counter1Int: Int = 0
+    var player3Counter2Int: Int = 0
+    var player4Counter1Int: Int = 0
+    var player4Counter2Int: Int = 0
+    var player4Counter3Int: Int = 0
     var lifeHeld: Boolean = false
     var turnStatus: Int = 0
     val handler = Handler()
@@ -182,10 +230,10 @@ class MainActivity : AppCompatActivity() {
     var displayManaCounters2: Boolean = false
     var displayManaCounters3: Boolean = false
     var displayManaCounters4: Boolean = false
-    var displayCommanderDamage1: Boolean = false
-    var displayCommanderDamage2: Boolean = false
-    var displayCommanderDamage3: Boolean = false
-    var displayCommanderDamage4: Boolean = false
+    var displayDamageCounters1: Boolean = false
+    var displayDamageCounters2: Boolean = false
+    var displayDamageCounters3: Boolean = false
+    var displayDamageCounters4: Boolean = false
     var displayShiftedLifeTotal1: Boolean = false
     var displayShiftedLifeTotal2: Boolean = false
     var displayShiftedLifeTotal3: Boolean = false
@@ -315,6 +363,42 @@ class MainActivity : AppCompatActivity() {
         black4Counter = findViewById(R.id.black4Counter)
         red4Counter = findViewById(R.id.red4Counter)
         green4Counter = findViewById(R.id.green4Counter)
+        player1up2 = findViewById(R.id.player1up2)
+        player1down2 = findViewById(R.id.player1down2)
+        player1Counter2 = findViewById(R.id.player1Counter2)
+        player1up3 = findViewById(R.id.player1up3)
+        player1down3 = findViewById(R.id.player1down3)
+        player1Counter3 = findViewById(R.id.player1Counter3)
+        player1up4 = findViewById(R.id.player1up4)
+        player1down4 = findViewById(R.id.player1down4)
+        player1Counter4 = findViewById(R.id.player1Counter4)
+        player2up3 = findViewById(R.id.player2up3)
+        player2down3 = findViewById(R.id.player2down3)
+        player2Counter3 = findViewById(R.id.player2Counter3)
+        player2up4 = findViewById(R.id.player2up4)
+        player2down4 = findViewById(R.id.player2down4)
+        player2Counter4 = findViewById(R.id.player2Counter4)
+        player2up1 = findViewById(R.id.player2up1)
+        player2down1 = findViewById(R.id.player2down1)
+        player2Counter1 = findViewById(R.id.player2Counter1)
+        player3up4 = findViewById(R.id.player3up4)
+        player3down4 = findViewById(R.id.player3down4)
+        player3Counter4 = findViewById(R.id.player3Counter4)
+        player3up1 = findViewById(R.id.player3up1)
+        player3down1 = findViewById(R.id.player3down1)
+        player3Counter1 = findViewById(R.id.player3Counter1)
+        player3up2 = findViewById(R.id.player3up2)
+        player3down2 = findViewById(R.id.player3down2)
+        player3Counter2 = findViewById(R.id.player3Counter2)
+        player4up1 = findViewById(R.id.player4up1)
+        player4down1 = findViewById(R.id.player4down1)
+        player4Counter1 = findViewById(R.id.player4Counter1)
+        player4up2 = findViewById(R.id.player4up2)
+        player4down2 = findViewById(R.id.player4down2)
+        player4Counter2 = findViewById(R.id.player4Counter2)
+        player4up3 = findViewById(R.id.player4up3)
+        player4down3 = findViewById(R.id.player4down3)
+        player4Counter3 = findViewById(R.id.player4Counter3)
         endTurn = findViewById(R.id.endTurn)
         progressBar = findViewById(R.id.progressBar)
         playerName1 = findViewById(R.id.playerName1)
@@ -329,6 +413,10 @@ class MainActivity : AppCompatActivity() {
         hideManaCounters2()
         hideManaCounters3()
         hideManaCounters4()
+        hideDamageCounters1()
+        hideDamageCounters2()
+        hideDamageCounters3()
+        hideDamageCounters4()
 
 
         //Run turn timer in its own thread
@@ -473,6 +561,11 @@ class MainActivity : AppCompatActivity() {
 
         //Set onClickListeners to display mana counters
         manaCounters1.setOnClickListener {
+            if (displayDamageCounters1){
+                hideDamageCounters1()
+                commanderDamage1.setBackgroundColor(Color.parseColor("#ffffff"))
+                commanderDamage1.setTextColor(Color.parseColor("#000000"))
+            }
             if (displayManaCounters1){
                 displayManaCounters1 = false
                 manaCounters1.setBackgroundColor(Color.parseColor("#ffffff"))
@@ -491,6 +584,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
         manaCounters2.setOnClickListener {
+            if (displayDamageCounters2){
+                hideDamageCounters2()
+                commanderDamage2.setBackgroundColor(Color.parseColor("#ffffff"))
+                commanderDamage2.setTextColor(Color.parseColor("#000000"))
+            }
             if (displayManaCounters2){
                 displayManaCounters2 = false
                 manaCounters2.setBackgroundColor(Color.parseColor("#ffffff"))
@@ -509,6 +607,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
         manaCounters3.setOnClickListener {
+            if (displayDamageCounters3){
+                hideDamageCounters3()
+                commanderDamage3.setBackgroundColor(Color.parseColor("#ffffff"))
+                commanderDamage3.setTextColor(Color.parseColor("#000000"))
+            }
             if (displayManaCounters3){
                 displayManaCounters3 = false
                 manaCounters3.setBackgroundColor(Color.parseColor("#ffffff"))
@@ -527,6 +630,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
         manaCounters4.setOnClickListener {
+            if (displayDamageCounters4){
+                hideDamageCounters4()
+                commanderDamage4.setBackgroundColor(Color.parseColor("#ffffff"))
+                commanderDamage4.setTextColor(Color.parseColor("#000000"))
+            }
             if (displayManaCounters4){
                 displayManaCounters4 = false
                 manaCounters4.setBackgroundColor(Color.parseColor("#ffffff"))
@@ -540,6 +648,101 @@ class MainActivity : AppCompatActivity() {
                 manaCounters4.setBackgroundColor(Color.parseColor("#ff8c00"))
                 manaCounters4.setTextColor(Color.parseColor("#f440e4"))
                 showManaCounters4()
+                life4.visibility = View.INVISIBLE
+                life4Mana.visibility = View.VISIBLE
+            }
+        }
+
+
+        //Set onClickListeners to display damage counters
+        commanderDamage1.setOnClickListener {
+            if (displayManaCounters1){
+                hideManaCounters1()
+                manaCounters1.setBackgroundColor(Color.parseColor("#ffffff"))
+                manaCounters1.setTextColor(Color.parseColor("#000000"))
+            }
+            if (displayDamageCounters1){
+                displayDamageCounters1 = false
+                commanderDamage1.setBackgroundColor(Color.parseColor("#ffffff"))
+                commanderDamage1.setTextColor(Color.parseColor("#000000"))
+                hideDamageCounters1()
+                life1.visibility = View.VISIBLE
+                life1Mana.visibility = View.INVISIBLE
+            }
+            else{
+                displayDamageCounters1 = true
+                commanderDamage1.setBackgroundColor(Color.parseColor("#ff8c00"))
+                commanderDamage1.setTextColor(Color.parseColor("#f440e4"))
+                showDamageCounters1()
+                life1.visibility = View.INVISIBLE
+                life1Mana.visibility = View.VISIBLE
+            }
+        }
+        commanderDamage2.setOnClickListener {
+            if (displayManaCounters2){
+                hideManaCounters2()
+                manaCounters2.setBackgroundColor(Color.parseColor("#ffffff"))
+                manaCounters2.setTextColor(Color.parseColor("#000000"))
+            }
+            if (displayDamageCounters2){
+                displayDamageCounters2 = false
+                commanderDamage2.setBackgroundColor(Color.parseColor("#ffffff"))
+                commanderDamage2.setTextColor(Color.parseColor("#000000"))
+                hideDamageCounters2()
+                life2.visibility = View.VISIBLE
+                life2Mana.visibility = View.INVISIBLE
+            }
+            else{
+                displayDamageCounters2 = true
+                commanderDamage2.setBackgroundColor(Color.parseColor("#ff8c00"))
+                commanderDamage2.setTextColor(Color.parseColor("#f440e4"))
+                showDamageCounters2()
+                life2.visibility = View.INVISIBLE
+                life2Mana.visibility = View.VISIBLE
+            }
+        }
+        commanderDamage3.setOnClickListener {
+            if (displayManaCounters3){
+                hideManaCounters3()
+                manaCounters3.setBackgroundColor(Color.parseColor("#ffffff"))
+                manaCounters3.setTextColor(Color.parseColor("#000000"))
+            }
+            if (displayDamageCounters3){
+                displayDamageCounters3 = false
+                commanderDamage3.setBackgroundColor(Color.parseColor("#ffffff"))
+                commanderDamage3.setTextColor(Color.parseColor("#000000"))
+                hideDamageCounters3()
+                life3.visibility = View.VISIBLE
+                life3Mana.visibility = View.INVISIBLE
+            }
+            else{
+                displayDamageCounters3 = true
+                commanderDamage3.setBackgroundColor(Color.parseColor("#ff8c00"))
+                commanderDamage3.setTextColor(Color.parseColor("#f440e4"))
+                showDamageCounters3()
+                life3.visibility = View.INVISIBLE
+                life3Mana.visibility = View.VISIBLE
+            }
+        }
+        commanderDamage4.setOnClickListener {
+            if (displayManaCounters4){
+                hideManaCounters4()
+                manaCounters4.setBackgroundColor(Color.parseColor("#ffffff"))
+                manaCounters4.setTextColor(Color.parseColor("#000000"))
+            }
+            if (displayDamageCounters4){
+                displayDamageCounters4 = false
+                commanderDamage4.setBackgroundColor(Color.parseColor("#ffffff"))
+                commanderDamage4.setTextColor(Color.parseColor("#000000"))
+                hideDamageCounters4()
+                life4.visibility = View.VISIBLE
+                life4Mana.visibility = View.INVISIBLE
+            }
+            else{
+                displayDamageCounters4 = true
+                commanderDamage4.setBackgroundColor(Color.parseColor("#ff8c00"))
+                commanderDamage4.setTextColor(Color.parseColor("#f440e4"))
+                showDamageCounters4()
                 life4.visibility = View.INVISIBLE
                 life4Mana.visibility = View.VISIBLE
             }
@@ -1028,6 +1231,288 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+        //Set onClickListeners for damage counters
+        player1up2.setOnClickListener {
+            if (player1Counter2Int < 0) {
+                player1Counter2Int = 0
+            }
+            if (player1Counter2Int >= 0){
+                player1Counter2Int++
+                player1Counter2.text = player1Counter2Int.toString()
+            }
+            else {
+                player1Counter2.text = ""
+            }
+        }
+        player1down2.setOnClickListener {
+            if (player1Counter2Int > 0) {
+                player1Counter2Int--
+            }
+            if (player1Counter2Int == 0){
+                player1Counter2.text = ""
+            }
+            else {
+                player1Counter2.text = player1Counter2Int.toString()
+            }
+        }
+        player1up3.setOnClickListener {
+            if (player1Counter3Int < 0) {
+                player1Counter3Int = 0
+            }
+            if (player1Counter3Int >= 0){
+                player1Counter3Int++
+                player1Counter3.text = player1Counter3Int.toString()
+            }
+            else {
+                player1Counter3.text = ""
+            }
+        }
+        player1down3.setOnClickListener {
+            if (player1Counter3Int > 0) {
+                player1Counter3Int--
+            }
+            if (player1Counter3Int == 0){
+                player1Counter3.text = ""
+            }
+            else {
+                player1Counter3.text = player1Counter3Int.toString()
+            }
+        }
+        player1up4.setOnClickListener {
+            if (player1Counter4Int < 0) {
+                player1Counter4Int = 0
+            }
+            if (player1Counter4Int >= 0){
+                player1Counter4Int++
+                player1Counter4.text = player1Counter4Int.toString()
+            }
+            else {
+                player1Counter4.text = ""
+            }
+        }
+        player1down4.setOnClickListener {
+            if (player1Counter4Int > 0) {
+                player1Counter4Int--
+            }
+            if (player1Counter4Int == 0){
+                player1Counter4.text = ""
+            }
+            else {
+                player1Counter4.text = player1Counter4Int.toString()
+            }
+        }
+
+        player2up3.setOnClickListener {
+            if (player2Counter3Int < 0) {
+                player2Counter3Int = 0
+            }
+            if (player2Counter3Int >= 0){
+                player2Counter3Int++
+                player2Counter3.text = player2Counter3Int.toString()
+            }
+            else {
+                player2Counter3.text = ""
+            }
+        }
+        player2down3.setOnClickListener {
+            if (player2Counter3Int > 0) {
+                player2Counter3Int--
+            }
+            if (player2Counter3Int == 0){
+                player2Counter3.text = ""
+            }
+            else {
+                player2Counter3.text = player2Counter3Int.toString()
+            }
+        }
+        player2up4.setOnClickListener {
+            if (player2Counter4Int < 0) {
+                player2Counter4Int = 0
+            }
+            if (player2Counter4Int >= 0){
+                player2Counter4Int++
+                player2Counter4.text = player2Counter4Int.toString()
+            }
+            else {
+                player2Counter4.text = ""
+            }
+        }
+        player2down4.setOnClickListener {
+            if (player2Counter4Int > 0) {
+                player2Counter4Int--
+            }
+            if (player2Counter4Int == 0){
+                player2Counter4.text = ""
+            }
+            else {
+                player2Counter4.text = player2Counter4Int.toString()
+            }
+        }
+        player2up1.setOnClickListener {
+            if (player2Counter1Int < 0) {
+                player2Counter1Int = 0
+            }
+            if (player2Counter1Int >= 0){
+                player2Counter1Int++
+                player2Counter1.text = player2Counter1Int.toString()
+            }
+            else {
+                player2Counter1.text = ""
+            }
+        }
+        player2down1.setOnClickListener {
+            if (player2Counter1Int > 0) {
+                player2Counter1Int--
+            }
+            if (player2Counter1Int == 0){
+                player2Counter1.text = ""
+            }
+            else {
+                player2Counter1.text = player2Counter1Int.toString()
+            }
+        }
+
+        player3up4.setOnClickListener {
+            if (player3Counter4Int < 0) {
+                player3Counter4Int = 0
+            }
+            if (player3Counter4Int >= 0){
+                player3Counter4Int++
+                player3Counter4.text = player3Counter4Int.toString()
+            }
+            else {
+                player3Counter4.text = ""
+            }
+        }
+        player3down4.setOnClickListener {
+            if (player3Counter4Int > 0) {
+                player3Counter4Int--
+            }
+            if (player3Counter4Int == 0){
+                player3Counter4.text = ""
+            }
+            else {
+                player3Counter4.text = player3Counter4Int.toString()
+            }
+        }
+        player3up1.setOnClickListener {
+            if (player3Counter1Int < 0) {
+                player3Counter1Int = 0
+            }
+            if (player3Counter1Int >= 0){
+                player3Counter1Int++
+                player3Counter1.text = player3Counter1Int.toString()
+            }
+            else {
+                player3Counter1.text = ""
+            }
+        }
+        player3down1.setOnClickListener {
+            if (player3Counter1Int > 0) {
+                player3Counter1Int--
+            }
+            if (player3Counter1Int == 0){
+                player3Counter1.text = ""
+            }
+            else {
+                player3Counter1.text = player3Counter1Int.toString()
+            }
+        }
+        player3up2.setOnClickListener {
+            if (player3Counter2Int < 0) {
+                player3Counter2Int = 0
+            }
+            if (player3Counter2Int >= 0){
+                player3Counter2Int++
+                player3Counter2.text = player3Counter2Int.toString()
+            }
+            else {
+                player3Counter2.text = ""
+            }
+        }
+        player3down2.setOnClickListener {
+            if (player3Counter2Int > 0) {
+                player3Counter2Int--
+            }
+            if (player3Counter2Int == 0){
+                player3Counter2.text = ""
+            }
+            else {
+                player3Counter2.text = player3Counter2Int.toString()
+            }
+        }
+        
+        player4up1.setOnClickListener {
+            if (player4Counter1Int < 0) {
+                player4Counter1Int = 0
+            }
+            if (player4Counter1Int >= 0){
+                player4Counter1Int++
+                player4Counter1.text = player4Counter1Int.toString()
+            }
+            else {
+                player4Counter1.text = ""
+            }
+        }
+        player4down1.setOnClickListener {
+            if (player4Counter1Int > 0) {
+                player4Counter1Int--
+            }
+            if (player4Counter1Int == 0){
+                player4Counter1.text = ""
+            }
+            else {
+                player4Counter1.text = player4Counter1Int.toString()
+            }
+        }
+        player4up2.setOnClickListener {
+            if (player4Counter2Int < 0) {
+                player4Counter2Int = 0
+            }
+            if (player4Counter2Int >= 0){
+                player4Counter2Int++
+                player4Counter2.text = player4Counter2Int.toString()
+            }
+            else {
+                player4Counter2.text = ""
+            }
+        }
+        player4down2.setOnClickListener {
+            if (player4Counter2Int > 0) {
+                player4Counter2Int--
+            }
+            if (player4Counter2Int == 0){
+                player4Counter2.text = ""
+            }
+            else {
+                player4Counter2.text = player4Counter2Int.toString()
+            }
+        }
+        player4up3.setOnClickListener {
+            if (player4Counter3Int < 0) {
+                player4Counter3Int = 0
+            }
+            if (player4Counter3Int >= 0){
+                player4Counter3Int++
+                player4Counter3.text = player4Counter3Int.toString()
+            }
+            else {
+                player4Counter3.text = ""
+            }
+        }
+        player4down3.setOnClickListener {
+            if (player4Counter3Int > 0) {
+                player4Counter3Int--
+            }
+            if (player4Counter3Int == 0){
+                player4Counter3.text = ""
+            }
+            else {
+                player4Counter3.text = player4Counter3Int.toString()
+            }
+        }
+
+
         //Set textChangeListeners for mana counters
         white1Counter.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable){}
@@ -1210,6 +1695,119 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
+        //Set textChangeListeners for damage counters
+        player1Counter2.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable){}
+            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
+                endTurn.setTextColor(Color.parseColor("#00733e"))
+                endTurn.rotation = 90f
+                endTurn.text = player1Counter2.text.toString()
+            }
+        })
+        player1Counter3.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable){}
+            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
+                endTurn.setTextColor(Color.parseColor("#150b00"))
+                endTurn.rotation = 90f
+                endTurn.text = player1Counter3.text.toString()
+            }
+        })
+        player1Counter4.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable){}
+            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
+                endTurn.setTextColor(Color.parseColor("#f9faf4"))
+                endTurn.rotation = 90f
+                endTurn.text = player1Counter4.text.toString()
+            }
+        })
+
+        player2Counter3.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable){}
+            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
+                endTurn.setTextColor(Color.parseColor("#f9faf4"))
+                endTurn.rotation = 270f
+                endTurn.text = player2Counter3.text.toString()
+            }
+        })
+        player2Counter4.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable){}
+            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
+                endTurn.setTextColor(Color.parseColor("#150b00"))
+                endTurn.rotation = 270f
+                endTurn.text = player2Counter4.text.toString()
+            }
+        })
+        player2Counter1.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable){}
+            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
+                endTurn.setTextColor(Color.parseColor("#0e68ab"))
+                endTurn.rotation = 270f
+                endTurn.text = player2Counter1.text.toString()
+            }
+        })
+
+        player3Counter4.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable){}
+            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
+                endTurn.setTextColor(Color.parseColor("#f9faf4"))
+                endTurn.rotation = 270f
+                endTurn.text = player3Counter4.text.toString()
+            }
+        })
+        player3Counter1.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable){}
+            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
+                endTurn.setTextColor(Color.parseColor("#0e68ab"))
+                endTurn.rotation = 270f
+                endTurn.text = player3Counter1.text.toString()
+            }
+        })
+        player3Counter2.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable){}
+            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
+                endTurn.setTextColor(Color.parseColor("#00733e"))
+                endTurn.rotation = 270f
+                endTurn.text = player3Counter2.text.toString()
+            }
+        })
+        
+        player4Counter1.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable){}
+            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
+                endTurn.setTextColor(Color.parseColor("#0e68ab"))
+                endTurn.rotation = 90f
+                endTurn.text = player4Counter1.text.toString()
+            }
+        })
+        player4Counter2.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable){}
+            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
+                endTurn.setTextColor(Color.parseColor("#00733e"))
+                endTurn.rotation = 90f
+                endTurn.text = player4Counter2.text.toString()
+            }
+        })
+        player4Counter3.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable){}
+            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
+                endTurn.setTextColor(Color.parseColor("#150b00"))
+                endTurn.rotation = 90f
+                endTurn.text = player4Counter3.text.toString()
+            }
+        })
+        
 
         //Set RepeatListeners for mana counters
         white1.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
@@ -1493,6 +2091,223 @@ class MainActivity : AppCompatActivity() {
             }
         }))
 
+
+        //Set RepeatListeners for damage counters
+        player1up2.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            player1Counter2Int++
+            player1Counter2.text = player1Counter2Int.toString()
+        }))
+        player1down2.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            player1Counter2Int--
+            if (player1Counter2Int <= 0){
+                player1Counter2Int = 0
+                player1Counter2.text = ""
+            }
+            else {
+                player1Counter2.text = player1Counter2Int.toString()
+            }
+        }))
+        player1up3.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            player1Counter3Int++
+            player1Counter3.text = player1Counter3Int.toString()
+        }))
+        player1down3.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            player1Counter3Int--
+            if (player1Counter3Int <= 0){
+                player1Counter3Int = 0
+                player1Counter3.text = ""
+            }
+            else {
+                player1Counter3.text = player1Counter3Int.toString()
+            }
+        }))
+        player1up4.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            player1Counter4Int++
+            player1Counter4.text = player1Counter4Int.toString()
+        }))
+        player1down4.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            player1Counter4Int--
+            if (player1Counter4Int <= 0){
+                player1Counter4Int = 0
+                player1Counter4.text = ""
+            }
+            else {
+                player1Counter4.text = player1Counter4Int.toString()
+            }
+        }))
+
+        player2up3.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            player2Counter3Int++
+            player2Counter3.text = player2Counter3Int.toString()
+        }))
+        player2down3.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            player2Counter3Int--
+            if (player2Counter3Int <= 0){
+                player2Counter3Int = 0
+                player2Counter3.text = ""
+            }
+            else {
+                player2Counter3.text = player2Counter3Int.toString()
+            }
+        }))
+        player2up4.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            player2Counter4Int++
+            player2Counter4.text = player2Counter4Int.toString()
+        }))
+        player2down4.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            player2Counter4Int--
+            if (player2Counter4Int <= 0){
+                player2Counter4Int = 0
+                player2Counter4.text = ""
+            }
+            else {
+                player2Counter4.text = player2Counter4Int.toString()
+            }
+        }))
+        player2up1.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            player2Counter1Int++
+            player2Counter1.text = player2Counter1Int.toString()
+        }))
+        player2down1.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            player2Counter1Int--
+            if (player2Counter1Int <= 0){
+                player2Counter1Int = 0
+                player2Counter1.text = ""
+            }
+            else {
+                player2Counter1.text = player2Counter1Int.toString()
+            }
+        }))
+
+        player2up3.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            player2Counter3Int++
+            player2Counter3.text = player2Counter3Int.toString()
+        }))
+        player2down3.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            player2Counter3Int--
+            if (player2Counter3Int <= 0){
+                player2Counter3Int = 0
+                player2Counter3.text = ""
+            }
+            else {
+                player2Counter3.text = player2Counter3Int.toString()
+            }
+        }))
+        player2up4.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            player2Counter4Int++
+            player2Counter4.text = player2Counter4Int.toString()
+        }))
+        player2down4.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            player2Counter4Int--
+            if (player2Counter4Int <= 0){
+                player2Counter4Int = 0
+                player2Counter4.text = ""
+            }
+            else {
+                player2Counter4.text = player2Counter4Int.toString()
+            }
+        }))
+        player2up1.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            player2Counter1Int++
+            player2Counter1.text = player2Counter1Int.toString()
+        }))
+        player2down1.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            player2Counter1Int--
+            if (player2Counter1Int <= 0){
+                player2Counter1Int = 0
+                player2Counter1.text = ""
+            }
+            else {
+                player2Counter1.text = player2Counter1Int.toString()
+            }
+        }))
+
+        player3up4.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            player3Counter4Int++
+            player3Counter4.text = player3Counter4Int.toString()
+        }))
+        player3down4.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            player3Counter4Int--
+            if (player3Counter4Int <= 0){
+                player3Counter4Int = 0
+                player3Counter4.text = ""
+            }
+            else {
+                player3Counter4.text = player3Counter4Int.toString()
+            }
+        }))
+        player3up1.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            player3Counter1Int++
+            player3Counter1.text = player3Counter1Int.toString()
+        }))
+        player3down1.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            player3Counter1Int--
+            if (player3Counter1Int <= 0){
+                player3Counter1Int = 0
+                player3Counter1.text = ""
+            }
+            else {
+                player3Counter1.text = player3Counter1Int.toString()
+            }
+        }))
+        player3up2.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            player3Counter2Int++
+            player3Counter2.text = player3Counter2Int.toString()
+        }))
+        player3down2.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            player3Counter2Int--
+            if (player3Counter2Int <= 0){
+                player3Counter2Int = 0
+                player3Counter2.text = ""
+            }
+            else {
+                player3Counter2.text = player3Counter2Int.toString()
+            }
+        }))
+
+        player4up1.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            player4Counter1Int++
+            player4Counter1.text = player4Counter1Int.toString()
+        }))
+        player4down1.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            player4Counter1Int--
+            if (player4Counter1Int <= 0){
+                player4Counter1Int = 0
+                player4Counter1.text = ""
+            }
+            else {
+                player4Counter1.text = player4Counter1Int.toString()
+            }
+        }))
+        player4up2.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            player4Counter2Int++
+            player4Counter2.text = player4Counter2Int.toString()
+        }))
+        player4down2.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            player4Counter2Int--
+            if (player4Counter2Int <= 0){
+                player4Counter2Int = 0
+                player4Counter2.text = ""
+            }
+            else {
+                player4Counter2.text = player4Counter2Int.toString()
+            }
+        }))
+        player4up3.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            player4Counter3Int++
+            player4Counter3.text = player4Counter3Int.toString()
+        }))
+        player4down3.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
+            player4Counter3Int--
+            if (player4Counter3Int <= 0){
+                player4Counter3Int = 0
+                player4Counter3.text = ""
+            }
+            else {
+                player4Counter3.text = player4Counter3Int.toString()
+            }
+        }))
+
         
         //Set RepeatListeners for life counter increases
         hiddenMinus1.setOnTouchListener(RepeatListener(600, 125, lifeHeld, View.OnClickListener {
@@ -1637,6 +2452,54 @@ class MainActivity : AppCompatActivity() {
         red4Counter.visibility = View.INVISIBLE
         green4Counter.visibility = View.INVISIBLE
     }
+    fun hideDamageCounters1() {
+        displayDamageCounters1 = false
+        player1up2.visibility = View.INVISIBLE
+        player1down2.visibility = View.INVISIBLE
+        player1Counter2.visibility = View.INVISIBLE
+        player1up3.visibility = View.INVISIBLE
+        player1down3.visibility = View.INVISIBLE
+        player1Counter3.visibility = View.INVISIBLE
+        player1up4.visibility = View.INVISIBLE
+        player1down4.visibility = View.INVISIBLE
+        player1Counter4.visibility = View.INVISIBLE
+    }
+    fun hideDamageCounters2() {
+        displayDamageCounters2 = false
+        player2up3.visibility = View.INVISIBLE
+        player2down3.visibility = View.INVISIBLE
+        player2Counter3.visibility = View.INVISIBLE
+        player2up4.visibility = View.INVISIBLE
+        player2down4.visibility = View.INVISIBLE
+        player2Counter4.visibility = View.INVISIBLE
+        player2up1.visibility = View.INVISIBLE
+        player2down1.visibility = View.INVISIBLE
+        player2Counter1.visibility = View.INVISIBLE
+    }
+    fun hideDamageCounters3() {
+        displayDamageCounters3 = false
+        player3up4.visibility = View.INVISIBLE
+        player3down4.visibility = View.INVISIBLE
+        player3Counter4.visibility = View.INVISIBLE
+        player3up1.visibility = View.INVISIBLE
+        player3down1.visibility = View.INVISIBLE
+        player3Counter1.visibility = View.INVISIBLE
+        player3up2.visibility = View.INVISIBLE
+        player3down2.visibility = View.INVISIBLE
+        player3Counter2.visibility = View.INVISIBLE
+    }
+    fun hideDamageCounters4() {
+        displayDamageCounters4 = false
+        player4up1.visibility = View.INVISIBLE
+        player4down1.visibility = View.INVISIBLE
+        player4Counter1.visibility = View.INVISIBLE
+        player4up2.visibility = View.INVISIBLE
+        player4down2.visibility = View.INVISIBLE
+        player4Counter2.visibility = View.INVISIBLE
+        player4up3.visibility = View.INVISIBLE
+        player4down3.visibility = View.INVISIBLE
+        player4Counter3.visibility = View.INVISIBLE
+    }
     fun showLifeTotals(){
         life1.visibility = View.VISIBLE
         life2.visibility = View.VISIBLE
@@ -1724,5 +2587,53 @@ class MainActivity : AppCompatActivity() {
         black4Counter.visibility = View.VISIBLE
         red4Counter.visibility = View.VISIBLE
         green4Counter.visibility = View.VISIBLE
+    }
+    fun showDamageCounters1() {
+        displayDamageCounters1 = true
+        player1up2.visibility = View.VISIBLE
+        player1down2.visibility = View.VISIBLE
+        player1Counter2.visibility = View.VISIBLE
+        player1up3.visibility = View.VISIBLE
+        player1down3.visibility = View.VISIBLE
+        player1Counter3.visibility = View.VISIBLE
+        player1up4.visibility = View.VISIBLE
+        player1down4.visibility = View.VISIBLE
+        player1Counter4.visibility = View.VISIBLE
+    }
+    fun showDamageCounters2() {
+        displayDamageCounters2 = true
+        player2up3.visibility = View.VISIBLE
+        player2down3.visibility = View.VISIBLE
+        player2Counter3.visibility = View.VISIBLE
+        player2up4.visibility = View.VISIBLE
+        player2down4.visibility = View.VISIBLE
+        player2Counter4.visibility = View.VISIBLE
+        player2up1.visibility = View.VISIBLE
+        player2down1.visibility = View.VISIBLE
+        player2Counter1.visibility = View.VISIBLE
+    }
+    fun showDamageCounters3() {
+        displayDamageCounters3 = true
+        player3up4.visibility = View.VISIBLE
+        player3down4.visibility = View.VISIBLE
+        player3Counter4.visibility = View.VISIBLE
+        player3up1.visibility = View.VISIBLE
+        player3down1.visibility = View.VISIBLE
+        player3Counter1.visibility = View.VISIBLE
+        player3up2.visibility = View.VISIBLE
+        player3down2.visibility = View.VISIBLE
+        player3Counter2.visibility = View.VISIBLE
+    }
+    fun showDamageCounters4() {
+        displayDamageCounters4 = true
+        player4up1.visibility = View.VISIBLE
+        player4down1.visibility = View.VISIBLE
+        player4Counter1.visibility = View.VISIBLE
+        player4up2.visibility = View.VISIBLE
+        player4down2.visibility = View.VISIBLE
+        player4Counter2.visibility = View.VISIBLE
+        player4up3.visibility = View.VISIBLE
+        player4down3.visibility = View.VISIBLE
+        player4Counter3.visibility = View.VISIBLE
     }
 }

@@ -176,7 +176,7 @@
         app:layout_constraintStart_toStartOf="@id/v0Guideline"
         app:layout_constraintEnd_toEndOf="@id/v50Guideline"
         app:layout_constraintBottom_toBottomOf="@id/h50Guideline"
-        app:layout_constraintTop_toTopOf="@id/h5Guideline"
+        app:layout_constraintTop_toTopOf="@id/h0Guideline"
         />
 
     <TextView
@@ -194,7 +194,7 @@
         app:layout_constraintStart_toStartOf="@id/v50Guideline"
         app:layout_constraintEnd_toEndOf="@id/v100Guideline"
         app:layout_constraintBottom_toBottomOf="@id/h50Guideline"
-        app:layout_constraintTop_toTopOf="@id/h5Guideline"
+        app:layout_constraintTop_toTopOf="@id/h0Guideline"
         />
 
     <TextView
@@ -211,7 +211,7 @@
         android:elevation="8dp"
         app:layout_constraintStart_toStartOf="@id/v50Guideline"
         app:layout_constraintEnd_toEndOf="@id/v100Guideline"
-        app:layout_constraintBottom_toBottomOf="@id/h95Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h100Guideline"
         app:layout_constraintTop_toTopOf="@id/h50Guideline"
         />
 
@@ -229,7 +229,7 @@
         android:elevation="8dp"
         app:layout_constraintStart_toStartOf="@id/v0Guideline"
         app:layout_constraintEnd_toEndOf="@id/v50Guideline"
-        app:layout_constraintBottom_toBottomOf="@id/h95Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h100Guideline"
         app:layout_constraintTop_toTopOf="@id/h50Guideline"
         />
 
@@ -248,7 +248,7 @@
         app:layout_constraintStart_toEndOf="@id/black1"
         app:layout_constraintEnd_toStartOf="@id/v42Guideline"
         app:layout_constraintBottom_toBottomOf="@id/h50Guideline"
-        app:layout_constraintTop_toTopOf="@id/h5Guideline"
+        app:layout_constraintTop_toTopOf="@id/h0Guideline"
         />
 
     <TextView
@@ -266,7 +266,7 @@
         app:layout_constraintEnd_toStartOf="@id/black2"
         app:layout_constraintStart_toEndOf="@id/v58Guideline"
         app:layout_constraintBottom_toBottomOf="@id/h50Guideline"
-        app:layout_constraintTop_toTopOf="@id/h5Guideline"
+        app:layout_constraintTop_toTopOf="@id/h0Guideline"
         />
 
     <TextView
@@ -283,7 +283,7 @@
         android:elevation="8dp"
         app:layout_constraintEnd_toStartOf="@id/black3"
         app:layout_constraintStart_toEndOf="@id/v58Guideline"
-        app:layout_constraintBottom_toBottomOf="@id/h95Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h100Guideline"
         app:layout_constraintTop_toTopOf="@id/h50Guideline"
         />
 
@@ -301,7 +301,7 @@
         android:elevation="8dp"
         app:layout_constraintStart_toEndOf="@id/black4"
         app:layout_constraintEnd_toEndOf="@id/v42Guideline"
-        app:layout_constraintBottom_toBottomOf="@id/h95Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h100Guideline"
         app:layout_constraintTop_toTopOf="@id/h50Guideline"
         />
 
@@ -310,7 +310,8 @@
         android:outlineProvider="none"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="text"
+        android:inputType="none"
+        android:editable="false"
         android:background="@android:color/transparent"
         android:text="@string/Player1"
         android:textColor="#0e68ab"
@@ -318,13 +319,13 @@
         android:textStyle="bold"
         android:rotation="90"
         android:elevation="8dp"
-        android:selectAllOnFocus="true"
+        android:selectAllOnFocus="false"
         android:textColorHighlight="#ffffff"
-        android:textCursorDrawable="@null"
+        android:textCursorDrawable="@drawable/text_cursor_white"
         app:layout_constraintStart_toStartOf="@id/v42Guideline"
         app:layout_constraintEnd_toEndOf="@id/v50Guideline"
         app:layout_constraintBottom_toBottomOf="@id/h50Guideline"
-        app:layout_constraintTop_toTopOf="@id/h5Guideline"
+        app:layout_constraintTop_toTopOf="@id/h0Guideline"
         />
 
     <EditText
@@ -332,7 +333,8 @@
         android:outlineProvider="none"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="text"
+        android:inputType="none"
+        android:editable="false"
         android:background="@android:color/transparent"
         android:text="@string/Player2"
         android:textColor="#00733e"
@@ -340,13 +342,13 @@
         android:textStyle="bold"
         android:rotation="270"
         android:elevation="8dp"
-        android:selectAllOnFocus="true"
+        android:selectAllOnFocus="false"
         android:textColorHighlight="#ffffff"
-        android:textCursorDrawable="@null"
+        android:textCursorDrawable="@drawable/text_cursor_white"
         app:layout_constraintStart_toStartOf="@id/v50Guideline"
         app:layout_constraintEnd_toEndOf="@id/v58Guideline"
         app:layout_constraintBottom_toBottomOf="@id/h50Guideline"
-        app:layout_constraintTop_toTopOf="@id/h5Guideline"
+        app:layout_constraintTop_toTopOf="@id/h0Guideline"
         />
 
     <EditText
@@ -354,7 +356,8 @@
         android:outlineProvider="none"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="text"
+        android:inputType="none"
+        android:editable="false"
         android:background="@android:color/transparent"
         android:text="@string/Player3"
         android:textColor="#150b00"
@@ -362,12 +365,12 @@
         android:textStyle="bold"
         android:rotation="270"
         android:elevation="8dp"
-        android:selectAllOnFocus="true"
+        android:selectAllOnFocus="false"
         android:textColorHighlight="#ffffff"
-        android:textCursorDrawable="@null"
+        android:textCursorDrawable="@drawable/text_cursor_white"
         app:layout_constraintStart_toStartOf="@id/v50Guideline"
         app:layout_constraintEnd_toEndOf="@id/v58Guideline"
-        app:layout_constraintBottom_toBottomOf="@id/h95Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h100Guideline"
         app:layout_constraintTop_toTopOf="@id/h50Guideline"
         />
 
@@ -376,7 +379,8 @@
         android:outlineProvider="none"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="text"
+        android:inputType="none"
+        android:editable="false"
         android:background="@android:color/transparent"
         android:text="@string/Player4"
         android:textColor="#f9faf4"
@@ -384,12 +388,12 @@
         android:textStyle="bold"
         android:rotation="90"
         android:elevation="8dp"
-        android:selectAllOnFocus="true"
+        android:selectAllOnFocus="false"
         android:textColorHighlight="#ffffff"
         android:textCursorDrawable="@drawable/text_cursor_white"
         app:layout_constraintStart_toStartOf="@id/v42Guideline"
         app:layout_constraintEnd_toEndOf="@id/v50Guideline"
-        app:layout_constraintBottom_toBottomOf="@id/h95Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h100Guideline"
         app:layout_constraintTop_toTopOf="@id/h50Guideline"
         />
 
@@ -1535,10 +1539,10 @@
         android:gravity="center"
         android:rotation="90"
         android:elevation="8dp"
-        app:layout_constraintStart_toStartOf="@id/player1down3"
-        app:layout_constraintEnd_toEndOf="@id/player1up3"
-        app:layout_constraintBottom_toBottomOf="@id/player1down3"
-        app:layout_constraintTop_toTopOf="@id/player1up3"
+        app:layout_constraintStart_toStartOf="@id/player1down4"
+        app:layout_constraintEnd_toEndOf="@id/player1up4"
+        app:layout_constraintBottom_toBottomOf="@id/player1down4"
+        app:layout_constraintTop_toTopOf="@id/player1up4"
         />
 
     <Button
@@ -1580,10 +1584,10 @@
         android:gravity="center"
         android:rotation="270"
         android:elevation="8dp"
-        app:layout_constraintStart_toStartOf="@id/player2down1"
-        app:layout_constraintEnd_toEndOf="@id/player2up1"
-        app:layout_constraintBottom_toBottomOf="@id/player2down1"
-        app:layout_constraintTop_toTopOf="@id/player2up1"
+        app:layout_constraintStart_toStartOf="@id/player2up1"
+        app:layout_constraintEnd_toEndOf="@id/player2down1"
+        app:layout_constraintBottom_toBottomOf="@id/player2up1"
+        app:layout_constraintTop_toTopOf="@id/player2down1"
         />
 
     <Button
@@ -1625,10 +1629,10 @@
         android:gravity="center"
         android:rotation="270"
         android:elevation="8dp"
-        app:layout_constraintStart_toStartOf="@id/player2down3"
-        app:layout_constraintEnd_toEndOf="@id/player2up3"
-        app:layout_constraintBottom_toBottomOf="@id/player2down3"
-        app:layout_constraintTop_toTopOf="@id/player2up3"
+        app:layout_constraintStart_toStartOf="@id/player2up3"
+        app:layout_constraintEnd_toEndOf="@id/player2down3"
+        app:layout_constraintBottom_toBottomOf="@id/player2up3"
+        app:layout_constraintTop_toTopOf="@id/player2down3"
         />
 
     <Button
@@ -1669,10 +1673,274 @@
         android:gravity="center"
         android:rotation="270"
         android:elevation="8dp"
-        app:layout_constraintStart_toStartOf="@id/player2down3"
-        app:layout_constraintEnd_toEndOf="@id/player2up3"
-        app:layout_constraintBottom_toBottomOf="@id/player2down3"
-        app:layout_constraintTop_toTopOf="@id/player2up3"
+        app:layout_constraintStart_toStartOf="@id/player2up4"
+        app:layout_constraintEnd_toEndOf="@id/player2down4"
+        app:layout_constraintBottom_toBottomOf="@id/player2up4"
+        app:layout_constraintTop_toTopOf="@id/player2down4"
+        />
+
+    <Button
+        android:id="@+id/player3up4"
+        android:outlineProvider="none"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/ic_arrow_head_2"
+        android:backgroundTint="#f9faf4"
+        app:layout_constraintLeft_toLeftOf="@id/v80Guideline"
+        app:layout_constraintRight_toRightOf="@id/v88Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h93Guideline"
+        app:layout_constraintTop_toTopOf="@id/h85Guideline"
+        />
+
+    <Button
+        android:id="@+id/player3down4"
+        android:outlineProvider="none"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/ic_arrow_head_2"
+        android:backgroundTint="#f9faf4"
+        android:rotation="180"
+        app:layout_constraintLeft_toLeftOf="@id/v92Guideline"
+        app:layout_constraintRight_toRightOf="@id/v100Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h93Guideline"
+        app:layout_constraintTop_toTopOf="@id/h85Guideline"
+        />
+
+    <TextView
+        android:id="@+id/player3Counter4"
+        android:outlineProvider="none"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:textColor="#f9faf4"
+        android:textSize="32sp"
+        android:gravity="center"
+        android:rotation="270"
+        android:elevation="8dp"
+        app:layout_constraintStart_toStartOf="@id/player3up4"
+        app:layout_constraintEnd_toEndOf="@id/player3down4"
+        app:layout_constraintBottom_toBottomOf="@id/player3up4"
+        app:layout_constraintTop_toTopOf="@id/player3down4"
+        />
+
+    <Button
+        android:id="@+id/player3up1"
+        android:outlineProvider="none"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/ic_arrow_head_2"
+        android:backgroundTint="#0e68ab"
+        app:layout_constraintLeft_toLeftOf="@id/v80Guideline"
+        app:layout_constraintRight_toRightOf="@id/v88Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h79Guideline"
+        app:layout_constraintTop_toTopOf="@id/h71Guideline"
+        />
+
+    <Button
+        android:id="@+id/player3down1"
+        android:outlineProvider="none"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/ic_arrow_head_2"
+        android:backgroundTint="#0e68ab"
+        android:rotation="180"
+        app:layout_constraintLeft_toLeftOf="@id/v92Guideline"
+        app:layout_constraintRight_toRightOf="@id/v100Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h79Guideline"
+        app:layout_constraintTop_toTopOf="@id/h71Guideline"
+        />
+
+    <TextView
+        android:id="@+id/player3Counter1"
+        android:outlineProvider="none"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:textColor="#0e68ab"
+        android:textSize="32sp"
+        android:gravity="center"
+        android:rotation="270"
+        android:elevation="8dp"
+        app:layout_constraintStart_toStartOf="@id/player3up1"
+        app:layout_constraintEnd_toEndOf="@id/player3down1"
+        app:layout_constraintBottom_toBottomOf="@id/player3up1"
+        app:layout_constraintTop_toTopOf="@id/player3down1"
+        />
+
+    <Button
+        android:id="@+id/player3up2"
+        android:outlineProvider="none"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/ic_arrow_head_2"
+        android:backgroundTint="#00733e"
+        app:layout_constraintLeft_toLeftOf="@id/v80Guideline"
+        app:layout_constraintRight_toRightOf="@id/v88Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h65Guideline"
+        app:layout_constraintTop_toTopOf="@id/h57Guideline"
+        />
+
+    <Button
+        android:id="@+id/player3down2"
+        android:outlineProvider="none"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/ic_arrow_head_2"
+        android:backgroundTint="#00733e"
+        android:rotation="180"
+        app:layout_constraintLeft_toLeftOf="@id/v92Guideline"
+        app:layout_constraintRight_toRightOf="@id/v100Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h65Guideline"
+        app:layout_constraintTop_toTopOf="@id/h57Guideline"
+        />
+
+    <TextView
+        android:id="@+id/player3Counter2"
+        android:outlineProvider="none"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:textColor="#00733e"
+        android:textSize="32sp"
+        android:gravity="center"
+        android:rotation="270"
+        android:elevation="8dp"
+        app:layout_constraintStart_toStartOf="@id/player3up2"
+        app:layout_constraintEnd_toEndOf="@id/player3down2"
+        app:layout_constraintBottom_toBottomOf="@id/player3up2"
+        app:layout_constraintTop_toTopOf="@id/player3down2"
+        />
+
+    <Button
+        android:id="@+id/player4up1"
+        android:outlineProvider="none"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/ic_arrow_head_2"
+        android:rotation="180"
+        android:backgroundTint="#0e68ab"
+        app:layout_constraintLeft_toLeftOf="@id/v12Guideline"
+        app:layout_constraintRight_toRightOf="@id/v20Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h65Guideline"
+        app:layout_constraintTop_toTopOf="@id/h57Guideline"
+        />
+
+    <Button
+        android:id="@+id/player4down1"
+        android:outlineProvider="none"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/ic_arrow_head_2"
+        android:backgroundTint="#0e68ab"
+        app:layout_constraintLeft_toLeftOf="@id/v0Guideline"
+        app:layout_constraintRight_toRightOf="@id/v8Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h65Guideline"
+        app:layout_constraintTop_toTopOf="@id/h57Guideline"
+        />
+
+    <TextView
+        android:id="@+id/player4Counter1"
+        android:outlineProvider="none"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:textColor="#0e68ab"
+        android:textSize="32sp"
+        android:gravity="center"
+        android:rotation="90"
+        android:elevation="8dp"
+        app:layout_constraintStart_toStartOf="@id/player4down1"
+        app:layout_constraintEnd_toEndOf="@id/player4up1"
+        app:layout_constraintBottom_toBottomOf="@id/player4down1"
+        app:layout_constraintTop_toTopOf="@id/player4up1"
+        />
+
+    <Button
+        android:id="@+id/player4up2"
+        android:outlineProvider="none"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/ic_arrow_head_2"
+        android:rotation="180"
+        android:backgroundTint="#00733e"
+        app:layout_constraintLeft_toLeftOf="@id/v12Guideline"
+        app:layout_constraintRight_toRightOf="@id/v20Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h79Guideline"
+        app:layout_constraintTop_toTopOf="@id/h71Guideline"
+        />
+
+    <Button
+        android:id="@+id/player4down2"
+        android:outlineProvider="none"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/ic_arrow_head_2"
+        android:backgroundTint="#00733e"
+        app:layout_constraintLeft_toLeftOf="@id/v0Guideline"
+        app:layout_constraintRight_toRightOf="@id/v8Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h79Guideline"
+        app:layout_constraintTop_toTopOf="@id/h71Guideline"
+        />
+
+    <TextView
+        android:id="@+id/player4Counter2"
+        android:outlineProvider="none"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:textColor="#00733e"
+        android:textSize="32sp"
+        android:gravity="center"
+        android:rotation="90"
+        android:elevation="8dp"
+        app:layout_constraintStart_toStartOf="@id/player4down2"
+        app:layout_constraintEnd_toEndOf="@id/player4up2"
+        app:layout_constraintBottom_toBottomOf="@id/player4down2"
+        app:layout_constraintTop_toTopOf="@id/player4up2"
+        />
+
+    <Button
+        android:id="@+id/player4up3"
+        android:outlineProvider="none"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/ic_arrow_head_2"
+        android:rotation="180"
+        android:backgroundTint="#150b00"
+        app:layout_constraintLeft_toLeftOf="@id/v12Guideline"
+        app:layout_constraintRight_toRightOf="@id/v20Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h93Guideline"
+        app:layout_constraintTop_toTopOf="@id/h85Guideline"
+        />
+
+    <Button
+        android:id="@+id/player4down3"
+        android:outlineProvider="none"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/ic_arrow_head_2"
+        android:backgroundTint="#150b00"
+        app:layout_constraintLeft_toLeftOf="@id/v0Guideline"
+        app:layout_constraintRight_toRightOf="@id/v8Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h93Guideline"
+        app:layout_constraintTop_toTopOf="@id/h85Guideline"
+        />
+
+    <TextView
+        android:id="@+id/player4Counter3"
+        android:outlineProvider="none"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:textColor="#150b00"
+        android:textSize="32sp"
+        android:gravity="center"
+        android:rotation="90"
+        android:elevation="8dp"
+        app:layout_constraintStart_toStartOf="@id/player4down3"
+        app:layout_constraintEnd_toEndOf="@id/player4up3"
+        app:layout_constraintBottom_toBottomOf="@id/player4down3"
+        app:layout_constraintTop_toTopOf="@id/player4up3"
         />
 
     <View
