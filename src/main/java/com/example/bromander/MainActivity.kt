@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity() {
     var lastClickTime = 0
 
     //Variables for XML elements of activity_main.xml
-    lateinit var endTurn: Button
     /*
     lateinit var player1Text: TextView
     lateinit var player2Text: TextView
@@ -177,6 +176,9 @@ class MainActivity : AppCompatActivity() {
     lateinit var playerName2: EditText
     lateinit var playerName3: EditText
     lateinit var playerName4: EditText
+    lateinit var endTurn: Button
+    lateinit var pause: Button
+    lateinit var progressBarBackground: Button
 
     //Additional global variables
     var lifeTotal1: Int = 40
@@ -245,26 +247,33 @@ class MainActivity : AppCompatActivity() {
         override fun onFinish() {
             progressBar.progress = 1f
             turnStatus = playerTimer
-            endTurn.setTextColor(Color.parseColor("#ffffff"))
-            endTurn.text = endTurnString
-            endTurn.setBackgroundResource(R.drawable.ic_skip_icon_orange)
+            endTurn.setBackgroundResource(R.drawable.ic_tap_icon_orange)
+            pause.setBackgroundResource(R.drawable.ic_tap_icon_orange)
             if (currentPlayer == 1) {
                 player1Background.setBackgroundColor(Color.parseColor("#f440e4"))
-                endTurn.rotation = 90f
+                endTurn.rotation = 65f
+                pause.rotation = 0f
             } else if (currentPlayer == 2) {
                 player2Background.setBackgroundColor(Color.parseColor("#f440e4"))
-                endTurn.rotation = 270f
+                endTurn.rotation = 155f
+                pause.rotation = 90f
             } else if (currentPlayer == 3) {
                 player3Background.setBackgroundColor(Color.parseColor("#f440e4"))
-                endTurn.rotation = 270f
-            } else {
+                endTurn.rotation = 245f
+                pause.rotation = 180f
+            } else if (currentPlayer == 4) {
                 player4Background.setBackgroundColor(Color.parseColor("#f440e4"))
-                endTurn.rotation = 90f
+                endTurn.rotation = 335f
+                pause.rotation = 270f
             }
         }
 
         override fun onTick(millisUntilFinished: Long) {
-            endTurn.setBackgroundResource(R.drawable.ic_skip_icon)
+            endTurn.setBackgroundResource(R.drawable.ic_tap_icon)
+            pause.setBackgroundResource(R.drawable.ic_pause_icon_close)
+            if (turnStatus == 0){
+                pause.rotation = 90f
+            }
             progressBar.progress = (playerTimer*1000L - millisUntilFinished).toFloat()/(playerTimer*1000L)
             if((playerTimer*1000L - millisUntilFinished)/1000 > turnStatus){
                 turnStatus++
@@ -403,12 +412,14 @@ class MainActivity : AppCompatActivity() {
         player4up3 = findViewById(R.id.player4up3)
         player4down3 = findViewById(R.id.player4down3)
         player4Counter3 = findViewById(R.id.player4Counter3)
-        endTurn = findViewById(R.id.endTurn)
-        progressBar = findViewById(R.id.progressBar)
         playerName1 = findViewById(R.id.playerName1)
         playerName2 = findViewById(R.id.playerName2)
         playerName3 = findViewById(R.id.playerName3)
         playerName4 = findViewById(R.id.playerName4)
+        endTurn = findViewById(R.id.endTurn)
+        pause = findViewById(R.id.pause)
+        progressBarBackground = findViewById(R.id.progressBarBackground)
+        progressBar = findViewById(R.id.progressBar)
 
 
         //No mana counters or commander damage visible on game start
@@ -508,7 +519,7 @@ class MainActivity : AppCompatActivity() {
                 playerTimer = player2TimeRemaining
                 player1Background.setBackgroundColor(Color.parseColor("#77ff8c00"))
                 player2Background.setBackgroundColor(Color.parseColor("#77f440e4"))
-                endTurn.rotation = 90f
+                endTurn.rotation = 65f
                 progressBar.rotation = 270f
             }
             else if (currentPlayer == 2){
@@ -527,7 +538,7 @@ class MainActivity : AppCompatActivity() {
                 playerTimer = player3TimeRemaining
                 player2Background.setBackgroundColor(Color.parseColor("#77ff8c00"))
                 player3Background.setBackgroundColor(Color.parseColor("#77f440e4"))
-                endTurn.rotation = 180f
+                endTurn.rotation = 155f
                 progressBar.rotation = 270f
             }
             else if (currentPlayer == 3){
@@ -546,7 +557,7 @@ class MainActivity : AppCompatActivity() {
                 playerTimer = player4TimeRemaining
                 player3Background.setBackgroundColor(Color.parseColor("#77ff8c00"))
                 player4Background.setBackgroundColor(Color.parseColor("#77f440e4"))
-                endTurn.rotation = 270f
+                endTurn.rotation = 245f
                 progressBar.rotation = 90f
             }
             else if (currentPlayer == 4){
@@ -565,39 +576,47 @@ class MainActivity : AppCompatActivity() {
                 playerTimer = player1TimeRemaining
                 player4Background.setBackgroundColor(Color.parseColor("#77ff8c00"))
                 player1Background.setBackgroundColor(Color.parseColor("#77f440e4"))
-                endTurn.rotation = 0f
+                endTurn.rotation = 335f
                 progressBar.rotation = 90f
             }
 
             additionalTime = 0
             turnStatus = 0
-            endTurn.setTextColor(Color.parseColor("#ffffff"))
-            endTurn.text = skipTurnString
+            progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
+            progressBarBackground.text = endTurnString
+            progressBarBackground.rotation = progressBar.rotation
 
             timeOutRemoveTimer = object : CountDownTimer(playerTimer*1000L, 10) {
                 override fun onFinish() {
                     progressBar.progress = 1f
                     turnStatus = playerTimer
-                    endTurn.setTextColor(Color.parseColor("#ffffff"))
-                    endTurn.text = endTurnString
-                    endTurn.setBackgroundResource(R.drawable.ic_skip_icon_orange)
+                    endTurn.setBackgroundResource(R.drawable.ic_tap_icon_orange)
+                    pause.setBackgroundResource(R.drawable.ic_tap_icon_orange)
                     if (currentPlayer == 1) {
                         player1Background.setBackgroundColor(Color.parseColor("#f440e4"))
-                        endTurn.rotation = 90f
+                        endTurn.rotation = 65f
+                        pause.rotation = 0f
                     } else if (currentPlayer == 2) {
                         player2Background.setBackgroundColor(Color.parseColor("#f440e4"))
-                        endTurn.rotation = 270f
+                        endTurn.rotation = 155f
+                        pause.rotation = 90f
                     } else if (currentPlayer == 3) {
                         player3Background.setBackgroundColor(Color.parseColor("#f440e4"))
-                        endTurn.rotation = 270f
-                    } else {
+                        endTurn.rotation = 245f
+                        pause.rotation = 180f
+                    } else if (currentPlayer == 4) {
                         player4Background.setBackgroundColor(Color.parseColor("#f440e4"))
-                        endTurn.rotation = 90f
+                        endTurn.rotation = 335f
+                        pause.rotation = 270f
                     }
                 }
 
                 override fun onTick(millisUntilFinished: Long) {
-                    endTurn.setBackgroundResource(R.drawable.ic_skip_icon)
+                    endTurn.setBackgroundResource(R.drawable.ic_tap_icon)
+                    pause.setBackgroundResource(R.drawable.ic_pause_icon_close)
+                    if (turnStatus == 0){
+                        pause.rotation = 90f
+                    }
                     progressBar.progress = (playerTimer*1000L - millisUntilFinished).toFloat()/(playerTimer*1000L)
                     if((playerTimer*1000L - millisUntilFinished)/1000 > turnStatus){
                         turnStatus++
@@ -1571,180 +1590,380 @@ class MainActivity : AppCompatActivity() {
             override fun afterTextChanged(s: Editable){}
             override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
             override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
-                endTurn.setTextColor(Color.parseColor("#f9faf4"))
-                endTurn.rotation = 90f
-                endTurn.text = white1Counter.text.toString()
+                progressBarBackground.setTextColor(Color.parseColor("#f9faf4"))
+                progressBarBackground.rotation = 90f
+                progressBarBackground.text = white1Counter.text.toString()
+                if (progressBarBackground.text == ""){
+                    progressBarBackground.text = endTurnString
+                    if (currentPlayer == 1 || currentPlayer == 4){
+                        progressBarBackground.rotation = 90f
+                    }
+                    else if (currentPlayer == 2 || currentPlayer == 3){
+                        progressBarBackground.rotation = 270f
+                    }
+                    progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
+                }
             }
         })
         white2Counter.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable){}
             override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
             override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
-                endTurn.setTextColor(Color.parseColor("#f9faf4"))
-                endTurn.rotation = 270f
-                endTurn.text = white2Counter.text.toString()
+                progressBarBackground.setTextColor(Color.parseColor("#f9faf4"))
+                progressBarBackground.rotation = 270f
+                progressBarBackground.text = white2Counter.text.toString()
+                if (progressBarBackground.text == ""){
+                    progressBarBackground.text = endTurnString
+                    if (currentPlayer == 1 || currentPlayer == 4){
+                        progressBarBackground.rotation = 90f
+                    }
+                    else if (currentPlayer == 2 || currentPlayer == 3){
+                        progressBarBackground.rotation = 270f
+                    }
+                    progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
+                }
             }
         })
         white3Counter.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable){}
             override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
             override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
-                endTurn.setTextColor(Color.parseColor("#f9faf4"))
-                endTurn.rotation = 270f
-                endTurn.text = white3Counter.text.toString()
+                progressBarBackground.setTextColor(Color.parseColor("#f9faf4"))
+                progressBarBackground.rotation = 270f
+                progressBarBackground.text = white3Counter.text.toString()
+                if (progressBarBackground.text == ""){
+                    progressBarBackground.text = endTurnString
+                    if (currentPlayer == 1 || currentPlayer == 4){
+                        progressBarBackground.rotation = 90f
+                    }
+                    else if (currentPlayer == 2 || currentPlayer == 3){
+                        progressBarBackground.rotation = 270f
+                    }
+                    progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
+                }
             }
         })
         white4Counter.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable){}
             override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
             override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
-                endTurn.setTextColor(Color.parseColor("#f9faf4"))
-                endTurn.rotation = 90f
-                endTurn.text = white4Counter.text.toString()
+                progressBarBackground.setTextColor(Color.parseColor("#f9faf4"))
+                progressBarBackground.rotation = 90f
+                progressBarBackground.text = white4Counter.text.toString()
+                if (progressBarBackground.text == ""){
+                    progressBarBackground.text = endTurnString
+                    if (currentPlayer == 1 || currentPlayer == 4){
+                        progressBarBackground.rotation = 90f
+                    }
+                    else if (currentPlayer == 2 || currentPlayer == 3){
+                        progressBarBackground.rotation = 270f
+                    }
+                    progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
+                }
             }
         })
         blue1Counter.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable){}
             override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
             override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
-                endTurn.setTextColor(Color.parseColor("#0e68ab"))
-                endTurn.rotation = 90f
-                endTurn.text = blue1Counter.text.toString()
+                progressBarBackground.setTextColor(Color.parseColor("#0e68ab"))
+                progressBarBackground.rotation = 90f
+                progressBarBackground.text = blue1Counter.text.toString()
+                if (progressBarBackground.text == ""){
+                    progressBarBackground.text = endTurnString
+                    if (currentPlayer == 1 || currentPlayer == 4){
+                        progressBarBackground.rotation = 90f
+                    }
+                    else if (currentPlayer == 2 || currentPlayer == 3){
+                        progressBarBackground.rotation = 270f
+                    }
+                    progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
+                }
             }
         })
         blue2Counter.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable){}
             override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
             override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
-                endTurn.setTextColor(Color.parseColor("#0e68ab"))
-                endTurn.rotation = 270f
-                endTurn.text = blue2Counter.text.toString()
+                progressBarBackground.setTextColor(Color.parseColor("#0e68ab"))
+                progressBarBackground.rotation = 270f
+                progressBarBackground.text = blue2Counter.text.toString()
+                if (progressBarBackground.text == ""){
+                    progressBarBackground.text = endTurnString
+                    if (currentPlayer == 1 || currentPlayer == 4){
+                        progressBarBackground.rotation = 90f
+                    }
+                    else if (currentPlayer == 2 || currentPlayer == 3){
+                        progressBarBackground.rotation = 270f
+                    }
+                    progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
+                }
             }
         })
         blue3Counter.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable){}
             override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
             override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
-                endTurn.setTextColor(Color.parseColor("#0e68ab"))
-                endTurn.rotation = 270f
-                endTurn.text = blue3Counter.text.toString()
+                progressBarBackground.setTextColor(Color.parseColor("#0e68ab"))
+                progressBarBackground.rotation = 270f
+                progressBarBackground.text = blue3Counter.text.toString()
+                if (progressBarBackground.text == ""){
+                    progressBarBackground.text = endTurnString
+                    if (currentPlayer == 1 || currentPlayer == 4){
+                        progressBarBackground.rotation = 90f
+                    }
+                    else if (currentPlayer == 2 || currentPlayer == 3){
+                        progressBarBackground.rotation = 270f
+                    }
+                    progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
+                }
             }
         })
         blue4Counter.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable){}
             override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
             override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
-                endTurn.setTextColor(Color.parseColor("#0e68ab"))
-                endTurn.rotation = 90f
-                endTurn.text = blue4Counter.text.toString()
+                progressBarBackground.setTextColor(Color.parseColor("#0e68ab"))
+                progressBarBackground.rotation = 90f
+                progressBarBackground.text = blue4Counter.text.toString()
+                if (progressBarBackground.text == ""){
+                    progressBarBackground.text = endTurnString
+                    if (currentPlayer == 1 || currentPlayer == 4){
+                        progressBarBackground.rotation = 90f
+                    }
+                    else if (currentPlayer == 2 || currentPlayer == 3){
+                        progressBarBackground.rotation = 270f
+                    }
+                    progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
+                }
             }
         })
         black1Counter.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable){}
             override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
             override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
-                endTurn.setTextColor(Color.parseColor("#150b00"))
-                endTurn.rotation = 90f
-                endTurn.text = black1Counter.text.toString()
+                progressBarBackground.setTextColor(Color.parseColor("#150b00"))
+                progressBarBackground.rotation = 90f
+                progressBarBackground.text = black1Counter.text.toString()
+                if (progressBarBackground.text == ""){
+                    progressBarBackground.text = endTurnString
+                    if (currentPlayer == 1 || currentPlayer == 4){
+                        progressBarBackground.rotation = 90f
+                    }
+                    else if (currentPlayer == 2 || currentPlayer == 3){
+                        progressBarBackground.rotation = 270f
+                    }
+                    progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
+                }
             }
         })
         black2Counter.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable){}
             override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
             override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
-                endTurn.setTextColor(Color.parseColor("#150b00"))
-                endTurn.rotation = 270f
-                endTurn.text = black2Counter.text.toString()
+                progressBarBackground.setTextColor(Color.parseColor("#150b00"))
+                progressBarBackground.rotation = 270f
+                progressBarBackground.text = black2Counter.text.toString()
+                if (progressBarBackground.text == ""){
+                    progressBarBackground.text = endTurnString
+                    if (currentPlayer == 1 || currentPlayer == 4){
+                        progressBarBackground.rotation = 90f
+                    }
+                    else if (currentPlayer == 2 || currentPlayer == 3){
+                        progressBarBackground.rotation = 270f
+                    }
+                    progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
+                }
             }
         })
         black3Counter.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable){}
             override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
             override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
-                endTurn.setTextColor(Color.parseColor("#150b00"))
-                endTurn.rotation = 270f
-                endTurn.text = black3Counter.text.toString()
+                progressBarBackground.setTextColor(Color.parseColor("#150b00"))
+                progressBarBackground.rotation = 270f
+                progressBarBackground.text = black3Counter.text.toString()
+                if (progressBarBackground.text == ""){
+                    progressBarBackground.text = endTurnString
+                    if (currentPlayer == 1 || currentPlayer == 4){
+                        progressBarBackground.rotation = 90f
+                    }
+                    else if (currentPlayer == 2 || currentPlayer == 3){
+                        progressBarBackground.rotation = 270f
+                    }
+                    progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
+                }
             }
         })
         black4Counter.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable){}
             override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
             override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
-                endTurn.setTextColor(Color.parseColor("#150b00"))
-                endTurn.rotation = 90f
-                endTurn.text = black4Counter.text.toString()
+                progressBarBackground.setTextColor(Color.parseColor("#150b00"))
+                progressBarBackground.rotation = 90f
+                progressBarBackground.text = black4Counter.text.toString()
+                if (progressBarBackground.text == ""){
+                    progressBarBackground.text = endTurnString
+                    if (currentPlayer == 1 || currentPlayer == 4){
+                        progressBarBackground.rotation = 90f
+                    }
+                    else if (currentPlayer == 2 || currentPlayer == 3){
+                        progressBarBackground.rotation = 270f
+                    }
+                    progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
+                }
             }
         })
         red1Counter.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable){}
             override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
             override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
-                endTurn.setTextColor(Color.parseColor("#d3202a"))
-                endTurn.rotation = 90f
-                endTurn.text = red1Counter.text.toString()
+                progressBarBackground.setTextColor(Color.parseColor("#d3202a"))
+                progressBarBackground.rotation = 90f
+                progressBarBackground.text = red1Counter.text.toString()
+                if (progressBarBackground.text == ""){
+                    progressBarBackground.text = endTurnString
+                    if (currentPlayer == 1 || currentPlayer == 4){
+                        progressBarBackground.rotation = 90f
+                    }
+                    else if (currentPlayer == 2 || currentPlayer == 3){
+                        progressBarBackground.rotation = 270f
+                    }
+                    progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
+                }
             }
         })
         red2Counter.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable){}
             override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
             override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
-                endTurn.setTextColor(Color.parseColor("#d3202a"))
-                endTurn.rotation = 270f
-                endTurn.text = red2Counter.text.toString()
+                progressBarBackground.setTextColor(Color.parseColor("#d3202a"))
+                progressBarBackground.rotation = 270f
+                progressBarBackground.text = red2Counter.text.toString()
+                if (progressBarBackground.text == ""){
+                    progressBarBackground.text = endTurnString
+                    if (currentPlayer == 1 || currentPlayer == 4){
+                        progressBarBackground.rotation = 90f
+                    }
+                    else if (currentPlayer == 2 || currentPlayer == 3){
+                        progressBarBackground.rotation = 270f
+                    }
+                    progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
+                }
             }
         })
         red3Counter.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable){}
             override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
             override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
-                endTurn.setTextColor(Color.parseColor("#d3202a"))
-                endTurn.rotation = 270f
-                endTurn.text = red3Counter.text.toString()
+                progressBarBackground.setTextColor(Color.parseColor("#d3202a"))
+                progressBarBackground.rotation = 270f
+                progressBarBackground.text = red3Counter.text.toString()
+                if (progressBarBackground.text == ""){
+                    progressBarBackground.text = endTurnString
+                    if (currentPlayer == 1 || currentPlayer == 4){
+                        progressBarBackground.rotation = 90f
+                    }
+                    else if (currentPlayer == 2 || currentPlayer == 3){
+                        progressBarBackground.rotation = 270f
+                    }
+                    progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
+                }
             }
         })
         red4Counter.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable){}
             override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
             override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
-                endTurn.setTextColor(Color.parseColor("#d3202a"))
-                endTurn.rotation = 90f
-                endTurn.text = red4Counter.text.toString()
+                progressBarBackground.setTextColor(Color.parseColor("#d3202a"))
+                progressBarBackground.rotation = 90f
+                progressBarBackground.text = red4Counter.text.toString()
+                if (progressBarBackground.text == ""){
+                    progressBarBackground.text = endTurnString
+                    if (currentPlayer == 1 || currentPlayer == 4){
+                        progressBarBackground.rotation = 90f
+                    }
+                    else if (currentPlayer == 2 || currentPlayer == 3){
+                        progressBarBackground.rotation = 270f
+                    }
+                    progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
+                }
             }
         })
         green1Counter.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable){}
             override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
             override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
-                endTurn.setTextColor(Color.parseColor("#00733e"))
-                endTurn.rotation = 90f
-                endTurn.text = green1Counter.text.toString()
+                progressBarBackground.setTextColor(Color.parseColor("#00733e"))
+                progressBarBackground.rotation = 90f
+                progressBarBackground.text = green1Counter.text.toString()
+                if (progressBarBackground.text == ""){
+                    progressBarBackground.text = endTurnString
+                    if (currentPlayer == 1 || currentPlayer == 4){
+                        progressBarBackground.rotation = 90f
+                    }
+                    else if (currentPlayer == 2 || currentPlayer == 3){
+                        progressBarBackground.rotation = 270f
+                    }
+                    progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
+                }
             }
         })
         green2Counter.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable){}
             override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
             override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
-                endTurn.setTextColor(Color.parseColor("#00733e"))
-                endTurn.rotation = 270f
-                endTurn.text = green2Counter.text.toString()
+                progressBarBackground.setTextColor(Color.parseColor("#00733e"))
+                progressBarBackground.rotation = 270f
+                progressBarBackground.text = green2Counter.text.toString()
+                if (progressBarBackground.text == ""){
+                    progressBarBackground.text = endTurnString
+                    if (currentPlayer == 1 || currentPlayer == 4){
+                        progressBarBackground.rotation = 90f
+                    }
+                    else if (currentPlayer == 2 || currentPlayer == 3){
+                        progressBarBackground.rotation = 270f
+                    }
+                    progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
+                }
             }
         })
         green3Counter.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable){}
             override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
             override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
-                endTurn.setTextColor(Color.parseColor("#00733e"))
-                endTurn.rotation = 270f
-                endTurn.text = green3Counter.text.toString()
+                progressBarBackground.setTextColor(Color.parseColor("#00733e"))
+                progressBarBackground.rotation = 270f
+                progressBarBackground.text = green3Counter.text.toString()
+                if (progressBarBackground.text == ""){
+                    progressBarBackground.text = endTurnString
+                    if (currentPlayer == 1 || currentPlayer == 4){
+                        progressBarBackground.rotation = 90f
+                    }
+                    else if (currentPlayer == 2 || currentPlayer == 3){
+                        progressBarBackground.rotation = 270f
+                    }
+                    progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
+                }
             }
         })
         green4Counter.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable){}
             override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
             override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
-                endTurn.setTextColor(Color.parseColor("#00733e"))
-                endTurn.rotation = 90f
-                endTurn.text = green4Counter.text.toString()
+                progressBarBackground.setTextColor(Color.parseColor("#00733e"))
+                progressBarBackground.rotation = 90f
+                progressBarBackground.text = green4Counter.text.toString()
+                if (progressBarBackground.text == ""){
+                    progressBarBackground.text = endTurnString
+                    if (currentPlayer == 1 || currentPlayer == 4){
+                        progressBarBackground.rotation = 90f
+                    }
+                    else if (currentPlayer == 2 || currentPlayer == 3){
+                        progressBarBackground.rotation = 270f
+                    }
+                    progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
+                }
             }
         })
 
@@ -1753,27 +1972,57 @@ class MainActivity : AppCompatActivity() {
             override fun afterTextChanged(s: Editable){}
             override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
             override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
-                endTurn.setTextColor(Color.parseColor("#00733e"))
-                endTurn.rotation = 90f
-                endTurn.text = player1Counter2.text.toString()
+                progressBarBackground.setTextColor(Color.parseColor("#00733e"))
+                progressBarBackground.rotation = 90f
+                progressBarBackground.text = player1Counter2.text.toString()
+                if (progressBarBackground.text == ""){
+                    progressBarBackground.text = endTurnString
+                    if (currentPlayer == 1 || currentPlayer == 4){
+                        progressBarBackground.rotation = 90f
+                    }
+                    else if (currentPlayer == 2 || currentPlayer == 3){
+                        progressBarBackground.rotation = 270f
+                    }
+                    progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
+                }
             }
         })
         player1Counter3.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable){}
             override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
             override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
-                endTurn.setTextColor(Color.parseColor("#150b00"))
-                endTurn.rotation = 90f
-                endTurn.text = player1Counter3.text.toString()
+                progressBarBackground.setTextColor(Color.parseColor("#150b00"))
+                progressBarBackground.rotation = 90f
+                progressBarBackground.text = player1Counter3.text.toString()
+                if (progressBarBackground.text == ""){
+                    progressBarBackground.text = endTurnString
+                    if (currentPlayer == 1 || currentPlayer == 4){
+                        progressBarBackground.rotation = 90f
+                    }
+                    else if (currentPlayer == 2 || currentPlayer == 3){
+                        progressBarBackground.rotation = 270f
+                    }
+                    progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
+                }
             }
         })
         player1Counter4.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable){}
             override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
             override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
-                endTurn.setTextColor(Color.parseColor("#f9faf4"))
-                endTurn.rotation = 90f
-                endTurn.text = player1Counter4.text.toString()
+                progressBarBackground.setTextColor(Color.parseColor("#f9faf4"))
+                progressBarBackground.rotation = 90f
+                progressBarBackground.text = player1Counter4.text.toString()
+                if (progressBarBackground.text == ""){
+                    progressBarBackground.text = endTurnString
+                    if (currentPlayer == 1 || currentPlayer == 4){
+                        progressBarBackground.rotation = 90f
+                    }
+                    else if (currentPlayer == 2 || currentPlayer == 3){
+                        progressBarBackground.rotation = 270f
+                    }
+                    progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
+                }
             }
         })
 
@@ -1781,27 +2030,57 @@ class MainActivity : AppCompatActivity() {
             override fun afterTextChanged(s: Editable){}
             override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
             override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
-                endTurn.setTextColor(Color.parseColor("#f9faf4"))
-                endTurn.rotation = 270f
-                endTurn.text = player2Counter3.text.toString()
+                progressBarBackground.setTextColor(Color.parseColor("#f9faf4"))
+                progressBarBackground.rotation = 270f
+                progressBarBackground.text = player2Counter3.text.toString()
+                if (progressBarBackground.text == ""){
+                    progressBarBackground.text = endTurnString
+                    if (currentPlayer == 1 || currentPlayer == 4){
+                        progressBarBackground.rotation = 90f
+                    }
+                    else if (currentPlayer == 2 || currentPlayer == 3){
+                        progressBarBackground.rotation = 270f
+                    }
+                    progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
+                }
             }
         })
         player2Counter4.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable){}
             override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
             override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
-                endTurn.setTextColor(Color.parseColor("#150b00"))
-                endTurn.rotation = 270f
-                endTurn.text = player2Counter4.text.toString()
+                progressBarBackground.setTextColor(Color.parseColor("#150b00"))
+                progressBarBackground.rotation = 270f
+                progressBarBackground.text = player2Counter4.text.toString()
+                if (progressBarBackground.text == ""){
+                    progressBarBackground.text = endTurnString
+                    if (currentPlayer == 1 || currentPlayer == 4){
+                        progressBarBackground.rotation = 90f
+                    }
+                    else if (currentPlayer == 2 || currentPlayer == 3){
+                        progressBarBackground.rotation = 270f
+                    }
+                    progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
+                }
             }
         })
         player2Counter1.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable){}
             override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
             override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
-                endTurn.setTextColor(Color.parseColor("#0e68ab"))
-                endTurn.rotation = 270f
-                endTurn.text = player2Counter1.text.toString()
+                progressBarBackground.setTextColor(Color.parseColor("#0e68ab"))
+                progressBarBackground.rotation = 270f
+                progressBarBackground.text = player2Counter1.text.toString()
+                if (progressBarBackground.text == ""){
+                    progressBarBackground.text = endTurnString
+                    if (currentPlayer == 1 || currentPlayer == 4){
+                        progressBarBackground.rotation = 90f
+                    }
+                    else if (currentPlayer == 2 || currentPlayer == 3){
+                        progressBarBackground.rotation = 270f
+                    }
+                    progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
+                }
             }
         })
 
@@ -1809,27 +2088,57 @@ class MainActivity : AppCompatActivity() {
             override fun afterTextChanged(s: Editable){}
             override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
             override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
-                endTurn.setTextColor(Color.parseColor("#f9faf4"))
-                endTurn.rotation = 270f
-                endTurn.text = player3Counter4.text.toString()
+                progressBarBackground.setTextColor(Color.parseColor("#f9faf4"))
+                progressBarBackground.rotation = 270f
+                progressBarBackground.text = player3Counter4.text.toString()
+                if (progressBarBackground.text == ""){
+                    progressBarBackground.text = endTurnString
+                    if (currentPlayer == 1 || currentPlayer == 4){
+                        progressBarBackground.rotation = 90f
+                    }
+                    else if (currentPlayer == 2 || currentPlayer == 3){
+                        progressBarBackground.rotation = 270f
+                    }
+                    progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
+                }
             }
         })
         player3Counter1.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable){}
             override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
             override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
-                endTurn.setTextColor(Color.parseColor("#0e68ab"))
-                endTurn.rotation = 270f
-                endTurn.text = player3Counter1.text.toString()
+                progressBarBackground.setTextColor(Color.parseColor("#0e68ab"))
+                progressBarBackground.rotation = 270f
+                progressBarBackground.text = player3Counter1.text.toString()
+                if (progressBarBackground.text == ""){
+                    progressBarBackground.text = endTurnString
+                    if (currentPlayer == 1 || currentPlayer == 4){
+                        progressBarBackground.rotation = 90f
+                    }
+                    else if (currentPlayer == 2 || currentPlayer == 3){
+                        progressBarBackground.rotation = 270f
+                    }
+                    progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
+                }
             }
         })
         player3Counter2.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable){}
             override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
             override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
-                endTurn.setTextColor(Color.parseColor("#00733e"))
-                endTurn.rotation = 270f
-                endTurn.text = player3Counter2.text.toString()
+                progressBarBackground.setTextColor(Color.parseColor("#00733e"))
+                progressBarBackground.rotation = 270f
+                progressBarBackground.text = player3Counter2.text.toString()
+                if (progressBarBackground.text == ""){
+                    progressBarBackground.text = endTurnString
+                    if (currentPlayer == 1 || currentPlayer == 4){
+                        progressBarBackground.rotation = 90f
+                    }
+                    else if (currentPlayer == 2 || currentPlayer == 3){
+                        progressBarBackground.rotation = 270f
+                    }
+                    progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
+                }
             }
         })
         
@@ -1837,27 +2146,57 @@ class MainActivity : AppCompatActivity() {
             override fun afterTextChanged(s: Editable){}
             override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
             override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
-                endTurn.setTextColor(Color.parseColor("#0e68ab"))
-                endTurn.rotation = 90f
-                endTurn.text = player4Counter1.text.toString()
+                progressBarBackground.setTextColor(Color.parseColor("#0e68ab"))
+                progressBarBackground.rotation = 90f
+                progressBarBackground.text = player4Counter1.text.toString()
+                if (progressBarBackground.text == ""){
+                    progressBarBackground.text = endTurnString
+                    if (currentPlayer == 1 || currentPlayer == 4){
+                        progressBarBackground.rotation = 90f
+                    }
+                    else if (currentPlayer == 2 || currentPlayer == 3){
+                        progressBarBackground.rotation = 270f
+                    }
+                    progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
+                }
             }
         })
         player4Counter2.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable){}
             override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
             override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
-                endTurn.setTextColor(Color.parseColor("#00733e"))
-                endTurn.rotation = 90f
-                endTurn.text = player4Counter2.text.toString()
+                progressBarBackground.setTextColor(Color.parseColor("#00733e"))
+                progressBarBackground.rotation = 90f
+                progressBarBackground.text = player4Counter2.text.toString()
+                if (progressBarBackground.text == ""){
+                    progressBarBackground.text = endTurnString
+                    if (currentPlayer == 1 || currentPlayer == 4){
+                        progressBarBackground.rotation = 90f
+                    }
+                    else if (currentPlayer == 2 || currentPlayer == 3){
+                        progressBarBackground.rotation = 270f
+                    }
+                    progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
+                }
             }
         })
         player4Counter3.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable){}
             override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
             override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int){
-                endTurn.setTextColor(Color.parseColor("#150b00"))
-                endTurn.rotation = 90f
-                endTurn.text = player4Counter3.text.toString()
+                progressBarBackground.setTextColor(Color.parseColor("#150b00"))
+                progressBarBackground.rotation = 90f
+                progressBarBackground.text = player4Counter3.text.toString()
+                if (progressBarBackground.text == ""){
+                    progressBarBackground.text = endTurnString
+                    if (currentPlayer == 1 || currentPlayer == 4){
+                        progressBarBackground.rotation = 90f
+                    }
+                    else if (currentPlayer == 2 || currentPlayer == 3){
+                        progressBarBackground.rotation = 270f
+                    }
+                    progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
+                }
             }
         })
         
@@ -2414,6 +2753,11 @@ class MainActivity : AppCompatActivity() {
             life4.text = lifeTotal4.toString()
             life4Mana.text = lifeTotal4.toString()
         }))
+
+
+        //Set center button to say End
+        progressBarBackground.text = endTurnString
+        progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
     }
 
     //Functions to hide and show different layout views
