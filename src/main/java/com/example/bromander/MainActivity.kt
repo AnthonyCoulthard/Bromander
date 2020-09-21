@@ -542,7 +542,7 @@ class MainActivity : AppCompatActivity() {
             progressBarBackground.text = endTurnString
             progressBarBackground.rotation = progressBar.rotation
 
-            timeOutRemoveTimer = object : CountDownTimer(playerTimer*1000L, 10) {
+            timeOutRemoveTimer = object : CountDownTimer((playerTimer-turnStatus)*1000L, 10) {
                 override fun onFinish() {
                     progressBar.progress = 1f
                     turnStatus = playerTimer
@@ -594,7 +594,7 @@ class MainActivity : AppCompatActivity() {
                     pause.rotation = 270f
                 }
 
-                timeOutRemoveTimer = object : CountDownTimer(playerTimer*1000L, 10) {
+                timeOutRemoveTimer = object : CountDownTimer((playerTimer-turnStatus)*1000L, 10) {
                     override fun onFinish() {
                         progressBar.progress = 1f
                         turnStatus = playerTimer
