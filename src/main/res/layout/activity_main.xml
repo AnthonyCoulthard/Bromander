@@ -1991,7 +1991,7 @@
         android:outlineProvider="none"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:background="@drawable/ic_pause_icon_close"
+        android:background="@drawable/ic_play_icon"
         android:textColor="#ffffff"
         android:textSize="32sp"
         android:elevation="6dp"

@@ -1,9 +1,5 @@
 package com.example.bromander
 
-import android.app.Activity
-import android.app.Fragment
-import android.content.ComponentCallbacks2
-import android.content.Context
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,14 +8,7 @@ import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.view.GestureDetector
-import android.view.KeyEvent
 import android.view.View
-import android.view.View.INVISIBLE
-import android.view.WindowManager
-import android.view.inputmethod.InputMethodManager
-import android.view.MotionEvent
-import android.view.View.OnLongClickListener
 import android.widget.*
 import kotlin.concurrent.thread
 
@@ -241,46 +230,10 @@ class MainActivity : AppCompatActivity() {
     var displayShiftedLifeTotal2: Boolean = false
     var displayShiftedLifeTotal3: Boolean = false
     var displayShiftedLifeTotal4: Boolean = false
+    var isPaused: Boolean = true
 
     //Variable for turn timer object
-    var timeOutRemoveTimer = object : CountDownTimer(playerTimer*1000L, 10) {
-        override fun onFinish() {
-            progressBar.progress = 1f
-            turnStatus = playerTimer
-            endTurn.setBackgroundResource(R.drawable.ic_tap_icon_orange)
-            pause.setBackgroundResource(R.drawable.ic_tap_icon_orange)
-            if (currentPlayer == 1) {
-                player1Background.setBackgroundColor(Color.parseColor("#f440e4"))
-                endTurn.rotation = 65f
-                pause.rotation = 0f
-            } else if (currentPlayer == 2) {
-                player2Background.setBackgroundColor(Color.parseColor("#f440e4"))
-                endTurn.rotation = 155f
-                pause.rotation = 90f
-            } else if (currentPlayer == 3) {
-                player3Background.setBackgroundColor(Color.parseColor("#f440e4"))
-                endTurn.rotation = 245f
-                pause.rotation = 180f
-            } else if (currentPlayer == 4) {
-                player4Background.setBackgroundColor(Color.parseColor("#f440e4"))
-                endTurn.rotation = 335f
-                pause.rotation = 270f
-            }
-        }
-
-        override fun onTick(millisUntilFinished: Long) {
-            endTurn.setBackgroundResource(R.drawable.ic_tap_icon)
-            pause.setBackgroundResource(R.drawable.ic_pause_icon_close)
-            if (turnStatus == 0){
-                pause.rotation = 90f
-            }
-            progressBar.progress = (playerTimer*1000L - millisUntilFinished).toFloat()/(playerTimer*1000L)
-            if((playerTimer*1000L - millisUntilFinished)/1000 > turnStatus){
-                turnStatus++
-                Log.i("turnStatus = ", turnStatus.toString())
-            }
-        }
-    }
+    lateinit var timeOutRemoveTimer : CountDownTimer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -434,12 +387,6 @@ class MainActivity : AppCompatActivity() {
         hideDamageCounters4()
 
 
-        //Run turn timer in its own thread
-        thread{
-            timeOutRemoveTimer.start()
-        }
-
-
         //Set onClickListeners for life buttons
         hiddenPlus1.setOnClickListener {
             lifeTotal1++
@@ -580,6 +527,15 @@ class MainActivity : AppCompatActivity() {
                 progressBar.rotation = 90f
             }
 
+            isPaused = false
+            pause.setBackgroundResource(R.drawable.ic_pause_icon_close)
+            if (currentPlayer == 1 || currentPlayer == 4) {
+                pause.rotation = 90f
+            }
+            else if (currentPlayer == 2 || currentPlayer == 3) {
+                pause.rotation = 270f
+            }
+
             additionalTime = 0
             turnStatus = 0
             progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
@@ -591,7 +547,7 @@ class MainActivity : AppCompatActivity() {
                     progressBar.progress = 1f
                     turnStatus = playerTimer
                     endTurn.setBackgroundResource(R.drawable.ic_tap_icon_orange)
-                    pause.setBackgroundResource(R.drawable.ic_tap_icon_orange)
+                    pause.setBackgroundResource(R.drawable.ic_play_icon_orange)
                     if (currentPlayer == 1) {
                         player1Background.setBackgroundColor(Color.parseColor("#f440e4"))
                         endTurn.rotation = 65f
@@ -613,10 +569,6 @@ class MainActivity : AppCompatActivity() {
 
                 override fun onTick(millisUntilFinished: Long) {
                     endTurn.setBackgroundResource(R.drawable.ic_tap_icon)
-                    pause.setBackgroundResource(R.drawable.ic_pause_icon_close)
-                    if (turnStatus == 0){
-                        pause.rotation = 90f
-                    }
                     progressBar.progress = (playerTimer*1000L - millisUntilFinished).toFloat()/(playerTimer*1000L)
                     if((playerTimer*1000L - millisUntilFinished)/1000 > turnStatus){
                         turnStatus++
@@ -625,8 +577,70 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            thread{
-                timeOutRemoveTimer.start()
+            timeOutRemoveTimer.start()
+        }
+
+
+        //Set onClickListener for the pause/play button
+        pause.setOnClickListener {
+            if (isPaused){
+                isPaused = false
+
+                pause.setBackgroundResource(R.drawable.ic_pause_icon_close)
+                if (currentPlayer == 1 || currentPlayer == 4) {
+                    pause.rotation = 90f
+                }
+                else if (currentPlayer == 2 || currentPlayer == 3) {
+                    pause.rotation = 270f
+                }
+
+                timeOutRemoveTimer = object : CountDownTimer(playerTimer*1000L, 10) {
+                    override fun onFinish() {
+                        progressBar.progress = 1f
+                        turnStatus = playerTimer
+                        endTurn.setBackgroundResource(R.drawable.ic_tap_icon_orange)
+                        pause.setBackgroundResource(R.drawable.ic_play_icon_orange)
+                        if (currentPlayer == 1) {
+                            player1Background.setBackgroundColor(Color.parseColor("#f440e4"))
+                            endTurn.rotation = 65f
+                            pause.rotation = 0f
+                        } else if (currentPlayer == 2) {
+                            player2Background.setBackgroundColor(Color.parseColor("#f440e4"))
+                            endTurn.rotation = 155f
+                            pause.rotation = 90f
+                        } else if (currentPlayer == 3) {
+                            player3Background.setBackgroundColor(Color.parseColor("#f440e4"))
+                            endTurn.rotation = 245f
+                            pause.rotation = 180f
+                        } else if (currentPlayer == 4) {
+                            player4Background.setBackgroundColor(Color.parseColor("#f440e4"))
+                            endTurn.rotation = 335f
+                            pause.rotation = 270f
+                        }
+                    }
+
+                    override fun onTick(millisUntilFinished: Long) {
+                        endTurn.setBackgroundResource(R.drawable.ic_tap_icon)
+                        pause.setBackgroundResource(R.drawable.ic_pause_icon_close)
+                        if (turnStatus == 0){
+                            pause.rotation = 90f
+                        }
+                        progressBar.progress = (playerTimer*1000L - millisUntilFinished).toFloat()/(playerTimer*1000L)
+                        if((playerTimer*1000L - millisUntilFinished)/1000 > turnStatus){
+                            turnStatus++
+                            Log.i("turnStatus = ", turnStatus.toString())
+                        }
+                    }
+                }
+
+                    timeOutRemoveTimer.start()
+            }
+            else{
+                isPaused = true
+
+                pause.setBackgroundResource(R.drawable.ic_play_icon)
+
+                timeOutRemoveTimer.cancel()
             }
         }
 
