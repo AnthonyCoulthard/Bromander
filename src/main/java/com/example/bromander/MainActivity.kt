@@ -440,7 +440,7 @@ class MainActivity : AppCompatActivity() {
 
         //Set onClickListener for ending the turn
         //Algorithm:
-        //5 minute reference
+        //5 minute baseline
         //10 minute maximum
         //3 minute minimum
         //additionalTime = (5-timeSpent)/4
