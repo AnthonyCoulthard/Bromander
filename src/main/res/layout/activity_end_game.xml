@@ -18,9 +18,9 @@
         android:background="@android:color/transparent"
         android:text="@string/points"
         android:textSize="48sp"
-        android:textColor="#f440e4"
+        android:textColor="#ffffff"
         android:gravity="center_horizontal|top"
-        android:shadowColor="#ffffff"
+        android:shadowColor="#f440e4"
         android:shadowDx="1.0"
         android:shadowDy="1.0"
         android:shadowRadius="2.0"
@@ -1248,15 +1248,15 @@
         app:layout_constraintGuide_percent="0.15"
         android:orientation="horizontal"
         />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h16Guideline"
-        android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintGuide_begin="0dp"
-        app:layout_constraintGuide_percent="0.16"
         android:orientation="horizontal"
-        />
+        android:outlineProvider="none"
+        app:layout_constraintGuide_begin="219dp"
+        app:layout_constraintGuide_percent="0.16" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h17Guideline"
         android:outlineProvider="none"
@@ -1266,15 +1266,15 @@
         app:layout_constraintGuide_percent="0.17"
         android:orientation="horizontal"
         />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h18Guideline"
-        android:outlineProvider="none"
-		android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintGuide_begin="0dp"
-        app:layout_constraintGuide_percent="0.18"
         android:orientation="horizontal"
-        />
+        android:outlineProvider="none"
+        app:layout_constraintGuide_begin="83dp"
+        app:layout_constraintGuide_percent="0.18" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h19Guideline"
         android:outlineProvider="none"
