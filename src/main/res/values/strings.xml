@@ -23,4 +23,7 @@
     <string name="resume_game">RESUME GAME</string>
     <string name="points">POINTS</string>
     <string name="zero">0</string>
+    <string name="end">END</string>
+    <string name="resume">RESUME</string>
+    <string name="play">PLAY</string>
 </resources>
