@@ -81,6 +81,7 @@
 
     <EditText
         android:id="@+id/player1Points"
+        android:saveEnabled="false"
         android:outlineProvider="none"
         android:layout_width="160dp"
         android:layout_height="50dp"
