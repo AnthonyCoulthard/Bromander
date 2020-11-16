@@ -233,6 +233,10 @@ class MainActivity : AppCompatActivity() {
     var displayShiftedLifeTotal4: Boolean = false
     var isPaused: Boolean = true
     var areElementsInitialized: Boolean = false
+    var player1Name: String = "Player 1"
+    var player2Name: String = "Player 2"
+    var player3Name: String = "Player 3"
+    var player4Name: String = "Player 4"
 
     //Variables from saved game state of EndGameActivity
     var points1: Int = 0
@@ -240,15 +244,451 @@ class MainActivity : AppCompatActivity() {
     var points3: Int = 0
     var points4: Int = 0
 
+    //Variables for layout elements of EndGameActivity
+    lateinit var player1Text: TextView
+    lateinit var player2Text: TextView
+    lateinit var player3Text: TextView
+    lateinit var player4Text: TextView
+    lateinit var player1Points: EditText
+    lateinit var player2Points: EditText
+    lateinit var player3Points: EditText
+    lateinit var player4Points: EditText
+    lateinit var resumeGame: Button
+    lateinit var endGame: Button
+
     //Variable for turn timer object
     lateinit var timeOutRemoveTimer : CountDownTimer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initializeMainActivity()
+    }
+
+    //Functions to hide and show different layout views
+    fun hideLifeTotals(){
+        life1.visibility = View.INVISIBLE
+        life2.visibility = View.INVISIBLE
+        life3.visibility = View.INVISIBLE
+        life4.visibility = View.INVISIBLE
+    }
+    fun hideShiftedLifeTotals(){
+        displayShiftedLifeTotal1 = false
+        displayShiftedLifeTotal2 = false
+        displayShiftedLifeTotal3 = false
+        displayShiftedLifeTotal4 = false
+        life1Mana.visibility = View.INVISIBLE
+        life2Mana.visibility = View.INVISIBLE
+        life3Mana.visibility = View.INVISIBLE
+        life4Mana.visibility = View.INVISIBLE
+    }
+    fun hideManaCounters1() {
+        displayManaCounters1 = false
+        white1.visibility = View.INVISIBLE
+        white1down.visibility = View.INVISIBLE
+        blue1.visibility = View.INVISIBLE
+        blue1down.visibility = View.INVISIBLE
+        black1.visibility = View.INVISIBLE
+        black1down.visibility = View.INVISIBLE
+        red1.visibility = View.INVISIBLE
+        red1down.visibility = View.INVISIBLE
+        green1.visibility = View.INVISIBLE
+        green1down.visibility = View.INVISIBLE
+        white1Counter.visibility = View.INVISIBLE
+        blue1Counter.visibility = View.INVISIBLE
+        black1Counter.visibility = View.INVISIBLE
+        red1Counter.visibility = View.INVISIBLE
+        green1Counter.visibility = View.INVISIBLE
+    }
+    fun hideManaCounters2() {
+        displayManaCounters2 = false
+        white2.visibility = View.INVISIBLE
+        white2down.visibility = View.INVISIBLE
+        blue2.visibility = View.INVISIBLE
+        blue2down.visibility = View.INVISIBLE
+        black2.visibility = View.INVISIBLE
+        black2down.visibility = View.INVISIBLE
+        red2.visibility = View.INVISIBLE
+        red2down.visibility = View.INVISIBLE
+        green2.visibility = View.INVISIBLE
+        green2down.visibility = View.INVISIBLE
+        white2Counter.visibility = View.INVISIBLE
+        blue2Counter.visibility = View.INVISIBLE
+        black2Counter.visibility = View.INVISIBLE
+        red2Counter.visibility = View.INVISIBLE
+        green2Counter.visibility = View.INVISIBLE
+    }
+    fun hideManaCounters3() {
+        displayManaCounters3 = false
+        white3.visibility = View.INVISIBLE
+        white3down.visibility = View.INVISIBLE
+        blue3.visibility = View.INVISIBLE
+        blue3down.visibility = View.INVISIBLE
+        black3.visibility = View.INVISIBLE
+        black3down.visibility = View.INVISIBLE
+        red3.visibility = View.INVISIBLE
+        red3down.visibility = View.INVISIBLE
+        green3.visibility = View.INVISIBLE
+        green3down.visibility = View.INVISIBLE
+        white3Counter.visibility = View.INVISIBLE
+        blue3Counter.visibility = View.INVISIBLE
+        black3Counter.visibility = View.INVISIBLE
+        red3Counter.visibility = View.INVISIBLE
+        green3Counter.visibility = View.INVISIBLE
+    }
+    fun hideManaCounters4() {
+        displayManaCounters4 = false
+        white4.visibility = View.INVISIBLE
+        white4down.visibility = View.INVISIBLE
+        blue4.visibility = View.INVISIBLE
+        blue4down.visibility = View.INVISIBLE
+        black4.visibility = View.INVISIBLE
+        black4down.visibility = View.INVISIBLE
+        red4.visibility = View.INVISIBLE
+        red4down.visibility = View.INVISIBLE
+        green4.visibility = View.INVISIBLE
+        green4down.visibility = View.INVISIBLE
+        white4Counter.visibility = View.INVISIBLE
+        blue4Counter.visibility = View.INVISIBLE
+        black4Counter.visibility = View.INVISIBLE
+        red4Counter.visibility = View.INVISIBLE
+        green4Counter.visibility = View.INVISIBLE
+    }
+    fun hideDamageCounters1() {
+        displayDamageCounters1 = false
+        player1up2.visibility = View.INVISIBLE
+        player1down2.visibility = View.INVISIBLE
+        player1Counter2.visibility = View.INVISIBLE
+        player1up3.visibility = View.INVISIBLE
+        player1down3.visibility = View.INVISIBLE
+        player1Counter3.visibility = View.INVISIBLE
+        player1up4.visibility = View.INVISIBLE
+        player1down4.visibility = View.INVISIBLE
+        player1Counter4.visibility = View.INVISIBLE
+    }
+    fun hideDamageCounters2() {
+        displayDamageCounters2 = false
+        player2up3.visibility = View.INVISIBLE
+        player2down3.visibility = View.INVISIBLE
+        player2Counter3.visibility = View.INVISIBLE
+        player2up4.visibility = View.INVISIBLE
+        player2down4.visibility = View.INVISIBLE
+        player2Counter4.visibility = View.INVISIBLE
+        player2up1.visibility = View.INVISIBLE
+        player2down1.visibility = View.INVISIBLE
+        player2Counter1.visibility = View.INVISIBLE
+    }
+    fun hideDamageCounters3() {
+        displayDamageCounters3 = false
+        player3up4.visibility = View.INVISIBLE
+        player3down4.visibility = View.INVISIBLE
+        player3Counter4.visibility = View.INVISIBLE
+        player3up1.visibility = View.INVISIBLE
+        player3down1.visibility = View.INVISIBLE
+        player3Counter1.visibility = View.INVISIBLE
+        player3up2.visibility = View.INVISIBLE
+        player3down2.visibility = View.INVISIBLE
+        player3Counter2.visibility = View.INVISIBLE
+    }
+    fun hideDamageCounters4() {
+        displayDamageCounters4 = false
+        player4up1.visibility = View.INVISIBLE
+        player4down1.visibility = View.INVISIBLE
+        player4Counter1.visibility = View.INVISIBLE
+        player4up2.visibility = View.INVISIBLE
+        player4down2.visibility = View.INVISIBLE
+        player4Counter2.visibility = View.INVISIBLE
+        player4up3.visibility = View.INVISIBLE
+        player4down3.visibility = View.INVISIBLE
+        player4Counter3.visibility = View.INVISIBLE
+    }
+    fun showLifeTotals(){
+        life1.visibility = View.VISIBLE
+        life2.visibility = View.VISIBLE
+        life3.visibility = View.VISIBLE
+        life4.visibility = View.VISIBLE
+    }
+    fun showShiftedLifeTotals(){
+        displayShiftedLifeTotal1 = true
+        displayShiftedLifeTotal2 = true
+        displayShiftedLifeTotal3 = true
+        displayShiftedLifeTotal4 = true
+        life1Mana.visibility = View.VISIBLE
+        life2Mana.visibility = View.VISIBLE
+        life3Mana.visibility = View.VISIBLE
+        life4Mana.visibility = View.VISIBLE
+    }
+    fun showManaCounters1() {
+        displayManaCounters1 = true
+        white1.visibility = View.VISIBLE
+        white1down.visibility = View.VISIBLE
+        blue1.visibility = View.VISIBLE
+        blue1down.visibility = View.VISIBLE
+        black1.visibility = View.VISIBLE
+        black1down.visibility = View.VISIBLE
+        red1.visibility = View.VISIBLE
+        red1down.visibility = View.VISIBLE
+        green1.visibility = View.VISIBLE
+        green1down.visibility = View.VISIBLE
+        white1Counter.visibility = View.VISIBLE
+        blue1Counter.visibility = View.VISIBLE
+        black1Counter.visibility = View.VISIBLE
+        red1Counter.visibility = View.VISIBLE
+        green1Counter.visibility = View.VISIBLE
+    }
+    fun showManaCounters2() {
+        displayManaCounters2 = true
+        white2.visibility = View.VISIBLE
+        white2down.visibility = View.VISIBLE
+        blue2.visibility = View.VISIBLE
+        blue2down.visibility = View.VISIBLE
+        black2.visibility = View.VISIBLE
+        black2down.visibility = View.VISIBLE
+        red2.visibility = View.VISIBLE
+        red2down.visibility = View.VISIBLE
+        green2.visibility = View.VISIBLE
+        green2down.visibility = View.VISIBLE
+        white2Counter.visibility = View.VISIBLE
+        blue2Counter.visibility = View.VISIBLE
+        black2Counter.visibility = View.VISIBLE
+        red2Counter.visibility = View.VISIBLE
+        green2Counter.visibility = View.VISIBLE
+    }
+    fun showManaCounters3() {
+        displayManaCounters3 = true
+        white3.visibility = View.VISIBLE
+        white3down.visibility = View.VISIBLE
+        blue3.visibility = View.VISIBLE
+        blue3down.visibility = View.VISIBLE
+        black3.visibility = View.VISIBLE
+        black3down.visibility = View.VISIBLE
+        red3.visibility = View.VISIBLE
+        red3down.visibility = View.VISIBLE
+        green3.visibility = View.VISIBLE
+        green3down.visibility = View.VISIBLE
+        white3Counter.visibility = View.VISIBLE
+        blue3Counter.visibility = View.VISIBLE
+        black3Counter.visibility = View.VISIBLE
+        red3Counter.visibility = View.VISIBLE
+        green3Counter.visibility = View.VISIBLE
+    }
+    fun showManaCounters4() {
+        displayManaCounters4 = true
+        white4.visibility = View.VISIBLE
+        white4down.visibility = View.VISIBLE
+        blue4.visibility = View.VISIBLE
+        blue4down.visibility = View.VISIBLE
+        black4.visibility = View.VISIBLE
+        black4down.visibility = View.VISIBLE
+        red4.visibility = View.VISIBLE
+        red4down.visibility = View.VISIBLE
+        green4.visibility = View.VISIBLE
+        green4down.visibility = View.VISIBLE
+        white4Counter.visibility = View.VISIBLE
+        blue4Counter.visibility = View.VISIBLE
+        black4Counter.visibility = View.VISIBLE
+        red4Counter.visibility = View.VISIBLE
+        green4Counter.visibility = View.VISIBLE
+    }
+    fun showDamageCounters1() {
+        displayDamageCounters1 = true
+        player1up2.visibility = View.VISIBLE
+        player1down2.visibility = View.VISIBLE
+        player1Counter2.visibility = View.VISIBLE
+        player1up3.visibility = View.VISIBLE
+        player1down3.visibility = View.VISIBLE
+        player1Counter3.visibility = View.VISIBLE
+        player1up4.visibility = View.VISIBLE
+        player1down4.visibility = View.VISIBLE
+        player1Counter4.visibility = View.VISIBLE
+    }
+    fun showDamageCounters2() {
+        displayDamageCounters2 = true
+        player2up3.visibility = View.VISIBLE
+        player2down3.visibility = View.VISIBLE
+        player2Counter3.visibility = View.VISIBLE
+        player2up4.visibility = View.VISIBLE
+        player2down4.visibility = View.VISIBLE
+        player2Counter4.visibility = View.VISIBLE
+        player2up1.visibility = View.VISIBLE
+        player2down1.visibility = View.VISIBLE
+        player2Counter1.visibility = View.VISIBLE
+    }
+    fun showDamageCounters3() {
+        displayDamageCounters3 = true
+        player3up4.visibility = View.VISIBLE
+        player3down4.visibility = View.VISIBLE
+        player3Counter4.visibility = View.VISIBLE
+        player3up1.visibility = View.VISIBLE
+        player3down1.visibility = View.VISIBLE
+        player3Counter1.visibility = View.VISIBLE
+        player3up2.visibility = View.VISIBLE
+        player3down2.visibility = View.VISIBLE
+        player3Counter2.visibility = View.VISIBLE
+    }
+    fun showDamageCounters4() {
+        displayDamageCounters4 = true
+        player4up1.visibility = View.VISIBLE
+        player4down1.visibility = View.VISIBLE
+        player4Counter1.visibility = View.VISIBLE
+        player4up2.visibility = View.VISIBLE
+        player4down2.visibility = View.VISIBLE
+        player4Counter2.visibility = View.VISIBLE
+        player4up3.visibility = View.VISIBLE
+        player4down3.visibility = View.VISIBLE
+        player4Counter3.visibility = View.VISIBLE
+    }
+
+    //Save instantiated variables from MainActivity
+    /*
+    override fun onSaveInstanceState(savedInstanceState: Bundle) {
+        //Load saved bundle
+        super.onSaveInstanceState(savedInstanceState)
+
+        //Put variables in the bundle
+        savedInstanceState.putInt("lifeTotal1", lifeTotal1)
+        savedInstanceState.putInt("lifeTotal2", lifeTotal2)
+        savedInstanceState.putInt("lifeTotal3", lifeTotal3)
+        savedInstanceState.putInt("lifeTotal4", lifeTotal4)
+        savedInstanceState.putInt("white1CounterInt", white1CounterInt)
+        savedInstanceState.putInt("blue1CounterInt", blue1CounterInt)
+        savedInstanceState.putInt("black1CounterInt", black1CounterInt)
+        savedInstanceState.putInt("red1CounterInt", red1CounterInt)
+        savedInstanceState.putInt("green1CounterInt", green1CounterInt)
+        savedInstanceState.putInt("white2CounterInt", white2CounterInt)
+        savedInstanceState.putInt("blue2CounterInt", blue2CounterInt)
+        savedInstanceState.putInt("black2CounterInt", black2CounterInt)
+        savedInstanceState.putInt("red2CounterInt", red2CounterInt)
+        savedInstanceState.putInt("green2CounterInt", green2CounterInt)
+        savedInstanceState.putInt("white3CounterInt", white3CounterInt)
+        savedInstanceState.putInt("blue3CounterInt", blue3CounterInt)
+        savedInstanceState.putInt("black3CounterInt", black3CounterInt)
+        savedInstanceState.putInt("red3CounterInt", red3CounterInt)
+        savedInstanceState.putInt("green3CounterInt", green3CounterInt)
+        savedInstanceState.putInt("white4CounterInt", white4CounterInt)
+        savedInstanceState.putInt("blue4CounterInt", blue4CounterInt)
+        savedInstanceState.putInt("black4CounterInt", black4CounterInt)
+        savedInstanceState.putInt("red4CounterInt", red4CounterInt)
+        savedInstanceState.putInt("green4CounterInt", green4CounterInt)
+        savedInstanceState.putInt("player1Counter2Int", player1Counter2Int)
+        savedInstanceState.putInt("player1Counter3Int", player1Counter3Int)
+        savedInstanceState.putInt("player1Counter4Int", player1Counter4Int)
+        savedInstanceState.putInt("player2Counter3Int", player2Counter3Int)
+        savedInstanceState.putInt("player2Counter4Int", player2Counter4Int)
+        savedInstanceState.putInt("player2Counter1Int", player2Counter1Int)
+        savedInstanceState.putInt("player3Counter4Int", player3Counter4Int)
+        savedInstanceState.putInt("player3Counter1Int", player3Counter1Int)
+        savedInstanceState.putInt("player3Counter2Int", player3Counter2Int)
+        savedInstanceState.putInt("player4Counter1Int", player4Counter1Int)
+        savedInstanceState.putInt("player4Counter2Int", player4Counter2Int)
+        savedInstanceState.putInt("player4Counter3Int", player4Counter3Int)
+        savedInstanceState.putInt("turnStatus", turnStatus)
+        savedInstanceState.putInt("additionalTime", additionalTime)
+        savedInstanceState.putInt("player1TimeRemaining", player1TimeRemaining)
+        savedInstanceState.putInt("player2TimeRemaining", player2TimeRemaining)
+        savedInstanceState.putInt("player3TimeRemaining", player3TimeRemaining)
+        savedInstanceState.putInt("player4TimeRemaining", player4TimeRemaining)
+        savedInstanceState.putInt("playerTimer", playerTimer)
+        savedInstanceState.putInt("currentPlayer", currentPlayer)
+        savedInstanceState.putString("endTurnString", endTurnString)
+        savedInstanceState.putString("skipTurnString", skipTurnString)
+        savedInstanceState.putBoolean("displayManaCounters1", displayManaCounters1)
+        savedInstanceState.putBoolean("displayManaCounters2", displayManaCounters2)
+        savedInstanceState.putBoolean("displayManaCounters3", displayManaCounters3)
+        savedInstanceState.putBoolean("displayManaCounters4", displayManaCounters4)
+        savedInstanceState.putBoolean("displayDamageCounters1", displayDamageCounters1)
+        savedInstanceState.putBoolean("displayDamageCounters2", displayDamageCounters2)
+        savedInstanceState.putBoolean("displayDamageCounters3", displayDamageCounters3)
+        savedInstanceState.putBoolean("displayDamageCounters4", displayDamageCounters4)
+        savedInstanceState.putBoolean("displayShiftedLifeTotal1", displayShiftedLifeTotal1)
+        savedInstanceState.putBoolean("displayShiftedLifeTotal2", displayShiftedLifeTotal2)
+        savedInstanceState.putBoolean("displayShiftedLifeTotal3", displayShiftedLifeTotal3)
+        savedInstanceState.putBoolean("displayShiftedLifeTotal4", displayShiftedLifeTotal4)
+        savedInstanceState.putBoolean("isPaused", isPaused)
+        savedInstanceState.putInt("points1", points1)
+        savedInstanceState.putInt("points2", points2)
+        savedInstanceState.putInt("points3", points3)
+        savedInstanceState.putInt("points4", points4)
+    }
+
+    //Restore instantiated variables from EndGameActivity
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        //Load saved bundle
+        super.onRestoreInstanceState(savedInstanceState)
+
+        //Assign to variables
+        lifeTotal1 = savedInstanceState.getInt("lifeTotal1")
+        lifeTotal2 = savedInstanceState.getInt("lifeTotal2")
+        lifeTotal3 = savedInstanceState.getInt("lifeTotal3")
+        lifeTotal4 = savedInstanceState.getInt("lifeTotal4")
+        white1CounterInt = savedInstanceState.getInt("white1CounterInt")
+        blue1CounterInt = savedInstanceState.getInt("blue1CounterInt")
+        black1CounterInt = savedInstanceState.getInt("black1CounterInt")
+        red1CounterInt = savedInstanceState.getInt("red1CounterInt")
+        green1CounterInt = savedInstanceState.getInt("green1CounterInt")
+        white2CounterInt = savedInstanceState.getInt("white2CounterInt")
+        blue2CounterInt = savedInstanceState.getInt("blue2CounterInt")
+        black2CounterInt = savedInstanceState.getInt("black2CounterInt")
+        red2CounterInt = savedInstanceState.getInt("red2CounterInt")
+        green2CounterInt = savedInstanceState.getInt("green2CounterInt")
+        white3CounterInt = savedInstanceState.getInt("white3CounterInt")
+        blue3CounterInt = savedInstanceState.getInt("blue3CounterInt")
+        black3CounterInt = savedInstanceState.getInt("black3CounterInt")
+        red3CounterInt = savedInstanceState.getInt("red3CounterInt")
+        green3CounterInt = savedInstanceState.getInt("green3CounterInt")
+        white4CounterInt = savedInstanceState.getInt("white4CounterInt")
+        blue4CounterInt = savedInstanceState.getInt("blue4CounterInt")
+        black4CounterInt = savedInstanceState.getInt("black4CounterInt")
+        red4CounterInt = savedInstanceState.getInt("red4CounterInt")
+        green4CounterInt = savedInstanceState.getInt("green4CounterInt")
+        player1Counter2Int = savedInstanceState.getInt("player1Counter2Int")
+        player1Counter3Int = savedInstanceState.getInt("player1Counter3Int")
+        player1Counter4Int = savedInstanceState.getInt("player1Counter4Int")
+        player2Counter3Int = savedInstanceState.getInt("player2Counter3Int")
+        player2Counter4Int = savedInstanceState.getInt("player2Counter4Int")
+        player2Counter1Int = savedInstanceState.getInt("player2Counter1Int")
+        player3Counter4Int = savedInstanceState.getInt("player3Counter4Int")
+        player3Counter1Int = savedInstanceState.getInt("player3Counter1Int")
+        player3Counter2Int = savedInstanceState.getInt("player3Counter2Int")
+        player4Counter1Int = savedInstanceState.getInt("player4Counter1Int")
+        player4Counter2Int = savedInstanceState.getInt("player4Counter2Int")
+        player4Counter3Int = savedInstanceState.getInt("player4Counter3Int")
+        turnStatus = savedInstanceState.getInt("turnStatus")
+        additionalTime = savedInstanceState.getInt("additionalTime")
+        player1TimeRemaining = savedInstanceState.getInt("player1TimeRemaining")
+        player2TimeRemaining = savedInstanceState.getInt("player2TimeRemaining")
+        player3TimeRemaining = savedInstanceState.getInt("player3TimeRemaining")
+        player4TimeRemaining = savedInstanceState.getInt("player4TimeRemaining")
+        playerTimer = savedInstanceState.getInt("playerTimer")
+        currentPlayer = savedInstanceState.getInt("currentPlayer")
+        endTurnString = savedInstanceState.getString("endTurnString")
+        skipTurnString = savedInstanceState.getString("skipTurnString")
+        displayManaCounters1 = savedInstanceState.getBoolean("displayManaCounters1")
+        displayManaCounters2 = savedInstanceState.getBoolean("displayManaCounters2")
+        displayManaCounters3 = savedInstanceState.getBoolean("displayManaCounters3")
+        displayManaCounters4 = savedInstanceState.getBoolean("displayManaCounters4")
+        displayDamageCounters1 = savedInstanceState.getBoolean("displayDamageCounters1")
+        displayDamageCounters2 = savedInstanceState.getBoolean("displayDamageCounters2")
+        displayDamageCounters3 = savedInstanceState.getBoolean("displayDamageCounters3")
+        displayDamageCounters4 = savedInstanceState.getBoolean("displayDamageCounters4")
+        displayShiftedLifeTotal1 = savedInstanceState.getBoolean("displayShiftedLifeTotal1")
+        displayShiftedLifeTotal2 = savedInstanceState.getBoolean("displayShiftedLifeTotal2")
+        displayShiftedLifeTotal3 = savedInstanceState.getBoolean("displayShiftedLifeTotal3")
+        displayShiftedLifeTotal4 = savedInstanceState.getBoolean("displayShiftedLifeTotal4")
+        isPaused = savedInstanceState.getBoolean("isPaused")
+        points1 = savedInstanceState.getInt("points1")
+        points2 = savedInstanceState.getInt("points2")
+        points3 = savedInstanceState.getInt("points3")
+        points4 = savedInstanceState.getInt("points4")
+    }
+    
+     */
+
+    //Function to set layout elements to their saved values for main activity
+    //Allows to call this function recursively
+    private fun initializeMainActivity(){
         setContentView(R.layout.activity_main)
 
         //Initialize variables for XML elements
-        
         player1Background = findViewById(R.id.player1Background)
         player2Background = findViewById(R.id.player2Background)
         player3Background = findViewById(R.id.player3Background)
@@ -381,7 +821,78 @@ class MainActivity : AppCompatActivity() {
         pause = findViewById(R.id.pause)
         progressBarBackground = findViewById(R.id.progressBarBackground)
         progressBar = findViewById(R.id.progressBar)
-
+        
+        //Instantiate layout elements with saved values
+        if (currentPlayer == 1){
+            player1Background.setBackgroundColor(0x77f440e4)
+            player2Background.setBackgroundColor(0x77ff8c00)
+            player3Background.setBackgroundColor(0x77ff8c00)
+            player4Background.setBackgroundColor(0x77ff8c00)
+        }
+        else if (currentPlayer == 2){
+            player1Background.setBackgroundColor(0x77ff8c00)
+            player2Background.setBackgroundColor(0x77f440e4)
+            player3Background.setBackgroundColor(0x77ff8c00)
+            player4Background.setBackgroundColor(0x77ff8c00)
+        }
+        else if (currentPlayer == 3){
+            player1Background.setBackgroundColor(0x77ff8c00)
+            player2Background.setBackgroundColor(0x77ff8c00)
+            player3Background.setBackgroundColor(0x77f440e4)
+            player4Background.setBackgroundColor(0x77ff8c00)
+        }
+        else if (currentPlayer == 4){
+            player1Background.setBackgroundColor(0x77ff8c00)
+            player2Background.setBackgroundColor(0x77ff8c00)
+            player3Background.setBackgroundColor(0x77ff8c00)
+            player4Background.setBackgroundColor(0x77f440e4)
+        }
+        life1.text = lifeTotal1.toString()
+        life2.text = lifeTotal2.toString()
+        life3.text = lifeTotal3.toString()
+        life4.text = lifeTotal4.toString()
+        life1Mana.text = lifeTotal1.toString()
+        life2Mana.text = lifeTotal2.toString()
+        life3Mana.text = lifeTotal3.toString()
+        life4Mana.text = lifeTotal4.toString()
+        white1Counter.text = white1CounterInt.toString()
+        blue1Counter.text = blue1CounterInt.toString()
+        black1Counter.text = black1CounterInt.toString()
+        red1Counter.text = red1CounterInt.toString()
+        green1Counter.text = green1CounterInt.toString()
+        white2Counter.text = white2CounterInt.toString()
+        blue2Counter.text = blue2CounterInt.toString()
+        black2Counter.text = black2CounterInt.toString()
+        red2Counter.text = red2CounterInt.toString()
+        green2Counter.text = green2CounterInt.toString()
+        white3Counter.text = white3CounterInt.toString()
+        blue3Counter.text = blue3CounterInt.toString()
+        black3Counter.text = black3CounterInt.toString()
+        red3Counter.text = red3CounterInt.toString()
+        green3Counter.text = green3CounterInt.toString()
+        white4Counter.text = white4CounterInt.toString()
+        blue4Counter.text = blue4CounterInt.toString()
+        black4Counter.text = black4CounterInt.toString()
+        red4Counter.text = red4CounterInt.toString()
+        green4Counter.text = green4CounterInt.toString()
+        player1Counter2.text = player1Counter2Int.toString()
+        player1Counter3.text = player1Counter3Int.toString()
+        player1Counter4.text = player1Counter4Int.toString()
+        player2Counter3.text = player2Counter3Int.toString()
+        player2Counter4.text = player2Counter4Int.toString()
+        player2Counter1.text = player2Counter1Int.toString()
+        player3Counter4.text = player3Counter4Int.toString()
+        player3Counter1.text = player3Counter1Int.toString()
+        player3Counter2.text = player3Counter2Int.toString()
+        player4Counter1.text = player4Counter1Int.toString()
+        player4Counter2.text = player4Counter2Int.toString()
+        player4Counter3.text = player4Counter3Int.toString()
+        playerName1.setText(player1Name)
+        playerName2.setText(player2Name)
+        playerName3.setText(player3Name)
+        playerName4.setText(player4Name)
+        //progressBarBackground.setTextColor(0xffffff)
+        progressBarBackground.text = (playerTimer  - turnStatus).toString()
 
         //No mana counters or commander damage visible on game start
         hideShiftedLifeTotals()
@@ -394,11 +905,106 @@ class MainActivity : AppCompatActivity() {
         hideDamageCounters3()
         hideDamageCounters4()
 
-
         //Set onClickListener to bring up options
         progressBarBackground.setOnClickListener {
-            val intent = Intent(this, EndGameActivity::class.java)
-            startActivity(intent, savedInstanceState)
+            //val intent = Intent(this, EndGameActivity::class.java)
+            //startActivity(intent, savedInstanceState)
+            if (!isPaused){
+                isPaused = true
+                pause.setBackgroundResource(R.drawable.ic_play_icon)
+                try {
+                    timeOutRemoveTimer.cancel()
+                }
+                catch (e: Exception){
+                    Log.e("timeOutRemoveTimer", "No running instance to cancel.")
+                }
+            }
+            setContentView(R.layout.activity_end_game_landscape)
+
+            //Initiate layout elements
+            player1Text = findViewById(R.id.player1Text)
+            player2Text = findViewById(R.id.player2Text)
+            player3Text = findViewById(R.id.player3Text)
+            player4Text = findViewById(R.id.player4Text)
+            player1Points = findViewById(R.id.player1Points)
+            player2Points = findViewById(R.id.player2Points)
+            player3Points = findViewById(R.id.player3Points)
+            player4Points = findViewById(R.id.player4Points)
+            resumeGame = findViewById(R.id.resumeGame)
+            endGame = findViewById(R.id.endGame)
+
+            //Load values into points text
+            player1Points.setText(points1.toString())
+            player2Points.setText(points2.toString())
+            player3Points.setText(points3.toString())
+            player4Points.setText(points4.toString())
+
+            //Set onClickListener to resume game
+            resumeGame.setOnClickListener {
+                //val intent = Intent(this, MainActivity::class.java)
+                //startActivity(intent, savedInstanceState)
+                initializeMainActivity()
+            }
+
+            //Set onClickListener to end game
+            endGame.setOnClickListener {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+
+            //Set onChangedListeners for changing points values
+            player1Points.addTextChangedListener(object: TextWatcher {
+                override fun afterTextChanged(s: Editable){}
+                override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+                override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int) {
+                    try {
+                        points1 = player1Points.text.toString().toInt()
+                    }
+                    catch (e: Exception){
+                        Toast.makeText(this@MainActivity, "MissingNo.", Toast.LENGTH_SHORT).show()
+                        player1Points.setText(points1.toString())
+                    }
+                }
+            })
+            player2Points.addTextChangedListener(object: TextWatcher {
+                override fun afterTextChanged(s: Editable){}
+                override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+                override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int) {
+                    try {
+                        points2 = player2Points.text.toString().toInt()
+                    }
+                    catch (e: Exception){
+                        Toast.makeText(this@MainActivity, "MissingNo.", Toast.LENGTH_SHORT).show()
+                        player2Points.setText(points2.toString())
+                    }
+                }
+            })
+            player3Points.addTextChangedListener(object: TextWatcher {
+                override fun afterTextChanged(s: Editable){}
+                override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+                override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int) {
+                    try {
+                        points3 = player3Points.text.toString().toInt()
+                    }
+                    catch (e: Exception){
+                        Toast.makeText(this@MainActivity, "MissingNo.", Toast.LENGTH_SHORT).show()
+                        player3Points.setText(points3.toString())
+                    }
+                }
+            })
+            player4Points.addTextChangedListener(object: TextWatcher {
+                override fun afterTextChanged(s: Editable){}
+                override fun beforeTextChanged(s:CharSequence, start:Int, count:Int, after:Int){}
+                override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int) {
+                    try {
+                        points4 = player4Points.text.toString().toInt()
+                    }
+                    catch (e: Exception){
+                        Toast.makeText(this@MainActivity, "MissingNo.", Toast.LENGTH_SHORT).show()
+                        player4Points.setText(points4.toString())
+                    }
+                }
+            })
         }
 
         //Set onClickListeners for life buttons
@@ -647,7 +1253,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
 
-                    timeOutRemoveTimer.start()
+                timeOutRemoveTimer.start()
             }
             else{
                 isPaused = true
@@ -1541,7 +2147,7 @@ class MainActivity : AppCompatActivity() {
                 player3Counter2.text = player3Counter2Int.toString()
             }
         }
-        
+
         player4up1.setOnClickListener {
             if (player4Counter1Int < 0) {
                 player4Counter1Int = 0
@@ -2885,421 +3491,5 @@ class MainActivity : AppCompatActivity() {
             progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
             areElementsInitialized = true
         }
-    }
-
-    //Functions to hide and show different layout views
-    fun hideLifeTotals(){
-        life1.visibility = View.INVISIBLE
-        life2.visibility = View.INVISIBLE
-        life3.visibility = View.INVISIBLE
-        life4.visibility = View.INVISIBLE
-    }
-    fun hideShiftedLifeTotals(){
-        displayShiftedLifeTotal1 = false
-        displayShiftedLifeTotal2 = false
-        displayShiftedLifeTotal3 = false
-        displayShiftedLifeTotal4 = false
-        life1Mana.visibility = View.INVISIBLE
-        life2Mana.visibility = View.INVISIBLE
-        life3Mana.visibility = View.INVISIBLE
-        life4Mana.visibility = View.INVISIBLE
-    }
-    fun hideManaCounters1() {
-        displayManaCounters1 = false
-        white1.visibility = View.INVISIBLE
-        white1down.visibility = View.INVISIBLE
-        blue1.visibility = View.INVISIBLE
-        blue1down.visibility = View.INVISIBLE
-        black1.visibility = View.INVISIBLE
-        black1down.visibility = View.INVISIBLE
-        red1.visibility = View.INVISIBLE
-        red1down.visibility = View.INVISIBLE
-        green1.visibility = View.INVISIBLE
-        green1down.visibility = View.INVISIBLE
-        white1Counter.visibility = View.INVISIBLE
-        blue1Counter.visibility = View.INVISIBLE
-        black1Counter.visibility = View.INVISIBLE
-        red1Counter.visibility = View.INVISIBLE
-        green1Counter.visibility = View.INVISIBLE
-    }
-    fun hideManaCounters2() {
-        displayManaCounters2 = false
-        white2.visibility = View.INVISIBLE
-        white2down.visibility = View.INVISIBLE
-        blue2.visibility = View.INVISIBLE
-        blue2down.visibility = View.INVISIBLE
-        black2.visibility = View.INVISIBLE
-        black2down.visibility = View.INVISIBLE
-        red2.visibility = View.INVISIBLE
-        red2down.visibility = View.INVISIBLE
-        green2.visibility = View.INVISIBLE
-        green2down.visibility = View.INVISIBLE
-        white2Counter.visibility = View.INVISIBLE
-        blue2Counter.visibility = View.INVISIBLE
-        black2Counter.visibility = View.INVISIBLE
-        red2Counter.visibility = View.INVISIBLE
-        green2Counter.visibility = View.INVISIBLE
-    }
-    fun hideManaCounters3() {
-        displayManaCounters3 = false
-        white3.visibility = View.INVISIBLE
-        white3down.visibility = View.INVISIBLE
-        blue3.visibility = View.INVISIBLE
-        blue3down.visibility = View.INVISIBLE
-        black3.visibility = View.INVISIBLE
-        black3down.visibility = View.INVISIBLE
-        red3.visibility = View.INVISIBLE
-        red3down.visibility = View.INVISIBLE
-        green3.visibility = View.INVISIBLE
-        green3down.visibility = View.INVISIBLE
-        white3Counter.visibility = View.INVISIBLE
-        blue3Counter.visibility = View.INVISIBLE
-        black3Counter.visibility = View.INVISIBLE
-        red3Counter.visibility = View.INVISIBLE
-        green3Counter.visibility = View.INVISIBLE
-    }
-    fun hideManaCounters4() {
-        displayManaCounters4 = false
-        white4.visibility = View.INVISIBLE
-        white4down.visibility = View.INVISIBLE
-        blue4.visibility = View.INVISIBLE
-        blue4down.visibility = View.INVISIBLE
-        black4.visibility = View.INVISIBLE
-        black4down.visibility = View.INVISIBLE
-        red4.visibility = View.INVISIBLE
-        red4down.visibility = View.INVISIBLE
-        green4.visibility = View.INVISIBLE
-        green4down.visibility = View.INVISIBLE
-        white4Counter.visibility = View.INVISIBLE
-        blue4Counter.visibility = View.INVISIBLE
-        black4Counter.visibility = View.INVISIBLE
-        red4Counter.visibility = View.INVISIBLE
-        green4Counter.visibility = View.INVISIBLE
-    }
-    fun hideDamageCounters1() {
-        displayDamageCounters1 = false
-        player1up2.visibility = View.INVISIBLE
-        player1down2.visibility = View.INVISIBLE
-        player1Counter2.visibility = View.INVISIBLE
-        player1up3.visibility = View.INVISIBLE
-        player1down3.visibility = View.INVISIBLE
-        player1Counter3.visibility = View.INVISIBLE
-        player1up4.visibility = View.INVISIBLE
-        player1down4.visibility = View.INVISIBLE
-        player1Counter4.visibility = View.INVISIBLE
-    }
-    fun hideDamageCounters2() {
-        displayDamageCounters2 = false
-        player2up3.visibility = View.INVISIBLE
-        player2down3.visibility = View.INVISIBLE
-        player2Counter3.visibility = View.INVISIBLE
-        player2up4.visibility = View.INVISIBLE
-        player2down4.visibility = View.INVISIBLE
-        player2Counter4.visibility = View.INVISIBLE
-        player2up1.visibility = View.INVISIBLE
-        player2down1.visibility = View.INVISIBLE
-        player2Counter1.visibility = View.INVISIBLE
-    }
-    fun hideDamageCounters3() {
-        displayDamageCounters3 = false
-        player3up4.visibility = View.INVISIBLE
-        player3down4.visibility = View.INVISIBLE
-        player3Counter4.visibility = View.INVISIBLE
-        player3up1.visibility = View.INVISIBLE
-        player3down1.visibility = View.INVISIBLE
-        player3Counter1.visibility = View.INVISIBLE
-        player3up2.visibility = View.INVISIBLE
-        player3down2.visibility = View.INVISIBLE
-        player3Counter2.visibility = View.INVISIBLE
-    }
-    fun hideDamageCounters4() {
-        displayDamageCounters4 = false
-        player4up1.visibility = View.INVISIBLE
-        player4down1.visibility = View.INVISIBLE
-        player4Counter1.visibility = View.INVISIBLE
-        player4up2.visibility = View.INVISIBLE
-        player4down2.visibility = View.INVISIBLE
-        player4Counter2.visibility = View.INVISIBLE
-        player4up3.visibility = View.INVISIBLE
-        player4down3.visibility = View.INVISIBLE
-        player4Counter3.visibility = View.INVISIBLE
-    }
-    fun showLifeTotals(){
-        life1.visibility = View.VISIBLE
-        life2.visibility = View.VISIBLE
-        life3.visibility = View.VISIBLE
-        life4.visibility = View.VISIBLE
-    }
-    fun showShiftedLifeTotals(){
-        displayShiftedLifeTotal1 = true
-        displayShiftedLifeTotal2 = true
-        displayShiftedLifeTotal3 = true
-        displayShiftedLifeTotal4 = true
-        life1Mana.visibility = View.VISIBLE
-        life2Mana.visibility = View.VISIBLE
-        life3Mana.visibility = View.VISIBLE
-        life4Mana.visibility = View.VISIBLE
-    }
-    fun showManaCounters1() {
-        displayManaCounters1 = true
-        white1.visibility = View.VISIBLE
-        white1down.visibility = View.VISIBLE
-        blue1.visibility = View.VISIBLE
-        blue1down.visibility = View.VISIBLE
-        black1.visibility = View.VISIBLE
-        black1down.visibility = View.VISIBLE
-        red1.visibility = View.VISIBLE
-        red1down.visibility = View.VISIBLE
-        green1.visibility = View.VISIBLE
-        green1down.visibility = View.VISIBLE
-        white1Counter.visibility = View.VISIBLE
-        blue1Counter.visibility = View.VISIBLE
-        black1Counter.visibility = View.VISIBLE
-        red1Counter.visibility = View.VISIBLE
-        green1Counter.visibility = View.VISIBLE
-    }
-    fun showManaCounters2() {
-        displayManaCounters2 = true
-        white2.visibility = View.VISIBLE
-        white2down.visibility = View.VISIBLE
-        blue2.visibility = View.VISIBLE
-        blue2down.visibility = View.VISIBLE
-        black2.visibility = View.VISIBLE
-        black2down.visibility = View.VISIBLE
-        red2.visibility = View.VISIBLE
-        red2down.visibility = View.VISIBLE
-        green2.visibility = View.VISIBLE
-        green2down.visibility = View.VISIBLE
-        white2Counter.visibility = View.VISIBLE
-        blue2Counter.visibility = View.VISIBLE
-        black2Counter.visibility = View.VISIBLE
-        red2Counter.visibility = View.VISIBLE
-        green2Counter.visibility = View.VISIBLE
-    }
-    fun showManaCounters3() {
-        displayManaCounters3 = true
-        white3.visibility = View.VISIBLE
-        white3down.visibility = View.VISIBLE
-        blue3.visibility = View.VISIBLE
-        blue3down.visibility = View.VISIBLE
-        black3.visibility = View.VISIBLE
-        black3down.visibility = View.VISIBLE
-        red3.visibility = View.VISIBLE
-        red3down.visibility = View.VISIBLE
-        green3.visibility = View.VISIBLE
-        green3down.visibility = View.VISIBLE
-        white3Counter.visibility = View.VISIBLE
-        blue3Counter.visibility = View.VISIBLE
-        black3Counter.visibility = View.VISIBLE
-        red3Counter.visibility = View.VISIBLE
-        green3Counter.visibility = View.VISIBLE
-    }
-    fun showManaCounters4() {
-        displayManaCounters4 = true
-        white4.visibility = View.VISIBLE
-        white4down.visibility = View.VISIBLE
-        blue4.visibility = View.VISIBLE
-        blue4down.visibility = View.VISIBLE
-        black4.visibility = View.VISIBLE
-        black4down.visibility = View.VISIBLE
-        red4.visibility = View.VISIBLE
-        red4down.visibility = View.VISIBLE
-        green4.visibility = View.VISIBLE
-        green4down.visibility = View.VISIBLE
-        white4Counter.visibility = View.VISIBLE
-        blue4Counter.visibility = View.VISIBLE
-        black4Counter.visibility = View.VISIBLE
-        red4Counter.visibility = View.VISIBLE
-        green4Counter.visibility = View.VISIBLE
-    }
-    fun showDamageCounters1() {
-        displayDamageCounters1 = true
-        player1up2.visibility = View.VISIBLE
-        player1down2.visibility = View.VISIBLE
-        player1Counter2.visibility = View.VISIBLE
-        player1up3.visibility = View.VISIBLE
-        player1down3.visibility = View.VISIBLE
-        player1Counter3.visibility = View.VISIBLE
-        player1up4.visibility = View.VISIBLE
-        player1down4.visibility = View.VISIBLE
-        player1Counter4.visibility = View.VISIBLE
-    }
-    fun showDamageCounters2() {
-        displayDamageCounters2 = true
-        player2up3.visibility = View.VISIBLE
-        player2down3.visibility = View.VISIBLE
-        player2Counter3.visibility = View.VISIBLE
-        player2up4.visibility = View.VISIBLE
-        player2down4.visibility = View.VISIBLE
-        player2Counter4.visibility = View.VISIBLE
-        player2up1.visibility = View.VISIBLE
-        player2down1.visibility = View.VISIBLE
-        player2Counter1.visibility = View.VISIBLE
-    }
-    fun showDamageCounters3() {
-        displayDamageCounters3 = true
-        player3up4.visibility = View.VISIBLE
-        player3down4.visibility = View.VISIBLE
-        player3Counter4.visibility = View.VISIBLE
-        player3up1.visibility = View.VISIBLE
-        player3down1.visibility = View.VISIBLE
-        player3Counter1.visibility = View.VISIBLE
-        player3up2.visibility = View.VISIBLE
-        player3down2.visibility = View.VISIBLE
-        player3Counter2.visibility = View.VISIBLE
-    }
-    fun showDamageCounters4() {
-        displayDamageCounters4 = true
-        player4up1.visibility = View.VISIBLE
-        player4down1.visibility = View.VISIBLE
-        player4Counter1.visibility = View.VISIBLE
-        player4up2.visibility = View.VISIBLE
-        player4down2.visibility = View.VISIBLE
-        player4Counter2.visibility = View.VISIBLE
-        player4up3.visibility = View.VISIBLE
-        player4down3.visibility = View.VISIBLE
-        player4Counter3.visibility = View.VISIBLE
-    }
-
-    //Save instantiated variables from MainActivity
-    override fun onSaveInstanceState(savedInstanceState: Bundle) {
-        //Load saved bundle
-        super.onSaveInstanceState(savedInstanceState)
-
-        //Put variables in the bundle
-        savedInstanceState.putInt("lifeTotal1", lifeTotal1)
-        savedInstanceState.putInt("lifeTotal2", lifeTotal2)
-        savedInstanceState.putInt("lifeTotal3", lifeTotal3)
-        savedInstanceState.putInt("lifeTotal4", lifeTotal4)
-        savedInstanceState.putInt("white1CounterInt", white1CounterInt)
-        savedInstanceState.putInt("blue1CounterInt", blue1CounterInt)
-        savedInstanceState.putInt("black1CounterInt", black1CounterInt)
-        savedInstanceState.putInt("red1CounterInt", red1CounterInt)
-        savedInstanceState.putInt("green1CounterInt", green1CounterInt)
-        savedInstanceState.putInt("white2CounterInt", white2CounterInt)
-        savedInstanceState.putInt("blue2CounterInt", blue2CounterInt)
-        savedInstanceState.putInt("black2CounterInt", black2CounterInt)
-        savedInstanceState.putInt("red2CounterInt", red2CounterInt)
-        savedInstanceState.putInt("green2CounterInt", green2CounterInt)
-        savedInstanceState.putInt("white3CounterInt", white3CounterInt)
-        savedInstanceState.putInt("blue3CounterInt", blue3CounterInt)
-        savedInstanceState.putInt("black3CounterInt", black3CounterInt)
-        savedInstanceState.putInt("red3CounterInt", red3CounterInt)
-        savedInstanceState.putInt("green3CounterInt", green3CounterInt)
-        savedInstanceState.putInt("white4CounterInt", white4CounterInt)
-        savedInstanceState.putInt("blue4CounterInt", blue4CounterInt)
-        savedInstanceState.putInt("black4CounterInt", black4CounterInt)
-        savedInstanceState.putInt("red4CounterInt", red4CounterInt)
-        savedInstanceState.putInt("green4CounterInt", green4CounterInt)
-        savedInstanceState.putInt("player1Counter2Int", player1Counter2Int)
-        savedInstanceState.putInt("player1Counter3Int", player1Counter3Int)
-        savedInstanceState.putInt("player1Counter4Int", player1Counter4Int)
-        savedInstanceState.putInt("player2Counter3Int", player2Counter3Int)
-        savedInstanceState.putInt("player2Counter4Int", player2Counter4Int)
-        savedInstanceState.putInt("player2Counter1Int", player2Counter1Int)
-        savedInstanceState.putInt("player3Counter4Int", player3Counter4Int)
-        savedInstanceState.putInt("player3Counter1Int", player3Counter1Int)
-        savedInstanceState.putInt("player3Counter2Int", player3Counter2Int)
-        savedInstanceState.putInt("player4Counter1Int", player4Counter1Int)
-        savedInstanceState.putInt("player4Counter2Int", player4Counter2Int)
-        savedInstanceState.putInt("player4Counter3Int", player4Counter3Int)
-        savedInstanceState.putInt("turnStatus", turnStatus)
-        savedInstanceState.putInt("additionalTime", additionalTime)
-        savedInstanceState.putInt("player1TimeRemaining", player1TimeRemaining)
-        savedInstanceState.putInt("player2TimeRemaining", player2TimeRemaining)
-        savedInstanceState.putInt("player3TimeRemaining", player3TimeRemaining)
-        savedInstanceState.putInt("player4TimeRemaining", player4TimeRemaining)
-        savedInstanceState.putInt("playerTimer", playerTimer)
-        savedInstanceState.putInt("currentPlayer", currentPlayer)
-        savedInstanceState.putString("endTurnString", endTurnString)
-        savedInstanceState.putString("skipTurnString", skipTurnString)
-        savedInstanceState.putBoolean("displayManaCounters1", displayManaCounters1)
-        savedInstanceState.putBoolean("displayManaCounters2", displayManaCounters2)
-        savedInstanceState.putBoolean("displayManaCounters3", displayManaCounters3)
-        savedInstanceState.putBoolean("displayManaCounters4", displayManaCounters4)
-        savedInstanceState.putBoolean("displayDamageCounters1", displayDamageCounters1)
-        savedInstanceState.putBoolean("displayDamageCounters2", displayDamageCounters2)
-        savedInstanceState.putBoolean("displayDamageCounters3", displayDamageCounters3)
-        savedInstanceState.putBoolean("displayDamageCounters4", displayDamageCounters4)
-        savedInstanceState.putBoolean("displayShiftedLifeTotal1", displayShiftedLifeTotal1)
-        savedInstanceState.putBoolean("displayShiftedLifeTotal2", displayShiftedLifeTotal2)
-        savedInstanceState.putBoolean("displayShiftedLifeTotal3", displayShiftedLifeTotal3)
-        savedInstanceState.putBoolean("displayShiftedLifeTotal4", displayShiftedLifeTotal4)
-        savedInstanceState.putBoolean("isPaused", isPaused)
-        savedInstanceState.putInt("points1", points1)
-        savedInstanceState.putInt("points2", points2)
-        savedInstanceState.putInt("points3", points3)
-        savedInstanceState.putInt("points4", points4)
-    }
-
-    //Restore instantiated variables from EndGameActivity
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        //Load saved bundle
-        super.onRestoreInstanceState(savedInstanceState)
-
-        //Assign to variables
-        lifeTotal1 = savedInstanceState.getInt("lifeTotal1")
-        lifeTotal2 = savedInstanceState.getInt("lifeTotal2")
-        lifeTotal3 = savedInstanceState.getInt("lifeTotal3")
-        lifeTotal4 = savedInstanceState.getInt("lifeTotal4")
-        white1CounterInt = savedInstanceState.getInt("white1CounterInt")
-        blue1CounterInt = savedInstanceState.getInt("blue1CounterInt")
-        black1CounterInt = savedInstanceState.getInt("black1CounterInt")
-        red1CounterInt = savedInstanceState.getInt("red1CounterInt")
-        green1CounterInt = savedInstanceState.getInt("green1CounterInt")
-        white2CounterInt = savedInstanceState.getInt("white2CounterInt")
-        blue2CounterInt = savedInstanceState.getInt("blue2CounterInt")
-        black2CounterInt = savedInstanceState.getInt("black2CounterInt")
-        red2CounterInt = savedInstanceState.getInt("red2CounterInt")
-        green2CounterInt = savedInstanceState.getInt("green2CounterInt")
-        white3CounterInt = savedInstanceState.getInt("white3CounterInt")
-        blue3CounterInt = savedInstanceState.getInt("blue3CounterInt")
-        black3CounterInt = savedInstanceState.getInt("black3CounterInt")
-        red3CounterInt = savedInstanceState.getInt("red3CounterInt")
-        green3CounterInt = savedInstanceState.getInt("green3CounterInt")
-        white4CounterInt = savedInstanceState.getInt("white4CounterInt")
-        blue4CounterInt = savedInstanceState.getInt("blue4CounterInt")
-        black4CounterInt = savedInstanceState.getInt("black4CounterInt")
-        red4CounterInt = savedInstanceState.getInt("red4CounterInt")
-        green4CounterInt = savedInstanceState.getInt("green4CounterInt")
-        player1Counter2Int = savedInstanceState.getInt("player1Counter2Int")
-        player1Counter3Int = savedInstanceState.getInt("player1Counter3Int")
-        player1Counter4Int = savedInstanceState.getInt("player1Counter4Int")
-        player2Counter3Int = savedInstanceState.getInt("player2Counter3Int")
-        player2Counter4Int = savedInstanceState.getInt("player2Counter4Int")
-        player2Counter1Int = savedInstanceState.getInt("player2Counter1Int")
-        player3Counter4Int = savedInstanceState.getInt("player3Counter4Int")
-        player3Counter1Int = savedInstanceState.getInt("player3Counter1Int")
-        player3Counter2Int = savedInstanceState.getInt("player3Counter2Int")
-        player4Counter1Int = savedInstanceState.getInt("player4Counter1Int")
-        player4Counter2Int = savedInstanceState.getInt("player4Counter2Int")
-        player4Counter3Int = savedInstanceState.getInt("player4Counter3Int")
-        turnStatus = savedInstanceState.getInt("turnStatus")
-        additionalTime = savedInstanceState.getInt("additionalTime")
-        player1TimeRemaining = savedInstanceState.getInt("player1TimeRemaining")
-        player2TimeRemaining = savedInstanceState.getInt("player2TimeRemaining")
-        player3TimeRemaining = savedInstanceState.getInt("player3TimeRemaining")
-        player4TimeRemaining = savedInstanceState.getInt("player4TimeRemaining")
-        playerTimer = savedInstanceState.getInt("playerTimer")
-        currentPlayer = savedInstanceState.getInt("currentPlayer")
-        endTurnString = savedInstanceState.getString("endTurnString")
-        skipTurnString = savedInstanceState.getString("skipTurnString")
-        displayManaCounters1 = savedInstanceState.getBoolean("displayManaCounters1")
-        displayManaCounters2 = savedInstanceState.getBoolean("displayManaCounters2")
-        displayManaCounters3 = savedInstanceState.getBoolean("displayManaCounters3")
-        displayManaCounters4 = savedInstanceState.getBoolean("displayManaCounters4")
-        displayDamageCounters1 = savedInstanceState.getBoolean("displayDamageCounters1")
-        displayDamageCounters2 = savedInstanceState.getBoolean("displayDamageCounters2")
-        displayDamageCounters3 = savedInstanceState.getBoolean("displayDamageCounters3")
-        displayDamageCounters4 = savedInstanceState.getBoolean("displayDamageCounters4")
-        displayShiftedLifeTotal1 = savedInstanceState.getBoolean("displayShiftedLifeTotal1")
-        displayShiftedLifeTotal2 = savedInstanceState.getBoolean("displayShiftedLifeTotal2")
-        displayShiftedLifeTotal3 = savedInstanceState.getBoolean("displayShiftedLifeTotal3")
-        displayShiftedLifeTotal4 = savedInstanceState.getBoolean("displayShiftedLifeTotal4")
-        isPaused = savedInstanceState.getBoolean("isPaused")
-        points1 = savedInstanceState.getInt("points1")
-        points2 = savedInstanceState.getInt("points2")
-        points3 = savedInstanceState.getInt("points3")
-        points4 = savedInstanceState.getInt("points4")
     }
 }

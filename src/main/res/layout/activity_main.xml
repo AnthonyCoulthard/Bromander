@@ -2013,6 +2013,7 @@
         android:text=""
         android:textSize="28sp"
         android:gravity="center"
+        android:textColor="@android:color/white"
         android:background="@drawable/counter_circle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
