@@ -166,7 +166,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var playerName2: EditText
     lateinit var playerName3: EditText
     lateinit var playerName4: EditText
-    lateinit var endTurn: Button
+    lateinit var options: Button
     lateinit var pause: Button
     lateinit var progressBarBackground: Button
 
@@ -217,7 +217,7 @@ class MainActivity : AppCompatActivity() {
     var player4TimeRemaining: Int = 300
     var playerTimer: Int = 300
     var currentPlayer: Int = 1
-    var endTurnString: String = "END"
+    var optionsString: String = "END"
     var skipTurnString: String = "SKIP"
     var displayManaCounters1: Boolean = false
     var displayManaCounters2: Boolean = false
@@ -589,7 +589,7 @@ class MainActivity : AppCompatActivity() {
         savedInstanceState.putInt("player4TimeRemaining", player4TimeRemaining)
         savedInstanceState.putInt("playerTimer", playerTimer)
         savedInstanceState.putInt("currentPlayer", currentPlayer)
-        savedInstanceState.putString("endTurnString", endTurnString)
+        savedInstanceState.putString("optionsString", optionsString)
         savedInstanceState.putString("skipTurnString", skipTurnString)
         savedInstanceState.putBoolean("displayManaCounters1", displayManaCounters1)
         savedInstanceState.putBoolean("displayManaCounters2", displayManaCounters2)
@@ -660,7 +660,7 @@ class MainActivity : AppCompatActivity() {
         player4TimeRemaining = savedInstanceState.getInt("player4TimeRemaining")
         playerTimer = savedInstanceState.getInt("playerTimer")
         currentPlayer = savedInstanceState.getInt("currentPlayer")
-        endTurnString = savedInstanceState.getString("endTurnString")
+        optionsString = savedInstanceState.getString("optionsString")
         skipTurnString = savedInstanceState.getString("skipTurnString")
         displayManaCounters1 = savedInstanceState.getBoolean("displayManaCounters1")
         displayManaCounters2 = savedInstanceState.getBoolean("displayManaCounters2")
@@ -817,7 +817,7 @@ class MainActivity : AppCompatActivity() {
         playerName2 = findViewById(R.id.playerName2)
         playerName3 = findViewById(R.id.playerName3)
         playerName4 = findViewById(R.id.playerName4)
-        endTurn = findViewById(R.id.endTurn)
+        options = findViewById(R.id.options)
         pause = findViewById(R.id.pause)
         progressBarBackground = findViewById(R.id.progressBarBackground)
         progressBar = findViewById(R.id.progressBar)
@@ -1067,7 +1067,7 @@ class MainActivity : AppCompatActivity() {
         //if (additionalTime < -60s){
         //   additionalTime = -60s
         //}
-        endTurn.setOnClickListener {
+        options.setOnClickListener {
             try {
                 timeOutRemoveTimer.cancel()
 
@@ -1086,7 +1086,7 @@ class MainActivity : AppCompatActivity() {
                     playerTimer = player2TimeRemaining
                     player1Background.setBackgroundColor(Color.parseColor("#77ff8c00"))
                     player2Background.setBackgroundColor(Color.parseColor("#77f440e4"))
-                    endTurn.rotation = 65f
+                    options.rotation = 65f
                     progressBar.rotation = 270f
                 } else if (currentPlayer == 2) {
                     additionalTime = (300 - turnStatus) / 4
@@ -1103,7 +1103,7 @@ class MainActivity : AppCompatActivity() {
                     playerTimer = player3TimeRemaining
                     player2Background.setBackgroundColor(Color.parseColor("#77ff8c00"))
                     player3Background.setBackgroundColor(Color.parseColor("#77f440e4"))
-                    endTurn.rotation = 155f
+                    options.rotation = 155f
                     progressBar.rotation = 270f
                 } else if (currentPlayer == 3) {
                     additionalTime = (300 - turnStatus) / 4
@@ -1120,7 +1120,7 @@ class MainActivity : AppCompatActivity() {
                     playerTimer = player4TimeRemaining
                     player3Background.setBackgroundColor(Color.parseColor("#77ff8c00"))
                     player4Background.setBackgroundColor(Color.parseColor("#77f440e4"))
-                    endTurn.rotation = 245f
+                    options.rotation = 245f
                     progressBar.rotation = 90f
                 } else if (currentPlayer == 4) {
                     additionalTime = (300 - turnStatus) / 4
@@ -1137,7 +1137,7 @@ class MainActivity : AppCompatActivity() {
                     playerTimer = player1TimeRemaining
                     player4Background.setBackgroundColor(Color.parseColor("#77ff8c00"))
                     player1Background.setBackgroundColor(Color.parseColor("#77f440e4"))
-                    endTurn.rotation = 335f
+                    options.rotation = 335f
                     progressBar.rotation = 90f
                 }
 
@@ -1159,29 +1159,29 @@ class MainActivity : AppCompatActivity() {
                     override fun onFinish() {
                         progressBar.progress = 1f
                         turnStatus = playerTimer
-                        endTurn.setBackgroundResource(R.drawable.ic_tap_icon_orange)
+                        options.setBackgroundResource(R.drawable.ic_tap_icon_orange)
                         pause.setBackgroundResource(R.drawable.ic_play_icon_orange)
                         if (currentPlayer == 1) {
                             player1Background.setBackgroundColor(Color.parseColor("#f440e4"))
-                            endTurn.rotation = 65f
+                            options.rotation = 65f
                             pause.rotation = 0f
                         } else if (currentPlayer == 2) {
                             player2Background.setBackgroundColor(Color.parseColor("#f440e4"))
-                            endTurn.rotation = 155f
+                            options.rotation = 155f
                             pause.rotation = 90f
                         } else if (currentPlayer == 3) {
                             player3Background.setBackgroundColor(Color.parseColor("#f440e4"))
-                            endTurn.rotation = 245f
+                            options.rotation = 245f
                             pause.rotation = 180f
                         } else if (currentPlayer == 4) {
                             player4Background.setBackgroundColor(Color.parseColor("#f440e4"))
-                            endTurn.rotation = 335f
+                            options.rotation = 335f
                             pause.rotation = 270f
                         }
                     }
 
                     override fun onTick(millisUntilFinished: Long) {
-                        endTurn.setBackgroundResource(R.drawable.ic_tap_icon)
+                        options.setBackgroundResource(R.drawable.ic_tap_icon)
                         progressBar.progress = (playerTimer * 1000L - millisUntilFinished).toFloat() / (playerTimer * 1000L)
                         if ((playerTimer * 1000L - millisUntilFinished) / 1000 > turnStatus) {
                             turnStatus++
@@ -1217,29 +1217,29 @@ class MainActivity : AppCompatActivity() {
                     override fun onFinish() {
                         progressBar.progress = 1f
                         turnStatus = playerTimer
-                        endTurn.setBackgroundResource(R.drawable.ic_tap_icon_orange)
+                        options.setBackgroundResource(R.drawable.ic_tap_icon_orange)
                         pause.setBackgroundResource(R.drawable.ic_play_icon_orange)
                         if (currentPlayer == 1) {
                             player1Background.setBackgroundColor(Color.parseColor("#f440e4"))
-                            endTurn.rotation = 65f
+                            options.rotation = 65f
                             pause.rotation = 0f
                         } else if (currentPlayer == 2) {
                             player2Background.setBackgroundColor(Color.parseColor("#f440e4"))
-                            endTurn.rotation = 155f
+                            options.rotation = 155f
                             pause.rotation = 90f
                         } else if (currentPlayer == 3) {
                             player3Background.setBackgroundColor(Color.parseColor("#f440e4"))
-                            endTurn.rotation = 245f
+                            options.rotation = 245f
                             pause.rotation = 180f
                         } else if (currentPlayer == 4) {
                             player4Background.setBackgroundColor(Color.parseColor("#f440e4"))
-                            endTurn.rotation = 335f
+                            options.rotation = 335f
                             pause.rotation = 270f
                         }
                     }
 
                     override fun onTick(millisUntilFinished: Long) {
-                        endTurn.setBackgroundResource(R.drawable.ic_tap_icon)
+                        options.setBackgroundResource(R.drawable.ic_tap_icon)
                         pause.setBackgroundResource(R.drawable.ic_pause_icon_close)
                         if (turnStatus == 0){
                             pause.rotation = 90f
@@ -3487,7 +3487,7 @@ class MainActivity : AppCompatActivity() {
 
         //Set center button to say End at start
         if (!areElementsInitialized) {
-            progressBarBackground.text = endTurnString
+            progressBarBackground.text = optionsString
             progressBarBackground.setTextColor(Color.parseColor("#ffffff"))
             areElementsInitialized = true
         }
