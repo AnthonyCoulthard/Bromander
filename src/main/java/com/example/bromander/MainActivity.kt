@@ -2,26 +2,16 @@ package com.example.bromander
 
 import android.app.Activity
 import android.app.Fragment
-import android.content.ComponentCallbacks2
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.GestureDetector
-import android.view.KeyEvent
+import android.view.ContextMenu
+import android.view.MenuItem
 import android.view.View
-import android.view.View.INVISIBLE
-import android.view.WindowManager
-import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.view.MotionEvent
-import android.widget.Toast
 import android.view.View.OnLongClickListener
-
-
-
+import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -80,6 +70,22 @@ class MainActivity : AppCompatActivity() {
     lateinit var black4: Button
     lateinit var red4: Button
     lateinit var green4: Button
+    lateinit var player1Timer: Button
+    lateinit var player2Timer: Button
+    lateinit var player3Timer: Button
+    lateinit var player4Timer: Button
+    lateinit var player1TimerText: TextView
+    lateinit var player2TimerText: TextView
+    lateinit var player3TimerText: TextView
+    lateinit var player4TimerText: TextView
+    lateinit var player1Text: TextView
+    lateinit var player2Text: TextView
+    lateinit var player3Text: TextView
+    lateinit var player4Text: TextView
+    lateinit var player1Area: View
+    lateinit var player2Area: View
+    lateinit var player3Area: View
+    lateinit var player4Area: View
 
     //Additional global variables
     var lifeTotal1: Int = 40
@@ -127,6 +133,10 @@ class MainActivity : AppCompatActivity() {
         minus3 = findViewById(R.id.minus3)
         minus4 = findViewById(R.id.minus4)
         */
+        player1Area = findViewById(R.id.player1Area)
+        player2Area = findViewById(R.id.player2Area)
+        player3Area = findViewById(R.id.player3Area)
+        player4Area = findViewById(R.id.player4Area)
         life1 = findViewById(R.id.life1)
         life2 = findViewById(R.id.life2)
         life3 = findViewById(R.id.life3)
@@ -159,6 +169,18 @@ class MainActivity : AppCompatActivity() {
         black4 = findViewById(R.id.black4)
         red4 = findViewById(R.id.red4)
         green4 = findViewById(R.id.green4)
+        player1Timer = findViewById(R.id.player1Timer)
+        player2Timer = findViewById(R.id.player2Timer)
+        player3Timer = findViewById(R.id.player3Timer)
+        player4Timer = findViewById(R.id.player4Timer)
+        player1TimerText = findViewById(R.id.player1TimerText)
+        player2TimerText = findViewById(R.id.player2TimerText)
+        player3TimerText = findViewById(R.id.player3TimerText)
+        player4TimerText = findViewById(R.id.player4TimerText)
+        player1Text = findViewById(R.id.player1Text)
+        player2Text = findViewById(R.id.player2Text)
+        player3Text = findViewById(R.id.player3Text)
+        player4Text = findViewById(R.id.player4Text)
         endTurn = findViewById(R.id.endTurn)
 
         //Make life buttons nonexistent
@@ -173,6 +195,13 @@ class MainActivity : AppCompatActivity() {
         minus4.visibility = INVISIBLE
         */
 
+        //Listen for pop-up menus
+        registerForContextMenu(player1Area)
+        registerForContextMenu(player2Area)
+        registerForContextMenu(player3Area)
+        registerForContextMenu(player4Area)
+
+        //Set onClickListeners for life buttons
         hiddenPlus1.setOnClickListener {
             lifeTotal1++
             life1.text = lifeTotal1.toString()
@@ -252,7 +281,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
-        white1.setOnLongClickListener(View.OnLongClickListener(){
+        white1.setOnLongClickListener(OnLongClickListener(){
             white1Counter = 0
             white1.text = ""
             true
@@ -288,7 +317,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
-        blue1.setOnLongClickListener(View.OnLongClickListener(){
+        blue1.setOnLongClickListener(OnLongClickListener(){
             blue1Counter = 0
             blue1.text = ""
             true
@@ -324,7 +353,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
-        black1.setOnLongClickListener(View.OnLongClickListener(){
+        black1.setOnLongClickListener(OnLongClickListener(){
             black1Counter = 0
             black1.text = ""
             true
@@ -360,7 +389,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
-        red1.setOnLongClickListener(View.OnLongClickListener(){
+        red1.setOnLongClickListener(OnLongClickListener(){
             red1Counter = 0
             red1.text = ""
             true
@@ -396,7 +425,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
-        green1.setOnLongClickListener(View.OnLongClickListener(){
+        green1.setOnLongClickListener(OnLongClickListener(){
             green1Counter = 0
             green1.text = ""
             true
@@ -432,7 +461,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
-        white2.setOnLongClickListener(View.OnLongClickListener(){
+        white2.setOnLongClickListener(OnLongClickListener(){
             white2Counter = 0
             white2.text = ""
             true
@@ -468,7 +497,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
-        blue2.setOnLongClickListener(View.OnLongClickListener(){
+        blue2.setOnLongClickListener(OnLongClickListener(){
             blue2Counter = 0
             blue2.text = ""
             true
@@ -504,7 +533,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
-        black2.setOnLongClickListener(View.OnLongClickListener(){
+        black2.setOnLongClickListener(OnLongClickListener(){
             black2Counter = 0
             black2.text = ""
             true
@@ -540,7 +569,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
-        red2.setOnLongClickListener(View.OnLongClickListener(){
+        red2.setOnLongClickListener(OnLongClickListener(){
             red2Counter = 0
             red2.text = ""
             true
@@ -576,7 +605,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
-        green2.setOnLongClickListener(View.OnLongClickListener(){
+        green2.setOnLongClickListener(OnLongClickListener(){
             green2Counter = 0
             green2.text = ""
             true
@@ -612,7 +641,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
-        white3.setOnLongClickListener(View.OnLongClickListener(){
+        white3.setOnLongClickListener(OnLongClickListener(){
             white3Counter = 0
             white3.text = ""
             true
@@ -648,7 +677,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
-        blue3.setOnLongClickListener(View.OnLongClickListener(){
+        blue3.setOnLongClickListener(OnLongClickListener(){
             blue3Counter = 0
             blue3.text = ""
             true
@@ -684,7 +713,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
-        black3.setOnLongClickListener(View.OnLongClickListener(){
+        black3.setOnLongClickListener(OnLongClickListener(){
             black3Counter = 0
             black3.text = ""
             true
@@ -720,7 +749,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
-        red3.setOnLongClickListener(View.OnLongClickListener(){
+        red3.setOnLongClickListener(OnLongClickListener(){
             red3Counter = 0
             red3.text = ""
             true
@@ -756,7 +785,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
-        green3.setOnLongClickListener(View.OnLongClickListener(){
+        green3.setOnLongClickListener(OnLongClickListener(){
             green3Counter = 0
             green3.text = ""
             true
@@ -792,7 +821,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
-        white4.setOnLongClickListener(View.OnLongClickListener(){
+        white4.setOnLongClickListener(OnLongClickListener(){
             white4Counter = 0
             white4.text = ""
             true
@@ -828,7 +857,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
-        blue4.setOnLongClickListener(View.OnLongClickListener(){
+        blue4.setOnLongClickListener(OnLongClickListener(){
             blue4Counter = 0
             blue4.text = ""
             true
@@ -864,7 +893,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
-        black4.setOnLongClickListener(View.OnLongClickListener(){
+        black4.setOnLongClickListener(OnLongClickListener(){
             black4Counter = 0
             black4.text = ""
             true
@@ -900,7 +929,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
-        red4.setOnLongClickListener(View.OnLongClickListener(){
+        red4.setOnLongClickListener(OnLongClickListener(){
             red4Counter = 0
             red4.text = ""
             true
@@ -936,7 +965,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
-        green4.setOnLongClickListener(View.OnLongClickListener(){
+        green4.setOnLongClickListener(OnLongClickListener(){
             green4Counter = 0
             green4.text = ""
             true
@@ -1277,6 +1306,34 @@ class MainActivity : AppCompatActivity() {
             life2.text = lifeTotal2.toString()
             life3.text = lifeTotal3.toString()
             life4.text = lifeTotal4.toString()
+        }
+    }
+
+    //Menu creation
+    override fun onCreateContextMenu(menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo?){
+        super.onCreateContextMenu(menu, v, menuInfo)
+        menu?.setHeaderTitle("Choose wisely")
+        menuInflater.inflate(R.menu.counter_menu, menu)
+    }
+    override fun onContextItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.optionItem -> {
+                Toast.makeText(this, "Option 1 selected", Toast.LENGTH_SHORT).show()
+                true
+            }
+            R.id.manaItem -> {
+                Toast.makeText(this, "Option 2 selected", Toast.LENGTH_SHORT).show()
+                true
+            }
+            R.id.damageItem -> {
+                Toast.makeText(this, "Option 3 selected", Toast.LENGTH_SHORT).show()
+                true
+            }
+            R.id.lifeItem -> {
+                Toast.makeText(this, "Option 4 selected", Toast.LENGTH_SHORT).show()
+                true
+            }
+            else -> super.onContextItemSelected(item)
         }
     }
 

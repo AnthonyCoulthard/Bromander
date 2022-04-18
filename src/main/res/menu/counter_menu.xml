@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/optionItem"
+        android:title="Options"
+        />
+
+    <item
+        android:id="@+id/manaItem"
+        android:title="Counters"
+        />
+
+    <item
+        android:id="@+id/damageItem"
+        android:title="Commander Damage"
+        />
+
+    <item
+        android:id="@+id/lifeItem"
+        android:title="Life Total"
+        />
+</menu>

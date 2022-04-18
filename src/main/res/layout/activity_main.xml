@@ -10,9 +10,10 @@
     >
 
     <View
+        android:id="@+id/player1Area"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#800080"
+        android:elevation="25dp"
         app:layout_constraintStart_toStartOf="@id/v0Guideline"
         app:layout_constraintEnd_toEndOf="@id/v50Guideline"
         app:layout_constraintBottom_toBottomOf="@id/h50Guideline"
@@ -20,9 +21,10 @@
         />
 
     <View
+        android:id="@+id/player2Area"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#800080"
+        android:elevation="25dp"
         app:layout_constraintStart_toStartOf="@id/v50Guideline"
         app:layout_constraintEnd_toEndOf="@id/v100Guideline"
         app:layout_constraintBottom_toBottomOf="@id/h50Guideline"
@@ -30,9 +32,21 @@
         />
 
     <View
+        android:id="@+id/player3Area"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#800080"
+        android:elevation="25dp"
+        app:layout_constraintStart_toStartOf="@id/v50Guideline"
+        app:layout_constraintEnd_toEndOf="@id/v100Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h100Guideline"
+        app:layout_constraintTop_toTopOf="@id/h50Guideline"
+        />
+
+    <View
+        android:id="@+id/player4Area"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:elevation="25dp"
         app:layout_constraintStart_toStartOf="@id/v0Guideline"
         app:layout_constraintEnd_toEndOf="@id/v50Guideline"
         app:layout_constraintBottom_toBottomOf="@id/h100Guideline"
@@ -40,13 +54,47 @@
         />
 
     <View
+        android:id="@+id/player1Background"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#800080"
-        app:layout_constraintStart_toStartOf="@id/v50Guideline"
-        app:layout_constraintEnd_toEndOf="@id/v100Guideline"
-        app:layout_constraintBottom_toBottomOf="@id/h100Guideline"
-        app:layout_constraintTop_toTopOf="@id/h50Guideline"
+        android:background="#ffa1fd"
+        app:layout_constraintStart_toStartOf="@id/player1Area"
+        app:layout_constraintEnd_toEndOf="@id/player1Area"
+        app:layout_constraintBottom_toBottomOf="@id/player1Area"
+        app:layout_constraintTop_toTopOf="@id/player1Area"
+        />
+
+    <View
+        android:id="@+id/player2Background"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#ffc2a1"
+        app:layout_constraintStart_toStartOf="@id/player2Area"
+        app:layout_constraintEnd_toEndOf="@id/player2Area"
+        app:layout_constraintBottom_toBottomOf="@id/player2Area"
+        app:layout_constraintTop_toTopOf="@id/player2Area"
+        />
+
+    <View
+        android:id="@+id/player3Background"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#ffc2a1"
+        app:layout_constraintStart_toStartOf="@id/player3Area"
+        app:layout_constraintEnd_toEndOf="@id/player3Area"
+        app:layout_constraintBottom_toBottomOf="@id/player3Area"
+        app:layout_constraintTop_toTopOf="@id/player3Area"
+        />
+
+    <View
+        android:id="@+id/player4Background"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#ffc2a1"
+        app:layout_constraintStart_toStartOf="@id/player4Area"
+        app:layout_constraintEnd_toEndOf="@id/player4Area"
+        app:layout_constraintBottom_toBottomOf="@id/player4Area"
+        app:layout_constraintTop_toTopOf="@id/player4Area"
         />
 
     <View
@@ -67,6 +115,174 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <Button
+        android:id="@+id/player1Timer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#ffffff"
+        android:elevation="2dp"
+        app:layout_constraintStart_toStartOf="@id/v40Guideline"
+        app:layout_constraintEnd_toEndOf="@id/v50Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h40Guideline"
+        app:layout_constraintTop_toTopOf="@id/h10Guideline"
+        />
+
+    <Button
+        android:id="@+id/player2Timer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#ffffff"
+        android:elevation="2dp"
+        app:layout_constraintStart_toStartOf="@id/v50Guideline"
+        app:layout_constraintEnd_toEndOf="@id/v60Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h40Guideline"
+        app:layout_constraintTop_toTopOf="@id/h10Guideline"
+        />
+
+    <Button
+        android:id="@+id/player3Timer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#ffffff"
+        android:elevation="2dp"
+        app:layout_constraintStart_toStartOf="@id/v40Guideline"
+        app:layout_constraintEnd_toEndOf="@id/v50Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h90Guideline"
+        app:layout_constraintTop_toTopOf="@id/h60Guideline"
+        />
+
+    <Button
+        android:id="@+id/player4Timer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#ffffff"
+        android:elevation="2dp"
+        app:layout_constraintStart_toStartOf="@id/v50Guideline"
+        app:layout_constraintEnd_toEndOf="@id/v60Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h90Guideline"
+        app:layout_constraintTop_toTopOf="@id/h60Guideline"
+        />
+
+    <TextView
+        android:id="@+id/player1TimerText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:elevation="2dp"
+        android:text="180"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:rotation="90"
+        app:layout_constraintStart_toStartOf="@id/v40Guideline"
+        app:layout_constraintEnd_toEndOf="@id/v50Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h10Guideline"
+        app:layout_constraintTop_toTopOf="@id/h0Guideline"
+        />
+
+    <TextView
+        android:id="@+id/player2TimerText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:elevation="2dp"
+        android:text="180"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:rotation="270"
+        app:layout_constraintStart_toStartOf="@id/v50Guideline"
+        app:layout_constraintEnd_toEndOf="@id/v60Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h10Guideline"
+        app:layout_constraintTop_toTopOf="@id/h0Guideline"
+        />
+
+    <TextView
+        android:id="@+id/player3TimerText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:elevation="2dp"
+        android:text="180"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:rotation="270"
+        app:layout_constraintStart_toStartOf="@id/v50Guideline"
+        app:layout_constraintEnd_toEndOf="@id/v60Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h100Guideline"
+        app:layout_constraintTop_toTopOf="@id/h90Guideline"
+        />
+
+    <TextView
+        android:id="@+id/player4TimerText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:elevation="2dp"
+        android:text="180"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:rotation="90"
+        app:layout_constraintStart_toStartOf="@id/v40Guideline"
+        app:layout_constraintEnd_toEndOf="@id/v50Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h100Guideline"
+        app:layout_constraintTop_toTopOf="@id/h90Guideline"
+        />
+
+    <TextView
+        android:id="@+id/player1Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:text="Player 1"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:rotation="90"
+        app:layout_constraintStart_toStartOf="@id/player1Timer"
+        app:layout_constraintEnd_toEndOf="@id/player1Timer"
+        app:layout_constraintBottom_toBottomOf="@id/player1Timer"
+        app:layout_constraintTop_toTopOf="@id/player1Timer"
+        />
+
+    <TextView
+        android:id="@+id/player2Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:text="Player 2"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:rotation="90"
+        app:layout_constraintStart_toStartOf="@id/player2Timer"
+        app:layout_constraintEnd_toEndOf="@id/player2Timer"
+        app:layout_constraintBottom_toBottomOf="@id/player2Timer"
+        app:layout_constraintTop_toTopOf="@id/player2Timer"
+        />
+
+    <TextView
+        android:id="@+id/player3Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:text="Player 3"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:rotation="90"
+        app:layout_constraintStart_toStartOf="@id/player3Timer"
+        app:layout_constraintEnd_toEndOf="@id/player3Timer"
+        app:layout_constraintBottom_toBottomOf="@id/player3Timer"
+        app:layout_constraintTop_toTopOf="@id/player3Timer"
+        />
+
+    <TextView
+        android:id="@+id/player4Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:text="Player 4"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:rotation="90"
+        app:layout_constraintStart_toStartOf="@id/player4Timer"
+        app:layout_constraintEnd_toEndOf="@id/player4Timer"
+        app:layout_constraintBottom_toBottomOf="@id/player4Timer"
+        app:layout_constraintTop_toTopOf="@id/player4Timer"
         />
 
     <Button
@@ -172,7 +388,7 @@
         android:background="@android:color/transparent"
         android:textColor="#ffffff"
         android:text="40"
-        android:textSize="80dp"
+        android:textSize="80sp"
         android:gravity="center"
         android:rotation="90"
         app:layout_constraintStart_toStartOf="@id/v5Guideline"
@@ -188,7 +404,7 @@
         android:background="@android:color/transparent"
         android:textColor="#ffffff"
         android:text="40"
-        android:textSize="80dp"
+        android:textSize="80sp"
         android:gravity="center"
         android:rotation="270"
         app:layout_constraintStart_toStartOf="@id/v55Guideline"
@@ -204,7 +420,7 @@
         android:background="@android:color/transparent"
         android:textColor="#ffffff"
         android:text="40"
-        android:textSize="80dp"
+        android:textSize="80sp"
         android:gravity="center"
         android:rotation="90"
         app:layout_constraintStart_toStartOf="@id/v5Guideline"
@@ -220,7 +436,7 @@
         android:background="@android:color/transparent"
         android:textColor="#ffffff"
         android:text="40"
-        android:textSize="80dp"
+        android:textSize="80sp"
         android:gravity="center"
         android:rotation="270"
         app:layout_constraintStart_toStartOf="@id/v55Guideline"
@@ -828,6 +1044,7 @@
         app:layout_constraintGuide_percent="0.05"
         android:orientation="vertical"
         />
+    <!--
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v6Guideline"
         android:layout_width="wrap_content"
@@ -860,6 +1077,7 @@
         app:layout_constraintGuide_percent="0.09"
         android:orientation="vertical"
         />
+        -->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v10Guideline"
         android:layout_width="wrap_content"
@@ -868,6 +1086,7 @@
         app:layout_constraintGuide_percent="0.1"
         android:orientation="vertical"
         />
+    <!--
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v11Guideline"
         android:layout_width="wrap_content"
@@ -916,6 +1135,7 @@
         app:layout_constraintGuide_percent="0.16"
         android:orientation="vertical"
         />
+        -->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v17Guideline"
         android:layout_width="wrap_content"
@@ -924,6 +1144,7 @@
         app:layout_constraintGuide_percent="0.17"
         android:orientation="vertical"
         />
+    <!--
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v18Guideline"
         android:layout_width="wrap_content"
@@ -940,6 +1161,7 @@
         app:layout_constraintGuide_percent="0.19"
         android:orientation="vertical"
         />
+        -->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v20Guideline"
         android:layout_width="wrap_content"
@@ -948,6 +1170,7 @@
         app:layout_constraintGuide_percent="0.2"
         android:orientation="vertical"
         />
+    <!--
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v21Guideline"
         android:layout_width="wrap_content"
@@ -980,6 +1203,7 @@
         app:layout_constraintGuide_percent="0.24"
         android:orientation="vertical"
         />
+        -->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v25Guideline"
         android:layout_width="wrap_content"
