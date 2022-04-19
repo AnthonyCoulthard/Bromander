@@ -4,14 +4,19 @@ import android.app.Activity
 import android.app.Fragment
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
+import android.util.Log
 import android.view.ContextMenu
 import android.view.MenuItem
+import android.view.MotionEvent
+import android.view.MotionEvent.INVALID_POINTER_ID
 import android.view.View
 import android.view.View.OnLongClickListener
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.MotionEventCompat
 
 
 class MainActivity : AppCompatActivity() {
@@ -112,6 +117,28 @@ class MainActivity : AppCompatActivity() {
     var black4Counter: Int = 0
     var red4Counter: Int = 0
     var green4Counter: Int = 0
+    var commander1damage2: Int = 0
+    var commander1damage3: Int = 0
+    var commander1damage4: Int = 0
+    var commander2damage1: Int = 0
+    var commander2damage3: Int = 0
+    var commander2damage4: Int = 0
+    var commander3damage2: Int = 0
+    var commander3damage1: Int = 0
+    var commander3damage4: Int = 0
+    var commander4damage2: Int = 0
+    var commander4damage3: Int = 0
+    var commander4damage1: Int = 0
+    var timer1: Int = 180
+    var timer2: Int = 180
+    var timer3: Int = 180
+    var timer4: Int = 180
+    var posX: Float = 0.0f
+    var posY: Float = 0.0f
+    var newPosX: Float = 0.0f
+    var newPosY: Float = 0.0f
+    var tempPosX: Float = 0.0f
+    var tempPosY: Float = 0.0f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -195,11 +222,78 @@ class MainActivity : AppCompatActivity() {
         minus4.visibility = INVISIBLE
         */
 
-        //Listen for pop-up menus
+        //Register for pop-up menus
         registerForContextMenu(player1Area)
         registerForContextMenu(player2Area)
         registerForContextMenu(player3Area)
         registerForContextMenu(player4Area)
+
+        //Listen for gestures on player areas
+        var mActivePointerId = INVALID_POINTER_ID
+        player1Area.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosX > newPosX){
+                        lifeTotal1++
+                        life1.text = lifeTotal1.toString()
+                    }
+                    else if (tempPosX < newPosX){
+                        lifeTotal1--
+                        life1.text = lifeTotal1.toString()
+                    }
+                    newPosX = tempPosX
+                    newPosY = tempPosY
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosX > newPosX){
+                        lifeTotal1++
+                        life1.text = lifeTotal1.toString()
+                    }
+                    else if (tempPosX < newPosX){
+                        lifeTotal1--
+                        life1.text = lifeTotal1.toString()
+                    }
+                    posX = newPosX
+                    posY = newPosY
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
 
         //Set onClickListeners for life buttons
         hiddenPlus1.setOnClickListener {
@@ -971,6 +1065,52 @@ class MainActivity : AppCompatActivity() {
             true
         })
 
+        //Run timer in thread
+        var timerHandler = Handler()
+        val thread1: Thread = object : Thread() {
+            override fun run() {
+                try {
+                    while (true) {
+                        sleep(1000)
+                        timer1--
+                        timer2--
+                        timer3--
+                        timer4--
+                        player1TimerText.text = timer1.toString()
+                        player2TimerText.text = timer2.toString()
+                        player3TimerText.text = timer3.toString()
+                        player4TimerText.text = timer4.toString()
+                    }
+                } catch (e: InterruptedException) {
+                    e.printStackTrace()
+                }
+            }
+        }
+
+        thread1.start()
+        
+        //Hide dev coloured counters
+        white1.visibility = View.INVISIBLE
+        white2.visibility = View.INVISIBLE
+        white3.visibility = View.INVISIBLE
+        white4.visibility = View.INVISIBLE
+        blue1.visibility = View.INVISIBLE
+        blue2.visibility = View.INVISIBLE
+        blue3.visibility = View.INVISIBLE
+        blue4.visibility = View.INVISIBLE
+        black1.visibility = View.INVISIBLE
+        black2.visibility = View.INVISIBLE
+        black3.visibility = View.INVISIBLE
+        black4.visibility = View.INVISIBLE
+        red1.visibility = View.INVISIBLE
+        red2.visibility = View.INVISIBLE
+        red3.visibility = View.INVISIBLE
+        red4.visibility = View.INVISIBLE
+        green1.visibility = View.INVISIBLE
+        green2.visibility = View.INVISIBLE
+        green3.visibility = View.INVISIBLE
+        green4.visibility = View.INVISIBLE
+
         /*
         white1.setOnClickListener {
             if (white1Counter < 0) {
@@ -1336,6 +1476,105 @@ class MainActivity : AppCompatActivity() {
             else -> super.onContextItemSelected(item)
         }
     }
+
+    //Increase/Decrease by swiping up/down
+        /*
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+
+        val action: Int = MotionEventCompat.getActionMasked(event)
+
+        return when (action) {
+            MotionEvent.ACTION_DOWN -> {
+                Log.d("action", "Action was DOWN")
+                true
+            }
+            MotionEvent.ACTION_MOVE -> {
+                Log.d("action", "Action was MOVE")
+                true
+            }
+            MotionEvent.ACTION_UP -> {
+                Log.d("action", "Action was UP")
+                true
+            }
+            MotionEvent.ACTION_CANCEL -> {
+                Log.d("action", "Action was CANCEL")
+                true
+            }
+            MotionEvent.ACTION_OUTSIDE -> {
+                Log.d("action", "Movement occurred outside bounds of current screen element")
+                true
+            }
+            else -> super.onTouchEvent(event)
+        }
+    }
+         */
+
+    // The ‘active pointer’ is the one currently moving our object.
+    /*
+    private var mActivePointerId = INVALID_POINTER_ID
+    var mLastTouchX: Float = 0.0f
+    var mLastTouchY: Float = 0.0f
+    var mPosX: Float = 0.0f
+    var mPosY: Float = 0.0f
+
+    override fun onTouchEvent(ev: MotionEvent): Boolean {
+        // Let the ScaleGestureDetector inspect all events.
+        player1Area.onTouchEvent(ev)
+
+        when (MotionEventCompat.getActionMasked(ev)) {
+            MotionEvent.ACTION_DOWN -> {
+                MotionEventCompat.getActionIndex(ev).also { pointerIndex ->
+                    // Remember where we started (for dragging)
+                    mLastTouchX = MotionEventCompat.getX(ev, pointerIndex)
+                    mLastTouchY = MotionEventCompat.getY(ev, pointerIndex)
+                }
+
+                // Save the ID of this pointer (for dragging)
+                mActivePointerId = MotionEventCompat.getPointerId(ev, 0)
+            }
+
+            MotionEvent.ACTION_MOVE -> {
+                // Find the index of the active pointer and fetch its position
+                val (x: Float, y: Float) =
+                    MotionEventCompat.findPointerIndex(ev, mActivePointerId).let { pointerIndex ->
+                        // Calculate the distance moved
+                        MotionEventCompat.getX(ev, pointerIndex) to
+                                MotionEventCompat.getY(ev, pointerIndex)
+                    }
+
+                mPosX += x - mLastTouchX
+                mPosY += y - mLastTouchY
+
+                //invalidate()
+
+                // Remember this touch position for the next move event
+                mLastTouchX = x
+                mLastTouchY = y
+            }
+            MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                mActivePointerId = INVALID_POINTER_ID
+            }
+            MotionEvent.ACTION_POINTER_UP -> {
+
+                MotionEventCompat.getActionIndex(ev).also { pointerIndex ->
+                    MotionEventCompat.getPointerId(ev, pointerIndex)
+                        .takeIf { it == mActivePointerId }
+                        ?.run {
+                            // This was our active pointer going up. Choose a new
+                            // active pointer and adjust accordingly.
+                            val newPointerIndex = if (pointerIndex == 0) 1 else 0
+                            mLastTouchX = MotionEventCompat.getX(ev, newPointerIndex)
+                            mLastTouchY = MotionEventCompat.getY(ev, newPointerIndex)
+                            mActivePointerId = MotionEventCompat.getPointerId(ev, newPointerIndex)
+                            lifeTotal1++
+                            life1.text = lifeTotal1.toString()
+                        }
+                }
+            }
+        }
+        return true
+    }
+     */
 
     //Function to pass to gesture detector
     /*
