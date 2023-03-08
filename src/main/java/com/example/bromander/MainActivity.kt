@@ -177,6 +177,7 @@ class MainActivity : AppCompatActivity() {
         hiddenMinus2 = findViewById(R.id.hiddenMinus2)
         hiddenMinus3 = findViewById(R.id.hiddenMinus3)
         hiddenMinus4 = findViewById(R.id.hiddenMinus4)
+        /*
         white1 = findViewById(R.id.white1)
         blue1 = findViewById(R.id.blue1)
         black1 = findViewById(R.id.black1)
@@ -197,10 +198,12 @@ class MainActivity : AppCompatActivity() {
         black4 = findViewById(R.id.black4)
         red4 = findViewById(R.id.red4)
         green4 = findViewById(R.id.green4)
+        */
         player1Timer = findViewById(R.id.player1Timer)
         player2Timer = findViewById(R.id.player2Timer)
         player3Timer = findViewById(R.id.player3Timer)
         player4Timer = findViewById(R.id.player4Timer)
+        /*
         player1TimerText = findViewById(R.id.player1TimerText)
         player2TimerText = findViewById(R.id.player2TimerText)
         player3TimerText = findViewById(R.id.player3TimerText)
@@ -209,6 +212,7 @@ class MainActivity : AppCompatActivity() {
         player2Text = findViewById(R.id.player2Text)
         player3Text = findViewById(R.id.player3Text)
         player4Text = findViewById(R.id.player4Text)
+        */
         endTurn = findViewById(R.id.endTurn)
 
         //Make life buttons nonexistent
@@ -224,10 +228,12 @@ class MainActivity : AppCompatActivity() {
         */
 
         //Register for pop-up menus
+        /*
         registerForContextMenu(player1Area)
         registerForContextMenu(player2Area)
         registerForContextMenu(player3Area)
         registerForContextMenu(player4Area)
+         */
 
         //Listen for gestures on player areas
         var mActivePointerId = INVALID_POINTER_ID
@@ -346,6 +352,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         //Set onClickListeners for mana counters
+        /*
         white1.setOnClickListener(object:DoubleClickListener() {
             override fun onSingleClick(v:View) {
                 if (white1Counter < 0) {
@@ -1065,6 +1072,7 @@ class MainActivity : AppCompatActivity() {
             green4.text = ""
             true
         })
+         */
 
         //Run timer in thread
         var timerHandler = Handler()
@@ -1077,10 +1085,12 @@ class MainActivity : AppCompatActivity() {
                         timer2--
                         timer3--
                         timer4--
+                        /*
                         player1TimerText.text = timer1.toString()
                         player2TimerText.text = timer2.toString()
                         player3TimerText.text = timer3.toString()
                         player4TimerText.text = timer4.toString()
+                         */
                     }
                 } catch (e: InterruptedException) {
                     e.printStackTrace()
@@ -1091,6 +1101,7 @@ class MainActivity : AppCompatActivity() {
         thread1.start()
         
         //Hide dev coloured counters
+        /*
         white1.visibility = View.INVISIBLE
         white2.visibility = View.INVISIBLE
         white3.visibility = View.INVISIBLE
@@ -1111,6 +1122,7 @@ class MainActivity : AppCompatActivity() {
         green2.visibility = View.INVISIBLE
         green3.visibility = View.INVISIBLE
         green4.visibility = View.INVISIBLE
+         */
 
         /*
         white1.setOnClickListener {
