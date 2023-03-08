@@ -139,6 +139,7 @@ class MainActivity : AppCompatActivity() {
     var newPosY: Float = 0.0f
     var tempPosX: Float = 0.0f
     var tempPosY: Float = 0.0f
+    var contextMenuHolder: Int = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -1452,25 +1453,40 @@ class MainActivity : AppCompatActivity() {
     //Menu creation
     override fun onCreateContextMenu(menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo?){
         super.onCreateContextMenu(menu, v, menuInfo)
+        if (v == player1Area){
+            contextMenuHolder = 1
+        }
+        else if (v == player2Area){
+            contextMenuHolder = 2
+        }
+        else if (v == player3Area){
+            contextMenuHolder = 3
+        }
+        else if (v == player4Area){
+            contextMenuHolder = 4
+        }
+        else {
+            return
+        }
         menu?.setHeaderTitle("Choose wisely")
         menuInflater.inflate(R.menu.counter_menu, menu)
     }
     override fun onContextItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.optionItem -> {
-                Toast.makeText(this, "Option 1 selected", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Option 1 selected by player " + contextMenuHolder.toString(), Toast.LENGTH_SHORT).show()
                 true
             }
             R.id.manaItem -> {
-                Toast.makeText(this, "Option 2 selected", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Option 2 selected by player " + contextMenuHolder.toString(), Toast.LENGTH_SHORT).show()
                 true
             }
             R.id.damageItem -> {
-                Toast.makeText(this, "Option 3 selected", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Option 3 selected by player " + contextMenuHolder.toString(), Toast.LENGTH_SHORT).show()
                 true
             }
             R.id.lifeItem -> {
-                Toast.makeText(this, "Option 4 selected", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Option 4 selected by player " + contextMenuHolder.toString(), Toast.LENGTH_SHORT).show()
                 true
             }
             else -> super.onContextItemSelected(item)
