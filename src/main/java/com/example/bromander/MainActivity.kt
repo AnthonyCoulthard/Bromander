@@ -1,8 +1,10 @@
 package com.example.bromander
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Fragment
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -17,6 +19,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MotionEventCompat
+import java.lang.Thread.sleep
+import java.util.*
+import kotlin.random.Random.Default.nextInt
 
 
 class MainActivity : AppCompatActivity() {
@@ -91,6 +96,22 @@ class MainActivity : AppCompatActivity() {
     lateinit var player2Area: View
     lateinit var player3Area: View
     lateinit var player4Area: View
+    lateinit var commanderIcon1: Button
+    lateinit var manaIcon1: Button
+    lateinit var optionsIcon1: Button
+    lateinit var playIcon1: Button
+    lateinit var commanderIcon2: Button
+    lateinit var manaIcon2: Button
+    lateinit var optionsIcon2: Button
+    lateinit var playIcon2: Button
+    lateinit var commanderIcon3: Button
+    lateinit var manaIcon3: Button
+    lateinit var optionsIcon3: Button
+    lateinit var playIcon3: Button
+    lateinit var commanderIcon4: Button
+    lateinit var manaIcon4: Button
+    lateinit var optionsIcon4: Button
+    lateinit var playIcon4: Button
 
     //Additional global variables
     var lifeTotal1: Int = 40
@@ -140,7 +161,10 @@ class MainActivity : AppCompatActivity() {
     var tempPosX: Float = 0.0f
     var tempPosY: Float = 0.0f
     var contextMenuHolder: Int = 1
+    var currentPlayer: Int = 1
+    var isPaused: Boolean = true
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -214,6 +238,80 @@ class MainActivity : AppCompatActivity() {
         player4Text = findViewById(R.id.player4Text)
         */
         endTurn = findViewById(R.id.endTurn)
+        commanderIcon1 = findViewById(R.id.commanderIcon1)
+        manaIcon1 = findViewById(R.id.manaIcon1)
+        optionsIcon1 = findViewById(R.id.optionsIcon1)
+        playIcon1 = findViewById(R.id.playIcon1)
+        commanderIcon2 = findViewById(R.id.commanderIcon2)
+        manaIcon2 = findViewById(R.id.manaIcon2)
+        optionsIcon2 = findViewById(R.id.optionsIcon2)
+        playIcon2 = findViewById(R.id.playIcon2)
+        commanderIcon3 = findViewById(R.id.commanderIcon3)
+        manaIcon3 = findViewById(R.id.manaIcon3)
+        optionsIcon3 = findViewById(R.id.optionsIcon3)
+        playIcon3 = findViewById(R.id.playIcon3)
+        commanderIcon4 = findViewById(R.id.commanderIcon4)
+        manaIcon4 = findViewById(R.id.manaIcon4)
+        optionsIcon4 = findViewById(R.id.optionsIcon4)
+        playIcon4 = findViewById(R.id.playIcon4)
+
+        //Boot animation to decide starting player
+        val bootThread: Thread = object : Thread() {
+            var isPlayerSelected = false
+            override fun run() {
+                try {
+                    while (!isPlayerSelected) {
+                        sleep(500)
+                        life1.setTextColor(Color.parseColor("#ff63e5"))
+                        life2.setTextColor(Color.parseColor("#00ffff"))
+                        life3.setTextColor(Color.parseColor("#ff9d41"))
+                        life4.setTextColor(Color.parseColor("#4affa7"))
+                        sleep(500)
+                        life1.setTextColor(Color.parseColor("#ffffff"))
+                        life2.setTextColor(Color.parseColor("#ffffff"))
+                        life3.setTextColor(Color.parseColor("#ffffff"))
+                        life4.setTextColor(Color.parseColor("#ffffff"))
+                        sleep(500)
+                        life1.setTextColor(Color.parseColor("#ff63e5"))
+                        life2.setTextColor(Color.parseColor("#00ffff"))
+                        life3.setTextColor(Color.parseColor("#ff9d41"))
+                        life4.setTextColor(Color.parseColor("#4affa7"))
+                        sleep(500)
+                        life1.setTextColor(Color.parseColor("#ffffff"))
+                        life2.setTextColor(Color.parseColor("#ffffff"))
+                        life3.setTextColor(Color.parseColor("#ffffff"))
+                        life4.setTextColor(Color.parseColor("#ffffff"))
+                        sleep(500)
+                        life1.setTextColor(Color.parseColor("#ff63e5"))
+                        life2.setTextColor(Color.parseColor("#00ffff"))
+                        life3.setTextColor(Color.parseColor("#ff9d41"))
+                        life4.setTextColor(Color.parseColor("#4affa7"))
+                        sleep(500)
+                        life1.setTextColor(Color.parseColor("#ffffff"))
+                        life2.setTextColor(Color.parseColor("#ffffff"))
+                        life3.setTextColor(Color.parseColor("#ffffff"))
+                        life4.setTextColor(Color.parseColor("#ffffff"))
+                        val randomInt: Int = Random().nextInt(4)
+                        if (randomInt == 0) {
+                            life1.setTextColor(Color.parseColor("#ff63e5"))
+                        }
+                        else if (randomInt == 1) {
+                            life2.setTextColor(Color.parseColor("#00ffff"))
+                        }
+                        else if (randomInt == 2) {
+                            life3.setTextColor(Color.parseColor("#ff9d41"))
+                        }
+                        else if (randomInt == 3) {
+                            life4.setTextColor(Color.parseColor("#4affa7"))
+                        }
+                        isPlayerSelected = true
+                    }
+                } catch (e: InterruptedException) {
+                    e.printStackTrace()
+                }
+            }
+        }
+        bootThread.start()
 
         //Make life buttons nonexistent
         /*
@@ -255,21 +353,23 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE")
+                    Log.d("action", "Action was MOVE " + newPosX)
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosX > newPosX){
+                    if (tempPosX > newPosX + 20){
                         lifeTotal1++
                         life1.text = lifeTotal1.toString()
+                        newPosX = tempPosX
+                        newPosY = tempPosY
                     }
-                    else if (tempPosX < newPosX){
+                    else if (tempPosX < newPosX - 20){
                         lifeTotal1--
                         life1.text = lifeTotal1.toString()
+                        newPosX = tempPosX
+                        newPosY = tempPosY
                     }
-                    newPosX = tempPosX
-                    newPosY = tempPosY
                     true
                 }
                 MotionEvent.ACTION_UP -> {
@@ -278,16 +378,18 @@ class MainActivity : AppCompatActivity() {
                         tempPosX = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosX > newPosX){
+                    if (tempPosX > newPosX + 20){
                         lifeTotal1++
                         life1.text = lifeTotal1.toString()
+                        posX = newPosX
+                        posY = newPosY
                     }
-                    else if (tempPosX < newPosX){
+                    else if (tempPosX < newPosX - 20){
                         lifeTotal1--
                         life1.text = lifeTotal1.toString()
+                        posX = newPosX
+                        posY = newPosY
                     }
-                    posX = newPosX
-                    posY = newPosY
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
@@ -302,6 +404,214 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        player2Area.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosX < newPosX - 20){
+                        lifeTotal2++
+                        life2.text = lifeTotal2.toString()
+                        newPosX = tempPosX
+                        newPosY = tempPosY
+                    }
+                    else if (tempPosX > newPosX + 20){
+                        lifeTotal2--
+                        life2.text = lifeTotal2.toString()
+                        newPosX = tempPosX
+                        newPosY = tempPosY
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosX < newPosX - 20){
+                        lifeTotal2++
+                        life2.text = lifeTotal2.toString()
+                        posX = newPosX
+                        posY = newPosY
+                    }
+                    else if (tempPosX > newPosX + 20){
+                        lifeTotal2--
+                        life2.text = lifeTotal2.toString()
+                        posX = newPosX
+                        posY = newPosY
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        player3Area.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosX < newPosX - 20){
+                        lifeTotal3++
+                        life3.text = lifeTotal3.toString()
+                        newPosX = tempPosX
+                        newPosY = tempPosY
+                    }
+                    else if (tempPosX > newPosX + 20){
+                        lifeTotal3--
+                        life3.text = lifeTotal3.toString()
+                        newPosX = tempPosX
+                        newPosY = tempPosY
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosX < newPosX - 20){
+                        lifeTotal3++
+                        life3.text = lifeTotal3.toString()
+                        posX = newPosX
+                        posY = newPosY
+                    }
+                    else if (tempPosX > newPosX + 20){
+                        lifeTotal3--
+                        life3.text = lifeTotal3.toString()
+                        posX = newPosX
+                        posY = newPosY
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        player4Area.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosX > newPosX + 20){
+                        lifeTotal4++
+                        life4.text = lifeTotal4.toString()
+                        newPosX = tempPosX
+                        newPosY = tempPosY
+                    }
+                    else if (tempPosX < newPosX - 20){
+                        lifeTotal4--
+                        life4.text = lifeTotal4.toString()
+                        newPosX = tempPosX
+                        newPosY = tempPosY
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosX > newPosX + 20){
+                        lifeTotal4++
+                        life4.text = lifeTotal4.toString()
+                        posX = newPosX
+                        posY = newPosY
+                    }
+                    else if (tempPosX < newPosX - 20){
+                        lifeTotal4--
+                        life4.text = lifeTotal4.toString()
+                        posX = newPosX
+                        posY = newPosY
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        /*
         //Set onClickListeners for life buttons
         hiddenPlus1.setOnClickListener {
             lifeTotal1++
@@ -349,6 +659,83 @@ class MainActivity : AppCompatActivity() {
                 lifeTotal4--
                 life4.text = lifeTotal4.toString()
             }
+        }
+
+        //Set onTouchListeners for life totals
+        hiddenMinus4.setOnTouchListener { v, event ->
+            v.performClick()
+
+            var onTouchTimer: Timer = Timer()
+            var usedLongClick: Boolean = false
+
+            when (MotionEventCompat.getActionMasked(event)) {
+                MotionEvent.ACTION_DOWN -> {
+                    /*
+                    onTouchTimer.schedule(object : TimerTask() {
+                        override fun run() {
+                            lifeTotal4 -= 5
+                            if (lifeTotal4 <= 0){
+                                lifeTotal4 = 0
+                            }
+                            //life4.text = lifeTotal4.toString()
+                            usedLongClick = true
+                        }
+                    }, 1000, 1000)
+
+                     */
+                    while(event != MotionEvent.ACTION_UP)
+                    Log.d("action", "Action was DOWN")
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    onTouchTimer.cancel()
+                    //onTouchTimer.purge()
+                    if (!usedLongClick) {
+                        lifeTotal4--
+                        if (lifeTotal4 <= 0){
+                            lifeTotal4 = 0
+                        }
+                        life4.text = lifeTotal4.toString()
+                    }
+                    Log.d("action", "Action was UP")
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE")
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    onTouchTimer.cancel()
+                    //onTouchTimer.purge()
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+        
+         */
+
+        /*
+        hiddenMinus4.setOnLongClickListener {
+            lifeTotal4 -= 5
+            if (lifeTotal4 <= 0){
+                lifeTotal4 = 0
+            }
+            life4.text = lifeTotal4.toString()
+            true
+        }
+
+         */
+
+        hiddenPlus4.setOnLongClickListener {
+            lifeTotal4 += 5
+            life4.text = lifeTotal4.toString()
+            true
         }
 
         //Set onClickListeners for mana counters
@@ -1080,17 +1467,33 @@ class MainActivity : AppCompatActivity() {
             override fun run() {
                 try {
                     while (true) {
-                        sleep(1000)
-                        timer1--
-                        timer2--
-                        timer3--
-                        timer4--
-                        /*
-                        player1TimerText.text = timer1.toString()
-                        player2TimerText.text = timer2.toString()
-                        player3TimerText.text = timer3.toString()
-                        player4TimerText.text = timer4.toString()
-                         */
+                        if (isPaused == false) {
+                            sleep(1000)
+                            if (currentPlayer == 1) {
+                                timer1--
+                                if (timer1 <= 0) {
+                                    timer1 == 0
+                                }
+                            }
+                            else if (currentPlayer == 2) {
+                                timer2--
+                                if (timer2 <= 0) {
+                                    timer2 == 0
+                                }
+                            }
+                            else if (currentPlayer == 2) {
+                                timer3--
+                                if (timer3 <= 0) {
+                                    timer3 == 0
+                                }
+                            }
+                            else if (currentPlayer == 2) {
+                                timer4--
+                                if (timer4 <= 0) {
+                                    timer4 == 0
+                                }
+                            }
+                        }
                     }
                 } catch (e: InterruptedException) {
                     e.printStackTrace()
@@ -1451,6 +1854,7 @@ class MainActivity : AppCompatActivity() {
 
         //Set onClickListeners
         endTurn.setOnClickListener {
+            Log.d("action", "endTurn button pressed")
             lifeTotal1 = 40
             lifeTotal2 = 40
             lifeTotal3 = 40
