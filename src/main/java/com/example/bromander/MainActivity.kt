@@ -1,5 +1,6 @@
 package com.example.bromander
 
+import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Fragment
@@ -15,6 +16,7 @@ import android.view.MotionEvent.INVALID_POINTER_ID
 import android.view.View
 import android.view.View.*
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -208,6 +210,7 @@ class MainActivity : AppCompatActivity() {
     var isManaIcon4Pressed: Boolean = false
     var isOptionsIcon4Pressed: Boolean = false
     var isPlayIcon4Pressed: Boolean = false
+    var isPlayerSelected: Boolean = false
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -305,84 +308,89 @@ class MainActivity : AppCompatActivity() {
         player3Background = findViewById(R.id.player3Background)
         player4Background = findViewById(R.id.player4Background)
 
-        //Set endTurn button to be invisible at first
-        /*
-        if (startButton.text == "START") {
-            endTurn.visibility = GONE
-        }
-
-         */
+        endTurn.visibility = GONE
 
         //Boot animation to decide starting player
         val bootThread: Thread = object : Thread() {
-            var isPlayerSelected = false
             @SuppressLint("ResourceAsColor")
             override fun run() {
                 try {
                     while (!isPlayerSelected) {
-                        sleep(750)
-                        life1.setTextColor(Color.parseColor(player1Color))
-                        life2.setTextColor(Color.parseColor(player2Color))
-                        life3.setTextColor(Color.parseColor(player3Color))
-                        life4.setTextColor(Color.parseColor(player4Color))
-                        sleep(1000)
-                        life1.setTextColor(Color.parseColor("#ffffff"))
-                        life2.setTextColor(Color.parseColor("#ffffff"))
-                        life3.setTextColor(Color.parseColor("#ffffff"))
-                        life4.setTextColor(Color.parseColor("#ffffff"))
-                        sleep(750)
-                        life1.setTextColor(Color.parseColor(player1Color))
-                        life2.setTextColor(Color.parseColor(player2Color))
-                        life3.setTextColor(Color.parseColor(player3Color))
-                        life4.setTextColor(Color.parseColor(player4Color))
-                        sleep(1000)
-                        life1.setTextColor(Color.parseColor("#ffffff"))
-                        life2.setTextColor(Color.parseColor("#ffffff"))
-                        life3.setTextColor(Color.parseColor("#ffffff"))
-                        life4.setTextColor(Color.parseColor("#ffffff"))
-                        sleep(750)
-                        life1.setTextColor(Color.parseColor(player1Color))
-                        life2.setTextColor(Color.parseColor(player2Color))
-                        life3.setTextColor(Color.parseColor(player3Color))
-                        life4.setTextColor(Color.parseColor(player4Color))
-                        sleep(1000)
-                        life1.setTextColor(Color.parseColor("#ffffff"))
-                        life2.setTextColor(Color.parseColor("#ffffff"))
-                        life3.setTextColor(Color.parseColor("#ffffff"))
-                        life4.setTextColor(Color.parseColor("#ffffff"))
                         val randomInt: Int = Random().nextInt(4)
+                        runOnUiThread {
+                            startButton.animate().apply {
+                                duration = 5250
+                                when (randomInt) {
+                                    0 -> {
+                                        rotation((360.0f * 5.0f) + 135.0f)
+                                    }
+                                    1 -> {
+                                        rotation((360.0f * 5.0f) + 225.0f)
+                                    }
+                                    2 -> {
+                                        rotation((360.0f * 5.0f) + 315.0f)
+                                    }
+                                    3 -> {
+                                        rotation((360.0f * 5.0f) + 45.0f)
+                                    }
+                                }
+                                rotationX(360.0f*5.0f)
+                                rotationY(360.0f*5.0f)
+                            }.start()
+                        }
+                        sleep(750)
+                        life1.setTextColor(Color.parseColor(player1Color))
+                        life2.setTextColor(Color.parseColor(player2Color))
+                        life3.setTextColor(Color.parseColor(player3Color))
+                        life4.setTextColor(Color.parseColor(player4Color))
+                        sleep(1000)
+                        life1.setTextColor(Color.parseColor("#ffffff"))
+                        life2.setTextColor(Color.parseColor("#ffffff"))
+                        life3.setTextColor(Color.parseColor("#ffffff"))
+                        life4.setTextColor(Color.parseColor("#ffffff"))
+                        sleep(750)
+                        life1.setTextColor(Color.parseColor(player1Color))
+                        life2.setTextColor(Color.parseColor(player2Color))
+                        life3.setTextColor(Color.parseColor(player3Color))
+                        life4.setTextColor(Color.parseColor(player4Color))
+                        sleep(1000)
+                        life1.setTextColor(Color.parseColor("#ffffff"))
+                        life2.setTextColor(Color.parseColor("#ffffff"))
+                        life3.setTextColor(Color.parseColor("#ffffff"))
+                        life4.setTextColor(Color.parseColor("#ffffff"))
+                        sleep(750)
+                        life1.setTextColor(Color.parseColor(player1Color))
+                        life2.setTextColor(Color.parseColor(player2Color))
+                        life3.setTextColor(Color.parseColor(player3Color))
+                        life4.setTextColor(Color.parseColor(player4Color))
+                        sleep(1000)
+                        life1.setTextColor(Color.parseColor("#ffffff"))
+                        life2.setTextColor(Color.parseColor("#ffffff"))
+                        life3.setTextColor(Color.parseColor("#ffffff"))
+                        life4.setTextColor(Color.parseColor("#ffffff"))
                         when (randomInt) {
                             0 -> {
                                 life1.setTextColor(Color.parseColor(player1Color))
                                 startButton.setTextColor(Color.parseColor(player1Color))
-                                runOnUiThread {
-                                    startButton.rotation = 360.0f-45.0f-180.0f
-                                }
                             }
                             1 -> {
                                 life2.setTextColor(Color.parseColor(player2Color))
                                 startButton.setTextColor(Color.parseColor(player2Color))
-                                runOnUiThread {
-                                    startButton.rotation = 45.0f - 180.0f
-                                }
                             }
                             2 -> {
                                 life3.setTextColor(Color.parseColor(player3Color))
                                 startButton.setTextColor(Color.parseColor(player3Color))
-                                runOnUiThread {
-                                        startButton.rotation = 45.0f + 90.0f - 180.0f
-                                }
                             }
                             3 -> {
                                 life4.setTextColor(Color.parseColor(player4Color))
                                 startButton.setTextColor(Color.parseColor(player4Color))
-                                runOnUiThread {
-                                    startButton.rotation = 360.0f - 45.0f - 90.0f - 180.0f
-                                }
                             }
                         }
                         currentPlayer = randomInt + 1
                         isPlayerSelected = true
+                        runOnUiThread {
+                            endTurn.visibility = VISIBLE
+                        }
                     }
                 } catch (e: InterruptedException) {
                     e.printStackTrace()
@@ -1569,33 +1577,40 @@ class MainActivity : AppCompatActivity() {
             override fun run() {
                 try {
                     while (true) {
-                        if (isPaused == false) {
+                        if (!isPaused) {
                             sleep(1000)
                             if (currentPlayer == 1) {
                                 timer1--
                                 if (timer1 <= 0) {
-                                    timer1 == 0
+                                    timer1 = 0
                                 }
                             }
                             else if (currentPlayer == 2) {
                                 timer2--
                                 if (timer2 <= 0) {
-                                    timer2 == 0
+                                    timer2 = 0
                                 }
                             }
-                            else if (currentPlayer == 2) {
+                            else if (currentPlayer == 3) {
                                 timer3--
                                 if (timer3 <= 0) {
-                                    timer3 == 0
+                                    timer3 = 0
                                 }
                             }
-                            else if (currentPlayer == 2) {
+                            else if (currentPlayer == 4) {
                                 timer4--
                                 if (timer4 <= 0) {
-                                    timer4 == 0
+                                    timer4 = 0
                                 }
                             }
                         }
+                        //Uncomment section below to debug timers
+                        /*
+                        life1.text = timer1.toString()
+                        life2.text = timer2.toString()
+                        life3.text = timer3.toString()
+                        life4.text = timer4.toString()
+                         */
                     }
                 } catch (e: InterruptedException) {
                     e.printStackTrace()
@@ -1957,6 +1972,11 @@ class MainActivity : AppCompatActivity() {
         //Set onClickListeners
         endTurn.setOnClickListener {
             Log.d("action", "endTurn button pressed")
+            isPaused = false
+            playIcon1.background = this.getDrawable(R.drawable.pause_icon)
+            playIcon2.background = this.getDrawable(R.drawable.pause_icon)
+            playIcon3.background = this.getDrawable(R.drawable.pause_icon)
+            playIcon4.background = this.getDrawable(R.drawable.pause_icon)
             if (startButton.text == "START") {
                 startButton.text = ""
                 when (currentPlayer) {
@@ -1968,6 +1988,10 @@ class MainActivity : AppCompatActivity() {
                         optionsIcon1.backgroundTintList = this.getColorStateList(R.color.player1Color)
                         playIcon1.backgroundTintList = this.getColorStateList(R.color.player1Color)
                         player1Background.setBackgroundColor(Color.parseColor("#ffffff"))
+                        player1Timer.animate().apply {
+                            duration = 1000 * timer1.toLong()
+                            scaleY(0.0f)
+                        }.start()
                     }
                     2 -> {
                         endTurn.background = this.getDrawable(R.drawable.tap_icon_2)
@@ -1977,6 +2001,10 @@ class MainActivity : AppCompatActivity() {
                         optionsIcon2.backgroundTintList = this.getColorStateList(R.color.player2Color)
                         playIcon2.backgroundTintList = this.getColorStateList(R.color.player2Color)
                         player2Background.setBackgroundColor(Color.parseColor("#ffffff"))
+                        player2Timer.animate().apply {
+                            duration = 1000 * timer2.toLong()
+                            scaleY(0.0f)
+                        }.start()
                     }
                     3 -> {
                         endTurn.background = this.getDrawable(R.drawable.tap_icon_3)
@@ -1986,6 +2014,10 @@ class MainActivity : AppCompatActivity() {
                         optionsIcon3.backgroundTintList = this.getColorStateList(R.color.player3Color)
                         playIcon3.backgroundTintList = this.getColorStateList(R.color.player3Color)
                         player3Background.setBackgroundColor(Color.parseColor("#ffffff"))
+                        player3Timer.animate().apply {
+                            duration = 1000 * timer3.toLong()
+                            scaleY(0.0f)
+                        }.start()
                     }
                     4 -> {
                         endTurn.background = this.getDrawable(R.drawable.tap_icon_4)
@@ -1995,6 +2027,10 @@ class MainActivity : AppCompatActivity() {
                         optionsIcon4.backgroundTintList = this.getColorStateList(R.color.player4Color)
                         playIcon4.backgroundTintList = this.getColorStateList(R.color.player4Color)
                         player4Background.setBackgroundColor(Color.parseColor("#ffffff"))
+                        player4Timer.animate().apply {
+                            duration = 1000 * timer4.toLong()
+                            scaleY(0.0f)
+                        }.start()
                     }
                 }
             }
@@ -2021,6 +2057,23 @@ class MainActivity : AppCompatActivity() {
                             player1Background.setBackgroundColor(Color.parseColor(player1Color))
                         }
                         player2Background.setBackgroundColor(Color.parseColor("#ffffff"))
+                        player2Timer.animate().apply {
+                            duration = 1000 * timer2.toLong()
+                            scaleY(0.0f)
+                        }.start()
+                        player1Timer.clearAnimation()
+                        player1Timer.animate().cancel()
+                        player1Timer.animate().apply {
+                            duration = 1000
+                            scaleY(1.0f)
+                        }.start()
+                        timer1 += 150
+                        if (timer1 > 900) {
+                            timer1 = 900
+                        }
+                        else if (timer1 < 180) {
+                            timer1 = 180
+                        }
                     }
                     2 -> {
                         endTurn.background = this.getDrawable(R.drawable.tap_icon_3)
@@ -2043,6 +2096,23 @@ class MainActivity : AppCompatActivity() {
                             player2Background.setBackgroundColor(Color.parseColor(player2Color))
                         }
                         player3Background.setBackgroundColor(Color.parseColor("#ffffff"))
+                        player3Timer.animate().apply {
+                            duration = 1000 * timer3.toLong()
+                            scaleY(0.0f)
+                        }.start()
+                        player2Timer.clearAnimation()
+                        player2Timer.animate().cancel()
+                        player2Timer.animate().apply {
+                            duration = 1000
+                            scaleY(1.0f)
+                        }.start()
+                        timer2 += 150
+                        if (timer2 > 900) {
+                            timer2 = 900
+                        }
+                        else if (timer2 < 180) {
+                            timer2 = 180
+                        }
                     }
                     3 -> {
                         endTurn.background = this.getDrawable(R.drawable.tap_icon_4)
@@ -2065,6 +2135,23 @@ class MainActivity : AppCompatActivity() {
                             player3Background.setBackgroundColor(Color.parseColor(player3Color))
                         }
                         player4Background.setBackgroundColor(Color.parseColor("#ffffff"))
+                        player4Timer.animate().apply {
+                            duration = 1000 * timer4.toLong()
+                            scaleY(0.0f)
+                        }.start()
+                        player3Timer.clearAnimation()
+                        player3Timer.animate().cancel()
+                        player3Timer.animate().apply {
+                            duration = 1000
+                            scaleY(1.0f)
+                        }.start()
+                        timer3 += 150
+                        if (timer3 > 900) {
+                            timer3 = 900
+                        }
+                        else if (timer3 < 180) {
+                            timer3 = 180
+                        }
                     }
                     4 -> {
                         endTurn.background = this.getDrawable(R.drawable.tap_icon_1)
@@ -2087,6 +2174,23 @@ class MainActivity : AppCompatActivity() {
                             player4Background.setBackgroundColor(Color.parseColor(player4Color))
                         }
                         player1Background.setBackgroundColor(Color.parseColor("#ffffff"))
+                        player1Timer.animate().apply {
+                            duration = 1000 * timer1.toLong()
+                            scaleY(0.0f)
+                        }.start()
+                        player4Timer.clearAnimation()
+                        player4Timer.animate().cancel()
+                        player4Timer.animate().apply {
+                            duration = 1000
+                            scaleY(1.0f)
+                        }.start()
+                        timer4 += 150
+                        if (timer4 > 900) {
+                            timer4 = 900
+                        }
+                        else if (timer4 < 180) {
+                            timer4 = 180
+                        }
                     }
                 }
             }
@@ -2150,6 +2254,67 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        playIcon1.setOnClickListener {
+            if (isPaused) {
+                isPaused = false
+                playIcon1.background = this.getDrawable(R.drawable.pause_icon)
+                playIcon2.background = this.getDrawable(R.drawable.pause_icon)
+                playIcon3.background = this.getDrawable(R.drawable.pause_icon)
+                playIcon4.background = this.getDrawable(R.drawable.pause_icon)
+                when (currentPlayer) {
+                    1 -> {
+                        player1Timer.animate().apply {
+                            duration = 1000 * timer1.toLong()
+                            scaleY(0.0f)
+                        }.start()
+                    }
+                    2 -> {
+                        player2Timer.animate().apply {
+                            duration = 1000 * timer2.toLong()
+                            scaleY(0.0f)
+                        }.start()
+                    }
+                    3 -> {
+                        player3Timer.animate().apply {
+                            duration = 1000 * timer3.toLong()
+                            scaleY(0.0f)
+                        }.start()
+                    }
+                    4 -> {
+                        player4Timer.animate().apply {
+                            duration = 1000 * timer4.toLong()
+                            scaleY(0.0f)
+                        }.start()
+                    }
+                }
+            }
+            else {
+                isPaused = true
+                playIcon1.background = this.getDrawable(R.drawable.play_icon)
+                playIcon2.background = this.getDrawable(R.drawable.play_icon)
+                playIcon3.background = this.getDrawable(R.drawable.play_icon)
+                playIcon4.background = this.getDrawable(R.drawable.play_icon)
+                when (currentPlayer) {
+                    1 -> {
+                        player1Timer.clearAnimation()
+                        player1Timer.animate().cancel()
+                    }
+                    2 -> {
+                        player2Timer.clearAnimation()
+                        player2Timer.animate().cancel()
+                    }
+                    3 -> {
+                        player3Timer.clearAnimation()
+                        player3Timer.animate().cancel()
+                    }
+                    4 -> {
+                        player4Timer.clearAnimation()
+                        player4Timer.animate().cancel()
+                    }
+                }
+            }
+        }
+
         commanderIcon2.setOnClickListener {
             Log.d("action", "manaIcon2 button pressed")
             if (!isCommanderIcon2Pressed){
@@ -2205,6 +2370,67 @@ class MainActivity : AppCompatActivity() {
                 commanderIcon2.visibility = VISIBLE
                 optionsIcon2.visibility = VISIBLE
                 playIcon2.visibility = VISIBLE
+            }
+        }
+
+        playIcon2.setOnClickListener {
+            if (isPaused) {
+                isPaused = false
+                playIcon1.background = this.getDrawable(R.drawable.pause_icon)
+                playIcon2.background = this.getDrawable(R.drawable.pause_icon)
+                playIcon3.background = this.getDrawable(R.drawable.pause_icon)
+                playIcon4.background = this.getDrawable(R.drawable.pause_icon)
+                when (currentPlayer) {
+                    1 -> {
+                        player1Timer.animate().apply {
+                            duration = 1000 * timer1.toLong()
+                            scaleY(0.0f)
+                        }.start()
+                    }
+                    2 -> {
+                        player2Timer.animate().apply {
+                            duration = 1000 * timer2.toLong()
+                            scaleY(0.0f)
+                        }.start()
+                    }
+                    3 -> {
+                        player3Timer.animate().apply {
+                            duration = 1000 * timer3.toLong()
+                            scaleY(0.0f)
+                        }.start()
+                    }
+                    4 -> {
+                        player4Timer.animate().apply {
+                            duration = 1000 * timer4.toLong()
+                            scaleY(0.0f)
+                        }.start()
+                    }
+                }
+            }
+            else {
+                isPaused = true
+                playIcon1.background = this.getDrawable(R.drawable.play_icon)
+                playIcon2.background = this.getDrawable(R.drawable.play_icon)
+                playIcon3.background = this.getDrawable(R.drawable.play_icon)
+                playIcon4.background = this.getDrawable(R.drawable.play_icon)
+                when (currentPlayer) {
+                    1 -> {
+                        player1Timer.clearAnimation()
+                        player1Timer.animate().cancel()
+                    }
+                    2 -> {
+                        player2Timer.clearAnimation()
+                        player2Timer.animate().cancel()
+                    }
+                    3 -> {
+                        player3Timer.clearAnimation()
+                        player3Timer.animate().cancel()
+                    }
+                    4 -> {
+                        player4Timer.clearAnimation()
+                        player4Timer.animate().cancel()
+                    }
+                }
             }
         }
 
@@ -2266,6 +2492,67 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        playIcon3.setOnClickListener {
+            if (isPaused) {
+                isPaused = false
+                playIcon1.background = this.getDrawable(R.drawable.pause_icon)
+                playIcon2.background = this.getDrawable(R.drawable.pause_icon)
+                playIcon3.background = this.getDrawable(R.drawable.pause_icon)
+                playIcon4.background = this.getDrawable(R.drawable.pause_icon)
+                when (currentPlayer) {
+                    1 -> {
+                        player1Timer.animate().apply {
+                            duration = 1000 * timer1.toLong()
+                            scaleY(0.0f)
+                        }.start()
+                    }
+                    2 -> {
+                        player2Timer.animate().apply {
+                            duration = 1000 * timer2.toLong()
+                            scaleY(0.0f)
+                        }.start()
+                    }
+                    3 -> {
+                        player3Timer.animate().apply {
+                            duration = 1000 * timer3.toLong()
+                            scaleY(0.0f)
+                        }.start()
+                    }
+                    4 -> {
+                        player4Timer.animate().apply {
+                            duration = 1000 * timer4.toLong()
+                            scaleY(0.0f)
+                        }.start()
+                    }
+                }
+            }
+            else {
+                isPaused = true
+                playIcon1.background = this.getDrawable(R.drawable.play_icon)
+                playIcon2.background = this.getDrawable(R.drawable.play_icon)
+                playIcon3.background = this.getDrawable(R.drawable.play_icon)
+                playIcon4.background = this.getDrawable(R.drawable.play_icon)
+                when (currentPlayer) {
+                    1 -> {
+                        player1Timer.clearAnimation()
+                        player1Timer.animate().cancel()
+                    }
+                    2 -> {
+                        player2Timer.clearAnimation()
+                        player2Timer.animate().cancel()
+                    }
+                    3 -> {
+                        player3Timer.clearAnimation()
+                        player3Timer.animate().cancel()
+                    }
+                    4 -> {
+                        player4Timer.clearAnimation()
+                        player4Timer.animate().cancel()
+                    }
+                }
+            }
+        }
+
         commanderIcon4.setOnClickListener {
             Log.d("action", "manaIcon4 button pressed")
             if (!isCommanderIcon4Pressed){
@@ -2321,6 +2608,67 @@ class MainActivity : AppCompatActivity() {
                 commanderIcon4.visibility = VISIBLE
                 optionsIcon4.visibility = VISIBLE
                 playIcon4.visibility = VISIBLE
+            }
+        }
+
+        playIcon4.setOnClickListener {
+            if (isPaused) {
+                isPaused = false
+                playIcon1.background = this.getDrawable(R.drawable.pause_icon)
+                playIcon2.background = this.getDrawable(R.drawable.pause_icon)
+                playIcon3.background = this.getDrawable(R.drawable.pause_icon)
+                playIcon4.background = this.getDrawable(R.drawable.pause_icon)
+                when (currentPlayer) {
+                    1 -> {
+                        player1Timer.animate().apply {
+                            duration = 1000 * timer1.toLong()
+                            scaleY(0.0f)
+                        }.start()
+                    }
+                    2 -> {
+                        player2Timer.animate().apply {
+                            duration = 1000 * timer2.toLong()
+                            scaleY(0.0f)
+                        }.start()
+                    }
+                    3 -> {
+                        player3Timer.animate().apply {
+                            duration = 1000 * timer3.toLong()
+                            scaleY(0.0f)
+                        }.start()
+                    }
+                    4 -> {
+                        player4Timer.animate().apply {
+                            duration = 1000 * timer4.toLong()
+                            scaleY(0.0f)
+                        }.start()
+                    }
+                }
+            }
+            else {
+                isPaused = true
+                playIcon1.background = this.getDrawable(R.drawable.play_icon)
+                playIcon2.background = this.getDrawable(R.drawable.play_icon)
+                playIcon3.background = this.getDrawable(R.drawable.play_icon)
+                playIcon4.background = this.getDrawable(R.drawable.play_icon)
+                when (currentPlayer) {
+                    1 -> {
+                        player1Timer.clearAnimation()
+                        player1Timer.animate().cancel()
+                    }
+                    2 -> {
+                        player2Timer.clearAnimation()
+                        player2Timer.animate().cancel()
+                    }
+                    3 -> {
+                        player3Timer.clearAnimation()
+                        player3Timer.animate().cancel()
+                    }
+                    4 -> {
+                        player4Timer.clearAnimation()
+                        player4Timer.animate().cancel()
+                    }
+                }
             }
         }
 
