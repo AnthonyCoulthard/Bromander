@@ -13,12 +13,14 @@ import android.view.MenuItem
 import android.view.MotionEvent
 import android.view.MotionEvent.INVALID_POINTER_ID
 import android.view.View
-import android.view.View.OnLongClickListener
+import android.view.View.*
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.MotionEventCompat
+import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 import java.lang.Thread.sleep
 import java.util.*
 import kotlin.random.Random.Default.nextInt
@@ -33,7 +35,7 @@ class MainActivity : AppCompatActivity() {
     var lastClickTime = 0
 
     //Variables for XML elements of activity_main.xml
-    lateinit var endTurn: Button
+    lateinit var startButton: Button
     /*
     lateinit var player1Text: TextView
     lateinit var player2Text: TextView
@@ -112,6 +114,11 @@ class MainActivity : AppCompatActivity() {
     lateinit var manaIcon4: Button
     lateinit var optionsIcon4: Button
     lateinit var playIcon4: Button
+    lateinit var endTurn: Button
+    lateinit var player1Background: View
+    lateinit var player2Background: View
+    lateinit var player3Background: View
+    lateinit var player4Background: View
 
     //Additional global variables
     var lifeTotal1: Int = 40
@@ -154,15 +161,53 @@ class MainActivity : AppCompatActivity() {
     var timer2: Int = 180
     var timer3: Int = 180
     var timer4: Int = 180
-    var posX: Float = 0.0f
-    var posY: Float = 0.0f
-    var newPosX: Float = 0.0f
-    var newPosY: Float = 0.0f
-    var tempPosX: Float = 0.0f
-    var tempPosY: Float = 0.0f
+    var posX1: Float = 0.0f
+    var posY1: Float = 0.0f
+    var newPosX1: Float = 0.0f
+    var newPosY1: Float = 0.0f
+    var tempPosX1: Float = 0.0f
+    var tempPosY1: Float = 0.0f
+    var posX2: Float = 0.0f
+    var posY2: Float = 0.0f
+    var newPosX2: Float = 0.0f
+    var newPosY2: Float = 0.0f
+    var tempPosX2: Float = 0.0f
+    var tempPosY2: Float = 0.0f
+    var posX3: Float = 0.0f
+    var posY3: Float = 0.0f
+    var newPosX3: Float = 0.0f
+    var newPosY3: Float = 0.0f
+    var tempPosX3: Float = 0.0f
+    var tempPosY3: Float = 0.0f
+    var posX4: Float = 0.0f
+    var posY4: Float = 0.0f
+    var newPosX4: Float = 0.0f
+    var newPosY4: Float = 0.0f
+    var tempPosX4: Float = 0.0f
+    var tempPosY4: Float = 0.0f
     var contextMenuHolder: Int = 1
     var currentPlayer: Int = 1
     var isPaused: Boolean = true
+    var player1Color: String = "#ff63e5"
+    var player2Color: String = "#00ffff"
+    var player3Color: String = "#ff9d41"
+    var player4Color: String = "#4affa7"
+    var isCommanderIcon1Pressed: Boolean = false
+    var isManaIcon1Pressed: Boolean = false
+    var isOptionsIcon1Pressed: Boolean = false
+    var isPlayIcon1Pressed: Boolean = false
+    var isCommanderIcon2Pressed: Boolean = false
+    var isManaIcon2Pressed: Boolean = false
+    var isOptionsIcon2Pressed: Boolean = false
+    var isPlayIcon2Pressed: Boolean = false
+    var isCommanderIcon3Pressed: Boolean = false
+    var isManaIcon3Pressed: Boolean = false
+    var isOptionsIcon3Pressed: Boolean = false
+    var isPlayIcon3Pressed: Boolean = false
+    var isCommanderIcon4Pressed: Boolean = false
+    var isManaIcon4Pressed: Boolean = false
+    var isOptionsIcon4Pressed: Boolean = false
+    var isPlayIcon4Pressed: Boolean = false
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -237,7 +282,7 @@ class MainActivity : AppCompatActivity() {
         player3Text = findViewById(R.id.player3Text)
         player4Text = findViewById(R.id.player4Text)
         */
-        endTurn = findViewById(R.id.endTurn)
+        startButton = findViewById(R.id.startButton)
         commanderIcon1 = findViewById(R.id.commanderIcon1)
         manaIcon1 = findViewById(R.id.manaIcon1)
         optionsIcon1 = findViewById(R.id.optionsIcon1)
@@ -254,56 +299,89 @@ class MainActivity : AppCompatActivity() {
         manaIcon4 = findViewById(R.id.manaIcon4)
         optionsIcon4 = findViewById(R.id.optionsIcon4)
         playIcon4 = findViewById(R.id.playIcon4)
+        endTurn = findViewById(R.id.endTurn)
+        player1Background = findViewById(R.id.player1Background)
+        player2Background = findViewById(R.id.player2Background)
+        player3Background = findViewById(R.id.player3Background)
+        player4Background = findViewById(R.id.player4Background)
+
+        //Set endTurn button to be invisible at first
+        /*
+        if (startButton.text == "START") {
+            endTurn.visibility = GONE
+        }
+
+         */
 
         //Boot animation to decide starting player
         val bootThread: Thread = object : Thread() {
             var isPlayerSelected = false
+            @SuppressLint("ResourceAsColor")
             override fun run() {
                 try {
                     while (!isPlayerSelected) {
-                        sleep(500)
-                        life1.setTextColor(Color.parseColor("#ff63e5"))
-                        life2.setTextColor(Color.parseColor("#00ffff"))
-                        life3.setTextColor(Color.parseColor("#ff9d41"))
-                        life4.setTextColor(Color.parseColor("#4affa7"))
-                        sleep(500)
+                        sleep(750)
+                        life1.setTextColor(Color.parseColor(player1Color))
+                        life2.setTextColor(Color.parseColor(player2Color))
+                        life3.setTextColor(Color.parseColor(player3Color))
+                        life4.setTextColor(Color.parseColor(player4Color))
+                        sleep(1000)
                         life1.setTextColor(Color.parseColor("#ffffff"))
                         life2.setTextColor(Color.parseColor("#ffffff"))
                         life3.setTextColor(Color.parseColor("#ffffff"))
                         life4.setTextColor(Color.parseColor("#ffffff"))
-                        sleep(500)
-                        life1.setTextColor(Color.parseColor("#ff63e5"))
-                        life2.setTextColor(Color.parseColor("#00ffff"))
-                        life3.setTextColor(Color.parseColor("#ff9d41"))
-                        life4.setTextColor(Color.parseColor("#4affa7"))
-                        sleep(500)
+                        sleep(750)
+                        life1.setTextColor(Color.parseColor(player1Color))
+                        life2.setTextColor(Color.parseColor(player2Color))
+                        life3.setTextColor(Color.parseColor(player3Color))
+                        life4.setTextColor(Color.parseColor(player4Color))
+                        sleep(1000)
                         life1.setTextColor(Color.parseColor("#ffffff"))
                         life2.setTextColor(Color.parseColor("#ffffff"))
                         life3.setTextColor(Color.parseColor("#ffffff"))
                         life4.setTextColor(Color.parseColor("#ffffff"))
-                        sleep(500)
-                        life1.setTextColor(Color.parseColor("#ff63e5"))
-                        life2.setTextColor(Color.parseColor("#00ffff"))
-                        life3.setTextColor(Color.parseColor("#ff9d41"))
-                        life4.setTextColor(Color.parseColor("#4affa7"))
-                        sleep(500)
+                        sleep(750)
+                        life1.setTextColor(Color.parseColor(player1Color))
+                        life2.setTextColor(Color.parseColor(player2Color))
+                        life3.setTextColor(Color.parseColor(player3Color))
+                        life4.setTextColor(Color.parseColor(player4Color))
+                        sleep(1000)
                         life1.setTextColor(Color.parseColor("#ffffff"))
                         life2.setTextColor(Color.parseColor("#ffffff"))
                         life3.setTextColor(Color.parseColor("#ffffff"))
                         life4.setTextColor(Color.parseColor("#ffffff"))
                         val randomInt: Int = Random().nextInt(4)
-                        if (randomInt == 0) {
-                            life1.setTextColor(Color.parseColor("#ff63e5"))
+                        when (randomInt) {
+                            0 -> {
+                                life1.setTextColor(Color.parseColor(player1Color))
+                                startButton.setTextColor(Color.parseColor(player1Color))
+                                runOnUiThread {
+                                    startButton.rotation = 360.0f-45.0f-180.0f
+                                }
+                            }
+                            1 -> {
+                                life2.setTextColor(Color.parseColor(player2Color))
+                                startButton.setTextColor(Color.parseColor(player2Color))
+                                runOnUiThread {
+                                    startButton.rotation = 45.0f - 180.0f
+                                }
+                            }
+                            2 -> {
+                                life3.setTextColor(Color.parseColor(player3Color))
+                                startButton.setTextColor(Color.parseColor(player3Color))
+                                runOnUiThread {
+                                        startButton.rotation = 45.0f + 90.0f - 180.0f
+                                }
+                            }
+                            3 -> {
+                                life4.setTextColor(Color.parseColor(player4Color))
+                                startButton.setTextColor(Color.parseColor(player4Color))
+                                runOnUiThread {
+                                    startButton.rotation = 360.0f - 45.0f - 90.0f - 180.0f
+                                }
+                            }
                         }
-                        else if (randomInt == 1) {
-                            life2.setTextColor(Color.parseColor("#00ffff"))
-                        }
-                        else if (randomInt == 2) {
-                            life3.setTextColor(Color.parseColor("#ff9d41"))
-                        }
-                        else if (randomInt == 3) {
-                            life4.setTextColor(Color.parseColor("#4affa7"))
-                        }
+                        currentPlayer = randomInt + 1
                         isPlayerSelected = true
                     }
                 } catch (e: InterruptedException) {
@@ -344,8 +422,8 @@ class MainActivity : AppCompatActivity() {
                     Log.d("action", "Action was DOWN")
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
-                        newPosX = MotionEventCompat.getX(event, pointerIndex)
-                        newPosY = MotionEventCompat.getY(event, pointerIndex)
+                        newPosX1 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY1 = MotionEventCompat.getY(event, pointerIndex)
                     }
 
                     // Save the ID of this pointer
@@ -353,42 +431,48 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX)
+                    Log.d("action", "Action was MOVE " + newPosX1)
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
-                        tempPosX = MotionEventCompat.getX(event, pointerIndex)
-                        tempPosY = MotionEventCompat.getY(event, pointerIndex)
+                        tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosX > newPosX + 20){
+                    if (tempPosX1 > newPosX1 + 20){
                         lifeTotal1++
                         life1.text = lifeTotal1.toString()
-                        newPosX = tempPosX
-                        newPosY = tempPosY
+                        newPosX1 = tempPosX1
+                        newPosY1 = tempPosY1
                     }
-                    else if (tempPosX < newPosX - 20){
+                    else if (tempPosX1 < newPosX1 - 20){
                         lifeTotal1--
+                        if (lifeTotal1 <= 0){
+                            lifeTotal1 = 0
+                        }
                         life1.text = lifeTotal1.toString()
-                        newPosX = tempPosX
-                        newPosY = tempPosY
+                        newPosX1 = tempPosX1
+                        newPosY1 = tempPosY1
                     }
                     true
                 }
                 MotionEvent.ACTION_UP -> {
                     Log.d("action", "Action was UP")
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
-                        tempPosX = MotionEventCompat.getX(event, pointerIndex)
-                        tempPosY = MotionEventCompat.getY(event, pointerIndex)
+                        tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosX > newPosX + 20){
+                    if (tempPosX1 > newPosX1 + 20){
                         lifeTotal1++
                         life1.text = lifeTotal1.toString()
-                        posX = newPosX
-                        posY = newPosY
+                        posX1 = newPosX1
+                        posY1 = newPosY1
                     }
-                    else if (tempPosX < newPosX - 20){
+                    else if (tempPosX1 < newPosX1 - 20){
                         lifeTotal1--
+                        if (lifeTotal1 <= 0){
+                            lifeTotal1 = 0
+                        }
                         life1.text = lifeTotal1.toString()
-                        posX = newPosX
-                        posY = newPosY
+                        posX1 = newPosX1
+                        posY1 = newPosY1
                     }
                     true
                 }
@@ -413,8 +497,8 @@ class MainActivity : AppCompatActivity() {
                     Log.d("action", "Action was DOWN")
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
-                        newPosX = MotionEventCompat.getX(event, pointerIndex)
-                        newPosY = MotionEventCompat.getY(event, pointerIndex)
+                        newPosX2 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY2 = MotionEventCompat.getY(event, pointerIndex)
                     }
 
                     // Save the ID of this pointer
@@ -422,42 +506,48 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX)
+                    Log.d("action", "Action was MOVE " + newPosX2)
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
-                        tempPosX = MotionEventCompat.getX(event, pointerIndex)
-                        tempPosY = MotionEventCompat.getY(event, pointerIndex)
+                        tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosX < newPosX - 20){
+                    if (tempPosX2 < newPosX2 - 20){
                         lifeTotal2++
                         life2.text = lifeTotal2.toString()
-                        newPosX = tempPosX
-                        newPosY = tempPosY
+                        newPosX2 = tempPosX2
+                        newPosY2 = tempPosY2
                     }
-                    else if (tempPosX > newPosX + 20){
+                    else if (tempPosX2 > newPosX2 + 20){
                         lifeTotal2--
+                        if (lifeTotal2 <= 0){
+                            lifeTotal2 = 0
+                        }
                         life2.text = lifeTotal2.toString()
-                        newPosX = tempPosX
-                        newPosY = tempPosY
+                        newPosX2 = tempPosX2
+                        newPosY2 = tempPosY2
                     }
                     true
                 }
                 MotionEvent.ACTION_UP -> {
                     Log.d("action", "Action was UP")
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
-                        tempPosX = MotionEventCompat.getX(event, pointerIndex)
-                        tempPosY = MotionEventCompat.getY(event, pointerIndex)
+                        tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosX < newPosX - 20){
+                    if (tempPosX2 < newPosX2 - 20){
                         lifeTotal2++
                         life2.text = lifeTotal2.toString()
-                        posX = newPosX
-                        posY = newPosY
+                        posX2 = newPosX2
+                        posY2 = newPosY2
                     }
-                    else if (tempPosX > newPosX + 20){
+                    else if (tempPosX2 > newPosX2 + 20){
                         lifeTotal2--
+                        if (lifeTotal2 <= 0){
+                            lifeTotal2 = 0
+                        }
                         life2.text = lifeTotal2.toString()
-                        posX = newPosX
-                        posY = newPosY
+                        posX2 = newPosX2
+                        posY2 = newPosY2
                     }
                     true
                 }
@@ -482,8 +572,8 @@ class MainActivity : AppCompatActivity() {
                     Log.d("action", "Action was DOWN")
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
-                        newPosX = MotionEventCompat.getX(event, pointerIndex)
-                        newPosY = MotionEventCompat.getY(event, pointerIndex)
+                        newPosX3 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY3 = MotionEventCompat.getY(event, pointerIndex)
                     }
 
                     // Save the ID of this pointer
@@ -491,42 +581,48 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX)
+                    Log.d("action", "Action was MOVE " + newPosX3)
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
-                        tempPosX = MotionEventCompat.getX(event, pointerIndex)
-                        tempPosY = MotionEventCompat.getY(event, pointerIndex)
+                        tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosX < newPosX - 20){
+                    if (tempPosX3 < newPosX3 - 20){
                         lifeTotal3++
                         life3.text = lifeTotal3.toString()
-                        newPosX = tempPosX
-                        newPosY = tempPosY
+                        newPosX3 = tempPosX3
+                        newPosY3 = tempPosY3
                     }
-                    else if (tempPosX > newPosX + 20){
+                    else if (tempPosX3 > newPosX3 + 20){
                         lifeTotal3--
+                        if (lifeTotal3 <= 0){
+                            lifeTotal3 = 0
+                        }
                         life3.text = lifeTotal3.toString()
-                        newPosX = tempPosX
-                        newPosY = tempPosY
+                        newPosX3 = tempPosX3
+                        newPosY3 = tempPosY3
                     }
                     true
                 }
                 MotionEvent.ACTION_UP -> {
                     Log.d("action", "Action was UP")
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
-                        tempPosX = MotionEventCompat.getX(event, pointerIndex)
-                        tempPosY = MotionEventCompat.getY(event, pointerIndex)
+                        tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosX < newPosX - 20){
+                    if (tempPosX3 < newPosX3 - 20){
                         lifeTotal3++
                         life3.text = lifeTotal3.toString()
-                        posX = newPosX
-                        posY = newPosY
+                        posX3 = newPosX3
+                        posY3 = newPosY3
                     }
-                    else if (tempPosX > newPosX + 20){
+                    else if (tempPosX3 > newPosX3 + 20){
                         lifeTotal3--
+                        if (lifeTotal3 <= 0){
+                            lifeTotal3 = 0
+                        }
                         life3.text = lifeTotal3.toString()
-                        posX = newPosX
-                        posY = newPosY
+                        posX3 = newPosX3
+                        posY3 = newPosY3
                     }
                     true
                 }
@@ -551,8 +647,8 @@ class MainActivity : AppCompatActivity() {
                     Log.d("action", "Action was DOWN")
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
-                        newPosX = MotionEventCompat.getX(event, pointerIndex)
-                        newPosY = MotionEventCompat.getY(event, pointerIndex)
+                        newPosX4 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY4 = MotionEventCompat.getY(event, pointerIndex)
                     }
 
                     // Save the ID of this pointer
@@ -560,42 +656,48 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX)
+                    Log.d("action", "Action was MOVE " + newPosX4)
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
-                        tempPosX = MotionEventCompat.getX(event, pointerIndex)
-                        tempPosY = MotionEventCompat.getY(event, pointerIndex)
+                        tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosX > newPosX + 20){
+                    if (tempPosX4 > newPosX4 + 20){
                         lifeTotal4++
                         life4.text = lifeTotal4.toString()
-                        newPosX = tempPosX
-                        newPosY = tempPosY
+                        newPosX4 = tempPosX4
+                        newPosY4 = tempPosY4
                     }
-                    else if (tempPosX < newPosX - 20){
+                    else if (tempPosX4 < newPosX4 - 20){
                         lifeTotal4--
+                        if (lifeTotal4 <= 0){
+                            lifeTotal4 = 0
+                        }
                         life4.text = lifeTotal4.toString()
-                        newPosX = tempPosX
-                        newPosY = tempPosY
+                        newPosX4 = tempPosX4
+                        newPosY4 = tempPosY4
                     }
                     true
                 }
                 MotionEvent.ACTION_UP -> {
                     Log.d("action", "Action was UP")
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
-                        tempPosX = MotionEventCompat.getX(event, pointerIndex)
-                        tempPosY = MotionEventCompat.getY(event, pointerIndex)
+                        tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosX > newPosX + 20){
+                    if (tempPosX4 > newPosX4 + 20){
                         lifeTotal4++
                         life4.text = lifeTotal4.toString()
-                        posX = newPosX
-                        posY = newPosY
+                        posX4 = newPosX4
+                        posY4 = newPosY4
                     }
-                    else if (tempPosX < newPosX - 20){
+                    else if (tempPosX4 < newPosX4 - 20){
                         lifeTotal4--
+                        if (lifeTotal4 <= 0){
+                            lifeTotal4 = 0
+                        }
                         life4.text = lifeTotal4.toString()
-                        posX = newPosX
-                        posY = newPosY
+                        posX4 = newPosX4
+                        posY4 = newPosY4
                     }
                     true
                 }
@@ -730,13 +832,13 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-         */
-
         hiddenPlus4.setOnLongClickListener {
             lifeTotal4 += 5
             life4.text = lifeTotal4.toString()
             true
         }
+
+         */
 
         //Set onClickListeners for mana counters
         /*
@@ -1855,6 +1957,380 @@ class MainActivity : AppCompatActivity() {
         //Set onClickListeners
         endTurn.setOnClickListener {
             Log.d("action", "endTurn button pressed")
+            if (startButton.text == "START") {
+                startButton.text = ""
+                when (currentPlayer) {
+                    1 -> {
+                        endTurn.background = this.getDrawable(R.drawable.tap_icon_1)
+                        endTurn.rotation = 270.0f
+                        commanderIcon1.backgroundTintList = this.getColorStateList(R.color.player1Color)
+                        manaIcon1.backgroundTintList = this.getColorStateList(R.color.player1Color)
+                        optionsIcon1.backgroundTintList = this.getColorStateList(R.color.player1Color)
+                        playIcon1.backgroundTintList = this.getColorStateList(R.color.player1Color)
+                        player1Background.setBackgroundColor(Color.parseColor("#ffffff"))
+                    }
+                    2 -> {
+                        endTurn.background = this.getDrawable(R.drawable.tap_icon_2)
+                        endTurn.rotation =  0.0f
+                        commanderIcon2.backgroundTintList = this.getColorStateList(R.color.player2Color)
+                        manaIcon2.backgroundTintList = this.getColorStateList(R.color.player2Color)
+                        optionsIcon2.backgroundTintList = this.getColorStateList(R.color.player2Color)
+                        playIcon2.backgroundTintList = this.getColorStateList(R.color.player2Color)
+                        player2Background.setBackgroundColor(Color.parseColor("#ffffff"))
+                    }
+                    3 -> {
+                        endTurn.background = this.getDrawable(R.drawable.tap_icon_3)
+                        endTurn.rotation = 90.0f
+                        commanderIcon3.backgroundTintList = this.getColorStateList(R.color.player3Color)
+                        manaIcon3.backgroundTintList = this.getColorStateList(R.color.player3Color)
+                        optionsIcon3.backgroundTintList = this.getColorStateList(R.color.player3Color)
+                        playIcon3.backgroundTintList = this.getColorStateList(R.color.player3Color)
+                        player3Background.setBackgroundColor(Color.parseColor("#ffffff"))
+                    }
+                    4 -> {
+                        endTurn.background = this.getDrawable(R.drawable.tap_icon_4)
+                        endTurn.rotation = 180.0f
+                        commanderIcon4.backgroundTintList = this.getColorStateList(R.color.player4Color)
+                        manaIcon4.backgroundTintList = this.getColorStateList(R.color.player4Color)
+                        optionsIcon4.backgroundTintList = this.getColorStateList(R.color.player4Color)
+                        playIcon4.backgroundTintList = this.getColorStateList(R.color.player4Color)
+                        player4Background.setBackgroundColor(Color.parseColor("#ffffff"))
+                    }
+                }
+            }
+            else {
+                when (currentPlayer) {
+                    1 -> {
+                        endTurn.background = this.getDrawable(R.drawable.tap_icon_2)
+                        currentPlayer = 2
+                        endTurn.rotation = 0.0f
+                        life1.setTextColor(Color.parseColor("#ffffff"))
+                        life2.setTextColor(Color.parseColor(player2Color))
+                        commanderIcon1.backgroundTintList = this.getColorStateList(R.color.whiteColor)
+                        manaIcon1.backgroundTintList = this.getColorStateList(R.color.whiteColor)
+                        optionsIcon1.backgroundTintList = this.getColorStateList(R.color.whiteColor)
+                        playIcon1.backgroundTintList = this.getColorStateList(R.color.whiteColor)
+                        commanderIcon2.backgroundTintList = this.getColorStateList(R.color.player2Color)
+                        manaIcon2.backgroundTintList = this.getColorStateList(R.color.player2Color)
+                        optionsIcon2.backgroundTintList = this.getColorStateList(R.color.player2Color)
+                        playIcon2.backgroundTintList = this.getColorStateList(R.color.player2Color)
+                        if (!isCommanderIcon1Pressed && !isManaIcon1Pressed) {
+                            player1Background.setBackgroundColor(Color.parseColor("#000000"))
+                        }
+                        else {
+                            player1Background.setBackgroundColor(Color.parseColor(player1Color))
+                        }
+                        player2Background.setBackgroundColor(Color.parseColor("#ffffff"))
+                    }
+                    2 -> {
+                        endTurn.background = this.getDrawable(R.drawable.tap_icon_3)
+                        endTurn.rotation = 90.0f
+                        currentPlayer = 3
+                        life2.setTextColor(Color.parseColor("#ffffff"))
+                        life3.setTextColor(Color.parseColor(player3Color))
+                        commanderIcon2.backgroundTintList = this.getColorStateList(R.color.whiteColor)
+                        manaIcon2.backgroundTintList = this.getColorStateList(R.color.whiteColor)
+                        optionsIcon2.backgroundTintList = this.getColorStateList(R.color.whiteColor)
+                        playIcon2.backgroundTintList = this.getColorStateList(R.color.whiteColor)
+                        commanderIcon3.backgroundTintList = this.getColorStateList(R.color.player3Color)
+                        manaIcon3.backgroundTintList = this.getColorStateList(R.color.player3Color)
+                        optionsIcon3.backgroundTintList = this.getColorStateList(R.color.player3Color)
+                        playIcon3.backgroundTintList = this.getColorStateList(R.color.player3Color)
+                        if (!isCommanderIcon2Pressed && !isManaIcon2Pressed) {
+                            player2Background.setBackgroundColor(Color.parseColor("#000000"))
+                        }
+                        else {
+                            player2Background.setBackgroundColor(Color.parseColor(player2Color))
+                        }
+                        player3Background.setBackgroundColor(Color.parseColor("#ffffff"))
+                    }
+                    3 -> {
+                        endTurn.background = this.getDrawable(R.drawable.tap_icon_4)
+                        endTurn.rotation = 180.0f
+                        currentPlayer = 4
+                        life3.setTextColor(Color.parseColor("#ffffff"))
+                        life4.setTextColor(Color.parseColor(player4Color))
+                        commanderIcon3.backgroundTintList = this.getColorStateList(R.color.whiteColor)
+                        manaIcon3.backgroundTintList = this.getColorStateList(R.color.whiteColor)
+                        optionsIcon3.backgroundTintList = this.getColorStateList(R.color.whiteColor)
+                        playIcon3.backgroundTintList = this.getColorStateList(R.color.whiteColor)
+                        commanderIcon4.backgroundTintList = this.getColorStateList(R.color.player4Color)
+                        manaIcon4.backgroundTintList = this.getColorStateList(R.color.player4Color)
+                        optionsIcon4.backgroundTintList = this.getColorStateList(R.color.player4Color)
+                        playIcon4.backgroundTintList = this.getColorStateList(R.color.player4Color)
+                        if (!isCommanderIcon3Pressed && !isManaIcon3Pressed) {
+                            player3Background.setBackgroundColor(Color.parseColor("#000000"))
+                        }
+                        else {
+                            player3Background.setBackgroundColor(Color.parseColor(player3Color))
+                        }
+                        player4Background.setBackgroundColor(Color.parseColor("#ffffff"))
+                    }
+                    4 -> {
+                        endTurn.background = this.getDrawable(R.drawable.tap_icon_1)
+                        endTurn.rotation = 270.0f
+                        currentPlayer = 1
+                        life4.setTextColor(Color.parseColor("#ffffff"))
+                        life1.setTextColor(Color.parseColor(player1Color))
+                        commanderIcon4.backgroundTintList = this.getColorStateList(R.color.whiteColor)
+                        manaIcon4.backgroundTintList = this.getColorStateList(R.color.whiteColor)
+                        optionsIcon4.backgroundTintList = this.getColorStateList(R.color.whiteColor)
+                        playIcon4.backgroundTintList = this.getColorStateList(R.color.whiteColor)
+                        commanderIcon1.backgroundTintList = this.getColorStateList(R.color.player1Color)
+                        manaIcon1.backgroundTintList = this.getColorStateList(R.color.player1Color)
+                        optionsIcon1.backgroundTintList = this.getColorStateList(R.color.player1Color)
+                        playIcon1.backgroundTintList = this.getColorStateList(R.color.player1Color)
+                        if (!isCommanderIcon4Pressed && !isManaIcon4Pressed) {
+                            player4Background.setBackgroundColor(Color.parseColor("#000000"))
+                        }
+                        else {
+                            player4Background.setBackgroundColor(Color.parseColor(player4Color))
+                        }
+                        player1Background.setBackgroundColor(Color.parseColor("#ffffff"))
+                    }
+                }
+            }
+        }
+
+        commanderIcon1.setOnClickListener {
+            Log.d("action", "manaIcon1 button pressed")
+            if (!isCommanderIcon1Pressed){
+                isCommanderIcon1Pressed = true
+                commanderIcon1.backgroundTintList = this.getColorStateList(R.color.whiteColor)
+                player1Background.setBackgroundColor(Color.parseColor(player1Color))
+                player1Area.visibility = INVISIBLE
+                life1.visibility = GONE
+                manaIcon1.visibility = GONE
+                optionsIcon1.visibility = GONE
+                playIcon1.visibility = GONE
+            }
+            else {
+                isCommanderIcon1Pressed = false
+                if (currentPlayer == 1) {
+                    commanderIcon1.backgroundTintList = this.getColorStateList(R.color.player1Color)
+                    player1Background.setBackgroundColor(Color.parseColor("#ffffff"))
+                }
+                else {
+                    player1Background.setBackgroundColor(Color.parseColor("#000000"))
+                }
+                player1Area.visibility = VISIBLE
+                life1.visibility = VISIBLE
+                manaIcon1.visibility = VISIBLE
+                optionsIcon1.visibility = VISIBLE
+                playIcon1.visibility = VISIBLE
+            }
+        }
+
+        manaIcon1.setOnClickListener {
+            Log.d("action", "manaIcon1 button pressed")
+            if (!isManaIcon1Pressed){
+                isManaIcon1Pressed = true
+                manaIcon1.backgroundTintList = this.getColorStateList(R.color.whiteColor)
+                player1Background.setBackgroundColor(Color.parseColor(player1Color))
+                player1Area.visibility = INVISIBLE
+                life1.visibility = GONE
+                commanderIcon1.visibility = GONE
+                optionsIcon1.visibility = GONE
+                playIcon1.visibility = GONE
+            }
+            else {
+                isManaIcon1Pressed = false
+                if (currentPlayer == 1) {
+                    manaIcon1.backgroundTintList = this.getColorStateList(R.color.player1Color)
+                    player1Background.setBackgroundColor(Color.parseColor("#ffffff"))
+                }
+                else {
+                    player1Background.setBackgroundColor(Color.parseColor("#000000"))
+                }
+                player1Area.visibility = VISIBLE
+                life1.visibility = VISIBLE
+                commanderIcon1.visibility = VISIBLE
+                optionsIcon1.visibility = VISIBLE
+                playIcon1.visibility = VISIBLE
+            }
+        }
+
+        commanderIcon2.setOnClickListener {
+            Log.d("action", "manaIcon2 button pressed")
+            if (!isCommanderIcon2Pressed){
+                isCommanderIcon2Pressed = true
+                commanderIcon2.backgroundTintList = this.getColorStateList(R.color.whiteColor)
+                player2Background.setBackgroundColor(Color.parseColor(player2Color))
+                player2Area.visibility = INVISIBLE
+                life2.visibility = GONE
+                manaIcon2.visibility = GONE
+                optionsIcon2.visibility = GONE
+                playIcon2.visibility = GONE
+            }
+            else {
+                isCommanderIcon2Pressed = false
+                if (currentPlayer == 2) {
+                    commanderIcon2.backgroundTintList = this.getColorStateList(R.color.player2Color)
+                    player2Background.setBackgroundColor(Color.parseColor("#ffffff"))
+                }
+                else {
+                    player2Background.setBackgroundColor(Color.parseColor("#000000"))
+                }
+                player2Area.visibility = VISIBLE
+                life2.visibility = VISIBLE
+                manaIcon2.visibility = VISIBLE
+                optionsIcon2.visibility = VISIBLE
+                playIcon2.visibility = VISIBLE
+            }
+        }
+
+        manaIcon2.setOnClickListener {
+            Log.d("action", "manaIcon2 button pressed")
+            if (!isManaIcon2Pressed){
+                isManaIcon2Pressed = true
+                manaIcon2.backgroundTintList = this.getColorStateList(R.color.whiteColor)
+                player2Background.setBackgroundColor(Color.parseColor(player2Color))
+                player2Area.visibility = INVISIBLE
+                life2.visibility = GONE
+                commanderIcon2.visibility = GONE
+                optionsIcon2.visibility = GONE
+                playIcon2.visibility = GONE
+            }
+            else {
+                isManaIcon2Pressed = false
+                if (currentPlayer == 2) {
+                    manaIcon2.backgroundTintList = this.getColorStateList(R.color.player2Color)
+                    player2Background.setBackgroundColor(Color.parseColor("#ffffff"))
+                }
+                else {
+                    player2Background.setBackgroundColor(Color.parseColor("#000000"))
+                }
+                player2Area.visibility = VISIBLE
+                life2.visibility = VISIBLE
+                commanderIcon2.visibility = VISIBLE
+                optionsIcon2.visibility = VISIBLE
+                playIcon2.visibility = VISIBLE
+            }
+        }
+
+        commanderIcon3.setOnClickListener {
+            Log.d("action", "manaIcon3 button pressed")
+            if (!isCommanderIcon3Pressed){
+                isCommanderIcon3Pressed = true
+                commanderIcon3.backgroundTintList = this.getColorStateList(R.color.whiteColor)
+                player3Background.setBackgroundColor(Color.parseColor(player3Color))
+                player3Area.visibility = INVISIBLE
+                life3.visibility = GONE
+                manaIcon3.visibility = GONE
+                optionsIcon3.visibility = GONE
+                playIcon3.visibility = GONE
+            }
+            else {
+                isCommanderIcon3Pressed = false
+                if (currentPlayer == 3) {
+                    commanderIcon3.backgroundTintList = this.getColorStateList(R.color.player3Color)
+                    player3Background.setBackgroundColor(Color.parseColor("#ffffff"))
+                }
+                else {
+                    player3Background.setBackgroundColor(Color.parseColor("#000000"))
+                }
+                player3Area.visibility = VISIBLE
+                life3.visibility = VISIBLE
+                manaIcon3.visibility = VISIBLE
+                optionsIcon3.visibility = VISIBLE
+                playIcon3.visibility = VISIBLE
+            }
+        }
+
+        manaIcon3.setOnClickListener {
+            Log.d("action", "manaIcon3 button pressed")
+            if (!isManaIcon3Pressed){
+                isManaIcon3Pressed = true
+                manaIcon3.backgroundTintList = this.getColorStateList(R.color.whiteColor)
+                player3Background.setBackgroundColor(Color.parseColor(player3Color))
+                player3Area.visibility = INVISIBLE
+                life3.visibility = GONE
+                commanderIcon3.visibility = GONE
+                optionsIcon3.visibility = GONE
+                playIcon3.visibility = GONE
+            }
+            else {
+                isManaIcon3Pressed = false
+                if (currentPlayer == 3) {
+                    manaIcon3.backgroundTintList = this.getColorStateList(R.color.player3Color)
+                    player3Background.setBackgroundColor(Color.parseColor("#ffffff"))
+                }
+                else {
+                    player3Background.setBackgroundColor(Color.parseColor("#000000"))
+                }
+                player3Area.visibility = VISIBLE
+                life3.visibility = VISIBLE
+                commanderIcon3.visibility = VISIBLE
+                optionsIcon3.visibility = VISIBLE
+                playIcon3.visibility = VISIBLE
+            }
+        }
+
+        commanderIcon4.setOnClickListener {
+            Log.d("action", "manaIcon4 button pressed")
+            if (!isCommanderIcon4Pressed){
+                isCommanderIcon4Pressed = true
+                commanderIcon4.backgroundTintList = this.getColorStateList(R.color.whiteColor)
+                player4Background.setBackgroundColor(Color.parseColor(player4Color))
+                player4Area.visibility = INVISIBLE
+                life4.visibility = GONE
+                manaIcon4.visibility = GONE
+                optionsIcon4.visibility = GONE
+                playIcon4.visibility = GONE
+            }
+            else {
+                isCommanderIcon4Pressed = false
+                if (currentPlayer == 4) {
+                    commanderIcon4.backgroundTintList = this.getColorStateList(R.color.player4Color)
+                    player4Background.setBackgroundColor(Color.parseColor("#ffffff"))
+                }
+                else {
+                    player4Background.setBackgroundColor(Color.parseColor("#000000"))
+                }
+                player4Area.visibility = VISIBLE
+                life4.visibility = VISIBLE
+                manaIcon4.visibility = VISIBLE
+                optionsIcon4.visibility = VISIBLE
+                playIcon4.visibility = VISIBLE
+            }
+        }
+
+        manaIcon4.setOnClickListener {
+            Log.d("action", "manaIcon4 button pressed")
+            if (!isManaIcon4Pressed){
+                isManaIcon4Pressed = true
+                manaIcon4.backgroundTintList = this.getColorStateList(R.color.whiteColor)
+                player4Background.setBackgroundColor(Color.parseColor(player4Color))
+                player4Area.visibility = INVISIBLE
+                life4.visibility = GONE
+                commanderIcon4.visibility = GONE
+                optionsIcon4.visibility = GONE
+                playIcon4.visibility = GONE
+            }
+            else {
+                isManaIcon4Pressed = false
+                if (currentPlayer == 4) {
+                    manaIcon4.backgroundTintList = this.getColorStateList(R.color.player4Color)
+                    player4Background.setBackgroundColor(Color.parseColor("#ffffff"))
+                }
+                else {
+                    player4Background.setBackgroundColor(Color.parseColor("#000000"))
+                }
+                player4Area.visibility = VISIBLE
+                life4.visibility = VISIBLE
+                commanderIcon4.visibility = VISIBLE
+                optionsIcon4.visibility = VISIBLE
+                playIcon4.visibility = VISIBLE
+            }
+        }
+
+        /*
+        startButton.setOnClickListener {
+            Log.d("action", "startButton button pressed")
+            if (startButton.text == "START"){
+                startButton.text = ""
+                endTurn.visibility = VISIBLE
+            }
             lifeTotal1 = 40
             lifeTotal2 = 40
             lifeTotal3 = 40
@@ -1864,6 +2340,8 @@ class MainActivity : AppCompatActivity() {
             life3.text = lifeTotal3.toString()
             life4.text = lifeTotal4.toString()
         }
+
+         */
     }
 
     //Menu creation

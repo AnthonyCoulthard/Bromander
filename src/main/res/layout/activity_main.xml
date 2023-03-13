@@ -70,7 +70,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:elevation="4dp"
-        app:layout_constraintStart_toStartOf="@id/v0Guideline"
+        app:layout_constraintStart_toStartOf="@id/v10Guideline"
         app:layout_constraintEnd_toEndOf="@id/verticalBottom"
         app:layout_constraintBottom_toBottomOf="@id/h50Guideline"
         app:layout_constraintTop_toTopOf="@id/h0Guideline"
@@ -82,7 +82,7 @@
         android:layout_height="0dp"
         android:elevation="4dp"
         app:layout_constraintStart_toStartOf="@id/verticalTop"
-        app:layout_constraintEnd_toEndOf="@id/v100Guideline"
+        app:layout_constraintEnd_toEndOf="@id/v90Guideline"
         app:layout_constraintBottom_toBottomOf="@id/h50Guideline"
         app:layout_constraintTop_toTopOf="@id/h0Guideline"
         />
@@ -93,7 +93,7 @@
         android:layout_height="0dp"
         android:elevation="4dp"
         app:layout_constraintStart_toStartOf="@id/verticalTop"
-        app:layout_constraintEnd_toEndOf="@id/v100Guideline"
+        app:layout_constraintEnd_toEndOf="@id/v90Guideline"
         app:layout_constraintBottom_toBottomOf="@id/h100Guideline"
         app:layout_constraintTop_toTopOf="@id/h50Guideline"
         />
@@ -103,7 +103,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:elevation="4dp"
-        app:layout_constraintStart_toStartOf="@id/v0Guideline"
+        app:layout_constraintStart_toStartOf="@id/v10Guideline"
         app:layout_constraintEnd_toEndOf="@id/verticalBottom"
         app:layout_constraintBottom_toBottomOf="@id/h100Guideline"
         app:layout_constraintTop_toTopOf="@id/h50Guideline"
@@ -114,7 +114,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#000000"
-        app:layout_constraintStart_toStartOf="@id/player1Area"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="@id/player1Area"
         app:layout_constraintBottom_toBottomOf="@id/player1Area"
         app:layout_constraintTop_toTopOf="@id/player1Area"
@@ -126,7 +126,7 @@
         android:layout_height="0dp"
         android:background="#000000"
         app:layout_constraintStart_toStartOf="@id/player2Area"
-        app:layout_constraintEnd_toEndOf="@id/player2Area"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/player2Area"
         app:layout_constraintTop_toTopOf="@id/player2Area"
         />
@@ -137,7 +137,7 @@
         android:layout_height="0dp"
         android:background="#000000"
         app:layout_constraintStart_toStartOf="@id/player3Area"
-        app:layout_constraintEnd_toEndOf="@id/player3Area"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/player3Area"
         app:layout_constraintTop_toTopOf="@id/player3Area"
         />
@@ -147,7 +147,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#000000"
-        app:layout_constraintStart_toStartOf="@id/player4Area"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="@id/player4Area"
         app:layout_constraintBottom_toBottomOf="@id/player4Area"
         app:layout_constraintTop_toTopOf="@id/player4Area"
@@ -535,8 +535,8 @@
         />
 
     <Button
-        android:id="@+id/endTurn"
-        android:layout_width="wrap_content"
+        android:id="@+id/startButton"
+        android:layout_width="80dp"
         android:layout_height="80dp"
         android:background="@drawable/red_circle"
         android:text="START"
@@ -544,6 +544,19 @@
         android:textSize="32sp"
         android:fontFamily="@font/alarm_font"
         android:elevation="6dp"
+        android:rotation="90"
+        app:layout_constraintStart_toStartOf="@id/verticalBottom"
+        app:layout_constraintEnd_toEndOf="@id/verticalTop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <Button
+        android:id="@+id/endTurn"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/transparent_circle"
+        android:elevation="8dp"
         android:rotation="90"
         app:layout_constraintStart_toStartOf="@id/verticalBottom"
         app:layout_constraintEnd_toEndOf="@id/verticalTop"

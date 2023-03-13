@@ -3,4 +3,10 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="statusBarColor">#000000</color>
+    <color name="player1Color">#ff63e5</color>
+    <color name="player2Color">#00ffff</color>
+    <color name="player3Color">#ff9d41</color>
+    <color name="player4Color">#4affa7</color>
+    <color name="whiteColor">#ffffff</color>
 </resources>
