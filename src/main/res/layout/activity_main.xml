@@ -53,7 +53,7 @@
         android:id="@+id/player4Timer"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/player4timerv2"
+        android:background="@drawable/player4timerv3"
         android:textColor="#ffffff"
         android:fontFamily="@font/alarm_font"
         android:elevation="0dp"
@@ -666,6 +666,240 @@
         app:layout_constraintEnd_toEndOf="@id/v25Guideline"
         app:layout_constraintBottom_toBottomOf="@id/h100Guideline"
         app:layout_constraintTop_toTopOf="@id/h50Guideline"
+        />
+
+    <TextView
+        android:id="@+id/player1Damage2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:textColor="@color/player2Color"
+        android:text="0"
+        android:textSize="80sp"
+        android:fontFamily="@font/alarm_font"
+        android:gravity="center"
+        android:rotation="90"
+        android:elevation="4dp"
+        app:layout_constraintStart_toStartOf="@id/v0Guideline"
+        app:layout_constraintEnd_toEndOf="@id/v50Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h16Guideline"
+        app:layout_constraintTop_toTopOf="@id/h0Guideline"
+        />
+
+    <TextView
+        android:id="@+id/player1Damage3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:textColor="@color/player3Color"
+        android:text="0"
+        android:textSize="80sp"
+        android:fontFamily="@font/alarm_font"
+        android:gravity="center"
+        android:rotation="90"
+        android:elevation="4dp"
+        app:layout_constraintStart_toStartOf="@id/v0Guideline"
+        app:layout_constraintEnd_toEndOf="@id/v50Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h33Guideline"
+        app:layout_constraintTop_toTopOf="@id/h17Guideline"
+        />
+
+    <TextView
+        android:id="@+id/player1Damage4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:textColor="@color/player4Color"
+        android:text="0"
+        android:textSize="80sp"
+        android:fontFamily="@font/alarm_font"
+        android:gravity="center"
+        android:rotation="90"
+        android:elevation="4dp"
+        app:layout_constraintStart_toStartOf="@id/v0Guideline"
+        app:layout_constraintEnd_toEndOf="@id/v50Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h50Guideline"
+        app:layout_constraintTop_toTopOf="@id/h34Guideline"
+        />
+
+    <TextView
+        android:id="@+id/player2Damage3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:textColor="@color/player3Color"
+        android:text="0"
+        android:textSize="80sp"
+        android:fontFamily="@font/alarm_font"
+        android:gravity="center"
+        android:rotation="270"
+        android:elevation="4dp"
+        app:layout_constraintStart_toStartOf="@id/v50Guideline"
+        app:layout_constraintEnd_toEndOf="@id/v100Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h50Guideline"
+        app:layout_constraintTop_toTopOf="@id/h34Guideline"
+        />
+
+    <TextView
+        android:id="@+id/player2Damage4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:textColor="@color/player4Color"
+        android:text="0"
+        android:textSize="80sp"
+        android:fontFamily="@font/alarm_font"
+        android:gravity="center"
+        android:rotation="270"
+        android:elevation="4dp"
+        app:layout_constraintStart_toStartOf="@id/v50Guideline"
+        app:layout_constraintEnd_toEndOf="@id/v100Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h33Guideline"
+        app:layout_constraintTop_toTopOf="@id/h17Guideline"
+        />
+
+    <TextView
+        android:id="@+id/player2Damage1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:textColor="@color/player1Color"
+        android:text="0"
+        android:textSize="80sp"
+        android:fontFamily="@font/alarm_font"
+        android:gravity="center"
+        android:rotation="270"
+        android:elevation="4dp"
+        app:layout_constraintStart_toStartOf="@id/v50Guideline"
+        app:layout_constraintEnd_toEndOf="@id/v100Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h16Guideline"
+        app:layout_constraintTop_toTopOf="@id/h0Guideline"
+        />
+
+    <TextView
+        android:id="@+id/player3Damage4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:textColor="@color/player4Color"
+        android:text="0"
+        android:textSize="80sp"
+        android:fontFamily="@font/alarm_font"
+        android:gravity="center"
+        android:rotation="270"
+        android:elevation="4dp"
+        app:layout_constraintStart_toStartOf="@id/v50Guideline"
+        app:layout_constraintEnd_toEndOf="@id/v100Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h100Guideline"
+        app:layout_constraintTop_toTopOf="@id/h84Guideline"
+        />
+
+    <TextView
+        android:id="@+id/player3Damage1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:textColor="@color/player1Color"
+        android:text="0"
+        android:textSize="80sp"
+        android:fontFamily="@font/alarm_font"
+        android:gravity="center"
+        android:rotation="270"
+        android:elevation="4dp"
+        app:layout_constraintStart_toStartOf="@id/v50Guideline"
+        app:layout_constraintEnd_toEndOf="@id/v100Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h83Guideline"
+        app:layout_constraintTop_toTopOf="@id/h67Guideline"
+        />
+
+    <TextView
+        android:id="@+id/player3Damage2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:textColor="@color/player2Color"
+        android:text="0"
+        android:textSize="80sp"
+        android:fontFamily="@font/alarm_font"
+        android:gravity="center"
+        android:rotation="270"
+        android:elevation="4dp"
+        app:layout_constraintStart_toStartOf="@id/v50Guideline"
+        app:layout_constraintEnd_toEndOf="@id/v100Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h66Guideline"
+        app:layout_constraintTop_toTopOf="@id/h50Guideline"
+        />
+
+    <TextView
+        android:id="@+id/player4Damage1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:textColor="@color/player1Color"
+        android:text="0"
+        android:textSize="80sp"
+        android:fontFamily="@font/alarm_font"
+        android:gravity="center"
+        android:rotation="90"
+        android:elevation="4dp"
+        app:layout_constraintStart_toStartOf="@id/v0Guideline"
+        app:layout_constraintEnd_toEndOf="@id/v50Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h66Guideline"
+        app:layout_constraintTop_toTopOf="@id/h50Guideline"
+        />
+
+    <TextView
+        android:id="@+id/player4Damage2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:textColor="@color/player2Color"
+        android:text="0"
+        android:textSize="80sp"
+        android:fontFamily="@font/alarm_font"
+        android:gravity="center"
+        android:rotation="90"
+        android:elevation="4dp"
+        app:layout_constraintStart_toStartOf="@id/v0Guideline"
+        app:layout_constraintEnd_toEndOf="@id/v50Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h83Guideline"
+        app:layout_constraintTop_toTopOf="@id/h67Guideline"
+        />
+
+    <TextView
+        android:id="@+id/player4Damage3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:textColor="@color/player3Color"
+        android:text="0"
+        android:textSize="80sp"
+        android:fontFamily="@font/alarm_font"
+        android:gravity="center"
+        android:rotation="90"
+        android:elevation="4dp"
+        app:layout_constraintStart_toStartOf="@id/v0Guideline"
+        app:layout_constraintEnd_toEndOf="@id/v50Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h100Guideline"
+        app:layout_constraintTop_toTopOf="@id/h84Guideline"
+        />
+
+    <TextView
+        android:id="@+id/white1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:textColor="@color/player2Color"
+        android:text="0"
+        android:textSize="80sp"
+        android:fontFamily="@font/alarm_font"
+        android:gravity="center"
+        android:rotation="90"
+        android:elevation="4dp"
+        app:layout_constraintStart_toStartOf="@id/v0Guideline"
+        app:layout_constraintEnd_toEndOf="@id/v50Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h16Guideline"
+        app:layout_constraintTop_toTopOf="@id/h0Guideline"
         />
 
     <Button
@@ -2509,7 +2743,6 @@
         android:orientation="horizontal"
         />
 
-    <!--
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h16Guideline"
         android:layout_width="wrap_content"
@@ -2518,6 +2751,7 @@
         app:layout_constraintGuide_percent="0.16"
         android:orientation="horizontal"
         />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h17Guideline"
         android:layout_width="wrap_content"
@@ -2526,6 +2760,8 @@
         app:layout_constraintGuide_percent="0.17"
         android:orientation="horizontal"
         />
+
+    <!--
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h18Guideline"
         android:layout_width="wrap_content"
@@ -2664,6 +2900,8 @@
         app:layout_constraintGuide_percent="0.32"
         android:orientation="horizontal"
         />
+        -->
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h33Guideline"
         android:layout_width="wrap_content"
@@ -2678,9 +2916,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_end="482dp" />
-        -->
+        app:layout_constraintGuide_begin="0dp"
+        app:layout_constraintGuide_percent="0.34"
+        />
 
+    <!--
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h35Guideline"
         android:layout_width="wrap_content"
@@ -2697,7 +2937,6 @@
         android:orientation="horizontal"
         />
 
-    <!--
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h37Guideline"
         android:layout_width="wrap_content"
@@ -2929,7 +3168,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="458dp"
+        app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.62" />
 
     <!--
@@ -2960,7 +3199,6 @@
         android:orientation="horizontal"
         />
 
-    <!--
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h66Guideline"
         android:layout_width="wrap_content"
@@ -2969,6 +3207,7 @@
         app:layout_constraintGuide_percent="0.66"
         android:orientation="horizontal"
         />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h67Guideline"
         android:layout_width="wrap_content"
@@ -2977,6 +3216,8 @@
         app:layout_constraintGuide_percent="0.67"
         android:orientation="horizontal"
         />
+
+    <!--
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h68Guideline"
         android:layout_width="wrap_content"
@@ -3112,6 +3353,8 @@
         app:layout_constraintGuide_percent="0.82"
         android:orientation="horizontal"
         />
+        -->
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h83Guideline"
         android:layout_width="wrap_content"
@@ -3128,7 +3371,6 @@
         app:layout_constraintGuide_percent="0.84"
         android:orientation="horizontal"
         />
-        -->
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h85Guideline"

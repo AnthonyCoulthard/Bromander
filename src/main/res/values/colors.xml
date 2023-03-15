@@ -5,8 +5,20 @@
     <color name="colorAccent">#D81B60</color>
     <color name="statusBarColor">#000000</color>
     <color name="player1Color">#ff63e5</color>
+    <!--
     <color name="player2Color">#00ffff</color>
+    -->
+    <color name="player2Color">#59c8e9</color>
     <color name="player3Color">#ff9d41</color>
+    <!--
     <color name="player4Color">#4affa7</color>
+    -->
+    <color name="player4Color">#3a7815</color>
     <color name="whiteColor">#ffffff</color>
+    <color name="whiteManaColor">#F8E7B9</color>
+    <color name="blueManaColor">#B3CEEA</color>
+    <color name="blackManaColor">#A69F9D</color>
+    <color name="redManaColor">#EB9F82</color>
+    <color name="greenManaColor">#C4D3CA</color>
+    <color name="stormManaColor">#ffff00</color>
 </resources>

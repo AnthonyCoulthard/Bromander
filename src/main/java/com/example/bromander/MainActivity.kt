@@ -126,6 +126,18 @@ class MainActivity : AppCompatActivity() {
     lateinit var rewind3: Button
     lateinit var restart4: Button
     lateinit var rewind4: Button
+    lateinit var player1Damage2: TextView
+    lateinit var player1Damage3: TextView
+    lateinit var player1Damage4: TextView
+    lateinit var player2Damage1: TextView
+    lateinit var player2Damage3: TextView
+    lateinit var player2Damage4: TextView
+    lateinit var player3Damage2: TextView
+    lateinit var player3Damage1: TextView
+    lateinit var player3Damage4: TextView
+    lateinit var player4Damage2: TextView
+    lateinit var player4Damage3: TextView
+    lateinit var player4Damage1: TextView
 
     //Additional global variables
     var lifeTotal1: Int = 40
@@ -196,9 +208,9 @@ class MainActivity : AppCompatActivity() {
     var currentPlayer: Int = 1
     var isPaused: Boolean = true
     var player1Color: String = "#ff63e5"
-    var player2Color: String = "#00ffff"
+    var player2Color: String = "#59c8e9"
     var player3Color: String = "#ff9d41"
-    var player4Color: String = "#4affa7"
+    var player4Color: String = "#3a7815"
     var isCommanderIcon1Pressed: Boolean = false
     var isManaIcon1Pressed: Boolean = false
     var isOptionsIcon1Pressed: Boolean = false
@@ -217,6 +229,18 @@ class MainActivity : AppCompatActivity() {
     var isPlayIcon4Pressed: Boolean = false
     var isPlayerSelected: Boolean = false
     var timerAddition: Int = 150
+    var player1Damage2Int: Int = 0
+    var player1Damage3Int: Int = 0
+    var player1Damage4Int: Int = 0
+    var player2Damage1Int: Int = 0
+    var player2Damage3Int: Int = 0
+    var player2Damage4Int: Int = 0
+    var player3Damage2Int: Int = 0
+    var player3Damage1Int: Int = 0
+    var player3Damage4Int: Int = 0
+    var player4Damage2Int: Int = 0
+    var player4Damage3Int: Int = 0
+    var player4Damage1Int: Int = 0
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -321,8 +345,25 @@ class MainActivity : AppCompatActivity() {
         rewind3 = findViewById(R.id.rewind3)
         restart4 = findViewById(R.id.restart4)
         rewind4 = findViewById(R.id.rewind4)
+        player1Damage2 = findViewById(R.id.player1Damage2)
+        player1Damage3 = findViewById(R.id.player1Damage3)
+        player1Damage4 = findViewById(R.id.player1Damage4)
+        player2Damage1 = findViewById(R.id.player2Damage1)
+        player2Damage3 = findViewById(R.id.player2Damage3)
+        player2Damage4 = findViewById(R.id.player2Damage4)
+        player3Damage2 = findViewById(R.id.player3Damage2)
+        player3Damage1 = findViewById(R.id.player3Damage1)
+        player3Damage4 = findViewById(R.id.player3Damage4)
+        player4Damage2 = findViewById(R.id.player4Damage2)
+        player4Damage3 = findViewById(R.id.player4Damage3)
+        player4Damage1 = findViewById(R.id.player4Damage1)
 
+        //Set some views to invisible
         endTurn.visibility = GONE
+        playIcon1.visibility = GONE
+        playIcon2.visibility = GONE
+        playIcon3.visibility = GONE
+        playIcon4.visibility = GONE
         restart1.visibility = GONE
         rewind1.visibility = GONE
         restart2.visibility = GONE
@@ -331,6 +372,18 @@ class MainActivity : AppCompatActivity() {
         rewind3.visibility = GONE
         restart4.visibility = GONE
         rewind4.visibility = GONE
+        player1Damage2.visibility = INVISIBLE
+        player1Damage3.visibility = GONE
+        player1Damage4.visibility = GONE
+        player2Damage1.visibility = GONE
+        player2Damage3.visibility = GONE
+        player2Damage4.visibility = GONE
+        player3Damage2.visibility = GONE
+        player3Damage1.visibility = GONE
+        player3Damage4.visibility = GONE
+        player4Damage2.visibility = GONE
+        player4Damage3.visibility = GONE
+        player4Damage1.visibility = GONE
 
         //Boot animation to decide starting player
         val bootThread: Thread = object : Thread() {
@@ -726,6 +779,906 @@ class MainActivity : AppCompatActivity() {
                             lifeTotal4 = 0
                         }
                         life4.text = lifeTotal4.toString()
+                        posX4 = newPosX4
+                        posY4 = newPosY4
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        player1Damage2.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX1 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY1 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX1)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY1 < newPosY1 - 20){
+                        player1Damage2Int++
+                        player1Damage2.text = player1Damage2Int.toString()
+                        newPosX1 = tempPosX1
+                        newPosY1 = tempPosY1
+                    }
+                    else if (tempPosY1 > newPosY1 + 20){
+                        player1Damage2Int--
+                        if (player1Damage2Int <= 0){
+                            player1Damage2Int = 0
+                        }
+                        player1Damage2.text = player1Damage2Int.toString()
+                        newPosX1 = tempPosX1
+                        newPosY1 = tempPosY1
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY1 < newPosY1 - 20){
+                        player1Damage2Int++
+                        player1Damage2.text = player1Damage2Int.toString()
+                        posX1 = newPosX1
+                        posY1 = newPosY1
+                    }
+                    else if (tempPosY1 > newPosY1 + 20){
+                        player1Damage2Int--
+                        if (player1Damage2Int <= 0){
+                            player1Damage2Int = 0
+                        }
+                        player1Damage2.text = player1Damage2Int.toString()
+                        posX1 = newPosX1
+                        posY1 = newPosY1
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        player1Damage3.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX1 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY1 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX1)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY1 < newPosY1 - 20){
+                        player1Damage3Int++
+                        player1Damage3.text = player1Damage3Int.toString()
+                        newPosX1 = tempPosX1
+                        newPosY1 = tempPosY1
+                    }
+                    else if (tempPosY1 > newPosY1 + 20){
+                        player1Damage3Int--
+                        if (player1Damage3Int <= 0){
+                            player1Damage3Int = 0
+                        }
+                        player1Damage3.text = player1Damage3Int.toString()
+                        newPosX1 = tempPosX1
+                        newPosY1 = tempPosY1
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY1 < newPosY1 - 20){
+                        player1Damage3Int++
+                        player1Damage3.text = player1Damage3Int.toString()
+                        posX1 = newPosX1
+                        posY1 = newPosY1
+                    }
+                    else if (tempPosY1 > newPosY1 + 20){
+                        player1Damage3Int--
+                        if (player1Damage3Int <= 0){
+                            player1Damage3Int = 0
+                        }
+                        player1Damage3.text = player1Damage3Int.toString()
+                        posX1 = newPosX1
+                        posY1 = newPosY1
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        player1Damage4.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX1 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY1 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX1)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY1 < newPosY1 - 20){
+                        player1Damage4Int++
+                        player1Damage4.text = player1Damage4Int.toString()
+                        newPosX1 = tempPosX1
+                        newPosY1 = tempPosY1
+                    }
+                    else if (tempPosY1 > newPosY1 + 20){
+                        player1Damage4Int--
+                        if (player1Damage4Int <= 0){
+                            player1Damage4Int = 0
+                        }
+                        player1Damage4.text = player1Damage4Int.toString()
+                        newPosX1 = tempPosX1
+                        newPosY1 = tempPosY1
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY1 < newPosY1 - 20){
+                        player1Damage4Int++
+                        player1Damage4.text = player1Damage4Int.toString()
+                        posX1 = newPosX1
+                        posY1 = newPosY1
+                    }
+                    else if (tempPosY1 > newPosY1 + 20){
+                        player1Damage4Int--
+                        if (player1Damage4Int <= 0){
+                            player1Damage4Int = 0
+                        }
+                        player1Damage4.text = player1Damage4Int.toString()
+                        posX1 = newPosX1
+                        posY1 = newPosY1
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        player2Damage1.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX2 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY2 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX2)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY2 < newPosY2 - 20){
+                        player2Damage1Int++
+                        player2Damage1.text = player2Damage1Int.toString()
+                        newPosX2 = tempPosX2
+                        newPosY2 = tempPosY2
+                    }
+                    else if (tempPosY2 > newPosY2 + 20){
+                        player2Damage1Int--
+                        if (player2Damage1Int <= 0){
+                            player2Damage1Int = 0
+                        }
+                        player2Damage1.text = player2Damage1Int.toString()
+                        newPosX2 = tempPosX2
+                        newPosY2 = tempPosY2
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY2 < newPosY2 - 20){
+                        player2Damage1Int++
+                        player2Damage1.text = player2Damage1Int.toString()
+                        posX2 = newPosX2
+                        posY2 = newPosY2
+                    }
+                    else if (tempPosY2 > newPosY2 + 20){
+                        player2Damage1Int--
+                        if (player2Damage1Int <= 0){
+                            player2Damage1Int = 0
+                        }
+                        player2Damage1.text = player2Damage1Int.toString()
+                        posX2 = newPosX2
+                        posY2 = newPosY2
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        player2Damage3.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX2 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY2 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX2)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY2 < newPosY2 - 20){
+                        player2Damage3Int++
+                        player2Damage3.text = player2Damage3Int.toString()
+                        newPosX2 = tempPosX2
+                        newPosY2 = tempPosY2
+                    }
+                    else if (tempPosY2 > newPosY2 + 20){
+                        player2Damage3Int--
+                        if (player2Damage3Int <= 0){
+                            player2Damage3Int = 0
+                        }
+                        player2Damage3.text = player2Damage3Int.toString()
+                        newPosX2 = tempPosX2
+                        newPosY2 = tempPosY2
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY2 < newPosY2 - 20){
+                        player2Damage3Int++
+                        player2Damage3.text = player2Damage3Int.toString()
+                        posX2 = newPosX2
+                        posY2 = newPosY2
+                    }
+                    else if (tempPosY2 > newPosY2 + 20){
+                        player2Damage3Int--
+                        if (player2Damage3Int <= 0){
+                            player2Damage3Int = 0
+                        }
+                        player2Damage3.text = player2Damage3Int.toString()
+                        posX2 = newPosX2
+                        posY2 = newPosY2
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        player2Damage4.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX2 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY2 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX2)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY2 < newPosY2 - 20){
+                        player2Damage4Int++
+                        player2Damage4.text = player2Damage4Int.toString()
+                        newPosX2 = tempPosX2
+                        newPosY2 = tempPosY2
+                    }
+                    else if (tempPosY2 > newPosY2 + 20){
+                        player2Damage4Int--
+                        if (player2Damage4Int <= 0){
+                            player2Damage4Int = 0
+                        }
+                        player2Damage4.text = player2Damage4Int.toString()
+                        newPosX2 = tempPosX2
+                        newPosY2 = tempPosY2
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY2 < newPosY2 - 20){
+                        player2Damage4Int++
+                        player2Damage4.text = player2Damage4Int.toString()
+                        posX2 = newPosX2
+                        posY2 = newPosY2
+                    }
+                    else if (tempPosY2 > newPosY2 + 20){
+                        player2Damage4Int--
+                        if (player2Damage4Int <= 0){
+                            player2Damage4Int = 0
+                        }
+                        player2Damage4.text = player2Damage4Int.toString()
+                        posX2 = newPosX2
+                        posY2 = newPosY2
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        player3Damage1.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX3 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY3 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX3)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY3 < newPosY3 - 20){
+                        player3Damage1Int++
+                        player3Damage1.text = player3Damage1Int.toString()
+                        newPosX3 = tempPosX3
+                        newPosY3 = tempPosY3
+                    }
+                    else if (tempPosY3 > newPosY3 + 20){
+                        player3Damage1Int--
+                        if (player3Damage1Int <= 0){
+                            player3Damage1Int = 0
+                        }
+                        player3Damage1.text = player3Damage1Int.toString()
+                        newPosX3 = tempPosX3
+                        newPosY3 = tempPosY3
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY3 < newPosY3 - 20){
+                        player3Damage1Int++
+                        player3Damage1.text = player3Damage1Int.toString()
+                        posX3 = newPosX3
+                        posY3 = newPosY3
+                    }
+                    else if (tempPosY3 > newPosY3 + 20){
+                        player3Damage1Int--
+                        if (player3Damage1Int <= 0){
+                            player3Damage1Int = 0
+                        }
+                        player3Damage1.text = player3Damage1Int.toString()
+                        posX3 = newPosX3
+                        posY3 = newPosY3
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        player3Damage2.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX3 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY3 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX3)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY3 < newPosY3 - 20){
+                        player3Damage2Int++
+                        player3Damage2.text = player3Damage2Int.toString()
+                        newPosX3 = tempPosX3
+                        newPosY3 = tempPosY3
+                    }
+                    else if (tempPosY3 > newPosY3 + 20){
+                        player3Damage2Int--
+                        if (player3Damage2Int <= 0){
+                            player3Damage2Int = 0
+                        }
+                        player3Damage2.text = player3Damage2Int.toString()
+                        newPosX3 = tempPosX3
+                        newPosY3 = tempPosY3
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY3 < newPosY3 - 20){
+                        player3Damage2Int++
+                        player3Damage2.text = player3Damage2Int.toString()
+                        posX3 = newPosX3
+                        posY3 = newPosY3
+                    }
+                    else if (tempPosY3 > newPosY3 + 20){
+                        player3Damage2Int--
+                        if (player3Damage2Int <= 0){
+                            player3Damage2Int = 0
+                        }
+                        player3Damage2.text = player3Damage2Int.toString()
+                        posX3 = newPosX3
+                        posY3 = newPosY3
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        player3Damage4.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX3 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY3 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX3)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY3 < newPosY3 - 20){
+                        player3Damage4Int++
+                        player3Damage4.text = player3Damage4Int.toString()
+                        newPosX3 = tempPosX3
+                        newPosY3 = tempPosY3
+                    }
+                    else if (tempPosY3 > newPosY3 + 20){
+                        player3Damage4Int--
+                        if (player3Damage4Int <= 0){
+                            player3Damage4Int = 0
+                        }
+                        player3Damage4.text = player3Damage4Int.toString()
+                        newPosX3 = tempPosX3
+                        newPosY3 = tempPosY3
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY3 < newPosY3 - 20){
+                        player3Damage4Int++
+                        player3Damage4.text = player3Damage4Int.toString()
+                        posX3 = newPosX3
+                        posY3 = newPosY3
+                    }
+                    else if (tempPosY3 > newPosY3 + 20){
+                        player3Damage4Int--
+                        if (player3Damage4Int <= 0){
+                            player3Damage4Int = 0
+                        }
+                        player3Damage4.text = player3Damage4Int.toString()
+                        posX3 = newPosX3
+                        posY3 = newPosY3
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        player4Damage1.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX4 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY4 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX4)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY4 < newPosY4 - 20){
+                        player4Damage1Int++
+                        player4Damage1.text = player4Damage1Int.toString()
+                        newPosX4 = tempPosX4
+                        newPosY4 = tempPosY4
+                    }
+                    else if (tempPosY4 > newPosY4 + 20){
+                        player4Damage1Int--
+                        if (player4Damage1Int <= 0){
+                            player4Damage1Int = 0
+                        }
+                        player4Damage1.text = player4Damage1Int.toString()
+                        newPosX4 = tempPosX4
+                        newPosY4 = tempPosY4
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY4 < newPosY4 - 20){
+                        player4Damage1Int++
+                        player4Damage1.text = player4Damage1Int.toString()
+                        posX4 = newPosX4
+                        posY4 = newPosY4
+                    }
+                    else if (tempPosY4 > newPosY4 + 20){
+                        player4Damage1Int--
+                        if (player4Damage1Int <= 0){
+                            player4Damage1Int = 0
+                        }
+                        player4Damage1.text = player4Damage1Int.toString()
+                        posX4 = newPosX4
+                        posY4 = newPosY4
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        player4Damage2.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX4 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY4 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX4)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY4 < newPosY4 - 20){
+                        player4Damage2Int++
+                        player4Damage2.text = player4Damage2Int.toString()
+                        newPosX4 = tempPosX4
+                        newPosY4 = tempPosY4
+                    }
+                    else if (tempPosY4 > newPosY4 + 20){
+                        player4Damage2Int--
+                        if (player4Damage2Int <= 0){
+                            player4Damage2Int = 0
+                        }
+                        player4Damage2.text = player4Damage2Int.toString()
+                        newPosX4 = tempPosX4
+                        newPosY4 = tempPosY4
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY4 < newPosY4 - 20){
+                        player4Damage2Int++
+                        player4Damage2.text = player4Damage2Int.toString()
+                        posX4 = newPosX4
+                        posY4 = newPosY4
+                    }
+                    else if (tempPosY4 > newPosY4 + 20){
+                        player4Damage2Int--
+                        if (player4Damage2Int <= 0){
+                            player4Damage2Int = 0
+                        }
+                        player4Damage2.text = player4Damage2Int.toString()
+                        posX4 = newPosX4
+                        posY4 = newPosY4
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        player4Damage3.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX4 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY4 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX4)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY4 < newPosY4 - 20){
+                        player4Damage3Int++
+                        player4Damage3.text = player4Damage3Int.toString()
+                        newPosX4 = tempPosX4
+                        newPosY4 = tempPosY4
+                    }
+                    else if (tempPosY4 > newPosY4 + 20){
+                        player4Damage3Int--
+                        if (player4Damage3Int <= 0){
+                            player4Damage3Int = 0
+                        }
+                        player4Damage3.text = player4Damage3Int.toString()
+                        newPosX4 = tempPosX4
+                        newPosY4 = tempPosY4
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY4 < newPosY4 - 20){
+                        player4Damage3Int++
+                        player4Damage3.text = player4Damage3Int.toString()
+                        posX4 = newPosX4
+                        posY4 = newPosY4
+                    }
+                    else if (tempPosY4 > newPosY4 + 20){
+                        player4Damage3Int--
+                        if (player4Damage3Int <= 0){
+                            player4Damage3Int = 0
+                        }
+                        player4Damage3.text = player4Damage3Int.toString()
                         posX4 = newPosX4
                         posY4 = newPosY4
                     }
@@ -1999,6 +2952,10 @@ class MainActivity : AppCompatActivity() {
             playIcon2.background = this.getDrawable(R.drawable.pause_icon)
             playIcon3.background = this.getDrawable(R.drawable.pause_icon)
             playIcon4.background = this.getDrawable(R.drawable.pause_icon)
+            playIcon1.visibility = VISIBLE
+            playIcon2.visibility = VISIBLE
+            playIcon3.visibility = VISIBLE
+            playIcon4.visibility = VISIBLE
             if (startButton.text == "START") {
                 startButton.text = ""
                 when (currentPlayer) {
@@ -2253,10 +3210,13 @@ class MainActivity : AppCompatActivity() {
                 manaIcon1.visibility = GONE
                 optionsIcon1.visibility = GONE
                 playIcon1.visibility = GONE
+                player1Damage2.visibility = VISIBLE
+                player1Damage3.visibility = VISIBLE
+                player1Damage4.visibility = VISIBLE
             }
             else {
                 isCommanderIcon1Pressed = false
-                if (currentPlayer == 1) {
+                if (currentPlayer == 1 && startButton.text != "START") {
                     commanderIcon1.backgroundTintList = this.getColorStateList(R.color.player1Color)
                     player1Background.setBackgroundColor(Color.parseColor("#ffffff"))
                 }
@@ -2268,6 +3228,9 @@ class MainActivity : AppCompatActivity() {
                 manaIcon1.visibility = VISIBLE
                 optionsIcon1.visibility = VISIBLE
                 playIcon1.visibility = VISIBLE
+                player1Damage2.visibility = GONE
+                player1Damage3.visibility = GONE
+                player1Damage4.visibility = GONE
             }
         }
 
@@ -2285,7 +3248,7 @@ class MainActivity : AppCompatActivity() {
             }
             else {
                 isManaIcon1Pressed = false
-                if (currentPlayer == 1) {
+                if (currentPlayer == 1 && startButton.text != "START") {
                     manaIcon1.backgroundTintList = this.getColorStateList(R.color.player1Color)
                     player1Background.setBackgroundColor(Color.parseColor("#ffffff"))
                 }
@@ -2320,7 +3283,7 @@ class MainActivity : AppCompatActivity() {
             }
             else {
                 isOptionsIcon1Pressed = false
-                if (currentPlayer == 1) {
+                if (currentPlayer == 1 && startButton.text != "START") {
                     optionsIcon1.backgroundTintList = this.getColorStateList(R.color.player1Color)
                     player1Background.setBackgroundColor(Color.parseColor("#ffffff"))
                 }
@@ -2409,10 +3372,13 @@ class MainActivity : AppCompatActivity() {
                 manaIcon2.visibility = GONE
                 optionsIcon2.visibility = GONE
                 playIcon2.visibility = GONE
+                player2Damage1.visibility = VISIBLE
+                player2Damage3.visibility = VISIBLE
+                player2Damage4.visibility = VISIBLE
             }
             else {
                 isCommanderIcon2Pressed = false
-                if (currentPlayer == 2) {
+                if (currentPlayer == 2 && startButton.text != "START") {
                     commanderIcon2.backgroundTintList = this.getColorStateList(R.color.player2Color)
                     player2Background.setBackgroundColor(Color.parseColor("#ffffff"))
                 }
@@ -2424,6 +3390,9 @@ class MainActivity : AppCompatActivity() {
                 manaIcon2.visibility = VISIBLE
                 optionsIcon2.visibility = VISIBLE
                 playIcon2.visibility = VISIBLE
+                player2Damage1.visibility = GONE
+                player2Damage3.visibility = GONE
+                player2Damage4.visibility = GONE
             }
         }
 
@@ -2441,7 +3410,7 @@ class MainActivity : AppCompatActivity() {
             }
             else {
                 isManaIcon2Pressed = false
-                if (currentPlayer == 2) {
+                if (currentPlayer == 2 && startButton.text != "START") {
                     manaIcon2.backgroundTintList = this.getColorStateList(R.color.player2Color)
                     player2Background.setBackgroundColor(Color.parseColor("#ffffff"))
                 }
@@ -2476,7 +3445,7 @@ class MainActivity : AppCompatActivity() {
             }
             else {
                 isOptionsIcon2Pressed = false
-                if (currentPlayer == 2) {
+                if (currentPlayer == 2 && startButton.text != "START") {
                     optionsIcon2.backgroundTintList = this.getColorStateList(R.color.player2Color)
                     player2Background.setBackgroundColor(Color.parseColor("#ffffff"))
                 }
@@ -2565,10 +3534,13 @@ class MainActivity : AppCompatActivity() {
                 manaIcon3.visibility = GONE
                 optionsIcon3.visibility = GONE
                 playIcon3.visibility = GONE
+                player3Damage2.visibility = VISIBLE
+                player3Damage1.visibility = VISIBLE
+                player3Damage4.visibility = VISIBLE
             }
             else {
                 isCommanderIcon3Pressed = false
-                if (currentPlayer == 3) {
+                if (currentPlayer == 3 && startButton.text != "START") {
                     commanderIcon3.backgroundTintList = this.getColorStateList(R.color.player3Color)
                     player3Background.setBackgroundColor(Color.parseColor("#ffffff"))
                 }
@@ -2580,6 +3552,9 @@ class MainActivity : AppCompatActivity() {
                 manaIcon3.visibility = VISIBLE
                 optionsIcon3.visibility = VISIBLE
                 playIcon3.visibility = VISIBLE
+                player3Damage2.visibility = GONE
+                player3Damage1.visibility = GONE
+                player3Damage4.visibility = GONE
             }
         }
 
@@ -2597,7 +3572,7 @@ class MainActivity : AppCompatActivity() {
             }
             else {
                 isManaIcon3Pressed = false
-                if (currentPlayer == 3) {
+                if (currentPlayer == 3 && startButton.text != "START") {
                     manaIcon3.backgroundTintList = this.getColorStateList(R.color.player3Color)
                     player3Background.setBackgroundColor(Color.parseColor("#ffffff"))
                 }
@@ -2632,7 +3607,7 @@ class MainActivity : AppCompatActivity() {
             }
             else {
                 isOptionsIcon3Pressed = false
-                if (currentPlayer == 3) {
+                if (currentPlayer == 3 && startButton.text != "START") {
                     optionsIcon3.backgroundTintList = this.getColorStateList(R.color.player3Color)
                     player3Background.setBackgroundColor(Color.parseColor("#ffffff"))
                 }
@@ -2721,10 +3696,13 @@ class MainActivity : AppCompatActivity() {
                 manaIcon4.visibility = GONE
                 optionsIcon4.visibility = GONE
                 playIcon4.visibility = GONE
+                player4Damage2.visibility = VISIBLE
+                player4Damage3.visibility = VISIBLE
+                player4Damage1.visibility = VISIBLE
             }
             else {
                 isCommanderIcon4Pressed = false
-                if (currentPlayer == 4) {
+                if (currentPlayer == 4 && startButton.text != "START") {
                     commanderIcon4.backgroundTintList = this.getColorStateList(R.color.player4Color)
                     player4Background.setBackgroundColor(Color.parseColor("#ffffff"))
                 }
@@ -2736,6 +3714,9 @@ class MainActivity : AppCompatActivity() {
                 manaIcon4.visibility = VISIBLE
                 optionsIcon4.visibility = VISIBLE
                 playIcon4.visibility = VISIBLE
+                player4Damage2.visibility = GONE
+                player4Damage3.visibility = GONE
+                player4Damage1.visibility = GONE
             }
         }
 
@@ -2753,7 +3734,7 @@ class MainActivity : AppCompatActivity() {
             }
             else {
                 isManaIcon4Pressed = false
-                if (currentPlayer == 4) {
+                if (currentPlayer == 4 && startButton.text != "START") {
                     manaIcon4.backgroundTintList = this.getColorStateList(R.color.player4Color)
                     player4Background.setBackgroundColor(Color.parseColor("#ffffff"))
                 }
@@ -2788,7 +3769,7 @@ class MainActivity : AppCompatActivity() {
             }
             else {
                 isOptionsIcon4Pressed = false
-                if (currentPlayer == 4) {
+                if (currentPlayer == 4 && startButton.text != "START") {
                     optionsIcon4.backgroundTintList = this.getColorStateList(R.color.player4Color)
                     player4Background.setBackgroundColor(Color.parseColor("#ffffff"))
                 }
