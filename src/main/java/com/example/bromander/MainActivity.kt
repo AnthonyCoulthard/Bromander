@@ -61,30 +61,35 @@ class MainActivity : AppCompatActivity() {
     lateinit var life2: TextView
     lateinit var life3: TextView
     lateinit var life4: TextView
-    lateinit var white1: Button
-    lateinit var blue1: Button
-    lateinit var black1: Button
-    lateinit var red1: Button
-    lateinit var green1: Button
-    lateinit var white2: Button
-    lateinit var blue2: Button
-    lateinit var black2: Button
-    lateinit var red2: Button
-    lateinit var green2: Button
-    lateinit var white3: Button
-    lateinit var blue3: Button
-    lateinit var black3: Button
-    lateinit var red3: Button
-    lateinit var green3: Button
-    lateinit var white4: Button
-    lateinit var blue4: Button
-    lateinit var black4: Button
-    lateinit var red4: Button
-    lateinit var green4: Button
+    lateinit var white1: TextView
+    lateinit var blue1: TextView
+    lateinit var black1: TextView
+    lateinit var red1: TextView
+    lateinit var green1: TextView
+    lateinit var storm1: TextView
+    lateinit var white2: TextView
+    lateinit var blue2: TextView
+    lateinit var black2: TextView
+    lateinit var red2: TextView
+    lateinit var green2: TextView
+    lateinit var storm2: TextView
+    lateinit var white3: TextView
+    lateinit var blue3: TextView
+    lateinit var black3: TextView
+    lateinit var red3: TextView
+    lateinit var green3: TextView
+    lateinit var storm3: TextView
+    lateinit var white4: TextView
+    lateinit var blue4: TextView
+    lateinit var black4: TextView
+    lateinit var red4: TextView
+    lateinit var green4: TextView
+    lateinit var storm4: TextView
     lateinit var player1Timer: Button
     lateinit var player2Timer: Button
     lateinit var player3Timer: Button
     lateinit var player4Timer: Button
+    /*
     lateinit var player1TimerText: TextView
     lateinit var player2TimerText: TextView
     lateinit var player3TimerText: TextView
@@ -93,6 +98,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var player2Text: TextView
     lateinit var player3Text: TextView
     lateinit var player4Text: TextView
+     */
     lateinit var player1Area: View
     lateinit var player2Area: View
     lateinit var player3Area: View
@@ -164,6 +170,7 @@ class MainActivity : AppCompatActivity() {
     var black4Counter: Int = 0
     var red4Counter: Int = 0
     var green4Counter: Int = 0
+    /*
     var commander1damage2: Int = 0
     var commander1damage3: Int = 0
     var commander1damage4: Int = 0
@@ -176,6 +183,7 @@ class MainActivity : AppCompatActivity() {
     var commander4damage2: Int = 0
     var commander4damage3: Int = 0
     var commander4damage1: Int = 0
+     */
     var timer1: Int = 180
     var timer2: Int = 180
     var timer3: Int = 180
@@ -209,8 +217,8 @@ class MainActivity : AppCompatActivity() {
     var isPaused: Boolean = true
     var player1Color: String = "#ff63e5"
     var player2Color: String = "#59c8e9"
-    var player3Color: String = "#ff9d41"
-    var player4Color: String = "#3a7815"
+    var player3Color: String = "#9459f6"
+    var player4Color: String = "#ff9d41"
     var isCommanderIcon1Pressed: Boolean = false
     var isManaIcon1Pressed: Boolean = false
     var isOptionsIcon1Pressed: Boolean = false
@@ -279,28 +287,30 @@ class MainActivity : AppCompatActivity() {
         hiddenMinus2 = findViewById(R.id.hiddenMinus2)
         hiddenMinus3 = findViewById(R.id.hiddenMinus3)
         hiddenMinus4 = findViewById(R.id.hiddenMinus4)
-        /*
         white1 = findViewById(R.id.white1)
         blue1 = findViewById(R.id.blue1)
         black1 = findViewById(R.id.black1)
         red1 = findViewById(R.id.red1)
         green1 = findViewById(R.id.green1)
+        storm1 = findViewById(R.id.storm1)
         white2 = findViewById(R.id.white2)
         blue2 = findViewById(R.id.blue2)
         black2 = findViewById(R.id.black2)
         red2 = findViewById(R.id.red2)
         green2 = findViewById(R.id.green2)
+        storm2 = findViewById(R.id.storm2)
         white3 = findViewById(R.id.white3)
         blue3 = findViewById(R.id.blue3)
         black3 = findViewById(R.id.black3)
         red3 = findViewById(R.id.red3)
         green3 = findViewById(R.id.green3)
+        storm3 = findViewById(R.id.storm3)
         white4 = findViewById(R.id.white4)
         blue4 = findViewById(R.id.blue4)
         black4 = findViewById(R.id.black4)
         red4 = findViewById(R.id.red4)
         green4 = findViewById(R.id.green4)
-        */
+        storm4 = findViewById(R.id.storm4)
         player1Timer = findViewById(R.id.player1Timer)
         player2Timer = findViewById(R.id.player2Timer)
         player3Timer = findViewById(R.id.player3Timer)
@@ -372,7 +382,7 @@ class MainActivity : AppCompatActivity() {
         rewind3.visibility = GONE
         restart4.visibility = GONE
         rewind4.visibility = GONE
-        player1Damage2.visibility = INVISIBLE
+        player1Damage2.visibility = GONE
         player1Damage3.visibility = GONE
         player1Damage4.visibility = GONE
         player2Damage1.visibility = GONE
@@ -384,6 +394,30 @@ class MainActivity : AppCompatActivity() {
         player4Damage2.visibility = GONE
         player4Damage3.visibility = GONE
         player4Damage1.visibility = GONE
+        white1.visibility = GONE
+        blue1.visibility = GONE
+        black1.visibility = GONE
+        red1.visibility = GONE
+        green1.visibility = GONE
+        storm1.visibility = GONE
+        white2.visibility = GONE
+        blue2.visibility = GONE
+        black2.visibility = GONE
+        red2.visibility = GONE
+        green2.visibility = GONE
+        storm2.visibility = GONE
+        white3.visibility = GONE
+        blue3.visibility = GONE
+        black3.visibility = GONE
+        red3.visibility = GONE
+        green3.visibility = GONE
+        storm3.visibility = GONE
+        white4.visibility = GONE
+        blue4.visibility = GONE
+        black4.visibility = GONE
+        red4.visibility = GONE
+        green4.visibility = GONE
+        storm4.visibility = GONE
 
         //Boot animation to decide starting player
         val bootThread: Thread = object : Thread() {
@@ -3245,6 +3279,12 @@ class MainActivity : AppCompatActivity() {
                 commanderIcon1.visibility = GONE
                 optionsIcon1.visibility = GONE
                 playIcon1.visibility = GONE
+                white1.visibility = VISIBLE
+                blue1.visibility = VISIBLE
+                black1.visibility = VISIBLE
+                red1.visibility = VISIBLE
+                green1.visibility = VISIBLE
+                storm1.visibility = VISIBLE
             }
             else {
                 isManaIcon1Pressed = false
@@ -3260,6 +3300,12 @@ class MainActivity : AppCompatActivity() {
                 commanderIcon1.visibility = VISIBLE
                 optionsIcon1.visibility = VISIBLE
                 playIcon1.visibility = VISIBLE
+                white1.visibility = GONE
+                blue1.visibility = GONE
+                black1.visibility = GONE
+                red1.visibility = GONE
+                green1.visibility = GONE
+                storm1.visibility = GONE
             }
         }
 
@@ -3407,6 +3453,12 @@ class MainActivity : AppCompatActivity() {
                 commanderIcon2.visibility = GONE
                 optionsIcon2.visibility = GONE
                 playIcon2.visibility = GONE
+                white2.visibility = VISIBLE
+                blue2.visibility = VISIBLE
+                black2.visibility = VISIBLE
+                red2.visibility = VISIBLE
+                green2.visibility = VISIBLE
+                storm2.visibility = VISIBLE
             }
             else {
                 isManaIcon2Pressed = false
@@ -3422,6 +3474,12 @@ class MainActivity : AppCompatActivity() {
                 commanderIcon2.visibility = VISIBLE
                 optionsIcon2.visibility = VISIBLE
                 playIcon2.visibility = VISIBLE
+                white2.visibility = GONE
+                blue2.visibility = GONE
+                black2.visibility = GONE
+                red2.visibility = GONE
+                green2.visibility = GONE
+                storm2.visibility = GONE
             }
         }
 
@@ -3569,6 +3627,12 @@ class MainActivity : AppCompatActivity() {
                 commanderIcon3.visibility = GONE
                 optionsIcon3.visibility = GONE
                 playIcon3.visibility = GONE
+                white3.visibility = VISIBLE
+                blue3.visibility = VISIBLE
+                black3.visibility = VISIBLE
+                red3.visibility = VISIBLE
+                green3.visibility = VISIBLE
+                storm3.visibility = VISIBLE
             }
             else {
                 isManaIcon3Pressed = false
@@ -3584,6 +3648,12 @@ class MainActivity : AppCompatActivity() {
                 commanderIcon3.visibility = VISIBLE
                 optionsIcon3.visibility = VISIBLE
                 playIcon3.visibility = VISIBLE
+                white3.visibility = GONE
+                blue3.visibility = GONE
+                black3.visibility = GONE
+                red3.visibility = GONE
+                green3.visibility = GONE
+                storm3.visibility = GONE
             }
         }
 
@@ -3731,6 +3801,12 @@ class MainActivity : AppCompatActivity() {
                 commanderIcon4.visibility = GONE
                 optionsIcon4.visibility = GONE
                 playIcon4.visibility = GONE
+                white4.visibility = VISIBLE
+                blue4.visibility = VISIBLE
+                black4.visibility = VISIBLE
+                red4.visibility = VISIBLE
+                green4.visibility = VISIBLE
+                storm4.visibility = VISIBLE
             }
             else {
                 isManaIcon4Pressed = false
@@ -3746,6 +3822,12 @@ class MainActivity : AppCompatActivity() {
                 commanderIcon4.visibility = VISIBLE
                 optionsIcon4.visibility = VISIBLE
                 playIcon4.visibility = VISIBLE
+                white4.visibility = GONE
+                blue4.visibility = GONE
+                black4.visibility = GONE
+                red4.visibility = GONE
+                green4.visibility = GONE
+                storm4.visibility = GONE
             }
         }
         
