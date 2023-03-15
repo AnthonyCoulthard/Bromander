@@ -1,10 +1,12 @@
 package com.example.bromander
 
-import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.AlarmManager
 import android.app.Fragment
+import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
@@ -16,16 +18,11 @@ import android.view.MotionEvent.INVALID_POINTER_ID
 import android.view.View
 import android.view.View.*
 import android.widget.Button
-import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.view.MotionEventCompat
-import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
-import java.lang.Thread.sleep
 import java.util.*
-import kotlin.random.Random.Default.nextInt
 
 
 class MainActivity : AppCompatActivity() {
@@ -121,6 +118,14 @@ class MainActivity : AppCompatActivity() {
     lateinit var player2Background: View
     lateinit var player3Background: View
     lateinit var player4Background: View
+    lateinit var restart1: Button
+    lateinit var rewind1: Button
+    lateinit var restart2: Button
+    lateinit var rewind2: Button
+    lateinit var restart3: Button
+    lateinit var rewind3: Button
+    lateinit var restart4: Button
+    lateinit var rewind4: Button
 
     //Additional global variables
     var lifeTotal1: Int = 40
@@ -211,6 +216,7 @@ class MainActivity : AppCompatActivity() {
     var isOptionsIcon4Pressed: Boolean = false
     var isPlayIcon4Pressed: Boolean = false
     var isPlayerSelected: Boolean = false
+    var timerAddition: Int = 150
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -307,8 +313,24 @@ class MainActivity : AppCompatActivity() {
         player2Background = findViewById(R.id.player2Background)
         player3Background = findViewById(R.id.player3Background)
         player4Background = findViewById(R.id.player4Background)
+        restart1 = findViewById(R.id.restart1)
+        rewind1 = findViewById(R.id.rewind1)
+        restart2 = findViewById(R.id.restart2)
+        rewind2 = findViewById(R.id.rewind2)
+        restart3 = findViewById(R.id.restart3)
+        rewind3 = findViewById(R.id.rewind3)
+        restart4 = findViewById(R.id.restart4)
+        rewind4 = findViewById(R.id.rewind4)
 
         endTurn.visibility = GONE
+        restart1.visibility = GONE
+        rewind1.visibility = GONE
+        restart2.visibility = GONE
+        rewind2.visibility = GONE
+        restart3.visibility = GONE
+        rewind3.visibility = GONE
+        restart4.visibility = GONE
+        rewind4.visibility = GONE
 
         //Boot animation to decide starting player
         val bootThread: Thread = object : Thread() {
@@ -1610,7 +1632,7 @@ class MainActivity : AppCompatActivity() {
                         life2.text = timer2.toString()
                         life3.text = timer3.toString()
                         life4.text = timer4.toString()
-                         */
+                        */
                     }
                 } catch (e: InterruptedException) {
                     e.printStackTrace()
@@ -1988,6 +2010,8 @@ class MainActivity : AppCompatActivity() {
                         optionsIcon1.backgroundTintList = this.getColorStateList(R.color.player1Color)
                         playIcon1.backgroundTintList = this.getColorStateList(R.color.player1Color)
                         player1Background.setBackgroundColor(Color.parseColor("#ffffff"))
+                        restart1.setTextColor(this.getColor(R.color.player1Color))
+                        rewind1.setTextColor(this.getColor(R.color.player1Color))
                         player1Timer.animate().apply {
                             duration = 1000 * timer1.toLong()
                             scaleY(0.0f)
@@ -2001,6 +2025,8 @@ class MainActivity : AppCompatActivity() {
                         optionsIcon2.backgroundTintList = this.getColorStateList(R.color.player2Color)
                         playIcon2.backgroundTintList = this.getColorStateList(R.color.player2Color)
                         player2Background.setBackgroundColor(Color.parseColor("#ffffff"))
+                        restart2.setTextColor(this.getColor(R.color.player2Color))
+                        rewind2.setTextColor(this.getColor(R.color.player2Color))
                         player2Timer.animate().apply {
                             duration = 1000 * timer2.toLong()
                             scaleY(0.0f)
@@ -2014,6 +2040,8 @@ class MainActivity : AppCompatActivity() {
                         optionsIcon3.backgroundTintList = this.getColorStateList(R.color.player3Color)
                         playIcon3.backgroundTintList = this.getColorStateList(R.color.player3Color)
                         player3Background.setBackgroundColor(Color.parseColor("#ffffff"))
+                        restart3.setTextColor(this.getColor(R.color.player3Color))
+                        rewind3.setTextColor(this.getColor(R.color.player3Color))
                         player3Timer.animate().apply {
                             duration = 1000 * timer3.toLong()
                             scaleY(0.0f)
@@ -2027,6 +2055,8 @@ class MainActivity : AppCompatActivity() {
                         optionsIcon4.backgroundTintList = this.getColorStateList(R.color.player4Color)
                         playIcon4.backgroundTintList = this.getColorStateList(R.color.player4Color)
                         player4Background.setBackgroundColor(Color.parseColor("#ffffff"))
+                        restart4.setTextColor(this.getColor(R.color.player4Color))
+                        rewind4.setTextColor(this.getColor(R.color.player4Color))
                         player4Timer.animate().apply {
                             duration = 1000 * timer4.toLong()
                             scaleY(0.0f)
@@ -2050,7 +2080,11 @@ class MainActivity : AppCompatActivity() {
                         manaIcon2.backgroundTintList = this.getColorStateList(R.color.player2Color)
                         optionsIcon2.backgroundTintList = this.getColorStateList(R.color.player2Color)
                         playIcon2.backgroundTintList = this.getColorStateList(R.color.player2Color)
-                        if (!isCommanderIcon1Pressed && !isManaIcon1Pressed) {
+                        restart1.setTextColor(Color.parseColor("#ffffff"))
+                        rewind1.setTextColor(Color.parseColor("#ffffff"))
+                        restart2.setTextColor(this.getColor(R.color.player2Color))
+                        rewind2.setTextColor(this.getColor(R.color.player2Color))
+                        if (!isCommanderIcon1Pressed && !isManaIcon1Pressed && !isOptionsIcon1Pressed) {
                             player1Background.setBackgroundColor(Color.parseColor("#000000"))
                         }
                         else {
@@ -2067,7 +2101,7 @@ class MainActivity : AppCompatActivity() {
                             duration = 1000
                             scaleY(1.0f)
                         }.start()
-                        timer1 += 150
+                        timer1 += timerAddition
                         if (timer1 > 900) {
                             timer1 = 900
                         }
@@ -2089,7 +2123,11 @@ class MainActivity : AppCompatActivity() {
                         manaIcon3.backgroundTintList = this.getColorStateList(R.color.player3Color)
                         optionsIcon3.backgroundTintList = this.getColorStateList(R.color.player3Color)
                         playIcon3.backgroundTintList = this.getColorStateList(R.color.player3Color)
-                        if (!isCommanderIcon2Pressed && !isManaIcon2Pressed) {
+                        restart2.setTextColor(Color.parseColor("#ffffff"))
+                        rewind2.setTextColor(Color.parseColor("#ffffff"))
+                        restart3.setTextColor(this.getColor(R.color.player3Color))
+                        rewind3.setTextColor(this.getColor(R.color.player3Color))
+                        if (!isCommanderIcon2Pressed && !isManaIcon2Pressed && !isOptionsIcon2Pressed) {
                             player2Background.setBackgroundColor(Color.parseColor("#000000"))
                         }
                         else {
@@ -2106,7 +2144,7 @@ class MainActivity : AppCompatActivity() {
                             duration = 1000
                             scaleY(1.0f)
                         }.start()
-                        timer2 += 150
+                        timer2 += timerAddition
                         if (timer2 > 900) {
                             timer2 = 900
                         }
@@ -2128,7 +2166,11 @@ class MainActivity : AppCompatActivity() {
                         manaIcon4.backgroundTintList = this.getColorStateList(R.color.player4Color)
                         optionsIcon4.backgroundTintList = this.getColorStateList(R.color.player4Color)
                         playIcon4.backgroundTintList = this.getColorStateList(R.color.player4Color)
-                        if (!isCommanderIcon3Pressed && !isManaIcon3Pressed) {
+                        restart3.setTextColor(Color.parseColor("#ffffff"))
+                        rewind3.setTextColor(Color.parseColor("#ffffff"))
+                        restart4.setTextColor(this.getColor(R.color.player4Color))
+                        rewind4.setTextColor(this.getColor(R.color.player4Color))
+                        if (!isCommanderIcon3Pressed && !isManaIcon3Pressed && !isOptionsIcon3Pressed) {
                             player3Background.setBackgroundColor(Color.parseColor("#000000"))
                         }
                         else {
@@ -2145,7 +2187,7 @@ class MainActivity : AppCompatActivity() {
                             duration = 1000
                             scaleY(1.0f)
                         }.start()
-                        timer3 += 150
+                        timer3 += timerAddition
                         if (timer3 > 900) {
                             timer3 = 900
                         }
@@ -2167,7 +2209,11 @@ class MainActivity : AppCompatActivity() {
                         manaIcon1.backgroundTintList = this.getColorStateList(R.color.player1Color)
                         optionsIcon1.backgroundTintList = this.getColorStateList(R.color.player1Color)
                         playIcon1.backgroundTintList = this.getColorStateList(R.color.player1Color)
-                        if (!isCommanderIcon4Pressed && !isManaIcon4Pressed) {
+                        restart4.setTextColor(Color.parseColor("#ffffff"))
+                        rewind4.setTextColor(Color.parseColor("#ffffff"))
+                        restart1.setTextColor(this.getColor(R.color.player1Color))
+                        rewind1.setTextColor(this.getColor(R.color.player1Color))
+                        if (!isCommanderIcon4Pressed && !isManaIcon4Pressed && !isOptionsIcon4Pressed) {
                             player4Background.setBackgroundColor(Color.parseColor("#000000"))
                         }
                         else {
@@ -2184,7 +2230,7 @@ class MainActivity : AppCompatActivity() {
                             duration = 1000
                             scaleY(1.0f)
                         }.start()
-                        timer4 += 150
+                        timer4 += timerAddition
                         if (timer4 > 900) {
                             timer4 = 900
                         }
@@ -2251,6 +2297,43 @@ class MainActivity : AppCompatActivity() {
                 commanderIcon1.visibility = VISIBLE
                 optionsIcon1.visibility = VISIBLE
                 playIcon1.visibility = VISIBLE
+            }
+        }
+
+        optionsIcon1.setOnClickListener {
+            Log.d("action", "manaIcon1 button pressed")
+            if (!isOptionsIcon1Pressed){
+                isOptionsIcon1Pressed = true
+                if (currentPlayer == 1) {
+                    restart1.setTextColor(Color.parseColor("#ffffff"))
+                    rewind1.setTextColor(Color.parseColor("#ffffff"))
+                }
+                optionsIcon1.backgroundTintList = this.getColorStateList(R.color.whiteColor)
+                player1Background.setBackgroundColor(Color.parseColor(player1Color))
+                player1Area.visibility = INVISIBLE
+                life1.visibility = GONE
+                commanderIcon1.visibility = GONE
+                manaIcon1.visibility = GONE
+                playIcon1.visibility = GONE
+                restart1.visibility = VISIBLE
+                rewind1.visibility = VISIBLE
+            }
+            else {
+                isOptionsIcon1Pressed = false
+                if (currentPlayer == 1) {
+                    optionsIcon1.backgroundTintList = this.getColorStateList(R.color.player1Color)
+                    player1Background.setBackgroundColor(Color.parseColor("#ffffff"))
+                }
+                else {
+                    player1Background.setBackgroundColor(Color.parseColor("#000000"))
+                }
+                player1Area.visibility = VISIBLE
+                life1.visibility = VISIBLE
+                commanderIcon1.visibility = VISIBLE
+                manaIcon1.visibility = VISIBLE
+                playIcon1.visibility = VISIBLE
+                restart1.visibility = GONE
+                rewind1.visibility = GONE
             }
         }
 
@@ -2373,6 +2456,43 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        optionsIcon2.setOnClickListener {
+            Log.d("action", "manaIcon2 button pressed")
+            if (!isOptionsIcon2Pressed){
+                isOptionsIcon2Pressed = true
+                if (currentPlayer == 2) {
+                    restart2.setTextColor(Color.parseColor("#ffffff"))
+                    rewind2.setTextColor(Color.parseColor("#ffffff"))
+                }
+                optionsIcon2.backgroundTintList = this.getColorStateList(R.color.whiteColor)
+                player2Background.setBackgroundColor(Color.parseColor(player2Color))
+                player2Area.visibility = INVISIBLE
+                life2.visibility = GONE
+                commanderIcon2.visibility = GONE
+                manaIcon2.visibility = GONE
+                playIcon2.visibility = GONE
+                restart2.visibility = VISIBLE
+                rewind2.visibility = VISIBLE
+            }
+            else {
+                isOptionsIcon2Pressed = false
+                if (currentPlayer == 2) {
+                    optionsIcon2.backgroundTintList = this.getColorStateList(R.color.player2Color)
+                    player2Background.setBackgroundColor(Color.parseColor("#ffffff"))
+                }
+                else {
+                    player2Background.setBackgroundColor(Color.parseColor("#000000"))
+                }
+                player2Area.visibility = VISIBLE
+                life2.visibility = VISIBLE
+                commanderIcon2.visibility = VISIBLE
+                manaIcon2.visibility = VISIBLE
+                playIcon2.visibility = VISIBLE
+                restart2.visibility = GONE
+                rewind2.visibility = GONE
+            }
+        }
+
         playIcon2.setOnClickListener {
             if (isPaused) {
                 isPaused = false
@@ -2489,6 +2609,43 @@ class MainActivity : AppCompatActivity() {
                 commanderIcon3.visibility = VISIBLE
                 optionsIcon3.visibility = VISIBLE
                 playIcon3.visibility = VISIBLE
+            }
+        }
+
+        optionsIcon3.setOnClickListener {
+            Log.d("action", "manaIcon3 button pressed")
+            if (!isOptionsIcon3Pressed){
+                isOptionsIcon3Pressed = true
+                if (currentPlayer == 3) {
+                    restart3.setTextColor(Color.parseColor("#ffffff"))
+                    rewind3.setTextColor(Color.parseColor("#ffffff"))
+                }
+                optionsIcon3.backgroundTintList = this.getColorStateList(R.color.whiteColor)
+                player3Background.setBackgroundColor(Color.parseColor(player3Color))
+                player3Area.visibility = INVISIBLE
+                life3.visibility = GONE
+                commanderIcon3.visibility = GONE
+                manaIcon3.visibility = GONE
+                playIcon3.visibility = GONE
+                restart3.visibility = VISIBLE
+                rewind3.visibility = VISIBLE
+            }
+            else {
+                isOptionsIcon3Pressed = false
+                if (currentPlayer == 3) {
+                    optionsIcon3.backgroundTintList = this.getColorStateList(R.color.player3Color)
+                    player3Background.setBackgroundColor(Color.parseColor("#ffffff"))
+                }
+                else {
+                    player3Background.setBackgroundColor(Color.parseColor("#000000"))
+                }
+                player3Area.visibility = VISIBLE
+                life3.visibility = VISIBLE
+                commanderIcon3.visibility = VISIBLE
+                manaIcon3.visibility = VISIBLE
+                playIcon3.visibility = VISIBLE
+                restart3.visibility = GONE
+                rewind3.visibility = GONE
             }
         }
 
@@ -2610,6 +2767,43 @@ class MainActivity : AppCompatActivity() {
                 playIcon4.visibility = VISIBLE
             }
         }
+        
+        optionsIcon4.setOnClickListener {
+            Log.d("action", "manaIcon4 button pressed")
+            if (!isOptionsIcon4Pressed){
+                isOptionsIcon4Pressed = true
+                if (currentPlayer == 4) {
+                    restart4.setTextColor(Color.parseColor("#ffffff"))
+                    rewind4.setTextColor(Color.parseColor("#ffffff"))
+                }
+                optionsIcon4.backgroundTintList = this.getColorStateList(R.color.whiteColor)
+                player4Background.setBackgroundColor(Color.parseColor(player4Color))
+                player4Area.visibility = INVISIBLE
+                life4.visibility = GONE
+                commanderIcon4.visibility = GONE
+                manaIcon4.visibility = GONE
+                playIcon4.visibility = GONE
+                restart4.visibility = VISIBLE
+                rewind4.visibility = VISIBLE
+            }
+            else {
+                isOptionsIcon4Pressed = false
+                if (currentPlayer == 4) {
+                    optionsIcon4.backgroundTintList = this.getColorStateList(R.color.player4Color)
+                    player4Background.setBackgroundColor(Color.parseColor("#ffffff"))
+                }
+                else {
+                    player4Background.setBackgroundColor(Color.parseColor("#000000"))
+                }
+                player4Area.visibility = VISIBLE
+                life4.visibility = VISIBLE
+                commanderIcon4.visibility = VISIBLE
+                manaIcon4.visibility = VISIBLE
+                playIcon4.visibility = VISIBLE
+                restart4.visibility = GONE
+                rewind4.visibility = GONE
+            }
+        }
 
         playIcon4.setOnClickListener {
             if (isPaused) {
@@ -2669,6 +2863,98 @@ class MainActivity : AppCompatActivity() {
                         player4Timer.animate().cancel()
                     }
                 }
+            }
+        }
+
+        restart1.setOnClickListener {
+            recreate()
+        }
+
+        restart2.setOnClickListener {
+            recreate()
+        }
+
+        restart3.setOnClickListener {
+            recreate()
+        }
+
+        restart4.setOnClickListener {
+            recreate()
+        }
+
+        rewind1.setOnClickListener {
+            timer1 -= timerAddition
+            if (timer1 <= 0) {
+                timer1 = 180
+            }
+            player1Timer.clearAnimation()
+            player1Timer.animate().cancel()
+            player1Timer.animate().apply {
+                duration = 1000
+                scaleY(1.0f)
+            }.start()
+            if (currentPlayer == 1) {
+                player1Timer.animate().apply {
+                    duration = 1000 * timer1.toLong()
+                    scaleY(0.0f)
+                }.start()
+            }
+        }
+
+        rewind2.setOnClickListener {
+            timer2 -= timerAddition
+            if (timer2 <= 0) {
+                timer2 = 180
+            }
+            player2Timer.clearAnimation()
+            player2Timer.animate().cancel()
+            player2Timer.animate().apply {
+                duration = 1000
+                scaleY(1.0f)
+            }.start()
+            if (currentPlayer == 2) {
+                player2Timer.animate().apply {
+                    duration = 1000 * timer2.toLong()
+                    scaleY(0.0f)
+                }.start()
+            }
+        }
+
+        rewind3.setOnClickListener {
+            timer3 -= timerAddition
+            if (timer3 <= 0) {
+                timer3 = 180
+            }
+            player3Timer.clearAnimation()
+            player3Timer.animate().cancel()
+            player3Timer.animate().apply {
+                duration = 1000
+                scaleY(1.0f)
+            }.start()
+            if (currentPlayer == 3) {
+                player3Timer.animate().apply {
+                    duration = 1000 * timer3.toLong()
+                    scaleY(0.0f)
+                }.start()
+            }
+        }
+
+        rewind4.setOnClickListener {
+            timer4 -= timerAddition
+            if (timer4 <= 0) {
+                timer4 = 180
+            }
+            player4Timer.clearAnimation()
+            player4Timer.animate().cancel()
+            player4Timer.animate().apply {
+                duration = 1000
+                scaleY(1.0f)
+            }.start()
+            if (currentPlayer == 4) {
+                player4Timer.animate().apply {
+                    duration = 1000 * timer4.toLong()
+                    scaleY(0.0f)
+                }.start()
             }
         }
 
