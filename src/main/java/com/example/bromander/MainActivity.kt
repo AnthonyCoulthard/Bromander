@@ -150,40 +150,44 @@ class MainActivity : AppCompatActivity() {
     var lifeTotal2: Int = 40
     var lifeTotal3: Int = 40
     var lifeTotal4: Int = 40
-    var white1Counter: Int = 0
-    var blue1Counter: Int = 0
-    var black1Counter: Int = 0
-    var red1Counter: Int = 0
-    var green1Counter: Int = 0
-    var white2Counter: Int = 0
-    var blue2Counter: Int = 0
-    var black2Counter: Int = 0
-    var red2Counter: Int = 0
-    var green2Counter: Int = 0
-    var white3Counter: Int = 0
-    var blue3Counter: Int = 0
-    var black3Counter: Int = 0
-    var red3Counter: Int = 0
-    var green3Counter: Int = 0
-    var white4Counter: Int = 0
-    var blue4Counter: Int = 0
-    var black4Counter: Int = 0
-    var red4Counter: Int = 0
-    var green4Counter: Int = 0
+    var white1Int: Int = 0
+    var blue1Int: Int = 0
+    var black1Int: Int = 0
+    var red1Int: Int = 0
+    var green1Int: Int = 0
+    var storm1Int: Int = 0
+    var white2Int: Int = 0
+    var blue2Int: Int = 0
+    var black2Int: Int = 0
+    var red2Int: Int = 0
+    var green2Int: Int = 0
+    var storm2Int: Int = 0
+    var white3Int: Int = 0
+    var blue3Int: Int = 0
+    var black3Int: Int = 0
+    var red3Int: Int = 0
+    var green3Int: Int = 0
+    var storm3Int: Int = 0
+    var white4Int: Int = 0
+    var blue4Int: Int = 0
+    var black4Int: Int = 0
+    var red4Int: Int = 0
+    var green4Int: Int = 0
+    var storm4Int: Int = 0
     /*
-    var commander1damage2: Int = 0
-    var commander1damage3: Int = 0
-    var commander1damage4: Int = 0
-    var commander2damage1: Int = 0
-    var commander2damage3: Int = 0
-    var commander2damage4: Int = 0
-    var commander3damage2: Int = 0
-    var commander3damage1: Int = 0
-    var commander3damage4: Int = 0
-    var commander4damage2: Int = 0
-    var commander4damage3: Int = 0
-    var commander4damage1: Int = 0
-     */
+        var commander1damage2: Int = 0
+        var commander1damage3: Int = 0
+        var commander1damage4: Int = 0
+        var commander2damage1: Int = 0
+        var commander2damage3: Int = 0
+        var commander2damage4: Int = 0
+        var commander3damage2: Int = 0
+        var commander3damage1: Int = 0
+        var commander3damage4: Int = 0
+        var commander4damage2: Int = 0
+        var commander4damage3: Int = 0
+        var commander4damage1: Int = 0
+         */
     var timer1: Int = 180
     var timer2: Int = 180
     var timer3: Int = 180
@@ -1730,6 +1734,1806 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        white1.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX1 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY1 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX1)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY1 < newPosY1 - 20){
+                        white1Int++
+                        white1.text = white1Int.toString()
+                        newPosX1 = tempPosX1
+                        newPosY1 = tempPosY1
+                    }
+                    else if (tempPosY1 > newPosY1 + 20){
+                        white1Int--
+                        if (white1Int <= 0){
+                            white1Int = 0
+                        }
+                        white1.text = white1Int.toString()
+                        newPosX1 = tempPosX1
+                        newPosY1 = tempPosY1
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY1 < newPosY1 - 20){
+                        white1Int++
+                        white1.text = white1Int.toString()
+                        posX1 = newPosX1
+                        posY1 = newPosY1
+                    }
+                    else if (tempPosY1 > newPosY1 + 20){
+                        white1Int--
+                        if (white1Int <= 0){
+                            white1Int = 0
+                        }
+                        white1.text = white1Int.toString()
+                        posX1 = newPosX1
+                        posY1 = newPosY1
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        blue1.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX1 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY1 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX1)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY1 < newPosY1 - 20){
+                        blue1Int++
+                        blue1.text = blue1Int.toString()
+                        newPosX1 = tempPosX1
+                        newPosY1 = tempPosY1
+                    }
+                    else if (tempPosY1 > newPosY1 + 20){
+                        blue1Int--
+                        if (blue1Int <= 0){
+                            blue1Int = 0
+                        }
+                        blue1.text = blue1Int.toString()
+                        newPosX1 = tempPosX1
+                        newPosY1 = tempPosY1
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY1 < newPosY1 - 20){
+                        blue1Int++
+                        blue1.text = blue1Int.toString()
+                        posX1 = newPosX1
+                        posY1 = newPosY1
+                    }
+                    else if (tempPosY1 > newPosY1 + 20){
+                        blue1Int--
+                        if (blue1Int <= 0){
+                            blue1Int = 0
+                        }
+                        blue1.text = blue1Int.toString()
+                        posX1 = newPosX1
+                        posY1 = newPosY1
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        black1.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX1 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY1 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX1)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY1 < newPosY1 - 20){
+                        black1Int++
+                        black1.text = black1Int.toString()
+                        newPosX1 = tempPosX1
+                        newPosY1 = tempPosY1
+                    }
+                    else if (tempPosY1 > newPosY1 + 20){
+                        black1Int--
+                        if (black1Int <= 0){
+                            black1Int = 0
+                        }
+                        black1.text = black1Int.toString()
+                        newPosX1 = tempPosX1
+                        newPosY1 = tempPosY1
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY1 < newPosY1 - 20){
+                        black1Int++
+                        black1.text = black1Int.toString()
+                        posX1 = newPosX1
+                        posY1 = newPosY1
+                    }
+                    else if (tempPosY1 > newPosY1 + 20){
+                        black1Int--
+                        if (black1Int <= 0){
+                            black1Int = 0
+                        }
+                        black1.text = black1Int.toString()
+                        posX1 = newPosX1
+                        posY1 = newPosY1
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        red1.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX1 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY1 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX1)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY1 < newPosY1 - 20){
+                        red1Int++
+                        red1.text = red1Int.toString()
+                        newPosX1 = tempPosX1
+                        newPosY1 = tempPosY1
+                    }
+                    else if (tempPosY1 > newPosY1 + 20){
+                        red1Int--
+                        if (red1Int <= 0){
+                            red1Int = 0
+                        }
+                        red1.text = red1Int.toString()
+                        newPosX1 = tempPosX1
+                        newPosY1 = tempPosY1
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY1 < newPosY1 - 20){
+                        red1Int++
+                        red1.text = red1Int.toString()
+                        posX1 = newPosX1
+                        posY1 = newPosY1
+                    }
+                    else if (tempPosY1 > newPosY1 + 20){
+                        red1Int--
+                        if (red1Int <= 0){
+                            red1Int = 0
+                        }
+                        red1.text = red1Int.toString()
+                        posX1 = newPosX1
+                        posY1 = newPosY1
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        green1.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX1 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY1 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX1)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY1 < newPosY1 - 20){
+                        green1Int++
+                        green1.text = green1Int.toString()
+                        newPosX1 = tempPosX1
+                        newPosY1 = tempPosY1
+                    }
+                    else if (tempPosY1 > newPosY1 + 20){
+                        green1Int--
+                        if (green1Int <= 0){
+                            green1Int = 0
+                        }
+                        green1.text = green1Int.toString()
+                        newPosX1 = tempPosX1
+                        newPosY1 = tempPosY1
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY1 < newPosY1 - 20){
+                        green1Int++
+                        green1.text = green1Int.toString()
+                        posX1 = newPosX1
+                        posY1 = newPosY1
+                    }
+                    else if (tempPosY1 > newPosY1 + 20){
+                        green1Int--
+                        if (green1Int <= 0){
+                            green1Int = 0
+                        }
+                        green1.text = green1Int.toString()
+                        posX1 = newPosX1
+                        posY1 = newPosY1
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        storm1.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX1 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY1 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX1)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY1 < newPosY1 - 20){
+                        storm1Int++
+                        storm1.text = storm1Int.toString()
+                        newPosX1 = tempPosX1
+                        newPosY1 = tempPosY1
+                    }
+                    else if (tempPosY1 > newPosY1 + 20){
+                        storm1Int--
+                        if (storm1Int <= 0){
+                            storm1Int = 0
+                        }
+                        storm1.text = storm1Int.toString()
+                        newPosX1 = tempPosX1
+                        newPosY1 = tempPosY1
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY1 < newPosY1 - 20){
+                        storm1Int++
+                        storm1.text = storm1Int.toString()
+                        posX1 = newPosX1
+                        posY1 = newPosY1
+                    }
+                    else if (tempPosY1 > newPosY1 + 20){
+                        storm1Int--
+                        if (storm1Int <= 0){
+                            storm1Int = 0
+                        }
+                        storm1.text = storm1Int.toString()
+                        posX1 = newPosX1
+                        posY1 = newPosY1
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        white2.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX2 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY2 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX2)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY2 < newPosY2 - 20){
+                        white2Int++
+                        white2.text = white2Int.toString()
+                        newPosX2 = tempPosX2
+                        newPosY2 = tempPosY2
+                    }
+                    else if (tempPosY2 > newPosY2 + 20){
+                        white2Int--
+                        if (white2Int <= 0){
+                            white2Int = 0
+                        }
+                        white2.text = white2Int.toString()
+                        newPosX2 = tempPosX2
+                        newPosY2 = tempPosY2
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY2 < newPosY2 - 20){
+                        white2Int++
+                        white2.text = white2Int.toString()
+                        posX2 = newPosX2
+                        posY2 = newPosY2
+                    }
+                    else if (tempPosY2 > newPosY2 + 20){
+                        white2Int--
+                        if (white2Int <= 0){
+                            white2Int = 0
+                        }
+                        white2.text = white2Int.toString()
+                        posX2 = newPosX2
+                        posY2 = newPosY2
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        blue2.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX2 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY2 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX2)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY2 < newPosY2 - 20){
+                        blue2Int++
+                        blue2.text = blue2Int.toString()
+                        newPosX2 = tempPosX2
+                        newPosY2 = tempPosY2
+                    }
+                    else if (tempPosY2 > newPosY2 + 20){
+                        blue2Int--
+                        if (blue2Int <= 0){
+                            blue2Int = 0
+                        }
+                        blue2.text = blue2Int.toString()
+                        newPosX2 = tempPosX2
+                        newPosY2 = tempPosY2
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY2 < newPosY2 - 20){
+                        blue2Int++
+                        blue2.text = blue2Int.toString()
+                        posX2 = newPosX2
+                        posY2 = newPosY2
+                    }
+                    else if (tempPosY2 > newPosY2 + 20){
+                        blue2Int--
+                        if (blue2Int <= 0){
+                            blue2Int = 0
+                        }
+                        blue2.text = blue2Int.toString()
+                        posX2 = newPosX2
+                        posY2 = newPosY2
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        black2.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX2 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY2 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX2)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY2 < newPosY2 - 20){
+                        black2Int++
+                        black2.text = black2Int.toString()
+                        newPosX2 = tempPosX2
+                        newPosY2 = tempPosY2
+                    }
+                    else if (tempPosY2 > newPosY2 + 20){
+                        black2Int--
+                        if (black2Int <= 0){
+                            black2Int = 0
+                        }
+                        black2.text = black2Int.toString()
+                        newPosX2 = tempPosX2
+                        newPosY2 = tempPosY2
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY2 < newPosY2 - 20){
+                        black2Int++
+                        black2.text = black2Int.toString()
+                        posX2 = newPosX2
+                        posY2 = newPosY2
+                    }
+                    else if (tempPosY2 > newPosY2 + 20){
+                        black2Int--
+                        if (black2Int <= 0){
+                            black2Int = 0
+                        }
+                        black2.text = black2Int.toString()
+                        posX2 = newPosX2
+                        posY2 = newPosY2
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        red2.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX2 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY2 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX2)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY2 < newPosY2 - 20){
+                        red2Int++
+                        red2.text = red2Int.toString()
+                        newPosX2 = tempPosX2
+                        newPosY2 = tempPosY2
+                    }
+                    else if (tempPosY2 > newPosY2 + 20){
+                        red2Int--
+                        if (red2Int <= 0){
+                            red2Int = 0
+                        }
+                        red2.text = red2Int.toString()
+                        newPosX2 = tempPosX2
+                        newPosY2 = tempPosY2
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY2 < newPosY2 - 20){
+                        red2Int++
+                        red2.text = red2Int.toString()
+                        posX2 = newPosX2
+                        posY2 = newPosY2
+                    }
+                    else if (tempPosY2 > newPosY2 + 20){
+                        red2Int--
+                        if (red2Int <= 0){
+                            red2Int = 0
+                        }
+                        red2.text = red2Int.toString()
+                        posX2 = newPosX2
+                        posY2 = newPosY2
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        green2.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX2 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY2 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX2)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY2 < newPosY2 - 20){
+                        green2Int++
+                        green2.text = green2Int.toString()
+                        newPosX2 = tempPosX2
+                        newPosY2 = tempPosY2
+                    }
+                    else if (tempPosY2 > newPosY2 + 20){
+                        green2Int--
+                        if (green2Int <= 0){
+                            green2Int = 0
+                        }
+                        green2.text = green2Int.toString()
+                        newPosX2 = tempPosX2
+                        newPosY2 = tempPosY2
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY2 < newPosY2 - 20){
+                        green2Int++
+                        green2.text = green2Int.toString()
+                        posX2 = newPosX2
+                        posY2 = newPosY2
+                    }
+                    else if (tempPosY2 > newPosY2 + 20){
+                        green2Int--
+                        if (green2Int <= 0){
+                            green2Int = 0
+                        }
+                        green2.text = green2Int.toString()
+                        posX2 = newPosX2
+                        posY2 = newPosY2
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        storm2.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX2 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY2 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX2)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY2 < newPosY2 - 20){
+                        storm2Int++
+                        storm2.text = storm2Int.toString()
+                        newPosX2 = tempPosX2
+                        newPosY2 = tempPosY2
+                    }
+                    else if (tempPosY2 > newPosY2 + 20){
+                        storm2Int--
+                        if (storm2Int <= 0){
+                            storm2Int = 0
+                        }
+                        storm2.text = storm2Int.toString()
+                        newPosX2 = tempPosX2
+                        newPosY2 = tempPosY2
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY2 < newPosY2 - 20){
+                        storm2Int++
+                        storm2.text = storm2Int.toString()
+                        posX2 = newPosX2
+                        posY2 = newPosY2
+                    }
+                    else if (tempPosY2 > newPosY2 + 20){
+                        storm2Int--
+                        if (storm2Int <= 0){
+                            storm2Int = 0
+                        }
+                        storm2.text = storm2Int.toString()
+                        posX2 = newPosX2
+                        posY2 = newPosY2
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        white3.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX3 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY3 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX3)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY3 < newPosY3 - 20){
+                        white3Int++
+                        white3.text = white3Int.toString()
+                        newPosX3 = tempPosX3
+                        newPosY3 = tempPosY3
+                    }
+                    else if (tempPosY3 > newPosY3 + 20){
+                        white3Int--
+                        if (white3Int <= 0){
+                            white3Int = 0
+                        }
+                        white3.text = white3Int.toString()
+                        newPosX3 = tempPosX3
+                        newPosY3 = tempPosY3
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY3 < newPosY3 - 20){
+                        white3Int++
+                        white3.text = white3Int.toString()
+                        posX3 = newPosX3
+                        posY3 = newPosY3
+                    }
+                    else if (tempPosY3 > newPosY3 + 20){
+                        white3Int--
+                        if (white3Int <= 0){
+                            white3Int = 0
+                        }
+                        white3.text = white3Int.toString()
+                        posX3 = newPosX3
+                        posY3 = newPosY3
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        blue3.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX3 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY3 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX3)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY3 < newPosY3 - 20){
+                        blue3Int++
+                        blue3.text = blue3Int.toString()
+                        newPosX3 = tempPosX3
+                        newPosY3 = tempPosY3
+                    }
+                    else if (tempPosY3 > newPosY3 + 20){
+                        blue3Int--
+                        if (blue3Int <= 0){
+                            blue3Int = 0
+                        }
+                        blue3.text = blue3Int.toString()
+                        newPosX3 = tempPosX3
+                        newPosY3 = tempPosY3
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY3 < newPosY3 - 20){
+                        blue3Int++
+                        blue3.text = blue3Int.toString()
+                        posX3 = newPosX3
+                        posY3 = newPosY3
+                    }
+                    else if (tempPosY3 > newPosY3 + 20){
+                        blue3Int--
+                        if (blue3Int <= 0){
+                            blue3Int = 0
+                        }
+                        blue3.text = blue3Int.toString()
+                        posX3 = newPosX3
+                        posY3 = newPosY3
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        black3.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX3 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY3 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX3)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY3 < newPosY3 - 20){
+                        black3Int++
+                        black3.text = black3Int.toString()
+                        newPosX3 = tempPosX3
+                        newPosY3 = tempPosY3
+                    }
+                    else if (tempPosY3 > newPosY3 + 20){
+                        black3Int--
+                        if (black3Int <= 0){
+                            black3Int = 0
+                        }
+                        black3.text = black3Int.toString()
+                        newPosX3 = tempPosX3
+                        newPosY3 = tempPosY3
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY3 < newPosY3 - 20){
+                        black3Int++
+                        black3.text = black3Int.toString()
+                        posX3 = newPosX3
+                        posY3 = newPosY3
+                    }
+                    else if (tempPosY3 > newPosY3 + 20){
+                        black3Int--
+                        if (black3Int <= 0){
+                            black3Int = 0
+                        }
+                        black3.text = black3Int.toString()
+                        posX3 = newPosX3
+                        posY3 = newPosY3
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        red3.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX3 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY3 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX3)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY3 < newPosY3 - 20){
+                        red3Int++
+                        red3.text = red3Int.toString()
+                        newPosX3 = tempPosX3
+                        newPosY3 = tempPosY3
+                    }
+                    else if (tempPosY3 > newPosY3 + 20){
+                        red3Int--
+                        if (red3Int <= 0){
+                            red3Int = 0
+                        }
+                        red3.text = red3Int.toString()
+                        newPosX3 = tempPosX3
+                        newPosY3 = tempPosY3
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY3 < newPosY3 - 20){
+                        red3Int++
+                        red3.text = red3Int.toString()
+                        posX3 = newPosX3
+                        posY3 = newPosY3
+                    }
+                    else if (tempPosY3 > newPosY3 + 20){
+                        red3Int--
+                        if (red3Int <= 0){
+                            red3Int = 0
+                        }
+                        red3.text = red3Int.toString()
+                        posX3 = newPosX3
+                        posY3 = newPosY3
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        green3.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX3 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY3 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX3)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY3 < newPosY3 - 20){
+                        green3Int++
+                        green3.text = green3Int.toString()
+                        newPosX3 = tempPosX3
+                        newPosY3 = tempPosY3
+                    }
+                    else if (tempPosY3 > newPosY3 + 20){
+                        green3Int--
+                        if (green3Int <= 0){
+                            green3Int = 0
+                        }
+                        green3.text = green3Int.toString()
+                        newPosX3 = tempPosX3
+                        newPosY3 = tempPosY3
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY3 < newPosY3 - 20){
+                        green3Int++
+                        green3.text = green3Int.toString()
+                        posX3 = newPosX3
+                        posY3 = newPosY3
+                    }
+                    else if (tempPosY3 > newPosY3 + 20){
+                        green3Int--
+                        if (green3Int <= 0){
+                            green3Int = 0
+                        }
+                        green3.text = green3Int.toString()
+                        posX3 = newPosX3
+                        posY3 = newPosY3
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        storm3.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX3 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY3 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX3)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY3 < newPosY3 - 20){
+                        storm3Int++
+                        storm3.text = storm3Int.toString()
+                        newPosX3 = tempPosX3
+                        newPosY3 = tempPosY3
+                    }
+                    else if (tempPosY3 > newPosY3 + 20){
+                        storm3Int--
+                        if (storm3Int <= 0){
+                            storm3Int = 0
+                        }
+                        storm3.text = storm3Int.toString()
+                        newPosX3 = tempPosX3
+                        newPosY3 = tempPosY3
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY3 < newPosY3 - 20){
+                        storm3Int++
+                        storm3.text = storm3Int.toString()
+                        posX3 = newPosX3
+                        posY3 = newPosY3
+                    }
+                    else if (tempPosY3 > newPosY3 + 20){
+                        storm3Int--
+                        if (storm3Int <= 0){
+                            storm3Int = 0
+                        }
+                        storm3.text = storm3Int.toString()
+                        posX3 = newPosX3
+                        posY3 = newPosY3
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        white4.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX4 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY4 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX4)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY4 < newPosY4 - 20){
+                        white4Int++
+                        white4.text = white4Int.toString()
+                        newPosX4 = tempPosX4
+                        newPosY4 = tempPosY4
+                    }
+                    else if (tempPosY4 > newPosY4 + 20){
+                        white4Int--
+                        if (white4Int <= 0){
+                            white4Int = 0
+                        }
+                        white4.text = white4Int.toString()
+                        newPosX4 = tempPosX4
+                        newPosY4 = tempPosY4
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY4 < newPosY4 - 20){
+                        white4Int++
+                        white4.text = white4Int.toString()
+                        posX4 = newPosX4
+                        posY4 = newPosY4
+                    }
+                    else if (tempPosY4 > newPosY4 + 20){
+                        white4Int--
+                        if (white4Int <= 0){
+                            white4Int = 0
+                        }
+                        white4.text = white4Int.toString()
+                        posX4 = newPosX4
+                        posY4 = newPosY4
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        blue4.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX4 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY4 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX4)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY4 < newPosY4 - 20){
+                        blue4Int++
+                        blue4.text = blue4Int.toString()
+                        newPosX4 = tempPosX4
+                        newPosY4 = tempPosY4
+                    }
+                    else if (tempPosY4 > newPosY4 + 20){
+                        blue4Int--
+                        if (blue4Int <= 0){
+                            blue4Int = 0
+                        }
+                        blue4.text = blue4Int.toString()
+                        newPosX4 = tempPosX4
+                        newPosY4 = tempPosY4
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY4 < newPosY4 - 20){
+                        blue4Int++
+                        blue4.text = blue4Int.toString()
+                        posX4 = newPosX4
+                        posY4 = newPosY4
+                    }
+                    else if (tempPosY4 > newPosY4 + 20){
+                        blue4Int--
+                        if (blue4Int <= 0){
+                            blue4Int = 0
+                        }
+                        blue4.text = blue4Int.toString()
+                        posX4 = newPosX4
+                        posY4 = newPosY4
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+        
+        black4.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX4 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY4 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX4)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY4 < newPosY4 - 20){
+                        black4Int++
+                        black4.text = black4Int.toString()
+                        newPosX4 = tempPosX4
+                        newPosY4 = tempPosY4
+                    }
+                    else if (tempPosY4 > newPosY4 + 20){
+                        black4Int--
+                        if (black4Int <= 0){
+                            black4Int = 0
+                        }
+                        black4.text = black4Int.toString()
+                        newPosX4 = tempPosX4
+                        newPosY4 = tempPosY4
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY4 < newPosY4 - 20){
+                        black4Int++
+                        black4.text = black4Int.toString()
+                        posX4 = newPosX4
+                        posY4 = newPosY4
+                    }
+                    else if (tempPosY4 > newPosY4 + 20){
+                        black4Int--
+                        if (black4Int <= 0){
+                            black4Int = 0
+                        }
+                        black4.text = black4Int.toString()
+                        posX4 = newPosX4
+                        posY4 = newPosY4
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        red4.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX4 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY4 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX4)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY4 < newPosY4 - 20){
+                        red4Int++
+                        red4.text = red4Int.toString()
+                        newPosX4 = tempPosX4
+                        newPosY4 = tempPosY4
+                    }
+                    else if (tempPosY4 > newPosY4 + 20){
+                        red4Int--
+                        if (red4Int <= 0){
+                            red4Int = 0
+                        }
+                        red4.text = red4Int.toString()
+                        newPosX4 = tempPosX4
+                        newPosY4 = tempPosY4
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY4 < newPosY4 - 20){
+                        red4Int++
+                        red4.text = red4Int.toString()
+                        posX4 = newPosX4
+                        posY4 = newPosY4
+                    }
+                    else if (tempPosY4 > newPosY4 + 20){
+                        red4Int--
+                        if (red4Int <= 0){
+                            red4Int = 0
+                        }
+                        red4.text = red4Int.toString()
+                        posX4 = newPosX4
+                        posY4 = newPosY4
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        green4.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX4 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY4 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX4)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY4 < newPosY4 - 20){
+                        green4Int++
+                        green4.text = green4Int.toString()
+                        newPosX4 = tempPosX4
+                        newPosY4 = tempPosY4
+                    }
+                    else if (tempPosY4 > newPosY4 + 20){
+                        green4Int--
+                        if (green4Int <= 0){
+                            green4Int = 0
+                        }
+                        green4.text = green4Int.toString()
+                        newPosX4 = tempPosX4
+                        newPosY4 = tempPosY4
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY4 < newPosY4 - 20){
+                        green4Int++
+                        green4.text = green4Int.toString()
+                        posX4 = newPosX4
+                        posY4 = newPosY4
+                    }
+                    else if (tempPosY4 > newPosY4 + 20){
+                        green4Int--
+                        if (green4Int <= 0){
+                            green4Int = 0
+                        }
+                        green4.text = green4Int.toString()
+                        posX4 = newPosX4
+                        posY4 = newPosY4
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
+        storm4.setOnTouchListener {v, event ->
+            v.performClick()
+            val action: Int = MotionEventCompat.getActionMasked(event)
+
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("action", "Action was DOWN")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        // Remember where we started (for dragging)
+                        newPosX4 = MotionEventCompat.getX(event, pointerIndex)
+                        newPosY4 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+
+                    // Save the ID of this pointer
+                    mActivePointerId = MotionEventCompat.getPointerId(event, 0)
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("action", "Action was MOVE " + newPosX4)
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY4 < newPosY4 - 20){
+                        storm4Int++
+                        storm4.text = storm4Int.toString()
+                        newPosX4 = tempPosX4
+                        newPosY4 = tempPosY4
+                    }
+                    else if (tempPosY4 > newPosY4 + 20){
+                        storm4Int--
+                        if (storm4Int <= 0){
+                            storm4Int = 0
+                        }
+                        storm4.text = storm4Int.toString()
+                        newPosX4 = tempPosX4
+                        newPosY4 = tempPosY4
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("action", "Action was UP")
+                    MotionEventCompat.getActionIndex(event).also { pointerIndex ->
+                        tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
+                        tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
+                    }
+                    if (tempPosY4 < newPosY4 - 20){
+                        storm4Int++
+                        storm4.text = storm4Int.toString()
+                        posX4 = newPosX4
+                        posY4 = newPosY4
+                    }
+                    else if (tempPosY4 > newPosY4 + 20){
+                        storm4Int--
+                        if (storm4Int <= 0){
+                            storm4Int = 0
+                        }
+                        storm4.text = storm4Int.toString()
+                        posX4 = newPosX4
+                        posY4 = newPosY4
+                    }
+                    true
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("action", "Action was CANCEL")
+                    true
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    true
+                }
+                else -> super.onTouchEvent(event)
+            }
+        }
+
         /*
         //Set onClickListeners for life buttons
         hiddenPlus1.setOnClickListener {
@@ -2986,10 +4790,18 @@ class MainActivity : AppCompatActivity() {
             playIcon2.background = this.getDrawable(R.drawable.pause_icon)
             playIcon3.background = this.getDrawable(R.drawable.pause_icon)
             playIcon4.background = this.getDrawable(R.drawable.pause_icon)
-            playIcon1.visibility = VISIBLE
-            playIcon2.visibility = VISIBLE
-            playIcon3.visibility = VISIBLE
-            playIcon4.visibility = VISIBLE
+            if (!isCommanderIcon1Pressed && !isManaIcon1Pressed && !isOptionsIcon1Pressed) {
+                playIcon1.visibility = VISIBLE
+            }
+            if (!isCommanderIcon2Pressed && !isManaIcon2Pressed && !isOptionsIcon2Pressed) {
+                playIcon2.visibility = VISIBLE
+            }
+            if (!isCommanderIcon3Pressed && !isManaIcon3Pressed && !isOptionsIcon3Pressed) {
+                playIcon3.visibility = VISIBLE
+            }
+            if (!isCommanderIcon4Pressed && !isManaIcon4Pressed && !isOptionsIcon4Pressed) {
+                playIcon4.visibility = VISIBLE
+            }
             if (startButton.text == "START") {
                 startButton.text = ""
                 when (currentPlayer) {
@@ -3261,7 +5073,9 @@ class MainActivity : AppCompatActivity() {
                 life1.visibility = VISIBLE
                 manaIcon1.visibility = VISIBLE
                 optionsIcon1.visibility = VISIBLE
-                playIcon1.visibility = VISIBLE
+                if (startButton.text != "START") {
+                    playIcon1.visibility = VISIBLE
+                }
                 player1Damage2.visibility = GONE
                 player1Damage3.visibility = GONE
                 player1Damage4.visibility = GONE
@@ -3299,7 +5113,9 @@ class MainActivity : AppCompatActivity() {
                 life1.visibility = VISIBLE
                 commanderIcon1.visibility = VISIBLE
                 optionsIcon1.visibility = VISIBLE
-                playIcon1.visibility = VISIBLE
+                if (startButton.text != "START") {
+                    playIcon1.visibility = VISIBLE
+                }
                 white1.visibility = GONE
                 blue1.visibility = GONE
                 black1.visibility = GONE
@@ -3340,7 +5156,9 @@ class MainActivity : AppCompatActivity() {
                 life1.visibility = VISIBLE
                 commanderIcon1.visibility = VISIBLE
                 manaIcon1.visibility = VISIBLE
-                playIcon1.visibility = VISIBLE
+                if (startButton.text != "START") {
+                    playIcon1.visibility = VISIBLE
+                }
                 restart1.visibility = GONE
                 rewind1.visibility = GONE
             }
@@ -3435,7 +5253,9 @@ class MainActivity : AppCompatActivity() {
                 life2.visibility = VISIBLE
                 manaIcon2.visibility = VISIBLE
                 optionsIcon2.visibility = VISIBLE
-                playIcon2.visibility = VISIBLE
+                if (startButton.text != "START") {
+                    playIcon2.visibility = VISIBLE
+                }
                 player2Damage1.visibility = GONE
                 player2Damage3.visibility = GONE
                 player2Damage4.visibility = GONE
@@ -3473,7 +5293,9 @@ class MainActivity : AppCompatActivity() {
                 life2.visibility = VISIBLE
                 commanderIcon2.visibility = VISIBLE
                 optionsIcon2.visibility = VISIBLE
-                playIcon2.visibility = VISIBLE
+                if (startButton.text != "START") {
+                    playIcon2.visibility = VISIBLE
+                }
                 white2.visibility = GONE
                 blue2.visibility = GONE
                 black2.visibility = GONE
@@ -3514,7 +5336,9 @@ class MainActivity : AppCompatActivity() {
                 life2.visibility = VISIBLE
                 commanderIcon2.visibility = VISIBLE
                 manaIcon2.visibility = VISIBLE
-                playIcon2.visibility = VISIBLE
+                if (startButton.text != "START") {
+                    playIcon2.visibility = VISIBLE
+                }
                 restart2.visibility = GONE
                 rewind2.visibility = GONE
             }
@@ -3609,7 +5433,9 @@ class MainActivity : AppCompatActivity() {
                 life3.visibility = VISIBLE
                 manaIcon3.visibility = VISIBLE
                 optionsIcon3.visibility = VISIBLE
-                playIcon3.visibility = VISIBLE
+                if (startButton.text != "START") {
+                    playIcon3.visibility = VISIBLE
+                }
                 player3Damage2.visibility = GONE
                 player3Damage1.visibility = GONE
                 player3Damage4.visibility = GONE
@@ -3647,7 +5473,9 @@ class MainActivity : AppCompatActivity() {
                 life3.visibility = VISIBLE
                 commanderIcon3.visibility = VISIBLE
                 optionsIcon3.visibility = VISIBLE
-                playIcon3.visibility = VISIBLE
+                if (startButton.text != "START") {
+                    playIcon3.visibility = VISIBLE
+                }
                 white3.visibility = GONE
                 blue3.visibility = GONE
                 black3.visibility = GONE
@@ -3688,7 +5516,9 @@ class MainActivity : AppCompatActivity() {
                 life3.visibility = VISIBLE
                 commanderIcon3.visibility = VISIBLE
                 manaIcon3.visibility = VISIBLE
-                playIcon3.visibility = VISIBLE
+                if (startButton.text != "START") {
+                    playIcon3.visibility = VISIBLE
+                }
                 restart3.visibility = GONE
                 rewind3.visibility = GONE
             }
@@ -3783,7 +5613,9 @@ class MainActivity : AppCompatActivity() {
                 life4.visibility = VISIBLE
                 manaIcon4.visibility = VISIBLE
                 optionsIcon4.visibility = VISIBLE
-                playIcon4.visibility = VISIBLE
+                if (startButton.text != "START") {
+                    playIcon4.visibility = VISIBLE
+                }
                 player4Damage2.visibility = GONE
                 player4Damage3.visibility = GONE
                 player4Damage1.visibility = GONE
@@ -3821,7 +5653,9 @@ class MainActivity : AppCompatActivity() {
                 life4.visibility = VISIBLE
                 commanderIcon4.visibility = VISIBLE
                 optionsIcon4.visibility = VISIBLE
-                playIcon4.visibility = VISIBLE
+                if (startButton.text != "START") {
+                    playIcon4.visibility = VISIBLE
+                }
                 white4.visibility = GONE
                 blue4.visibility = GONE
                 black4.visibility = GONE
@@ -3862,7 +5696,9 @@ class MainActivity : AppCompatActivity() {
                 life4.visibility = VISIBLE
                 commanderIcon4.visibility = VISIBLE
                 manaIcon4.visibility = VISIBLE
-                playIcon4.visibility = VISIBLE
+                if (startButton.text != "START") {
+                    playIcon4.visibility = VISIBLE
+                }
                 restart4.visibility = GONE
                 rewind4.visibility = GONE
             }
