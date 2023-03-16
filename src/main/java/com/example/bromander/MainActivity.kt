@@ -10,7 +10,6 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.view.ContextMenu
 import android.view.MenuItem
 import android.view.MotionEvent
@@ -540,7 +539,6 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX1 = MotionEventCompat.getX(event, pointerIndex)
@@ -552,7 +550,6 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX1)
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
@@ -575,7 +572,6 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
@@ -598,11 +594,9 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -615,7 +609,6 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX2 = MotionEventCompat.getX(event, pointerIndex)
@@ -627,7 +620,6 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX2)
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
@@ -650,7 +642,6 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
@@ -673,11 +664,9 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -690,7 +679,6 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX3 = MotionEventCompat.getX(event, pointerIndex)
@@ -702,7 +690,6 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX3)
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
@@ -725,7 +712,6 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
@@ -748,11 +734,9 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -765,7 +749,6 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX4 = MotionEventCompat.getX(event, pointerIndex)
@@ -777,7 +760,6 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX4)
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
@@ -800,7 +782,6 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
@@ -823,11 +804,9 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -840,7 +819,6 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX1 = MotionEventCompat.getX(event, pointerIndex)
@@ -852,7 +830,6 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX1)
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
@@ -875,7 +852,6 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
@@ -898,11 +874,9 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -915,7 +889,6 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX1 = MotionEventCompat.getX(event, pointerIndex)
@@ -927,7 +900,6 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX1)
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
@@ -950,7 +922,6 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
@@ -973,11 +944,9 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -990,7 +959,6 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX1 = MotionEventCompat.getX(event, pointerIndex)
@@ -1002,7 +970,6 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX1)
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
@@ -1025,7 +992,6 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
@@ -1048,11 +1014,9 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -1065,7 +1029,6 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX2 = MotionEventCompat.getX(event, pointerIndex)
@@ -1077,7 +1040,6 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX2)
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
@@ -1100,7 +1062,6 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
@@ -1123,11 +1084,9 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -1140,7 +1099,6 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX2 = MotionEventCompat.getX(event, pointerIndex)
@@ -1152,7 +1110,6 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX2)
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
@@ -1175,7 +1132,6 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
@@ -1198,11 +1154,9 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -1215,7 +1169,6 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX2 = MotionEventCompat.getX(event, pointerIndex)
@@ -1227,7 +1180,6 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX2)
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
@@ -1250,7 +1202,6 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
@@ -1273,11 +1224,9 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -1290,7 +1239,6 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX3 = MotionEventCompat.getX(event, pointerIndex)
@@ -1302,7 +1250,6 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX3)
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
@@ -1325,7 +1272,6 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
@@ -1348,11 +1294,9 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -1365,7 +1309,6 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX3 = MotionEventCompat.getX(event, pointerIndex)
@@ -1377,7 +1320,6 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX3)
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
@@ -1400,7 +1342,6 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
@@ -1423,11 +1364,9 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -1440,7 +1379,6 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX3 = MotionEventCompat.getX(event, pointerIndex)
@@ -1452,7 +1390,6 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX3)
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
@@ -1475,7 +1412,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
@@ -1498,11 +1435,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
+                    
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -1515,7 +1452,7 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX4 = MotionEventCompat.getX(event, pointerIndex)
@@ -1527,7 +1464,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX4)
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
@@ -1550,7 +1487,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
@@ -1573,11 +1510,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
+                    
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -1590,7 +1527,7 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX4 = MotionEventCompat.getX(event, pointerIndex)
@@ -1602,7 +1539,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX4)
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
@@ -1625,7 +1562,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
@@ -1648,11 +1585,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
+                    
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -1665,7 +1602,7 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX4 = MotionEventCompat.getX(event, pointerIndex)
@@ -1677,7 +1614,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX4)
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
@@ -1700,7 +1637,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
@@ -1723,11 +1660,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
+                    
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -1740,7 +1677,7 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX1 = MotionEventCompat.getX(event, pointerIndex)
@@ -1752,7 +1689,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX1)
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
@@ -1775,7 +1712,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
@@ -1798,11 +1735,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
+                    
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -1815,7 +1752,7 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX1 = MotionEventCompat.getX(event, pointerIndex)
@@ -1827,7 +1764,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX1)
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
@@ -1850,7 +1787,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
@@ -1873,11 +1810,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
+                    
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -1890,7 +1827,7 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX1 = MotionEventCompat.getX(event, pointerIndex)
@@ -1902,7 +1839,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX1)
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
@@ -1925,7 +1862,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
@@ -1948,11 +1885,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
+                    
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -1965,7 +1902,7 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX1 = MotionEventCompat.getX(event, pointerIndex)
@@ -1977,7 +1914,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX1)
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
@@ -2000,7 +1937,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
@@ -2023,11 +1960,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
+                    
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -2040,7 +1977,7 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX1 = MotionEventCompat.getX(event, pointerIndex)
@@ -2052,7 +1989,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX1)
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
@@ -2075,7 +2012,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
@@ -2098,11 +2035,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
+                    
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -2115,7 +2052,7 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX1 = MotionEventCompat.getX(event, pointerIndex)
@@ -2127,7 +2064,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX1)
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
@@ -2150,7 +2087,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
@@ -2173,11 +2110,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
+                    
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -2190,7 +2127,7 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX2 = MotionEventCompat.getX(event, pointerIndex)
@@ -2202,7 +2139,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX2)
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
@@ -2225,7 +2162,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
@@ -2248,11 +2185,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
+                    
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -2265,7 +2202,7 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX2 = MotionEventCompat.getX(event, pointerIndex)
@@ -2277,7 +2214,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX2)
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
@@ -2300,7 +2237,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
@@ -2323,11 +2260,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
+                    
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -2340,7 +2277,7 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX2 = MotionEventCompat.getX(event, pointerIndex)
@@ -2352,7 +2289,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX2)
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
@@ -2375,7 +2312,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
@@ -2398,11 +2335,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
+                    
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -2415,7 +2352,7 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX2 = MotionEventCompat.getX(event, pointerIndex)
@@ -2427,7 +2364,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX2)
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
@@ -2450,7 +2387,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
@@ -2473,11 +2410,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
+                    
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -2490,7 +2427,7 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX2 = MotionEventCompat.getX(event, pointerIndex)
@@ -2502,7 +2439,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX2)
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
@@ -2525,7 +2462,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
@@ -2548,11 +2485,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
+                    
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -2565,7 +2502,7 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX2 = MotionEventCompat.getX(event, pointerIndex)
@@ -2577,7 +2514,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX2)
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
@@ -2600,7 +2537,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
@@ -2623,11 +2560,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
+                    
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -2640,7 +2577,7 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX3 = MotionEventCompat.getX(event, pointerIndex)
@@ -2652,7 +2589,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX3)
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
@@ -2675,7 +2612,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
@@ -2698,11 +2635,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
+                    
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -2715,7 +2652,7 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX3 = MotionEventCompat.getX(event, pointerIndex)
@@ -2727,7 +2664,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX3)
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
@@ -2750,7 +2687,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
@@ -2773,11 +2710,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
+                    
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -2790,7 +2727,7 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX3 = MotionEventCompat.getX(event, pointerIndex)
@@ -2802,7 +2739,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX3)
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
@@ -2825,7 +2762,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
@@ -2848,11 +2785,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
+                    
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -2865,7 +2802,7 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX3 = MotionEventCompat.getX(event, pointerIndex)
@@ -2877,7 +2814,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX3)
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
@@ -2900,7 +2837,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
@@ -2923,11 +2860,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
+                    
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -2940,7 +2877,7 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX3 = MotionEventCompat.getX(event, pointerIndex)
@@ -2952,7 +2889,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX3)
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
@@ -2975,7 +2912,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
@@ -2998,11 +2935,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
+                    
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -3015,7 +2952,7 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX3 = MotionEventCompat.getX(event, pointerIndex)
@@ -3027,7 +2964,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX3)
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
@@ -3050,7 +2987,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
@@ -3073,11 +3010,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
+                    
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -3090,7 +3027,7 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX4 = MotionEventCompat.getX(event, pointerIndex)
@@ -3102,7 +3039,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX4)
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
@@ -3125,7 +3062,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
@@ -3148,11 +3085,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
+                    
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -3165,7 +3102,7 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX4 = MotionEventCompat.getX(event, pointerIndex)
@@ -3177,7 +3114,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX4)
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
@@ -3200,7 +3137,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
@@ -3223,11 +3160,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
+                    
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -3240,7 +3177,7 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX4 = MotionEventCompat.getX(event, pointerIndex)
@@ -3252,7 +3189,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX4)
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
@@ -3275,7 +3212,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
@@ -3298,11 +3235,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
+                    
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -3315,7 +3252,7 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX4 = MotionEventCompat.getX(event, pointerIndex)
@@ -3327,7 +3264,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX4)
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
@@ -3350,7 +3287,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
@@ -3373,11 +3310,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
+                    
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -3390,7 +3327,7 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX4 = MotionEventCompat.getX(event, pointerIndex)
@@ -3402,7 +3339,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX4)
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
@@ -3425,7 +3362,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
@@ -3448,11 +3385,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
+                    
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -3465,7 +3402,7 @@ class MainActivity : AppCompatActivity() {
 
             when (action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Log.d("action", "Action was DOWN")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         // Remember where we started (for dragging)
                         newPosX4 = MotionEventCompat.getX(event, pointerIndex)
@@ -3477,7 +3414,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE " + newPosX4)
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
@@ -3500,7 +3437,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    Log.d("action", "Action was UP")
+                    
                     MotionEventCompat.getActionIndex(event).also { pointerIndex ->
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
@@ -3523,11 +3460,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    Log.d("action", "Action was CANCEL")
+                    
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -3607,7 +3544,7 @@ class MainActivity : AppCompatActivity() {
 
                      */
                     while(event != MotionEvent.ACTION_UP)
-                    Log.d("action", "Action was DOWN")
+                    
                     true
                 }
                 MotionEvent.ACTION_UP -> {
@@ -3620,21 +3557,21 @@ class MainActivity : AppCompatActivity() {
                         }
                         life4.text = lifeTotal4.toString()
                     }
-                    Log.d("action", "Action was UP")
+                    
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    Log.d("action", "Action was MOVE")
+                    
                     true
                 }
                 MotionEvent.ACTION_CANCEL -> {
                     onTouchTimer.cancel()
                     //onTouchTimer.purge()
-                    Log.d("action", "Action was CANCEL")
+                    
                     true
                 }
                 MotionEvent.ACTION_OUTSIDE -> {
-                    Log.d("action", "Movement occurred outside bounds of current screen element")
+                    
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -4784,7 +4721,7 @@ class MainActivity : AppCompatActivity() {
 
         //Set onClickListeners
         endTurn.setOnClickListener {
-            Log.d("action", "endTurn button pressed")
+            
             isPaused = false
             playIcon1.background = this.getDrawable(R.drawable.pause_icon)
             playIcon2.background = this.getDrawable(R.drawable.pause_icon)
@@ -5046,7 +4983,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         commanderIcon1.setOnClickListener {
-            Log.d("action", "manaIcon1 button pressed")
             if (!isCommanderIcon1Pressed){
                 isCommanderIcon1Pressed = true
                 commanderIcon1.backgroundTintList = this.getColorStateList(R.color.whiteColor)
@@ -5083,7 +5019,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         manaIcon1.setOnClickListener {
-            Log.d("action", "manaIcon1 button pressed")
             if (!isManaIcon1Pressed){
                 isManaIcon1Pressed = true
                 manaIcon1.backgroundTintList = this.getColorStateList(R.color.whiteColor)
@@ -5126,7 +5061,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         optionsIcon1.setOnClickListener {
-            Log.d("action", "manaIcon1 button pressed")
             if (!isOptionsIcon1Pressed){
                 isOptionsIcon1Pressed = true
                 if (currentPlayer == 1) {
@@ -5226,7 +5160,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         commanderIcon2.setOnClickListener {
-            Log.d("action", "manaIcon2 button pressed")
             if (!isCommanderIcon2Pressed){
                 isCommanderIcon2Pressed = true
                 commanderIcon2.backgroundTintList = this.getColorStateList(R.color.whiteColor)
@@ -5263,7 +5196,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         manaIcon2.setOnClickListener {
-            Log.d("action", "manaIcon2 button pressed")
             if (!isManaIcon2Pressed){
                 isManaIcon2Pressed = true
                 manaIcon2.backgroundTintList = this.getColorStateList(R.color.whiteColor)
@@ -5306,7 +5238,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         optionsIcon2.setOnClickListener {
-            Log.d("action", "manaIcon2 button pressed")
             if (!isOptionsIcon2Pressed){
                 isOptionsIcon2Pressed = true
                 if (currentPlayer == 2) {
@@ -5406,7 +5337,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         commanderIcon3.setOnClickListener {
-            Log.d("action", "manaIcon3 button pressed")
             if (!isCommanderIcon3Pressed){
                 isCommanderIcon3Pressed = true
                 commanderIcon3.backgroundTintList = this.getColorStateList(R.color.whiteColor)
@@ -5443,7 +5373,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         manaIcon3.setOnClickListener {
-            Log.d("action", "manaIcon3 button pressed")
             if (!isManaIcon3Pressed){
                 isManaIcon3Pressed = true
                 manaIcon3.backgroundTintList = this.getColorStateList(R.color.whiteColor)
@@ -5486,7 +5415,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         optionsIcon3.setOnClickListener {
-            Log.d("action", "manaIcon3 button pressed")
             if (!isOptionsIcon3Pressed){
                 isOptionsIcon3Pressed = true
                 if (currentPlayer == 3) {
@@ -5586,7 +5514,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         commanderIcon4.setOnClickListener {
-            Log.d("action", "manaIcon4 button pressed")
             if (!isCommanderIcon4Pressed){
                 isCommanderIcon4Pressed = true
                 commanderIcon4.backgroundTintList = this.getColorStateList(R.color.whiteColor)
@@ -5623,7 +5550,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         manaIcon4.setOnClickListener {
-            Log.d("action", "manaIcon4 button pressed")
             if (!isManaIcon4Pressed){
                 isManaIcon4Pressed = true
                 manaIcon4.backgroundTintList = this.getColorStateList(R.color.whiteColor)
@@ -5666,7 +5592,6 @@ class MainActivity : AppCompatActivity() {
         }
         
         optionsIcon4.setOnClickListener {
-            Log.d("action", "manaIcon4 button pressed")
             if (!isOptionsIcon4Pressed){
                 isOptionsIcon4Pressed = true
                 if (currentPlayer == 4) {
@@ -5859,7 +5784,7 @@ class MainActivity : AppCompatActivity() {
 
         /*
         startButton.setOnClickListener {
-            Log.d("action", "startButton button pressed")
+            
             if (startButton.text == "START"){
                 startButton.text = ""
                 endTurn.visibility = VISIBLE
@@ -5928,23 +5853,23 @@ class MainActivity : AppCompatActivity() {
 
         return when (action) {
             MotionEvent.ACTION_DOWN -> {
-                Log.d("action", "Action was DOWN")
+                
                 true
             }
             MotionEvent.ACTION_MOVE -> {
-                Log.d("action", "Action was MOVE")
+                
                 true
             }
             MotionEvent.ACTION_UP -> {
-                Log.d("action", "Action was UP")
+                
                 true
             }
             MotionEvent.ACTION_CANCEL -> {
-                Log.d("action", "Action was CANCEL")
+                
                 true
             }
             MotionEvent.ACTION_OUTSIDE -> {
-                Log.d("action", "Movement occurred outside bounds of current screen element")
+                
                 true
             }
             else -> super.onTouchEvent(event)
@@ -6037,7 +5962,7 @@ class MainActivity : AppCompatActivity() {
             val x = e.x
             val y = e.y
 
-            Log.d("Double Tap", "Tapped at: ($x,$y)")
+            
 
             doubleTapped = true
 
