@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Bromander</string>
+    <string name="restart_game">RESTART GAME</string>
+    <string name="undo_turn_cycle">UNDO MY TURN</string>
 </resources>

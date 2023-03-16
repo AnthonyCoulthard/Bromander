@@ -3,4 +3,22 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="statusBarColor">#000000</color>
+    <color name="player1Color">#ff63e5</color>
+    <!--
+    <color name="player2Color">#00ffff</color>
+    -->
+    <color name="player2Color">#59c8e9</color>
+    <color name="player3Color">#9459f6</color>
+    <!--
+    <color name="player4Color">#4affa7</color>
+    -->
+    <color name="player4Color">#ff9d41</color>
+    <color name="whiteColor">#ffffff</color>
+    <color name="whiteManaColor">#F9FAF4</color>
+    <color name="blueManaColor">#0E68AB</color>
+    <color name="blackManaColor">#150B00</color>
+    <color name="redManaColor">#D3202A</color>
+    <color name="greenManaColor">#00733E</color>
+    <color name="stormManaColor">#ffff00</color>
 </resources>
