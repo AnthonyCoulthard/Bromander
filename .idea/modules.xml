@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Bromander.iml" filepath="$PROJECT_DIR$/.idea/modules/Bromander.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Bromander.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/Bromander.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Bromander.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Bromander.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Bromander.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/Bromander.unitTest.iml" />
     </modules>
   </component>
 </project>

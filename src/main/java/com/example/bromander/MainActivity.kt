@@ -88,11 +88,11 @@ class MainActivity : AppCompatActivity() {
     lateinit var player2Timer: Button
     lateinit var player3Timer: Button
     lateinit var player4Timer: Button
-    /*
     lateinit var player1TimerText: TextView
     lateinit var player2TimerText: TextView
     lateinit var player3TimerText: TextView
     lateinit var player4TimerText: TextView
+    /*
     lateinit var player1Text: TextView
     lateinit var player2Text: TextView
     lateinit var player3Text: TextView
@@ -187,10 +187,10 @@ class MainActivity : AppCompatActivity() {
         var commander4damage3: Int = 0
         var commander4damage1: Int = 0
          */
-    var timer1: Int = 180
-    var timer2: Int = 180
-    var timer3: Int = 180
-    var timer4: Int = 180
+    var timer1: Int = 500
+    var timer2: Int = 500
+    var timer3: Int = 500
+    var timer4: Int = 500
     var posX1: Float = 0.0f
     var posY1: Float = 0.0f
     var newPosX1: Float = 0.0f
@@ -239,7 +239,7 @@ class MainActivity : AppCompatActivity() {
     var isOptionsIcon4Pressed: Boolean = false
     var isPlayIcon4Pressed: Boolean = false
     var isPlayerSelected: Boolean = false
-    var timerAddition: Int = 150
+    var timerAddition: Int = 240
     var player1Damage2Int: Int = 0
     var player1Damage3Int: Int = 0
     var player1Damage4Int: Int = 0
@@ -318,11 +318,11 @@ class MainActivity : AppCompatActivity() {
         player2Timer = findViewById(R.id.player2Timer)
         player3Timer = findViewById(R.id.player3Timer)
         player4Timer = findViewById(R.id.player4Timer)
-        /*
         player1TimerText = findViewById(R.id.player1TimerText)
         player2TimerText = findViewById(R.id.player2TimerText)
         player3TimerText = findViewById(R.id.player3TimerText)
         player4TimerText = findViewById(R.id.player4TimerText)
+        /*
         player1Text = findViewById(R.id.player1Text)
         player2Text = findViewById(R.id.player2Text)
         player3Text = findViewById(R.id.player3Text)
@@ -554,13 +554,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosX1 > newPosX1 + 20){
+                    if (tempPosX1 > newPosX1 + 150){
                         lifeTotal1++
                         life1.text = lifeTotal1.toString()
                         newPosX1 = tempPosX1
                         newPosY1 = tempPosY1
                     }
-                    else if (tempPosX1 < newPosX1 - 20){
+                    else if (tempPosX1 < newPosX1 - 150){
                         lifeTotal1--
                         if (lifeTotal1 <= 0){
                             lifeTotal1 = 0
@@ -576,13 +576,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosX1 > newPosX1 + 20){
+                    if (tempPosX1 > newPosX1 + 150){
                         lifeTotal1++
                         life1.text = lifeTotal1.toString()
                         posX1 = newPosX1
                         posY1 = newPosY1
                     }
-                    else if (tempPosX1 < newPosX1 - 20){
+                    else if (tempPosX1 < newPosX1 - 150){
                         lifeTotal1--
                         if (lifeTotal1 <= 0){
                             lifeTotal1 = 0
@@ -624,13 +624,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosX2 < newPosX2 - 20){
+                    if (tempPosX2 < newPosX2 - 150){
                         lifeTotal2++
                         life2.text = lifeTotal2.toString()
                         newPosX2 = tempPosX2
                         newPosY2 = tempPosY2
                     }
-                    else if (tempPosX2 > newPosX2 + 20){
+                    else if (tempPosX2 > newPosX2 + 150){
                         lifeTotal2--
                         if (lifeTotal2 <= 0){
                             lifeTotal2 = 0
@@ -646,13 +646,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosX2 < newPosX2 - 20){
+                    if (tempPosX2 < newPosX2 - 150){
                         lifeTotal2++
                         life2.text = lifeTotal2.toString()
                         posX2 = newPosX2
                         posY2 = newPosY2
                     }
-                    else if (tempPosX2 > newPosX2 + 20){
+                    else if (tempPosX2 > newPosX2 + 150){
                         lifeTotal2--
                         if (lifeTotal2 <= 0){
                             lifeTotal2 = 0
@@ -694,13 +694,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosX3 < newPosX3 - 20){
+                    if (tempPosX3 < newPosX3 - 150){
                         lifeTotal3++
                         life3.text = lifeTotal3.toString()
                         newPosX3 = tempPosX3
                         newPosY3 = tempPosY3
                     }
-                    else if (tempPosX3 > newPosX3 + 20){
+                    else if (tempPosX3 > newPosX3 + 150){
                         lifeTotal3--
                         if (lifeTotal3 <= 0){
                             lifeTotal3 = 0
@@ -716,13 +716,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosX3 < newPosX3 - 20){
+                    if (tempPosX3 < newPosX3 - 150){
                         lifeTotal3++
                         life3.text = lifeTotal3.toString()
                         posX3 = newPosX3
                         posY3 = newPosY3
                     }
-                    else if (tempPosX3 > newPosX3 + 20){
+                    else if (tempPosX3 > newPosX3 + 150){
                         lifeTotal3--
                         if (lifeTotal3 <= 0){
                             lifeTotal3 = 0
@@ -764,13 +764,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosX4 > newPosX4 + 20){
+                    if (tempPosX4 > newPosX4 + 150){
                         lifeTotal4++
                         life4.text = lifeTotal4.toString()
                         newPosX4 = tempPosX4
                         newPosY4 = tempPosY4
                     }
-                    else if (tempPosX4 < newPosX4 - 20){
+                    else if (tempPosX4 < newPosX4 - 150){
                         lifeTotal4--
                         if (lifeTotal4 <= 0){
                             lifeTotal4 = 0
@@ -786,13 +786,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosX4 > newPosX4 + 20){
+                    if (tempPosX4 > newPosX4 + 150){
                         lifeTotal4++
                         life4.text = lifeTotal4.toString()
                         posX4 = newPosX4
                         posY4 = newPosY4
                     }
-                    else if (tempPosX4 < newPosX4 - 20){
+                    else if (tempPosX4 < newPosX4 - 150){
                         lifeTotal4--
                         if (lifeTotal4 <= 0){
                             lifeTotal4 = 0
@@ -834,7 +834,7 @@ class MainActivity : AppCompatActivity() {
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY1 < newPosY1 - 20){
+                    if (tempPosY1 < newPosY1 - 150){
                         if (lifeTotal2 > 0) {
                             player1Damage2Int++
                             player1Damage2.text = player1Damage2Int.toString()
@@ -847,7 +847,7 @@ class MainActivity : AppCompatActivity() {
                         newPosX1 = tempPosX1
                         newPosY1 = tempPosY1
                     }
-                    else if (tempPosY1 > newPosY1 + 20){
+                    else if (tempPosY1 > newPosY1 + 150){
                         player1Damage2Int--
                         if (player1Damage2Int < 0){
                             player1Damage2Int = 0
@@ -867,7 +867,7 @@ class MainActivity : AppCompatActivity() {
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY1 < newPosY1 - 20){
+                    if (tempPosY1 < newPosY1 - 150){
                         if (lifeTotal2 > 0) {
                             player1Damage2Int++
                             player1Damage2.text = player1Damage2Int.toString()
@@ -880,7 +880,7 @@ class MainActivity : AppCompatActivity() {
                         newPosX1 = tempPosX1
                         newPosY1 = tempPosY1
                     }
-                    else if (tempPosY1 > newPosY1 + 20){
+                    else if (tempPosY1 > newPosY1 + 150){
                         player1Damage2Int--
                         if (player1Damage2Int < 0){
                             player1Damage2Int = 0
@@ -926,7 +926,7 @@ class MainActivity : AppCompatActivity() {
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY1 < newPosY1 - 20){
+                    if (tempPosY1 < newPosY1 - 150){
                         if (lifeTotal3 > 0) {
                             player1Damage3Int++
                             player1Damage3.text = player1Damage3Int.toString()
@@ -939,7 +939,7 @@ class MainActivity : AppCompatActivity() {
                         newPosX1 = tempPosX1
                         newPosY1 = tempPosY1
                     }
-                    else if (tempPosY1 > newPosY1 + 20){
+                    else if (tempPosY1 > newPosY1 + 150){
                         player1Damage3Int--
                         if (player1Damage3Int < 0){
                             player1Damage3Int = 0
@@ -959,7 +959,7 @@ class MainActivity : AppCompatActivity() {
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY1 < newPosY1 - 20){
+                    if (tempPosY1 < newPosY1 - 150){
                         if (lifeTotal3 > 0) {
                             player1Damage3Int++
                             player1Damage3.text = player1Damage3Int.toString()
@@ -972,7 +972,7 @@ class MainActivity : AppCompatActivity() {
                         newPosX1 = tempPosX1
                         newPosY1 = tempPosY1
                     }
-                    else if (tempPosY1 > newPosY1 + 20){
+                    else if (tempPosY1 > newPosY1 + 150){
                         player1Damage3Int--
                         if (player1Damage3Int < 0){
                             player1Damage3Int = 0
@@ -1018,7 +1018,7 @@ class MainActivity : AppCompatActivity() {
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY1 < newPosY1 - 20){
+                    if (tempPosY1 < newPosY1 - 150){
                         if (lifeTotal4 > 0) {
                             player1Damage4Int++
                             player1Damage4.text = player1Damage4Int.toString()
@@ -1031,7 +1031,7 @@ class MainActivity : AppCompatActivity() {
                         newPosX1 = tempPosX1
                         newPosY1 = tempPosY1
                     }
-                    else if (tempPosY1 > newPosY1 + 20){
+                    else if (tempPosY1 > newPosY1 + 150){
                         player1Damage4Int--
                         if (player1Damage4Int < 0){
                             player1Damage4Int = 0
@@ -1051,7 +1051,7 @@ class MainActivity : AppCompatActivity() {
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY1 < newPosY1 - 20){
+                    if (tempPosY1 < newPosY1 - 150){
                         if (lifeTotal4 > 0) {
                             player1Damage4Int++
                             player1Damage4.text = player1Damage4Int.toString()
@@ -1064,7 +1064,7 @@ class MainActivity : AppCompatActivity() {
                         newPosX1 = tempPosX1
                         newPosY1 = tempPosY1
                     }
-                    else if (tempPosY1 > newPosY1 + 20){
+                    else if (tempPosY1 > newPosY1 + 150){
                         player1Damage4Int--
                         if (player1Damage4Int < 0){
                             player1Damage4Int = 0
@@ -1110,7 +1110,7 @@ class MainActivity : AppCompatActivity() {
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY2 < newPosY2 - 20){
+                    if (tempPosY2 < newPosY2 - 150){
                         if (lifeTotal1 > 0) {
                             player2Damage1Int++
                             player2Damage1.text = player2Damage1Int.toString()
@@ -1123,7 +1123,7 @@ class MainActivity : AppCompatActivity() {
                         newPosX2 = tempPosX2
                         newPosY2 = tempPosY2
                     }
-                    else if (tempPosY2 > newPosY2 + 20){
+                    else if (tempPosY2 > newPosY2 + 150){
                         player2Damage1Int--
                         if (player2Damage1Int < 0){
                             player2Damage1Int = 0
@@ -1143,7 +1143,7 @@ class MainActivity : AppCompatActivity() {
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY2 < newPosY2 - 20){
+                    if (tempPosY2 < newPosY2 - 150){
                         if (lifeTotal1 > 0) {
                             player2Damage1Int++
                             player2Damage1.text = player2Damage1Int.toString()
@@ -1156,7 +1156,7 @@ class MainActivity : AppCompatActivity() {
                         newPosX2 = tempPosX2
                         newPosY2 = tempPosY2
                     }
-                    else if (tempPosY2 > newPosY2 + 20){
+                    else if (tempPosY2 > newPosY2 + 150){
                         player2Damage1Int--
                         if (player2Damage1Int < 0){
                             player2Damage1Int = 0
@@ -1202,7 +1202,7 @@ class MainActivity : AppCompatActivity() {
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY2 < newPosY2 - 20){
+                    if (tempPosY2 < newPosY2 - 150){
                         if (lifeTotal3 > 0) {
                             player2Damage3Int++
                             player2Damage3.text = player2Damage3Int.toString()
@@ -1215,7 +1215,7 @@ class MainActivity : AppCompatActivity() {
                         newPosX2 = tempPosX2
                         newPosY2 = tempPosY2
                     }
-                    else if (tempPosY2 > newPosY2 + 20){
+                    else if (tempPosY2 > newPosY2 + 150){
                         player2Damage3Int--
                         if (player2Damage3Int < 0){
                             player2Damage3Int = 0
@@ -1235,7 +1235,7 @@ class MainActivity : AppCompatActivity() {
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY2 < newPosY2 - 20){
+                    if (tempPosY2 < newPosY2 - 150){
                         if (lifeTotal3 > 0) {
                             player2Damage3Int++
                             player2Damage3.text = player2Damage3Int.toString()
@@ -1248,7 +1248,7 @@ class MainActivity : AppCompatActivity() {
                         newPosX2 = tempPosX2
                         newPosY2 = tempPosY2
                     }
-                    else if (tempPosY2 > newPosY2 + 20){
+                    else if (tempPosY2 > newPosY2 + 150){
                         player2Damage3Int--
                         if (player2Damage3Int < 0){
                             player2Damage3Int = 0
@@ -1294,7 +1294,7 @@ class MainActivity : AppCompatActivity() {
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY2 < newPosY2 - 20){
+                    if (tempPosY2 < newPosY2 - 150){
                         if (lifeTotal4 > 0) {
                             player2Damage4Int++
                             player2Damage4.text = player2Damage4Int.toString()
@@ -1307,7 +1307,7 @@ class MainActivity : AppCompatActivity() {
                         newPosX2 = tempPosX2
                         newPosY2 = tempPosY2
                     }
-                    else if (tempPosY2 > newPosY2 + 20){
+                    else if (tempPosY2 > newPosY2 + 150){
                         player2Damage4Int--
                         if (player2Damage4Int < 0){
                             player2Damage4Int = 0
@@ -1327,7 +1327,7 @@ class MainActivity : AppCompatActivity() {
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY2 < newPosY2 - 20){
+                    if (tempPosY2 < newPosY2 - 150){
                         if (lifeTotal4 > 0) {
                             player2Damage4Int++
                             player2Damage4.text = player2Damage4Int.toString()
@@ -1340,7 +1340,7 @@ class MainActivity : AppCompatActivity() {
                         newPosX2 = tempPosX2
                         newPosY2 = tempPosY2
                     }
-                    else if (tempPosY2 > newPosY2 + 20){
+                    else if (tempPosY2 > newPosY2 + 150){
                         player2Damage4Int--
                         if (player2Damage4Int < 0){
                             player2Damage4Int = 0
@@ -1386,7 +1386,7 @@ class MainActivity : AppCompatActivity() {
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY3 < newPosY3 - 20){
+                    if (tempPosY3 < newPosY3 - 150){
                         if (lifeTotal1 > 0) {
                             player3Damage1Int++
                             player3Damage1.text = player3Damage1Int.toString()
@@ -1399,7 +1399,7 @@ class MainActivity : AppCompatActivity() {
                         newPosX3 = tempPosX3
                         newPosY3 = tempPosY3
                     }
-                    else if (tempPosY3 > newPosY3 + 20){
+                    else if (tempPosY3 > newPosY3 + 150){
                         player3Damage1Int--
                         if (player3Damage1Int < 0){
                             player3Damage1Int = 0
@@ -1419,7 +1419,7 @@ class MainActivity : AppCompatActivity() {
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY3 < newPosY3 - 20){
+                    if (tempPosY3 < newPosY3 - 150){
                         if (lifeTotal1 > 0) {
                             player3Damage1Int++
                             player3Damage1.text = player3Damage1Int.toString()
@@ -1432,7 +1432,7 @@ class MainActivity : AppCompatActivity() {
                         newPosX3 = tempPosX3
                         newPosY3 = tempPosY3
                     }
-                    else if (tempPosY3 > newPosY3 + 20){
+                    else if (tempPosY3 > newPosY3 + 150){
                         player3Damage1Int--
                         if (player3Damage1Int < 0){
                             player3Damage1Int = 0
@@ -1478,7 +1478,7 @@ class MainActivity : AppCompatActivity() {
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY3 < newPosY3 - 20){
+                    if (tempPosY3 < newPosY3 - 150){
                         if (lifeTotal2 > 0) {
                             player3Damage2Int++
                             player3Damage2.text = player3Damage2Int.toString()
@@ -1491,7 +1491,7 @@ class MainActivity : AppCompatActivity() {
                         newPosX3 = tempPosX3
                         newPosY3 = tempPosY3
                     }
-                    else if (tempPosY3 > newPosY3 + 20){
+                    else if (tempPosY3 > newPosY3 + 150){
                         player3Damage2Int--
                         if (player3Damage2Int < 0){
                             player3Damage2Int = 0
@@ -1511,7 +1511,7 @@ class MainActivity : AppCompatActivity() {
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY3 < newPosY3 - 20){
+                    if (tempPosY3 < newPosY3 - 150){
                         if (lifeTotal2 > 0) {
                             player3Damage2Int++
                             player3Damage2.text = player3Damage2Int.toString()
@@ -1524,7 +1524,7 @@ class MainActivity : AppCompatActivity() {
                         newPosX3 = tempPosX3
                         newPosY3 = tempPosY3
                     }
-                    else if (tempPosY3 > newPosY3 + 20){
+                    else if (tempPosY3 > newPosY3 + 150){
                         player3Damage2Int--
                         if (player3Damage2Int < 0){
                             player3Damage2Int = 0
@@ -1570,7 +1570,7 @@ class MainActivity : AppCompatActivity() {
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY3 < newPosY3 - 20){
+                    if (tempPosY3 < newPosY3 - 150){
                         if (lifeTotal4 > 0) {
                             player3Damage4Int++
                             player3Damage4.text = player3Damage4Int.toString()
@@ -1583,7 +1583,7 @@ class MainActivity : AppCompatActivity() {
                         newPosX3 = tempPosX3
                         newPosY3 = tempPosY3
                     }
-                    else if (tempPosY3 > newPosY3 + 20){
+                    else if (tempPosY3 > newPosY3 + 150){
                         player3Damage4Int--
                         if (player3Damage4Int < 0){
                             player3Damage4Int = 0
@@ -1604,7 +1604,7 @@ class MainActivity : AppCompatActivity() {
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY3 < newPosY3 - 20){
+                    if (tempPosY3 < newPosY3 - 150){
                         if (lifeTotal4 > 0) {
                             player3Damage4Int++
                             player3Damage4.text = player3Damage4Int.toString()
@@ -1617,7 +1617,7 @@ class MainActivity : AppCompatActivity() {
                         newPosX3 = tempPosX3
                         newPosY3 = tempPosY3
                     }
-                    else if (tempPosY3 > newPosY3 + 20){
+                    else if (tempPosY3 > newPosY3 + 150){
                         player3Damage4Int--
                         if (player3Damage4Int < 0){
                             player3Damage4Int = 0
@@ -1667,7 +1667,7 @@ class MainActivity : AppCompatActivity() {
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY4 < newPosY4 - 20){
+                    if (tempPosY4 < newPosY4 - 150){
                         if (lifeTotal1 > 0) {
                             player4Damage1Int++
                             player4Damage1.text = player4Damage1Int.toString()
@@ -1680,7 +1680,7 @@ class MainActivity : AppCompatActivity() {
                         newPosX4 = tempPosX4
                         newPosY4 = tempPosY4
                     }
-                    else if (tempPosY4 > newPosY4 + 20){
+                    else if (tempPosY4 > newPosY4 + 150){
                         player4Damage1Int--
                         if (player4Damage1Int < 0){
                             player4Damage1Int = 0
@@ -1701,7 +1701,7 @@ class MainActivity : AppCompatActivity() {
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY4 < newPosY4 - 20){
+                    if (tempPosY4 < newPosY4 - 150){
                         if (lifeTotal1 > 0) {
                             player4Damage1Int++
                             player4Damage1.text = player4Damage1Int.toString()
@@ -1714,7 +1714,7 @@ class MainActivity : AppCompatActivity() {
                         newPosX4 = tempPosX4
                         newPosY4 = tempPosY4
                     }
-                    else if (tempPosY4 > newPosY4 + 20){
+                    else if (tempPosY4 > newPosY4 + 150){
                         player4Damage1Int--
                         if (player4Damage1Int < 0){
                             player4Damage1Int = 0
@@ -1764,7 +1764,7 @@ class MainActivity : AppCompatActivity() {
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY4 < newPosY4 - 20){
+                    if (tempPosY4 < newPosY4 - 150){
                         if (lifeTotal2 > 0) {
                             player4Damage2Int++
                             player4Damage2.text = player4Damage2Int.toString()
@@ -1777,7 +1777,7 @@ class MainActivity : AppCompatActivity() {
                         newPosX4 = tempPosX4
                         newPosY4 = tempPosY4
                     }
-                    else if (tempPosY4 > newPosY4 + 20){
+                    else if (tempPosY4 > newPosY4 + 150){
                         player4Damage2Int--
                         if (player4Damage2Int < 0){
                             player4Damage2Int = 0
@@ -1798,7 +1798,7 @@ class MainActivity : AppCompatActivity() {
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY4 < newPosY4 - 20){
+                    if (tempPosY4 < newPosY4 - 150){
                         if (lifeTotal2 > 0) {
                             player4Damage2Int++
                             player4Damage2.text = player4Damage2Int.toString()
@@ -1811,7 +1811,7 @@ class MainActivity : AppCompatActivity() {
                         newPosX4 = tempPosX4
                         newPosY4 = tempPosY4
                     }
-                    else if (tempPosY4 > newPosY4 + 20){
+                    else if (tempPosY4 > newPosY4 + 150){
                         player4Damage2Int--
                         if (player4Damage2Int < 0){
                             player4Damage2Int = 0
@@ -1861,7 +1861,7 @@ class MainActivity : AppCompatActivity() {
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY4 < newPosY4 - 20){
+                    if (tempPosY4 < newPosY4 - 150){
                         if (lifeTotal3 > 0) {
                             player4Damage3Int++
                             player4Damage3.text = player4Damage3Int.toString()
@@ -1874,7 +1874,7 @@ class MainActivity : AppCompatActivity() {
                         newPosX4 = tempPosX4
                         newPosY4 = tempPosY4
                     }
-                    else if (tempPosY4 > newPosY4 + 20){
+                    else if (tempPosY4 > newPosY4 + 150){
                         player4Damage3Int--
                         if (player4Damage3Int < 0){
                             player4Damage3Int = 0
@@ -1895,7 +1895,7 @@ class MainActivity : AppCompatActivity() {
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY4 < newPosY4 - 20){
+                    if (tempPosY4 < newPosY4 - 150){
                         if (lifeTotal3 > 0) {
                             player4Damage3Int++
                             player4Damage3.text = player4Damage3Int.toString()
@@ -1908,7 +1908,7 @@ class MainActivity : AppCompatActivity() {
                         newPosX4 = tempPosX4
                         newPosY4 = tempPosY4
                     }
-                    else if (tempPosY4 > newPosY4 + 20){
+                    else if (tempPosY4 > newPosY4 + 150){
                         player4Damage3Int--
                         if (player4Damage3Int < 0){
                             player4Damage3Int = 0
@@ -1958,13 +1958,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY1 < newPosY1 - 20){
+                    if (tempPosY1 < newPosY1 - 150){
                         white1Int++
                         white1.text = white1Int.toString()
                         newPosX1 = tempPosX1
                         newPosY1 = tempPosY1
                     }
-                    else if (tempPosY1 > newPosY1 + 20){
+                    else if (tempPosY1 > newPosY1 + 150){
                         white1Int--
                         if (white1Int <= 0){
                             white1Int = 0
@@ -1981,13 +1981,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY1 < newPosY1 - 20){
+                    if (tempPosY1 < newPosY1 - 150){
                         white1Int++
                         white1.text = white1Int.toString()
                         posX1 = newPosX1
                         posY1 = newPosY1
                     }
-                    else if (tempPosY1 > newPosY1 + 20){
+                    else if (tempPosY1 > newPosY1 + 150){
                         white1Int--
                         if (white1Int <= 0){
                             white1Int = 0
@@ -2033,13 +2033,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY1 < newPosY1 - 20){
+                    if (tempPosY1 < newPosY1 - 150){
                         blue1Int++
                         blue1.text = blue1Int.toString()
                         newPosX1 = tempPosX1
                         newPosY1 = tempPosY1
                     }
-                    else if (tempPosY1 > newPosY1 + 20){
+                    else if (tempPosY1 > newPosY1 + 150){
                         blue1Int--
                         if (blue1Int <= 0){
                             blue1Int = 0
@@ -2056,13 +2056,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY1 < newPosY1 - 20){
+                    if (tempPosY1 < newPosY1 - 150){
                         blue1Int++
                         blue1.text = blue1Int.toString()
                         posX1 = newPosX1
                         posY1 = newPosY1
                     }
-                    else if (tempPosY1 > newPosY1 + 20){
+                    else if (tempPosY1 > newPosY1 + 150){
                         blue1Int--
                         if (blue1Int <= 0){
                             blue1Int = 0
@@ -2108,13 +2108,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY1 < newPosY1 - 20){
+                    if (tempPosY1 < newPosY1 - 150){
                         black1Int++
                         black1.text = black1Int.toString()
                         newPosX1 = tempPosX1
                         newPosY1 = tempPosY1
                     }
-                    else if (tempPosY1 > newPosY1 + 20){
+                    else if (tempPosY1 > newPosY1 + 150){
                         black1Int--
                         if (black1Int <= 0){
                             black1Int = 0
@@ -2131,13 +2131,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY1 < newPosY1 - 20){
+                    if (tempPosY1 < newPosY1 - 150){
                         black1Int++
                         black1.text = black1Int.toString()
                         posX1 = newPosX1
                         posY1 = newPosY1
                     }
-                    else if (tempPosY1 > newPosY1 + 20){
+                    else if (tempPosY1 > newPosY1 + 150){
                         black1Int--
                         if (black1Int <= 0){
                             black1Int = 0
@@ -2183,13 +2183,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY1 < newPosY1 - 20){
+                    if (tempPosY1 < newPosY1 - 150){
                         red1Int++
                         red1.text = red1Int.toString()
                         newPosX1 = tempPosX1
                         newPosY1 = tempPosY1
                     }
-                    else if (tempPosY1 > newPosY1 + 20){
+                    else if (tempPosY1 > newPosY1 + 150){
                         red1Int--
                         if (red1Int <= 0){
                             red1Int = 0
@@ -2206,13 +2206,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY1 < newPosY1 - 20){
+                    if (tempPosY1 < newPosY1 - 150){
                         red1Int++
                         red1.text = red1Int.toString()
                         posX1 = newPosX1
                         posY1 = newPosY1
                     }
-                    else if (tempPosY1 > newPosY1 + 20){
+                    else if (tempPosY1 > newPosY1 + 150){
                         red1Int--
                         if (red1Int <= 0){
                             red1Int = 0
@@ -2258,13 +2258,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY1 < newPosY1 - 20){
+                    if (tempPosY1 < newPosY1 - 150){
                         green1Int++
                         green1.text = green1Int.toString()
                         newPosX1 = tempPosX1
                         newPosY1 = tempPosY1
                     }
-                    else if (tempPosY1 > newPosY1 + 20){
+                    else if (tempPosY1 > newPosY1 + 150){
                         green1Int--
                         if (green1Int <= 0){
                             green1Int = 0
@@ -2281,13 +2281,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY1 < newPosY1 - 20){
+                    if (tempPosY1 < newPosY1 - 150){
                         green1Int++
                         green1.text = green1Int.toString()
                         posX1 = newPosX1
                         posY1 = newPosY1
                     }
-                    else if (tempPosY1 > newPosY1 + 20){
+                    else if (tempPosY1 > newPosY1 + 150){
                         green1Int--
                         if (green1Int <= 0){
                             green1Int = 0
@@ -2333,13 +2333,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY1 < newPosY1 - 20){
+                    if (tempPosY1 < newPosY1 - 150){
                         storm1Int++
                         storm1.text = storm1Int.toString()
                         newPosX1 = tempPosX1
                         newPosY1 = tempPosY1
                     }
-                    else if (tempPosY1 > newPosY1 + 20){
+                    else if (tempPosY1 > newPosY1 + 150){
                         storm1Int--
                         if (storm1Int <= 0){
                             storm1Int = 0
@@ -2356,13 +2356,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX1 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY1 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY1 < newPosY1 - 20){
+                    if (tempPosY1 < newPosY1 - 150){
                         storm1Int++
                         storm1.text = storm1Int.toString()
                         posX1 = newPosX1
                         posY1 = newPosY1
                     }
-                    else if (tempPosY1 > newPosY1 + 20){
+                    else if (tempPosY1 > newPosY1 + 150){
                         storm1Int--
                         if (storm1Int <= 0){
                             storm1Int = 0
@@ -2408,13 +2408,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY2 < newPosY2 - 20){
+                    if (tempPosY2 < newPosY2 - 150){
                         white2Int++
                         white2.text = white2Int.toString()
                         newPosX2 = tempPosX2
                         newPosY2 = tempPosY2
                     }
-                    else if (tempPosY2 > newPosY2 + 20){
+                    else if (tempPosY2 > newPosY2 + 150){
                         white2Int--
                         if (white2Int <= 0){
                             white2Int = 0
@@ -2431,13 +2431,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY2 < newPosY2 - 20){
+                    if (tempPosY2 < newPosY2 - 150){
                         white2Int++
                         white2.text = white2Int.toString()
                         posX2 = newPosX2
                         posY2 = newPosY2
                     }
-                    else if (tempPosY2 > newPosY2 + 20){
+                    else if (tempPosY2 > newPosY2 + 150){
                         white2Int--
                         if (white2Int <= 0){
                             white2Int = 0
@@ -2483,13 +2483,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY2 < newPosY2 - 20){
+                    if (tempPosY2 < newPosY2 - 150){
                         blue2Int++
                         blue2.text = blue2Int.toString()
                         newPosX2 = tempPosX2
                         newPosY2 = tempPosY2
                     }
-                    else if (tempPosY2 > newPosY2 + 20){
+                    else if (tempPosY2 > newPosY2 + 150){
                         blue2Int--
                         if (blue2Int <= 0){
                             blue2Int = 0
@@ -2506,13 +2506,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY2 < newPosY2 - 20){
+                    if (tempPosY2 < newPosY2 - 150){
                         blue2Int++
                         blue2.text = blue2Int.toString()
                         posX2 = newPosX2
                         posY2 = newPosY2
                     }
-                    else if (tempPosY2 > newPosY2 + 20){
+                    else if (tempPosY2 > newPosY2 + 150){
                         blue2Int--
                         if (blue2Int <= 0){
                             blue2Int = 0
@@ -2558,13 +2558,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY2 < newPosY2 - 20){
+                    if (tempPosY2 < newPosY2 - 150){
                         black2Int++
                         black2.text = black2Int.toString()
                         newPosX2 = tempPosX2
                         newPosY2 = tempPosY2
                     }
-                    else if (tempPosY2 > newPosY2 + 20){
+                    else if (tempPosY2 > newPosY2 + 150){
                         black2Int--
                         if (black2Int <= 0){
                             black2Int = 0
@@ -2581,13 +2581,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY2 < newPosY2 - 20){
+                    if (tempPosY2 < newPosY2 - 150){
                         black2Int++
                         black2.text = black2Int.toString()
                         posX2 = newPosX2
                         posY2 = newPosY2
                     }
-                    else if (tempPosY2 > newPosY2 + 20){
+                    else if (tempPosY2 > newPosY2 + 150){
                         black2Int--
                         if (black2Int <= 0){
                             black2Int = 0
@@ -2633,13 +2633,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY2 < newPosY2 - 20){
+                    if (tempPosY2 < newPosY2 - 150){
                         red2Int++
                         red2.text = red2Int.toString()
                         newPosX2 = tempPosX2
                         newPosY2 = tempPosY2
                     }
-                    else if (tempPosY2 > newPosY2 + 20){
+                    else if (tempPosY2 > newPosY2 + 150){
                         red2Int--
                         if (red2Int <= 0){
                             red2Int = 0
@@ -2656,13 +2656,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY2 < newPosY2 - 20){
+                    if (tempPosY2 < newPosY2 - 150){
                         red2Int++
                         red2.text = red2Int.toString()
                         posX2 = newPosX2
                         posY2 = newPosY2
                     }
-                    else if (tempPosY2 > newPosY2 + 20){
+                    else if (tempPosY2 > newPosY2 + 150){
                         red2Int--
                         if (red2Int <= 0){
                             red2Int = 0
@@ -2708,13 +2708,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY2 < newPosY2 - 20){
+                    if (tempPosY2 < newPosY2 - 150){
                         green2Int++
                         green2.text = green2Int.toString()
                         newPosX2 = tempPosX2
                         newPosY2 = tempPosY2
                     }
-                    else if (tempPosY2 > newPosY2 + 20){
+                    else if (tempPosY2 > newPosY2 + 150){
                         green2Int--
                         if (green2Int <= 0){
                             green2Int = 0
@@ -2731,13 +2731,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY2 < newPosY2 - 20){
+                    if (tempPosY2 < newPosY2 - 150){
                         green2Int++
                         green2.text = green2Int.toString()
                         posX2 = newPosX2
                         posY2 = newPosY2
                     }
-                    else if (tempPosY2 > newPosY2 + 20){
+                    else if (tempPosY2 > newPosY2 + 150){
                         green2Int--
                         if (green2Int <= 0){
                             green2Int = 0
@@ -2783,13 +2783,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY2 < newPosY2 - 20){
+                    if (tempPosY2 < newPosY2 - 150){
                         storm2Int++
                         storm2.text = storm2Int.toString()
                         newPosX2 = tempPosX2
                         newPosY2 = tempPosY2
                     }
-                    else if (tempPosY2 > newPosY2 + 20){
+                    else if (tempPosY2 > newPosY2 + 150){
                         storm2Int--
                         if (storm2Int <= 0){
                             storm2Int = 0
@@ -2806,13 +2806,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX2 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY2 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY2 < newPosY2 - 20){
+                    if (tempPosY2 < newPosY2 - 150){
                         storm2Int++
                         storm2.text = storm2Int.toString()
                         posX2 = newPosX2
                         posY2 = newPosY2
                     }
-                    else if (tempPosY2 > newPosY2 + 20){
+                    else if (tempPosY2 > newPosY2 + 150){
                         storm2Int--
                         if (storm2Int <= 0){
                             storm2Int = 0
@@ -2858,13 +2858,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY3 < newPosY3 - 20){
+                    if (tempPosY3 < newPosY3 - 150){
                         white3Int++
                         white3.text = white3Int.toString()
                         newPosX3 = tempPosX3
                         newPosY3 = tempPosY3
                     }
-                    else if (tempPosY3 > newPosY3 + 20){
+                    else if (tempPosY3 > newPosY3 + 150){
                         white3Int--
                         if (white3Int <= 0){
                             white3Int = 0
@@ -2881,13 +2881,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY3 < newPosY3 - 20){
+                    if (tempPosY3 < newPosY3 - 150){
                         white3Int++
                         white3.text = white3Int.toString()
                         posX3 = newPosX3
                         posY3 = newPosY3
                     }
-                    else if (tempPosY3 > newPosY3 + 20){
+                    else if (tempPosY3 > newPosY3 + 150){
                         white3Int--
                         if (white3Int <= 0){
                             white3Int = 0
@@ -2933,13 +2933,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY3 < newPosY3 - 20){
+                    if (tempPosY3 < newPosY3 - 150){
                         blue3Int++
                         blue3.text = blue3Int.toString()
                         newPosX3 = tempPosX3
                         newPosY3 = tempPosY3
                     }
-                    else if (tempPosY3 > newPosY3 + 20){
+                    else if (tempPosY3 > newPosY3 + 150){
                         blue3Int--
                         if (blue3Int <= 0){
                             blue3Int = 0
@@ -2956,13 +2956,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY3 < newPosY3 - 20){
+                    if (tempPosY3 < newPosY3 - 150){
                         blue3Int++
                         blue3.text = blue3Int.toString()
                         posX3 = newPosX3
                         posY3 = newPosY3
                     }
-                    else if (tempPosY3 > newPosY3 + 20){
+                    else if (tempPosY3 > newPosY3 + 150){
                         blue3Int--
                         if (blue3Int <= 0){
                             blue3Int = 0
@@ -3008,13 +3008,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY3 < newPosY3 - 20){
+                    if (tempPosY3 < newPosY3 - 150){
                         black3Int++
                         black3.text = black3Int.toString()
                         newPosX3 = tempPosX3
                         newPosY3 = tempPosY3
                     }
-                    else if (tempPosY3 > newPosY3 + 20){
+                    else if (tempPosY3 > newPosY3 + 150){
                         black3Int--
                         if (black3Int <= 0){
                             black3Int = 0
@@ -3031,13 +3031,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY3 < newPosY3 - 20){
+                    if (tempPosY3 < newPosY3 - 150){
                         black3Int++
                         black3.text = black3Int.toString()
                         posX3 = newPosX3
                         posY3 = newPosY3
                     }
-                    else if (tempPosY3 > newPosY3 + 20){
+                    else if (tempPosY3 > newPosY3 + 150){
                         black3Int--
                         if (black3Int <= 0){
                             black3Int = 0
@@ -3083,13 +3083,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY3 < newPosY3 - 20){
+                    if (tempPosY3 < newPosY3 - 150){
                         red3Int++
                         red3.text = red3Int.toString()
                         newPosX3 = tempPosX3
                         newPosY3 = tempPosY3
                     }
-                    else if (tempPosY3 > newPosY3 + 20){
+                    else if (tempPosY3 > newPosY3 + 150){
                         red3Int--
                         if (red3Int <= 0){
                             red3Int = 0
@@ -3106,13 +3106,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY3 < newPosY3 - 20){
+                    if (tempPosY3 < newPosY3 - 150){
                         red3Int++
                         red3.text = red3Int.toString()
                         posX3 = newPosX3
                         posY3 = newPosY3
                     }
-                    else if (tempPosY3 > newPosY3 + 20){
+                    else if (tempPosY3 > newPosY3 + 150){
                         red3Int--
                         if (red3Int <= 0){
                             red3Int = 0
@@ -3158,13 +3158,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY3 < newPosY3 - 20){
+                    if (tempPosY3 < newPosY3 - 150){
                         green3Int++
                         green3.text = green3Int.toString()
                         newPosX3 = tempPosX3
                         newPosY3 = tempPosY3
                     }
-                    else if (tempPosY3 > newPosY3 + 20){
+                    else if (tempPosY3 > newPosY3 + 150){
                         green3Int--
                         if (green3Int <= 0){
                             green3Int = 0
@@ -3181,13 +3181,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY3 < newPosY3 - 20){
+                    if (tempPosY3 < newPosY3 - 150){
                         green3Int++
                         green3.text = green3Int.toString()
                         posX3 = newPosX3
                         posY3 = newPosY3
                     }
-                    else if (tempPosY3 > newPosY3 + 20){
+                    else if (tempPosY3 > newPosY3 + 150){
                         green3Int--
                         if (green3Int <= 0){
                             green3Int = 0
@@ -3233,13 +3233,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY3 < newPosY3 - 20){
+                    if (tempPosY3 < newPosY3 - 150){
                         storm3Int++
                         storm3.text = storm3Int.toString()
                         newPosX3 = tempPosX3
                         newPosY3 = tempPosY3
                     }
-                    else if (tempPosY3 > newPosY3 + 20){
+                    else if (tempPosY3 > newPosY3 + 150){
                         storm3Int--
                         if (storm3Int <= 0){
                             storm3Int = 0
@@ -3256,13 +3256,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX3 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY3 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY3 < newPosY3 - 20){
+                    if (tempPosY3 < newPosY3 - 150){
                         storm3Int++
                         storm3.text = storm3Int.toString()
                         posX3 = newPosX3
                         posY3 = newPosY3
                     }
-                    else if (tempPosY3 > newPosY3 + 20){
+                    else if (tempPosY3 > newPosY3 + 150){
                         storm3Int--
                         if (storm3Int <= 0){
                             storm3Int = 0
@@ -3308,13 +3308,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY4 < newPosY4 - 20){
+                    if (tempPosY4 < newPosY4 - 150){
                         white4Int++
                         white4.text = white4Int.toString()
                         newPosX4 = tempPosX4
                         newPosY4 = tempPosY4
                     }
-                    else if (tempPosY4 > newPosY4 + 20){
+                    else if (tempPosY4 > newPosY4 + 150){
                         white4Int--
                         if (white4Int <= 0){
                             white4Int = 0
@@ -3331,13 +3331,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY4 < newPosY4 - 20){
+                    if (tempPosY4 < newPosY4 - 150){
                         white4Int++
                         white4.text = white4Int.toString()
                         posX4 = newPosX4
                         posY4 = newPosY4
                     }
-                    else if (tempPosY4 > newPosY4 + 20){
+                    else if (tempPosY4 > newPosY4 + 150){
                         white4Int--
                         if (white4Int <= 0){
                             white4Int = 0
@@ -3383,13 +3383,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY4 < newPosY4 - 20){
+                    if (tempPosY4 < newPosY4 - 150){
                         blue4Int++
                         blue4.text = blue4Int.toString()
                         newPosX4 = tempPosX4
                         newPosY4 = tempPosY4
                     }
-                    else if (tempPosY4 > newPosY4 + 20){
+                    else if (tempPosY4 > newPosY4 + 150){
                         blue4Int--
                         if (blue4Int <= 0){
                             blue4Int = 0
@@ -3406,13 +3406,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY4 < newPosY4 - 20){
+                    if (tempPosY4 < newPosY4 - 150){
                         blue4Int++
                         blue4.text = blue4Int.toString()
                         posX4 = newPosX4
                         posY4 = newPosY4
                     }
-                    else if (tempPosY4 > newPosY4 + 20){
+                    else if (tempPosY4 > newPosY4 + 150){
                         blue4Int--
                         if (blue4Int <= 0){
                             blue4Int = 0
@@ -3458,13 +3458,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY4 < newPosY4 - 20){
+                    if (tempPosY4 < newPosY4 - 150){
                         black4Int++
                         black4.text = black4Int.toString()
                         newPosX4 = tempPosX4
                         newPosY4 = tempPosY4
                     }
-                    else if (tempPosY4 > newPosY4 + 20){
+                    else if (tempPosY4 > newPosY4 + 150){
                         black4Int--
                         if (black4Int <= 0){
                             black4Int = 0
@@ -3481,13 +3481,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY4 < newPosY4 - 20){
+                    if (tempPosY4 < newPosY4 - 150){
                         black4Int++
                         black4.text = black4Int.toString()
                         posX4 = newPosX4
                         posY4 = newPosY4
                     }
-                    else if (tempPosY4 > newPosY4 + 20){
+                    else if (tempPosY4 > newPosY4 + 150){
                         black4Int--
                         if (black4Int <= 0){
                             black4Int = 0
@@ -3533,13 +3533,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY4 < newPosY4 - 20){
+                    if (tempPosY4 < newPosY4 - 150){
                         red4Int++
                         red4.text = red4Int.toString()
                         newPosX4 = tempPosX4
                         newPosY4 = tempPosY4
                     }
-                    else if (tempPosY4 > newPosY4 + 20){
+                    else if (tempPosY4 > newPosY4 + 150){
                         red4Int--
                         if (red4Int <= 0){
                             red4Int = 0
@@ -3556,13 +3556,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY4 < newPosY4 - 20){
+                    if (tempPosY4 < newPosY4 - 150){
                         red4Int++
                         red4.text = red4Int.toString()
                         posX4 = newPosX4
                         posY4 = newPosY4
                     }
-                    else if (tempPosY4 > newPosY4 + 20){
+                    else if (tempPosY4 > newPosY4 + 150){
                         red4Int--
                         if (red4Int <= 0){
                             red4Int = 0
@@ -3608,13 +3608,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY4 < newPosY4 - 20){
+                    if (tempPosY4 < newPosY4 - 150){
                         green4Int++
                         green4.text = green4Int.toString()
                         newPosX4 = tempPosX4
                         newPosY4 = tempPosY4
                     }
-                    else if (tempPosY4 > newPosY4 + 20){
+                    else if (tempPosY4 > newPosY4 + 150){
                         green4Int--
                         if (green4Int <= 0){
                             green4Int = 0
@@ -3631,13 +3631,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY4 < newPosY4 - 20){
+                    if (tempPosY4 < newPosY4 - 150){
                         green4Int++
                         green4.text = green4Int.toString()
                         posX4 = newPosX4
                         posY4 = newPosY4
                     }
-                    else if (tempPosY4 > newPosY4 + 20){
+                    else if (tempPosY4 > newPosY4 + 150){
                         green4Int--
                         if (green4Int <= 0){
                             green4Int = 0
@@ -3683,13 +3683,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY4 < newPosY4 - 20){
+                    if (tempPosY4 < newPosY4 - 150){
                         storm4Int++
                         storm4.text = storm4Int.toString()
                         newPosX4 = tempPosX4
                         newPosY4 = tempPosY4
                     }
-                    else if (tempPosY4 > newPosY4 + 20){
+                    else if (tempPosY4 > newPosY4 + 150){
                         storm4Int--
                         if (storm4Int <= 0){
                             storm4Int = 0
@@ -3706,13 +3706,13 @@ class MainActivity : AppCompatActivity() {
                         tempPosX4 = MotionEventCompat.getX(event, pointerIndex)
                         tempPosY4 = MotionEventCompat.getY(event, pointerIndex)
                     }
-                    if (tempPosY4 < newPosY4 - 20){
+                    if (tempPosY4 < newPosY4 - 150){
                         storm4Int++
                         storm4.text = storm4Int.toString()
                         posX4 = newPosX4
                         posY4 = newPosY4
                     }
-                    else if (tempPosY4 > newPosY4 + 20){
+                    else if (tempPosY4 > newPosY4 + 150){
                         storm4Int--
                         if (storm4Int <= 0){
                             storm4Int = 0
@@ -4597,25 +4597,30 @@ class MainActivity : AppCompatActivity() {
                                 timer1--
                                 if (timer1 <= 0) {
                                     timer1 = 0
+
                                 }
+                                player1TimerText.text = timer1.toString()
                             }
                             else if (currentPlayer == 2) {
                                 timer2--
                                 if (timer2 <= 0) {
                                     timer2 = 0
                                 }
+                                player2TimerText.text = timer2.toString()
                             }
                             else if (currentPlayer == 3) {
                                 timer3--
                                 if (timer3 <= 0) {
                                     timer3 = 0
                                 }
+                                player3TimerText.text = timer3.toString()
                             }
                             else if (currentPlayer == 4) {
                                 timer4--
                                 if (timer4 <= 0) {
                                     timer4 = 0
                                 }
+                                player4TimerText.text = timer4.toString()
                             }
                         }
                         //Uncomment section below to debug timers
@@ -5112,6 +5117,7 @@ class MainActivity : AppCompatActivity() {
                         else if (timer1 < 180) {
                             timer1 = 180
                         }
+                        player1TimerText.text = timer1.toString()
                     }
                     2 -> {
                         endTurn.background = this.getDrawable(R.drawable.tap_icon_3)
@@ -5155,6 +5161,7 @@ class MainActivity : AppCompatActivity() {
                         else if (timer2 < 180) {
                             timer2 = 180
                         }
+                        player2TimerText.text = timer2.toString()
                     }
                     3 -> {
                         endTurn.background = this.getDrawable(R.drawable.tap_icon_4)
@@ -5198,6 +5205,7 @@ class MainActivity : AppCompatActivity() {
                         else if (timer3 < 180) {
                             timer3 = 180
                         }
+                        player3TimerText.text = timer3.toString()
                     }
                     4 -> {
                         endTurn.background = this.getDrawable(R.drawable.tap_icon_1)
@@ -5241,6 +5249,7 @@ class MainActivity : AppCompatActivity() {
                         else if (timer4 < 180) {
                             timer4 = 180
                         }
+                        player4TimerText.text = timer4.toString()
                     }
                 }
             }

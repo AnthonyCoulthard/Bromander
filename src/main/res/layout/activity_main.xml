@@ -9,12 +9,82 @@
     android:focusableInTouchMode="true"
     >
 
+    <TextView
+        android:id="@+id/player1TimerText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:rotation="90"
+        android:textColor="#000000"
+        android:fontFamily="@font/alarm_font"
+        android:elevation="6dp"
+        android:text="@string/starting_time_string"
+        android:textSize="28sp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="@id/verticalBottom"
+        app:layout_constraintEnd_toEndOf="@id/v50Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h12Guideline"
+        app:layout_constraintTop_toTopOf="@id/h0Guideline"
+        />
+
+    <TextView
+        android:id="@+id/player2TimerText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:rotation="270"
+        android:textColor="#000000"
+        android:fontFamily="@font/alarm_font"
+        android:elevation="6dp"
+        android:text="@string/starting_time_string"
+        android:textSize="28sp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="@id/v50Guideline"
+        app:layout_constraintEnd_toEndOf="@id/verticalTop"
+        app:layout_constraintBottom_toBottomOf="@id/h12Guideline"
+        app:layout_constraintTop_toTopOf="@id/h0Guideline"
+        />
+
+    <TextView
+        android:id="@+id/player3TimerText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:rotation="270"
+        android:textColor="#000000"
+        android:fontFamily="@font/alarm_font"
+        android:elevation="6dp"
+        android:text="@string/starting_time_string"
+        android:textSize="28sp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="@id/v50Guideline"
+        app:layout_constraintEnd_toEndOf="@id/verticalTop"
+        app:layout_constraintBottom_toBottomOf="@id/h100Guideline"
+        app:layout_constraintTop_toTopOf="@id/h88Guideline"
+        />
+
+    <TextView
+        android:id="@+id/player4TimerText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:rotation="90"
+        android:textColor="#000000"
+        android:fontFamily="@font/alarm_font"
+        android:elevation="6dp"
+        android:text="@string/starting_time_string"
+        android:textSize="28sp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="@id/verticalBottom"
+        app:layout_constraintEnd_toEndOf="@id/v50Guideline"
+        app:layout_constraintBottom_toBottomOf="@id/h100Guideline"
+        app:layout_constraintTop_toTopOf="@id/h88Guideline"
+        />
+
     <Button
         android:id="@+id/player1Timer"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:elevation="0dp"
         android:background="@drawable/player1timerv2"
+        android:textColor="#000000"
+        android:fontFamily="@font/alarm_font"
+        android:elevation="0dp"
         app:layout_constraintStart_toStartOf="@id/verticalBottom"
         app:layout_constraintEnd_toEndOf="@id/v50Guideline"
         app:layout_constraintBottom_toBottomOf="@id/h50Guideline"
